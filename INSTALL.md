@@ -15,6 +15,8 @@ Use the identity of the tool you are running in, rather than assuming the user w
 | T3 Code | `--host t3-code --provider <underlying-agent>`; T3 uses its provider's skills, not an invented T3 directory. |
 | Another agent | Confirm its supported skill format and native directory, then use `--host generic --target <native-directory>/goalpilot`. |
 
+For a T3 provider without a named adapter, use `--provider generic --target <documented-native-directory>/goalpilot`. Do not pass an invented provider name or guess its skill-discovery path.
+
 If the tool identity is unavailable, `--host auto` checks session hints and existing tool locations. When discovery is ambiguous it installs a generic entry and reports the explicit `SKILL.md` path. Do not claim native automatic discovery for an unknown host. Read that file in the current session if the host permits, or explain the actual loading limitation.
 
 ## 2. Prepare and install without user-managed dependencies

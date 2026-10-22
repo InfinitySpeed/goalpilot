@@ -44,4 +44,4 @@ jobs:
       - name: Check PowerShell bootstrap
         if: runner.os == 'Windows'
         shell: pwsh
-        run: ./bootstrap.ps1 -Source $PWD.Path -HostName generic -Target "$env:RUNNER_TEMP/goalpilot-bootstrap"
+        run: ./bootstrap.ps1 -Source $PWD.Path -HostName generic -Target "$env:RUNNER_TEMP/goalpilot-bootstrap" -ManagedPython
