@@ -6,29 +6,9 @@ GoalPilot is a skill for coding agents that helps complete ambitious goals with 
 
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
 [![Agent skill](https://img.shields.io/badge/Agent_skill-portable-0F766E)](docs/HOSTS.md)
-[![Engine 0.12.1](https://img.shields.io/badge/Engine-0.13.0-334155)](goalpilot/__init__.py)
+[![Engine 0.13.0](https://img.shields.io/badge/Engine-0.13.0-334155)](goalpilot/__init__.py)
 
-[Get started](docs/GETTING_STARTED.md) · [Supported hosts](docs/HOSTS.md) · [How it works](docs/ARCHITECTURE.md) · [Benchmark methodology](docs/BENCHMARKS.md) · [Contributing](CONTRIBUTING.md)
-
-## Recorded benchmark (Codex skill 1.3.1 / engine 0.12.1)
-
-In the recorded **Codex benchmark on 20 selected synthetic Python service missions**, the complete GoalPilot invocation used **54.39% fewer raw tokens** and **60.66% less total time** than native Codex `/goal`. Claude Code and Antigravity adapters have not been benchmarked.
-
-![Measured time, raw token composition, and completion results for GoalPilot and native Codex on twenty synthetic Python service missions.](docs/assets/benchmark.png)
-
-| Metric — all 20 attempts per arm | Native Codex | GoalPilot | Reduction |
-| :--- | ---: | ---: | ---: |
-| Total elapsed time | 65.32 min | 25.69 min | **60.66%** |
-| Uncached input tokens | 499,412 | 256,343 | **48.67%** |
-| Output tokens | 221,009 | 86,013 | **61.08%** |
-| Raw tokens, including cached input | 4,716,581 | 2,151,252 | **54.39%** |
-| Goal completion¹ | **19/20 (95%)** | **20/20 (100%)** | Observed on this benchmark |
-
-¹ A completed goal must finish normally and pass all required external behavioral checks. Counts use the reviewed grader applied to both tools; [original scores and grading changes](docs/BENCHMARKS.md#original-versus-reviewed-scoring) remain documented. This is an observed result on 20 missions, not a guarantee for new tasks.
-
-**What these numbers cover:** the entire calling session, including skill setup and reading, context, coding, repairs and Stop verification, plus independent judging time. Failed attempts remain in the totals. Both arms used `gpt-6.1-sol`, LOW effort and matching execution permissions. Native Codex used its real goal API and automatic continuations.
-
-**What they do not establish:** savings on arbitrary repositories, multi-hour production goals or other agents. These are known development cases in one Python/JSONL/HTTP service family, not a blinded holdout. Provider tokens do not map directly to subscription quota percentages. See the [methodology, uncertainty and research cost](docs/BENCHMARKS.md).
+[Install with your agent](INSTALL.md) · [Get started](docs/GETTING_STARTED.md) · [Supported hosts](docs/HOSTS.md) · [How it works](docs/ARCHITECTURE.md) · [Benchmark methodology](docs/BENCHMARKS.md) · [Contributing](CONTRIBUTING.md)
 
 ## How to use it
 
@@ -72,6 +52,27 @@ Already have Python 3.11+ and the repository? Run `python install.py`. It defaul
 For dependency-free onboarding, the shell and PowerShell bootstraps prepare a user-local Python when needed, download source without Git and run the same installer. See [INSTALL.md](INSTALL.md) and [host adapters](docs/HOSTS.md). `--doctor` checks readiness without model calls; `--dry-run` previews destination paths.
 
 The current local verifier supports bounded Python unittest projects on Linux/macOS/Windows. The optional cross-process `service_race` helper still requires POSIX fork. Other test frameworks and arbitrary hosted agents are not automatically supported. Your coding agent still consumes tokens; local installation and verification do not launch models.
+
+
+## Recorded benchmark (Codex skill 1.3.1 / engine 0.12.1)
+
+In the recorded **Codex benchmark on 20 selected synthetic Python service missions**, the complete GoalPilot invocation used **54.39% fewer raw tokens** and **60.66% less total time** than native Codex `/goal`. Claude Code and Antigravity adapters have not been benchmarked.
+
+![Measured time, raw token composition, and completion results for GoalPilot and native Codex on twenty synthetic Python service missions.](docs/assets/benchmark.png)
+
+| Metric — all 20 attempts per arm | Native Codex | GoalPilot | Reduction |
+| :--- | ---: | ---: | ---: |
+| Total elapsed time | 65.32 min | 25.69 min | **60.66%** |
+| Uncached input tokens | 499,412 | 256,343 | **48.67%** |
+| Output tokens | 221,009 | 86,013 | **61.08%** |
+| Raw tokens, including cached input | 4,716,581 | 2,151,252 | **54.39%** |
+| Goal completion¹ | **19/20 (95%)** | **20/20 (100%)** | Observed on this benchmark |
+
+¹ A completed goal must finish normally and pass all required external behavioral checks. Counts use the reviewed grader applied to both tools; [original scores and grading changes](docs/BENCHMARKS.md#original-versus-reviewed-scoring) remain documented. This is an observed result on 20 missions, not a guarantee for new tasks.
+
+**What these numbers cover:** the entire calling session, including skill setup and reading, context, coding, repairs and Stop verification, plus independent judging time. Failed attempts remain in the totals. Both arms used `gpt-6.1-sol`, LOW effort and matching execution permissions. Native Codex used its real goal API and automatic continuations.
+
+**What they do not establish:** savings on arbitrary repositories, multi-hour production goals or other agents. These are known development cases in one Python/JSONL/HTTP service family, not a blinded holdout. Provider tokens do not map directly to subscription quota percentages. See the [methodology, uncertainty and research cost](docs/BENCHMARKS.md).
 
 ## How it works
 
