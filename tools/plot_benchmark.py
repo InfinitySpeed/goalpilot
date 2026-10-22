@@ -54,19 +54,14 @@ def main():
     ax.legend(loc='upper right', frameon=False, fontsize=8)
 
     ax = axes[2]
-    positions = [0, 1]
-    original = data['original']['totals']
-    for arm, offset, color, label in [('native', -.19, native_color, 'Native Codex'), ('new', .19, pilot_color, 'GoalPilot')]:
-        values = [original[arm]['successful'], totals[arm]['successful']]
-        ax.bar([x + offset for x in positions], values, width=.34, color=color, label=label)
-        for x, value in zip(positions, values):
-            ax.text(x + offset, value + .35, f'{value}/20', ha='center', fontsize=9, fontweight='bold')
-    ax.set_xticks(positions, ['Initial grader', 'After grader review'])
+    values = [baseline['successful'], pilot['successful']]
+    ax.bar(names, values, width=.55, color=[native_color, pilot_color])
+    for i, value in enumerate(values):
+        ax.text(i, value + .35, f'{value}/20', ha='center', fontsize=12, fontweight='bold')
     ax.set_ylim(0, 24)
     ax.set_yticks([0, 5, 10, 15, 20])
     ax.set_ylabel('Correct and normally closed goals')
-    ax.set_title('Successful missions out of 20', loc='left', fontweight='bold', pad=19)
-    ax.legend(loc='upper right', frameon=False, fontsize=8, ncol=2)
+    ax.set_title('Goal completion', loc='left', fontweight='bold', pad=19)
 
     for ax in axes:
         ax.set_axisbelow(True)
@@ -76,7 +71,7 @@ def main():
                  ha='left', fontsize=21, fontweight='bold')
     fig.text(.055, .89, '20 synthetic Python service missions · full caller cost · gpt-6.1-sol / LOW',
              fontsize=11, color='#64748b')
-    fig.text(.055, .07, 'Same 20 attempts per tool, before/after grader review. No model reruns; generated implementations unchanged.',
+    fig.text(.055, .07, 'Completion uses the reviewed grader applied to both tools. Original scores and grading changes: docs/BENCHMARKS.md',
              fontsize=9, color='#475569')
     fig.text(.055, .025, 'Known synthetic development cases, not a blinded holdout. Extra review time is included. Details: docs/BENCHMARKS.md',
              fontsize=9, color='#64748b')

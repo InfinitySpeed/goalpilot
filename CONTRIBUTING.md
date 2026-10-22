@@ -23,7 +23,7 @@ python3 -m pip install matplotlib
 python3 tools/plot_benchmark.py
 ```
 
-Charts read the included benchmark rows; do not enter performance numbers by hand. Keep axes at zero, label units, include the workload scope and show both completion score definitions.
+Charts read the included benchmark rows; do not enter performance numbers by hand. Keep axes at zero, label units and include the workload scope. Label which completion grading is used and link to the original scores and grading review.
 
 ## Measurement rules
 
