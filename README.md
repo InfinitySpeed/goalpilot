@@ -22,8 +22,22 @@ On **20 selected synthetic Python service missions**, the complete GoalPilot inv
 | Uncached input tokens | 499,412 | 256,343 | **48.67%** |
 | Output tokens | 221,009 | 86,013 | **61.08%** |
 | Raw tokens, including cached input | 4,716,581 | 2,151,252 | **54.39%** |
-| Correct, normally closed goals — reviewed scoring | 19/20 | 20/20 | Observed count preserved |
-| Correct, normally closed goals — original scoring | 17/20 | 19/20 | Observed count preserved |
+
+### What do 17/20, 19/20 and 20/20 mean?
+
+The denominator is **20 complete coding missions per tool**. For example, **17/20 means 17 missions passed and 3 did not**. A mission counts as a success only when the agent finishes normally **and** its delivered application passes every required external behavioral check. These are mission counts, not token scores or individual unit tests.
+
+The different totals show **the same implementations evaluated before and after a review of the benchmark's grader**:
+
+| Grading stage | Native Codex | GoalPilot | Why the count changes |
+| :--- | ---: | ---: | :--- |
+| Initial grader | **17/20 (85%)** | **19/20 (95%)** | Original recorded results. |
+| Billing test corrected | **18/20 (90%)** | **20/20 (100%)** | One faulty subscription test had incorrectly failed both tools. |
+| Ambiguous return format accepted | **19/20 (95%)** | **20/20 (100%)** | One annotation test had rejected a valid interpretation used by native Codex. |
+
+**No model was rerun and no implementation was improved between these rows.** The review changed the grading of existing outputs; it did not complete additional goals. Original scores remain published, the same revised rules apply to both tools, and extra judging time is included. Native Codex's remaining reviewed failure is a ticketing mission with incorrect duplicate-request handling.
+
+The final **20/20 is the observed result on this particular set**, not a promise of 100% success on new tasks. The **283 tests** mentioned below are a separate offline regression suite for GoalPilot itself. The **4/4** old-skill comparison in the report uses four predefined anchors and is separate from this native-Codex comparison. [See the exact grading changes and evidence](docs/BENCHMARKS.md#original-versus-reviewed-scoring).
 
 **What these numbers cover:** the entire calling session, including skill setup and reading, context, coding, repairs and Stop verification, plus independent judging time. Failed attempts remain in the totals. Both arms used `gpt-6.1-sol`, LOW effort and matching execution permissions. Native Codex used its real goal API and automatic continuations.
 

@@ -36,6 +36,16 @@ Some native controls preceded the final skill and were explicitly carried forwar
 
 ## Original versus reviewed scoring
 
+Each fraction counts **successful coding missions out of 20 attempts per tool**. Success requires normal goal closure and all independent behavioral checks, not merely an agent saying it is done. A 17/20 result means 17 successful missions and 3 unsuccessful missions.
+
+| Stage — same 20 attempts per tool | Native Codex | GoalPilot | Change from the previous row |
+| :--- | ---: | ---: | :--- |
+| Initial grader | 17/20 (85%) | 19/20 (95%) | Original recorded result. |
+| Correct the subscription billing test | 18/20 (90%) | 20/20 (100%) | One previously failed mission becomes a pass for each tool. |
+| Accept the ambiguous annotation return format | 19/20 (95%) | 20/20 (100%) | One further native mission becomes a pass; GoalPilot's count is unchanged. |
+
+This table is a grading sensitivity analysis of the same delivered applications. It is not a sequence of product versions, new model attempts or goals repaired after seeing external feedback. The denominator stays 20 throughout. The final observed counts do not establish a universal completion rate or statistically reliable superiority on new tasks.
+
 The original analysis and original outcomes remain unchanged. Two post-registration reviews were applied symmetrically, with no product edits or model reruns:
 
 1. **Subscriptions:** the original race check required both requests at a billing boundary to succeed, although the first call advanced the boundary and the documented precondition required the loser to reject. Both implementations correctly rejected that call. The corrected grader requires exactly one successful billing operation and one invoice; invalid alternatives are rejected.

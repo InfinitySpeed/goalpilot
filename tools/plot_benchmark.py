@@ -61,11 +61,11 @@ def main():
         ax.bar([x + offset for x in positions], values, width=.34, color=color, label=label)
         for x, value in zip(positions, values):
             ax.text(x + offset, value + .35, f'{value}/20', ha='center', fontsize=9, fontweight='bold')
-    ax.set_xticks(positions, ['Original scoring', 'Reviewed scoring'])
+    ax.set_xticks(positions, ['Initial grader', 'After grader review'])
     ax.set_ylim(0, 24)
     ax.set_yticks([0, 5, 10, 15, 20])
     ax.set_ylabel('Correct and normally closed goals')
-    ax.set_title('Completion · both definitions', loc='left', fontweight='bold', pad=19)
+    ax.set_title('Successful missions out of 20', loc='left', fontweight='bold', pad=19)
     ax.legend(loc='upper right', frameon=False, fontsize=8, ncol=2)
 
     for ax in axes:
@@ -76,9 +76,9 @@ def main():
                  ha='left', fontsize=21, fontweight='bold')
     fig.text(.055, .89, '20 synthetic Python service missions · full caller cost · gpt-6.1-sol / LOW',
              fontsize=11, color='#64748b')
-    fig.text(.055, .07, 'Known development cases, not a blinded holdout. Reviewed scores use two symmetric grading adjustments.',
+    fig.text(.055, .07, 'Same 20 attempts per tool, before/after grader review. No model reruns; generated implementations unchanged.',
              fontsize=9, color='#475569')
-    fig.text(.055, .025, 'Extra review time is included. Tokens do not translate directly to subscription quota. Source: docs/BENCHMARKS.md',
+    fig.text(.055, .025, 'Known synthetic development cases, not a blinded holdout. Extra review time is included. Details: docs/BENCHMARKS.md',
              fontsize=9, color='#64748b')
     fig.subplots_adjust(left=.065, right=.985, bottom=.23, top=.76, wspace=.4)
     target = ROOT / 'docs/assets'
