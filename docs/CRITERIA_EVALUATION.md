@@ -1,6 +1,6 @@
 # Goal criteria evaluation
 
-Engine 0.15.0 / skill 1.6.0 adds a frozen inventory of atomic goal requirements mapped to criteria, exact source quotes, check links, and per-requirement plus per-criterion verified/missing/blocked status. Supplied requirement maps with missing or orphaned links are rejected. Handoffs without the new field retain pre-1.6 compatibility through a clearly labeled one-to-one criterion projection; that fallback does not claim inventory completeness. The 1.6 skill always submits the full inventory. An explicit external blocker or failed/unavailable check keeps `goal_complete` false. The checks run locally and make no model calls.
+The standalone controller engine 0.15.0 implements a frozen inventory of atomic goal requirements mapped to criteria, exact source quotes, check links, and per-requirement plus per-criterion verified/missing/blocked status. Supplied requirement maps with missing or orphaned links are rejected. Handoffs without the new field retain compatibility through a clearly labeled one-to-one criterion projection; that fallback does not claim inventory completeness. The portable Skill has been restored to instructions 1.3.1 / engine 0.12.1 and does not submit this newer inventory schema. An explicit external blocker or failed/unavailable check keeps `goal_complete` false in the standalone controller. The checks run locally and make no model calls.
 
 ## Regression measurements
 

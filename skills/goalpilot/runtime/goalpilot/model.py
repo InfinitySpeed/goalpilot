@@ -22,7 +22,7 @@ def positive(value: object, name: str) -> float:
     return value
 
 
-def validate(contract: dict, *, require_checks: bool = True) -> dict:
+def validate(contract: dict) -> dict:
     if not isinstance(contract, dict):
         raise ContractError("Mission must be a JSON object")
     for field in ("goal", "repo"):
@@ -31,8 +31,8 @@ def validate(contract: dict, *, require_checks: bool = True) -> dict:
     if not Path(contract["repo"]).is_dir():
         raise ContractError("Repository directory does not exist")
     checks = contract.get("checks")
-    if not isinstance(checks, list) or (require_checks and not checks):
-        raise ContractError("Executable acceptance checks must be an array and cannot be empty here")
+    if not isinstance(checks, list) or not checks:
+        raise ContractError("At least one executable acceptance check is required")
     seen = set()
     for check in checks:
         if not isinstance(check, dict):

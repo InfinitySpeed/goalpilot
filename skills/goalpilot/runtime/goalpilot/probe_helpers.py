@@ -174,14 +174,6 @@ def rejects(callback,exception=ValueError):
 
 
 def _stop(process):
-    if os.name == 'nt':
-        if process.poll() is None:
-            subprocess.run(['taskkill', '/PID', str(process.pid), '/T', '/F'],
-                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=5)
-            process.wait(timeout=5)
-        for stream in (process.stdout, process.stderr, process.stdin):
-            if stream is not None:stream.close()
-        return
     try:os.killpg(process.pid,signal.SIGTERM)
     except ProcessLookupError:pass
     try:process.wait(timeout=1)
@@ -202,7 +194,7 @@ def jsonl(argv,packets,*,cwd=None,timeout=8):
 def jsonl_lines(argv,lines,*,cwd=None,timeout=8):
     """Send literal lines, including malformed JSON, and decode actual replies."""
     raw=''.join(line+'\n'for line in lines)
-    process=subprocess.Popen(argv,cwd=cwd,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,start_new_session=os.name!='nt')
+    process=subprocess.Popen(argv,cwd=cwd,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,start_new_session=True)
     try:
         out,err=process.communicate(raw,timeout=timeout)
         if process.returncode:raise AssertionError(f'JSONL process failed ({process.returncode}): {err[-2000:]}')
@@ -213,24 +205,10 @@ def jsonl_lines(argv,lines,*,cwd=None,timeout=8):
 @contextlib.contextmanager
 def json_http(argv,*,cwd=None,timeout=7):
     # stderr goes to DEVNULL so noisy servers cannot block on an unread pipe.
-    process=subprocess.Popen(argv,cwd=cwd,stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,start_new_session=os.name!='nt')
+    process=subprocess.Popen(argv,cwd=cwd,stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,start_new_session=True)
     try:
         until=time.monotonic()+timeout;line=b''
-        if os.name == 'nt':
-            import queue
-            import threading
-            lines = queue.Queue()
-            def read_announcement():
-                try:lines.put(process.stdout.readline(8193).encode('utf-8'))
-                except (OSError, ValueError) as exc:lines.put(exc)
-            threading.Thread(target=read_announcement, daemon=True).start()
-            try:line = lines.get(timeout=timeout)
-            except queue.Empty:raise AssertionError('Local HTTP server startup timeout')from None
-            if isinstance(line, Exception):raise AssertionError('Local HTTP server output failed')from line
-            if not line:raise AssertionError('Local HTTP server exited before announcing port')
-            if len(line)>8192:raise AssertionError('Server port announcement too large')
-        else:
-          with selectors.DefaultSelector()as ready:
+        with selectors.DefaultSelector()as ready:
             ready.register(process.stdout,selectors.EVENT_READ)
             while b'\n'not in line:
                 remaining=until-time.monotonic()

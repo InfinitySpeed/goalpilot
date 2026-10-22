@@ -1,4 +1,4 @@
-# Local calling-session protocol (skill 1.6.0 / engine 0.15.0)
+# Local calling-session protocol (restored skill 1.3.1 / engine 0.12.1)
 
 Commands work through `python3 scripts/goalpilot.py session ...` in the portable
 skill, or `python3 -m goalpilot session ...` from an installed source package.
@@ -18,12 +18,7 @@ Start before edits. Goal bytes (including CRLF, quotes and metacharacters) are d
 not shell code. Repository, goal, budget and evidence location are validated before
 creation. Existing directories are refused, including empty ones. Resume commands
 accept no replacement goal, repository, scope or budgets. Wall time includes coding,
-waiting and verification since start. Start/status responses report remaining time
-and a closure reserve: 20% of the budget, bounded to 60–180 seconds and capped at
-35% for short sessions. This is guidance, not extra time. Stop adding scope when
-the implementation window reaches zero, submit the current handoff and verify.
-Check status after major milestones so idle time does not consume the reserve.
-Every verification reserves one attempt before
+waiting and verification since start. Every verification reserves one attempt before
 executing; interruptions consume it. `repair` authorizes no model call: edit code in
 the same caller, then `verify` without another submit. Exhausted budgets cannot renew.
 Token ceilings are persisted for the external caller/harness, not enforceable by a
@@ -33,20 +28,8 @@ local process which cannot observe caller inference. Its usage stays `UNKNOWN`;
 Example handoff (use the current Python executable or available `python3`):
 
 ```json
-{"summary":"Implement label normalization","assumptions":[],"limitations":[],"requirements":[{"id":"normalization","statement":"Normalize labels","source_quote":"Normalize labels","criterion_ids":["labels"]}],"criteria":[{"id":"labels","statement":"Normalize case and accents, remove duplicates, and accept empty input","source_quote":"Normalize labels","check_ids":["labels"]}],"checks":[{"id":"labels","description":"Unicode normalization, duplicate and empty cases","command":["python3","-B","-c","from app import normalize; assert normalize([' ÉTÉ ','été','B']) == ['b','été']; assert normalize([]) == []"],"timeout_seconds":5}]}
+{"summary":"Implement label normalization","assumptions":[],"limitations":[],"checks":[{"id":"labels","description":"Unicode normalization, duplicate and empty cases","command":["python3","-B","-c","from app import normalize; assert normalize([' ÉTÉ ','été','B']) == ['b','été']; assert normalize([]) == []"],"timeout_seconds":5}]}
 ```
-
-Every requirement must cite an exact substring of the original goal and map to one or more
-criteria; every criterion must map back to at least one inventoried requirement. Every
-criterion must also cite an exact source substring and reference one or more submitted checks.
-A criterion that cannot be tested must use an empty `check_ids` list and state a `blocker`.
-Missing mappings, failed assertions or blockers never produce `goal_complete:true`; the
-compact result reports requirement coverage as well as criterion status, evidence and coverage.
-The inventory is still supplied by the calling agent: quotes and complete mappings do not
-independently prove that the agent noticed every intent in a vague request, so audit the full
-original goal clause by clause before submission.
-Without a criteria handoff, `session finish` returns `criteria_required` instead of freezing
-test-only acceptance. A passing suite is useful evidence, not proof that a vague goal is done.
 
 Checks execute with repository cwd and the caller's permissions. Use self-contained
 assertions in `python -c`, Python assertion scripts (copied and frozen at submit),

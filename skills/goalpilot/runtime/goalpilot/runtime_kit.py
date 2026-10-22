@@ -6,10 +6,7 @@ from __future__ import annotations
 
 from contextlib import contextmanager
 import copy
-try:
-    import fcntl
-except ImportError:
-    fcntl = None
+import fcntl
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import os
@@ -17,39 +14,6 @@ from pathlib import Path
 import sys
 import tempfile
 import threading
-import time
-
-
-def _lock_stream(stream, blocking=True):
-    """Lock a sidecar on POSIX or Windows; never substitute a thread-only lock."""
-    if fcntl is not None:
-        fcntl.flock(stream.fileno(), fcntl.LOCK_EX | (0 if blocking else fcntl.LOCK_NB))
-        return
-    import errno
-    import msvcrt
-    if os.fstat(stream.fileno()).st_size == 0:
-        stream.write(b'\0')
-        stream.flush()
-    while True:
-        stream.seek(0)
-        try:
-            msvcrt.locking(stream.fileno(), msvcrt.LK_NBLCK, 1)
-            return
-        except OSError as exc:
-            if exc.errno not in (errno.EACCES, errno.EAGAIN, errno.EDEADLK):
-                raise
-            if not blocking:
-                raise BlockingIOError('File is already locked') from exc
-            time.sleep(.01)
-
-
-def _unlock_stream(stream):
-    if fcntl is not None:
-        fcntl.flock(stream.fileno(), fcntl.LOCK_UN)
-    else:
-        import msvcrt
-        stream.seek(0)
-        msvcrt.locking(stream.fileno(), msvcrt.LK_UNLCK, 1)
 
 _LOCKS = {}
 _LOCKS_GUARD = threading.Lock()
@@ -98,7 +62,7 @@ class JsonStore:
                 raise RuntimeError('Nested transactions are unsupported')
             self.path.parent.mkdir(parents=True, exist_ok=True)
             with self.path.with_name(self.path.name + '.lock').open('a+b') as guard:
-                _lock_stream(guard)
+                fcntl.flock(guard.fileno(), fcntl.LOCK_EX)
                 _ACTIVE.paths = active | {str(self.path)}
                 try:
                     if self.path.exists():
@@ -113,7 +77,7 @@ class JsonStore:
                         atomic_json(self.path, state)
                 finally:
                     _ACTIVE.paths = active
-                    _unlock_stream(guard)
+                    fcntl.flock(guard.fileno(), fcntl.LOCK_UN)
 
     def read(self):
         with self.transaction() as state:

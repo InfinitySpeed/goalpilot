@@ -2,7 +2,7 @@
 
 This report covers skill **1.3.1**, engine **0.12.1**, and the complete calling invocation. It distinguishes observed results from general product guarantees.
 
-This is the recorded **Codex automatic-hook benchmark**. The new installer and Claude Code / Antigravity adapter are not additional measured treatments. Their availability does not extend these performance figures to other hosts or explicit-finish delivery modes. The measured reference is retained in benchmarks/codex-1.3.1; current engine0.15.0/skill1.6.0 and its goal-requirement mapping are not the measured treatment.
+This is the recorded **Codex automatic-hook benchmark**. The portable Skill now ships the benchmark-matched instructions (1.3.1) and embedded engine (0.12.1). A fresh paired single-goal check also compared that bundle against engine 0.15.0: both artifacts passed the independent 10-group judge, while 0.12.1 used 80,897 raw caller tokens and 110.6 seconds; the 0.15.0 run was interrupted after at least 140,356 tokens and 136.6 seconds, after its GoalPilot session had closed successfully. Treat that one-goal result as diagnostic, not a new aggregate benchmark. The standalone controller source remains 0.15.0. The new installer and Claude Code / Antigravity adapter are not additional measured treatments; published 20-goal figures do not extend to those hosts or explicit-finish delivery modes.
 
 ## Primary comparison
 

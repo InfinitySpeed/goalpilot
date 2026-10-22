@@ -219,17 +219,7 @@ def handle(event):
         path=Path(binding['run_dir'])/'stop-hooks.json';rows=read(path)or[];rows.append(record);atomic_json(path,rows)
     if result['closed']:
         retire(binding)
-        assessment=result['goal_assessment']
-        inventory_source = assessment.get('requirement_inventory_source')
-        requirement_label = ('requirements' if inventory_source == 'agent_inventory' else
-                             'legacy criterion-derived requirements; full intent inventory unverified')
-        return {'systemMessage':f"GoalPilot: {assessment.get('requirements_verified', 0)}/{assessment.get('requirements_total', 0)} {requirement_label}, {assessment['verified']}/{len(assessment['criteria'])} criteria and {result['checks_passed']}/{result['checks_total']} frozen checks verified; goal_complete=true. No nested model call."}
-    if result['status'] == 'criteria_required':
-        return {'decision':'block','reason':
-                'A passing project suite alone cannot establish that this goal is complete. Before ending, inventory every atomic outcome and constraint from the preserved original goal, then derive 1–8 concise criteria and quote each source phrase. Map every requirement to one or more criteria and every criterion back to a requirement. Link criteria to executable check IDs (or record an explicit blocker), submit requirements and criteria in the handoff, then end again so GoalPilot can verify it. Do not claim completion yet.'}
-    if result['status'] == 'criteria_blocked':
-        retire(binding)
-        return {'continue':False,'stopReason':'GoalPilot remains OPEN; a goal criterion is blocked: '+json.dumps(result['goal_assessment'],ensure_ascii=False)}
+        return {'systemMessage':f"GoalPilot: {result['checks_passed']}/{result['checks_total']} frozen suites verified; no nested model call. Scope remains inferred."}
     if result['status'] in ('budget_exhausted','unsupported','verification_unavailable','integrity_failed'):
         retire(binding)
         return {'continue':False,'stopReason':'GoalPilot remains OPEN: '+json.dumps(result,ensure_ascii=False)}

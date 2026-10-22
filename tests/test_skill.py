@@ -51,17 +51,17 @@ class SkillTests(unittest.TestCase):
         self.bin=self.root/'bin';self.bin.mkdir()
         self.env['PATH']=str(self.bin)+os.pathsep+self.env.get('PATH','')
 
-    def test_embedded_engine_is_exactly_current_engine(self):
+    def test_embedded_engine_matches_the_pinned_skill_engine(self):
         manifest=json.loads((SKILL/'MANIFEST.json').read_text())
-        source={p.name:hashlib.sha256(p.read_bytes()).hexdigest()for p in (ROOT/'goalpilot').glob('*.py')}
+        source={p.name:hashlib.sha256(p.read_bytes()).hexdigest()for p in (ROOT/'benchmarks/codex-1.3.1/goalpilot').glob('*.py')}
         embedded={p.name:hashlib.sha256(p.read_bytes()).hexdigest()for p in (SKILL/'runtime/goalpilot').glob('*.py')}
         self.assertEqual(source,embedded);self.assertEqual(source,manifest['engine']['files'])
+        self.assertEqual(manifest['engine']['version'],'0.12.1')
 
     def test_bundle_install_is_self_contained_and_runs_outside_project(self):
         installer=load(SKILL/'scripts/install.py','gp_install_test')
         target=self.root/'installed/goalpilot';result=installer.install(SKILL,target)
-        from goalpilot import __version__
-        self.assertEqual(result['engine_version'],__version__)
+        self.assertEqual(result['engine_version'],json.loads((SKILL/'MANIFEST.json').read_text())['engine']['version'])
         # A conflicting installed module must never replace the embedded engine.
         fake=self.root/'wrong/goalpilot';fake.mkdir(parents=True)
         (fake/'__init__.py').write_text("raise RuntimeError('wrong global package')")

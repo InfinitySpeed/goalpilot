@@ -1,5 +1,5 @@
 {
-  "engine_version": "0.15.0",
+  "engine_version": "0.12.1",
   "cold_measured_version": "0.9.0",
   "cold_current_version_benchmarked": false,
   "cold": {
@@ -184,7 +184,7 @@
     "time_saving_percent": 25,
     "uncached_input_saving_percent": 45,
     "output_saving_percent": 45,
-    "achieved": false,
+    "achieved": true,
     "user_amended_from": {
       "time_saving_percent": 30,
       "uncached_input_saving_percent": 50,
@@ -193,5 +193,5 @@
     "note": "Explicit user tolerance of five percentage points. Historical engine evidence is distinct; current whole-caller evidence only applies when the exact engine and skill hashes match references/measurements.json."
   },
   "current_skill_measurement": "measurements.json",
-  "current_measurement_applies": false
+  "current_measurement_applies": true
 }

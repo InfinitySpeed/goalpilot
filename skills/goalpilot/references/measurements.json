@@ -199,5 +199,5 @@
     "references/measurements.json"
   ],
   "runtime_and_skill_instructions_unchanged": true,
-  "applies_to_current_bundle": false
+  "applies_to_current_bundle": true
 }

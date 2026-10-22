@@ -1,9 +1,9 @@
-"""Build a portable Codex skill with a byte-identical GoalPilot engine."""
+"""Build the portable skill with its pinned, tested embedded engine."""
+import ast
 import hashlib
 import json
 from pathlib import Path
 import shutil
-import sys
 import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -12,16 +12,28 @@ ROOT=Path(__file__).resolve().parents[1]
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def engine_version(source):
+    tree=ast.parse((Path(source)/'__init__.py').read_text())
+    for node in tree.body:
+        if isinstance(node,ast.Assign)and any(isinstance(t,ast.Name)and t.id=='__version__'for t in node.targets):
+            return ast.literal_eval(node.value)
+    raise ValueError(f'No literal __version__ in {source}')
+
+
 def build(root=ROOT):
     root=Path(root);skill=root/'skills/goalpilot';runtime=skill/'runtime/goalpilot'
-    source=root/'goalpilot';source_files={p.name:sha(p)for p in sorted(source.glob('*.py'))}
+    previous_manifest=skill/'MANIFEST.json'
+    skill_version=json.loads(previous_manifest.read_text()).get('skill_version','1.6.0') if previous_manifest.is_file() else '1.6.0'
+    # The caller-facing Skill uses the last fully successful, externally judged engine.
+    # The standalone controller under goalpilot/ can evolve independently.
+    source=root/'benchmarks/codex-1.3.1/goalpilot'
+    version=engine_version(source)
+    source_files={p.name:sha(p)for p in sorted(source.glob('*.py'))}
     if not source_files:raise ValueError('No engine source')
     runtime.mkdir(parents=True,exist_ok=True)
     for p in runtime.glob('*.py'):
         if p.name not in source_files:p.unlink()
     for name in source_files:shutil.copy2(source/name,runtime/name)
-    sys.path.insert(0,str(root))
-    from goalpilot import __version__
     measurement_path=root/'reports/skill-131-summary/measurement.json'
     measurement=None
     applies=False
@@ -34,7 +46,7 @@ def build(root=ROOT):
         measurement={**measurement,'applies_to_current_bundle':applies}
         (skill/'references/measurements.json').write_text(json.dumps(measurement,ensure_ascii=False,indent=2)+'\n')
     baseline={
-        'engine_version':__version__,'cold_measured_version':'0.9.0','cold_current_version_benchmarked':False,
+        'engine_version':version,'cold_measured_version':'0.9.0','cold_current_version_benchmarked':False,
         'cold':json.loads((root/'reports/quota-native-live-007/analysis.json').read_text()),
         'reuse_engine_091':json.loads((root/'reports/reuse-current-001/analysis.json').read_text()),
         'source_note':'Historical engine evidence, not new cold skill measurements. The caller conversation is not included in backend usage.',
@@ -46,8 +58,8 @@ def build(root=ROOT):
     (skill/'references/baseline.json').write_text(json.dumps(baseline,ensure_ascii=False,indent=2)+'\n')
     files={str(p.relative_to(skill)):sha(p)for p in sorted(skill.rglob('*'))
            if p.is_file()and '__pycache__'not in p.parts and p.suffix!='.pyc'and p.name!='MANIFEST.json'}
-    manifest={'package':'goalpilot-codex-skill','skill_version':'1.6.0',
-              'engine':{'version':__version__,'files':source_files,'unchanged_source':True},'files':files,
+    manifest={'package':'goalpilot-codex-skill','skill_version':skill_version,
+              'engine':{'version':version,'files':source_files,'unchanged_source':True},'files':files,
               'meter_scope':('Default session: zero nested engine model calls. Entire caller usage/time measured on20 selected synthetic Python service missions; see references/measurements.json and its scope/review/continuation disclosures. General caller usage remains UNKNOWN without external metering; no subscription-quota conversion.'if applies else
               'Default session: zero nested engine model calls; caller usage UNKNOWN, measured externally. Current source/skill savings not established by retained historical measurements. Legacy controller meters backend calls only.'),
               'measured_runtime_and_skill_parity':applies,
@@ -62,7 +74,7 @@ def build(root=ROOT):
         assert z.testzip()is None
         for rel,digest in files.items():assert hashlib.sha256(z.read('goalpilot/'+rel)).hexdigest()==digest
     receipt={'path':str(archive),'bytes':archive.stat().st_size,'sha256':sha(archive),
-             'engine_version':__version__,'engine_modules':len(source_files),'all_hashes_verified':True}
+             'engine_version':version,'engine_modules':len(source_files),'all_hashes_verified':True}
     (archive.parent/'goalpilot-skill-release.json').write_text(json.dumps(receipt,indent=2)+'\n')
     return receipt
 

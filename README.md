@@ -2,11 +2,12 @@
 
 **Make coding goals verifiable. Spend less effort on repeated work.**
 
-GoalPilot is a skill for coding agents that turns goals into a short, traceable checklist. Before coding, the agent inventories atomic requirements and constraints, then maps each to a criterion quoted from the request. Before finishing, it links criteria to executable checks. The local engine reports requirement coverage and what passed, remains missing or blocked; it marks the goal complete only when every inventoried requirement, criterion and frozen test passes.
+GoalPilot is a skill for coding agents that runs a bounded local work session, protects the original tests, and reports which checks passed or remain blocked. The portable Skill uses the last fully benchmarked engine, 0.12.1; the standalone controller source remains 0.15.0 while its newer goal-inventory protocol is evaluated separately.
 
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
 [![Agent skill](https://img.shields.io/badge/Agent_skill-portable-0F766E)](docs/HOSTS.md)
-[![Engine 0.15.0](https://img.shields.io/badge/Engine-0.15.0-334155)](goalpilot/__init__.py)
+[![Skill engine 0.12.1](https://img.shields.io/badge/Skill_engine-0.12.1-334155)](skills/goalpilot/MANIFEST.json)
+[![Standalone engine 0.15.0](https://img.shields.io/badge/Standalone-0.15.0-475569)](goalpilot/__init__.py)
 
 [Install with your agent](INSTALL.md) · [Get started](docs/GETTING_STARTED.md) · [Supported hosts](docs/HOSTS.md) · [How it works](docs/ARCHITECTURE.md) · [Benchmark methodology](docs/BENCHMARKS.md) · [Contributing](CONTRIBUTING.md)
 
@@ -108,7 +109,7 @@ Passing tests establishes evidence for listed criteria. The calling agent still 
 | Other coding agents | Generic bundle and custom native directory or explicit-load fallback; discovery depends on the host. |
 | Other test frameworks, oversized snapshots, unsupported environments | Supported closure is not claimed |
 
-New engine0.15.0 and adapters have not been model-benchmarked. Recorded performance belongs to the archived Codex reference above.
+The standalone controller at 0.15.0 and the host adapters have not been model-benchmarked. The portable Skill has been restored to the recorded Codex engine and instruction versions; its new one-goal retest is diagnostic, not a replacement for the published benchmark.
 
 Optional helpers suit their documented interfaces. `ReplayService` is intended for new pure applications with a compatible storage format; existing formats and external side effects require a different strategy. See [architecture](docs/ARCHITECTURE.md).
 
