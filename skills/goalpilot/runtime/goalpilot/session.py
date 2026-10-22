@@ -251,7 +251,17 @@ def submit(run_dir, handoff_file):
                                      [check['id'] for check in candidate['checks']] + ['original-tests','builder-tests'])
         if not criteria:
             raise ContractError('Submit goal-derived criteria linked to executable checks before verification')
-        requirements = validate_requirements(handoff.get('requirements'), criteria, contract['goal'])
+        legacy_requirements = 'requirements' not in handoff
+        if legacy_requirements:
+            # Preserve submissions produced by pre-1.6 clients. This one-to-one
+            # projection maintains their old criterion scope; it is not evidence
+            # that the legacy client inventoried every user intent.
+            requirements = [{'id': 'legacy-' + item['id'],
+                             'statement': item['statement'],
+                             'source_quote': item['source_quote'],
+                             'criterion_ids': [item['id']]} for item in criteria]
+        else:
+            requirements = validate_requirements(handoff.get('requirements'), criteria, contract['goal'])
         if acceptance:
             raise ContractError('Acceptance already frozen; repair then verify with the SAME checks')
         if expired(contract, state):
@@ -287,7 +297,9 @@ def submit(run_dir, handoff_file):
                   'checks': checks, 'tests': current,
                   'artifacts': contract['original_gate']['artifacts'] + gate['artifacts'],
                   'handoff': handoff, 'handoff_sha256': hashlib.sha256(raw).hexdigest(),
-                  'criteria': criteria, 'requirements': requirements}
+                  'criteria': criteria, 'requirements': requirements,
+                  'requirements_source': ('legacy_criterion_fallback' if legacy_requirements
+                                          else 'agent_inventory')}
         # A supplied Python assertion script is acceptance, not repairable code.
         # Inline programs are already immutable JSON; unittest uses frozen tests.
         for index, check in enumerate(candidate['checks']):
@@ -336,6 +348,7 @@ def verify_session(run_dir):
             passed = bool(results) and all(r['passed'] for r in results)
             goal_assessment = assess(acceptance.get('criteria'), results,
                                      requirements=acceptance.get('requirements'))
+            goal_assessment['requirement_inventory_source'] = acceptance.get('requirements_source', 'legacy')
             record['goal_assessment'] = goal_assessment
             state['status'] = ('scope_passed' if passed else
                                'verification_unavailable' if any(r.get('infrastructure_error') for r in results) else
@@ -413,6 +426,8 @@ def compact(run, contract, state, acceptance=None):
     stale = state['status'] in ('source_drift', 'repairing', 'interrupted', 'integrity_failed')
     result['goal_assessment'] = assess((acceptance or {}).get('criteria'), record.get('checks', []),
                                        requirements=(acceptance or {}).get('requirements'), stale=stale)
+    if acceptance:
+        result['goal_assessment']['requirement_inventory_source'] = acceptance.get('requirements_source', 'legacy')
     result['goal_complete'] = bool(state['closed'] and result['goal_assessment']['goal_complete'])
     failed = [x for x in latest if not x['passed']]
     if failed:

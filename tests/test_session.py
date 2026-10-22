@@ -171,14 +171,18 @@ class SessionTests(unittest.TestCase):
         self.assertEqual(original, (self.run / 'acceptance.json').read_bytes())
         self.assertTrue(gp.verify_session(self.run)['closed'])
 
-    def test_missing_or_orphaned_requirement_inventory_cannot_freeze_acceptance(self):
+    def test_legacy_handoffs_are_compatible_but_supplied_orphan_maps_are_rejected(self):
         self.start()
         handoff={'summary':'Mapped goal','checks':self.checks,
                  'criteria':[{'id':'behavior','statement':'Normalize labels',
                               'source_quote':'preserve everything','check_ids':['behavior']}]}
         self.handoff.write_text(json.dumps(handoff))
-        with self.assertRaises(ContractError):gp.submit(self.run,self.handoff)
-        self.assertFalse((self.run/'acceptance.json').exists())
+        gp.submit(self.run,self.handoff)
+        frozen=gp.sealed_read(self.run,'acceptance.json')
+        self.assertEqual(frozen['requirements_source'],'legacy_criterion_fallback')
+        self.assertEqual(frozen['requirements'][0]['criterion_ids'],['behavior'])
+        self.run=self.root/'run-invalid-map'
+        self.start()
         handoff['requirements']=[{'id':'unmapped','statement':'Invented requirement',
                                   'source_quote':'preserve everything','criterion_ids':['unknown']}]
         self.handoff.write_text(json.dumps(handoff))

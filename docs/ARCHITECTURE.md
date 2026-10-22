@@ -42,7 +42,7 @@ Optional helpers avoid reimplementing generic infrastructure. Business workflows
 
 ## What completion means
 
-The protocol retains the original goal bytes, original tests, goal-derived requirement inventory and criteria, linked checks, source fingerprints and verification outcomes. Each requirement and criterion must quote text in the original goal; every requirement maps to one or more criteria, which link to a submitted check or state an explicit blocker. Repair does not renew the deadline or replace frozen acceptance. A source change after verification invalidates closure on the next protocol check.
+The protocol retains the original goal bytes, original tests, goal-derived requirement inventory and criteria, linked checks, source fingerprints and verification outcomes. New-format handoffs quote each requirement and criterion from the original goal and map every requirement to criteria; criteria link to submitted checks or state an explicit blocker. Handoffs without the requirements field remain compatible through a labeled one-to-one projection from their criteria; this preserves legacy behavior but cannot prove completeness. Repair does not renew the deadline or replace frozen acceptance. A source change after verification invalidates closure on the next protocol check.
 
 These are local integrity receipts, not tamper-proof signatures. GoalPilot reports requirement and criterion coverage and check outcomes. The calling agent still creates the requirement inventory: exact quotes and complete mappings do not prove that it identified every meaningful outcome in a vague request. Tests are evidence for stated criteria, not proof that unstated intent was captured. Bounded snapshots are not a consistent backup of a concurrently edited database.
 

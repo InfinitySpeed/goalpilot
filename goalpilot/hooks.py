@@ -220,10 +220,13 @@ def handle(event):
     if result['closed']:
         retire(binding)
         assessment=result['goal_assessment']
-        return {'systemMessage':f"GoalPilot: {assessment.get('requirements_verified', 0)}/{assessment.get('requirements_total', 0)} inventoried requirements, {assessment['verified']}/{len(assessment['criteria'])} criteria and {result['checks_passed']}/{result['checks_total']} frozen checks verified; goal_complete=true. No nested model call."}
+        inventory_source = assessment.get('requirement_inventory_source')
+        requirement_label = ('requirements' if inventory_source == 'agent_inventory' else
+                             'legacy criterion-derived requirements; full intent inventory unverified')
+        return {'systemMessage':f"GoalPilot: {assessment.get('requirements_verified', 0)}/{assessment.get('requirements_total', 0)} {requirement_label}, {assessment['verified']}/{len(assessment['criteria'])} criteria and {result['checks_passed']}/{result['checks_total']} frozen checks verified; goal_complete=true. No nested model call."}
     if result['status'] == 'criteria_required':
         return {'decision':'block','reason':
-                'A passing project suite alone cannot establish that this goal is complete. Before ending, inventory every atomic outcome and constraint from the preserved original goal, quote each source phrase, then map every requirement to one or more criteria and every criterion back to a requirement. Link criteria to executable check IDs (or record an explicit blocker), submit requirements and criteria in the handoff, then end again so GoalPilot can verify it. Do not claim completion yet.'}
+                'A passing project suite alone cannot establish that this goal is complete. Before ending, inventory every atomic outcome and constraint from the preserved original goal, then derive 1–8 concise criteria and quote each source phrase. Map every requirement to one or more criteria and every criterion back to a requirement. Link criteria to executable check IDs (or record an explicit blocker), submit requirements and criteria in the handoff, then end again so GoalPilot can verify it. Do not claim completion yet.'}
     if result['status'] == 'criteria_blocked':
         retire(binding)
         return {'continue':False,'stopReason':'GoalPilot remains OPEN; a goal criterion is blocked: '+json.dumps(result['goal_assessment'],ensure_ascii=False)}
