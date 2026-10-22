@@ -1,0 +1,896 @@
+{
+  "registered_at": 1792623530.9258714,
+  "title": "Unchanged skill1.3.1 continuation after external host restart,20 fixed domains,23 complete outcomes retained",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "low",
+  "permissions": "All model threads danger-full-access and noninteractive never, same host; fresh persistent threads, no delegated/nested model. Network only real localhost for public HTTP.",
+  "cases": [
+    "learning",
+    "flags",
+    "timesheets",
+    "procurement",
+    "annotations",
+    "vault",
+    "invoices",
+    "voting",
+    "outbox",
+    "clinic",
+    "incidents",
+    "tickets",
+    "warehouse",
+    "subscriptions",
+    "accounting",
+    "etl",
+    "manufacturing",
+    "rental",
+    "documents",
+    "loyalty"
+  ],
+  "planned_per_primary_arm": 20,
+  "current_skill_anchors": [
+    "rental",
+    "invoices",
+    "documents",
+    "manufacturing"
+  ],
+  "planned_invocations": 44,
+  "order": [
+    {
+      "case": "learning",
+      "arm": "new",
+      "id": "learning-new"
+    },
+    {
+      "case": "learning",
+      "arm": "native",
+      "id": "learning-native"
+    },
+    {
+      "case": "flags",
+      "arm": "native",
+      "id": "flags-native"
+    },
+    {
+      "case": "flags",
+      "arm": "new",
+      "id": "flags-new"
+    },
+    {
+      "case": "timesheets",
+      "arm": "new",
+      "id": "timesheets-new"
+    },
+    {
+      "case": "timesheets",
+      "arm": "native",
+      "id": "timesheets-native"
+    },
+    {
+      "case": "procurement",
+      "arm": "native",
+      "id": "procurement-native"
+    },
+    {
+      "case": "procurement",
+      "arm": "new",
+      "id": "procurement-new"
+    },
+    {
+      "case": "annotations",
+      "arm": "new",
+      "id": "annotations-new"
+    },
+    {
+      "case": "annotations",
+      "arm": "native",
+      "id": "annotations-native"
+    },
+    {
+      "case": "vault",
+      "arm": "native",
+      "id": "vault-native"
+    },
+    {
+      "case": "vault",
+      "arm": "new",
+      "id": "vault-new"
+    },
+    {
+      "case": "invoices",
+      "arm": "old",
+      "id": "invoices-old"
+    },
+    {
+      "case": "invoices",
+      "arm": "new",
+      "id": "invoices-new"
+    },
+    {
+      "case": "invoices",
+      "arm": "native",
+      "id": "invoices-native"
+    },
+    {
+      "case": "voting",
+      "arm": "native",
+      "id": "voting-native"
+    },
+    {
+      "case": "voting",
+      "arm": "new",
+      "id": "voting-new"
+    },
+    {
+      "case": "outbox",
+      "arm": "new",
+      "id": "outbox-new"
+    },
+    {
+      "case": "outbox",
+      "arm": "native",
+      "id": "outbox-native"
+    },
+    {
+      "case": "clinic",
+      "arm": "native",
+      "id": "clinic-native"
+    },
+    {
+      "case": "clinic",
+      "arm": "new",
+      "id": "clinic-new"
+    },
+    {
+      "case": "incidents",
+      "arm": "new",
+      "id": "incidents-new"
+    },
+    {
+      "case": "incidents",
+      "arm": "native",
+      "id": "incidents-native"
+    },
+    {
+      "case": "tickets",
+      "arm": "native",
+      "id": "tickets-native"
+    },
+    {
+      "case": "tickets",
+      "arm": "new",
+      "id": "tickets-new"
+    },
+    {
+      "case": "warehouse",
+      "arm": "new",
+      "id": "warehouse-new"
+    },
+    {
+      "case": "warehouse",
+      "arm": "native",
+      "id": "warehouse-native"
+    },
+    {
+      "case": "subscriptions",
+      "arm": "native",
+      "id": "subscriptions-native"
+    },
+    {
+      "case": "subscriptions",
+      "arm": "new",
+      "id": "subscriptions-new"
+    },
+    {
+      "case": "accounting",
+      "arm": "new",
+      "id": "accounting-new"
+    },
+    {
+      "case": "accounting",
+      "arm": "native",
+      "id": "accounting-native"
+    },
+    {
+      "case": "etl",
+      "arm": "native",
+      "id": "etl-native"
+    },
+    {
+      "case": "etl",
+      "arm": "new",
+      "id": "etl-new"
+    },
+    {
+      "case": "manufacturing",
+      "arm": "new",
+      "id": "manufacturing-new"
+    },
+    {
+      "case": "manufacturing",
+      "arm": "old",
+      "id": "manufacturing-old"
+    },
+    {
+      "case": "manufacturing",
+      "arm": "native",
+      "id": "manufacturing-native"
+    },
+    {
+      "case": "rental",
+      "arm": "native",
+      "id": "rental-native"
+    },
+    {
+      "case": "rental",
+      "arm": "new",
+      "id": "rental-new"
+    },
+    {
+      "case": "rental",
+      "arm": "old",
+      "id": "rental-old"
+    },
+    {
+      "case": "documents",
+      "arm": "old",
+      "id": "documents-old"
+    },
+    {
+      "case": "documents",
+      "arm": "new",
+      "id": "documents-new"
+    },
+    {
+      "case": "documents",
+      "arm": "native",
+      "id": "documents-native"
+    },
+    {
+      "case": "loyalty",
+      "arm": "native",
+      "id": "loyalty-native"
+    },
+    {
+      "case": "loyalty",
+      "arm": "new",
+      "id": "loyalty-new"
+    }
+  ],
+  "fresh_model_invocations_planned": 21,
+  "carried_controls": {
+    "annotations-native": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/annotations-native",
+      "record_sha256": "b418525481440bb42de5d71fc111c72e0e3510b04f8e04946bc32df4a36b462a",
+      "success": false,
+      "usage": {
+        "input_tokens": 171453,
+        "output_tokens": 9234,
+        "cached_input_tokens": 137728,
+        "raw": 180687,
+        "uncached_input": 33725,
+        "uncached_plus_output": 42959
+      },
+      "normal_closure": true
+    },
+    "annotations-new": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/annotations-new",
+      "record_sha256": "6f84a7c327b711de9a90fc2e2660ee38940d8b1b64708bfdd6072854a6825723",
+      "success": true,
+      "usage": {
+        "input_tokens": 132003,
+        "output_tokens": 4042,
+        "cached_input_tokens": 116736,
+        "raw": 136045,
+        "uncached_input": 15267,
+        "uncached_plus_output": 19309
+      },
+      "normal_closure": true
+    },
+    "clinic-native": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/clinic-native",
+      "record_sha256": "bc669ff4206210c7f1e86d26cc6be61bf1a746a68f8a1e8202987acbff2f53ed",
+      "success": true,
+      "usage": {
+        "input_tokens": 205835,
+        "output_tokens": 10815,
+        "cached_input_tokens": 174464,
+        "raw": 216650,
+        "uncached_input": 31371,
+        "uncached_plus_output": 42186
+      },
+      "normal_closure": true
+    },
+    "clinic-new": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/clinic-new",
+      "record_sha256": "5b67d6c4b6a876baaa12456eb1df37a8e79f4f93256cf87e3446987e354d47f4",
+      "success": true,
+      "usage": {
+        "input_tokens": 77245,
+        "output_tokens": 4481,
+        "cached_input_tokens": 66304,
+        "raw": 81726,
+        "uncached_input": 10941,
+        "uncached_plus_output": 15422
+      },
+      "normal_closure": true
+    },
+    "flags-native": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/flags-native",
+      "record_sha256": "6819b4ed40a3b3330a3dacb94fa0512ceb2869342f9673f4a1694c3f00d5e906",
+      "success": true,
+      "usage": {
+        "input_tokens": 200353,
+        "output_tokens": 9686,
+        "cached_input_tokens": 179456,
+        "raw": 210039,
+        "uncached_input": 20897,
+        "uncached_plus_output": 30583
+      },
+      "normal_closure": true
+    },
+    "flags-new": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/flags-new",
+      "record_sha256": "fa18da25cdf75eb048986aaf5d6a8802d77ec98b0c8a4ff61066a0f2d9c04a73",
+      "success": true,
+      "usage": {
+        "input_tokens": 54519,
+        "output_tokens": 3910,
+        "cached_input_tokens": 48512,
+        "raw": 58429,
+        "uncached_input": 6007,
+        "uncached_plus_output": 9917
+      },
+      "normal_closure": true
+    },
+    "incidents-native": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/incidents-native",
+      "record_sha256": "3197989135271a615e43db92000fb7c25021538dd4984d9cccc1da4101585bea",
+      "success": true,
+      "usage": {
+        "input_tokens": 200389,
+        "output_tokens": 9185,
+        "cached_input_tokens": 189184,
+        "raw": 209574,
+        "uncached_input": 11205,
+        "uncached_plus_output": 20390
+      },
+      "normal_closure": true
+    },
+    "incidents-new": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/incidents-new",
+      "record_sha256": "f87ef1c616f84d1b7917b04535663431326fcdd785dd80614bf4b67a12680f2f",
+      "success": true,
+      "usage": {
+        "input_tokens": 98901,
+        "output_tokens": 4134,
+        "cached_input_tokens": 87936,
+        "raw": 103035,
+        "uncached_input": 10965,
+        "uncached_plus_output": 15099
+      },
+      "normal_closure": true
+    },
+    "invoices-native": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/invoices-native",
+      "record_sha256": "06b43cc41c7872a4570e8268199054617e99799086fd9515e4738749088db3d7",
+      "success": true,
+      "usage": {
+        "input_tokens": 266472,
+        "output_tokens": 11246,
+        "cached_input_tokens": 231296,
+        "raw": 277718,
+        "uncached_input": 35176,
+        "uncached_plus_output": 46422
+      },
+      "normal_closure": true
+    },
+    "invoices-new": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/invoices-new",
+      "record_sha256": "968d969612cc43fee898ba5fc3f523dbc331f181ff9f736c51c12511c8d9c5cd",
+      "success": true,
+      "usage": {
+        "input_tokens": 109365,
+        "output_tokens": 3617,
+        "cached_input_tokens": 94976,
+        "raw": 112982,
+        "uncached_input": 14389,
+        "uncached_plus_output": 18006
+      },
+      "normal_closure": true
+    },
+    "invoices-old": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/invoices-old",
+      "record_sha256": "e9f7a0b6f5cf4a68304fbbad8efcc932bb7e5619c274c260bb3494f2490d66cb",
+      "success": true,
+      "usage": {
+        "input_tokens": 209988,
+        "output_tokens": 10207,
+        "cached_input_tokens": 201856,
+        "raw": 220195,
+        "uncached_input": 8132,
+        "uncached_plus_output": 18339
+      },
+      "normal_closure": true
+    },
+    "learning-native": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/learning-native",
+      "record_sha256": "8b22baaad49c37d4f2a9e93e83a1a86e1ba66a61618fcfcc6a6babfe40ca56b8",
+      "success": true,
+      "usage": {
+        "input_tokens": 229112,
+        "output_tokens": 10539,
+        "cached_input_tokens": 201856,
+        "raw": 239651,
+        "uncached_input": 27256,
+        "uncached_plus_output": 37795
+      },
+      "normal_closure": true
+    },
+    "learning-new": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/learning-new",
+      "record_sha256": "b4fc84558b95d67900d2f3243bb3483f5c6b0e7418854df1dc41947129a2003c",
+      "success": true,
+      "usage": {
+        "input_tokens": 235091,
+        "output_tokens": 5228,
+        "cached_input_tokens": 214656,
+        "raw": 240319,
+        "uncached_input": 20435,
+        "uncached_plus_output": 25663
+      },
+      "normal_closure": true
+    },
+    "outbox-native": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/outbox-native",
+      "record_sha256": "d4e09773e836547ef5df12637899aba35f747132b7e07bb57fdd10a95ca8a5dd",
+      "success": true,
+      "usage": {
+        "input_tokens": 201470,
+        "output_tokens": 9887,
+        "cached_input_tokens": 193792,
+        "raw": 211357,
+        "uncached_input": 7678,
+        "uncached_plus_output": 17565
+      },
+      "normal_closure": true
+    },
+    "outbox-new": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/outbox-new",
+      "record_sha256": "f5a979c4bac0ad8b12f7be48eb6c83690a62469e66b3193f9708325d44ad9c4f",
+      "success": true,
+      "usage": {
+        "input_tokens": 76585,
+        "output_tokens": 4225,
+        "cached_input_tokens": 60544,
+        "raw": 80810,
+        "uncached_input": 16041,
+        "uncached_plus_output": 20266
+      },
+      "normal_closure": true
+    },
+    "procurement-native": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/procurement-native",
+      "record_sha256": "9dd67365a712b94c275425cc2948c212bb6ce9f5ea6c59e5e7b81f2bf215aba7",
+      "success": true,
+      "usage": {
+        "input_tokens": 314671,
+        "output_tokens": 13733,
+        "cached_input_tokens": 289408,
+        "raw": 328404,
+        "uncached_input": 25263,
+        "uncached_plus_output": 38996
+      },
+      "normal_closure": true
+    },
+    "procurement-new": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/procurement-new",
+      "record_sha256": "4c4bbfcf0d7ca74e1138a0d0cfc9faa69919f243bb3bb14673a1850546cde059",
+      "success": true,
+      "usage": {
+        "input_tokens": 117789,
+        "output_tokens": 4888,
+        "cached_input_tokens": 96640,
+        "raw": 122677,
+        "uncached_input": 21149,
+        "uncached_plus_output": 26037
+      },
+      "normal_closure": true
+    },
+    "timesheets-native": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/timesheets-native",
+      "record_sha256": "2d190355102d160f2776de2a34e285b36c1e96822a4841053588c85059ddd41e",
+      "success": true,
+      "usage": {
+        "input_tokens": 175294,
+        "output_tokens": 10282,
+        "cached_input_tokens": 138880,
+        "raw": 185576,
+        "uncached_input": 36414,
+        "uncached_plus_output": 46696
+      },
+      "normal_closure": true
+    },
+    "timesheets-new": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/timesheets-new",
+      "record_sha256": "6a3b31eeb108b99d1781a2025e66e4fff5259ad05293575b613d06b5b30fb44e",
+      "success": true,
+      "usage": {
+        "input_tokens": 134066,
+        "output_tokens": 4506,
+        "cached_input_tokens": 121472,
+        "raw": 138572,
+        "uncached_input": 12594,
+        "uncached_plus_output": 17100
+      },
+      "normal_closure": true
+    },
+    "vault-native": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/vault-native",
+      "record_sha256": "3d17a3d0730a2ae0fa8c5e8dfe5b6e3d052aa70bbc6d8c8968fe8113fd286ce2",
+      "success": true,
+      "usage": {
+        "input_tokens": 202218,
+        "output_tokens": 10708,
+        "cached_input_tokens": 180224,
+        "raw": 212926,
+        "uncached_input": 21994,
+        "uncached_plus_output": 32702
+      },
+      "normal_closure": true
+    },
+    "vault-new": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/vault-new",
+      "record_sha256": "8dd7c70040874a5c4c6082653f9ea475985bf3d435d4cac495f0bcbf45375c7f",
+      "success": true,
+      "usage": {
+        "input_tokens": 124708,
+        "output_tokens": 4921,
+        "cached_input_tokens": 117504,
+        "raw": 129629,
+        "uncached_input": 7204,
+        "uncached_plus_output": 12125
+      },
+      "normal_closure": true
+    },
+    "voting-native": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/voting-native",
+      "record_sha256": "b90c7a2f184d9b0e5297fbf3d2a0b9122da316bb46a430206feac061f692b4fd",
+      "success": true,
+      "usage": {
+        "input_tokens": 230898,
+        "output_tokens": 11428,
+        "cached_input_tokens": 207488,
+        "raw": 242326,
+        "uncached_input": 23410,
+        "uncached_plus_output": 34838
+      },
+      "normal_closure": true
+    },
+    "voting-new": {
+      "origin": "/workspace/goalpilot-research/thin-skill-001/trials/voting-new",
+      "record_sha256": "02fbf461aaa461b5b015ce42d140092afb10b0abed325be9107196539c2b5b4a",
+      "success": true,
+      "usage": {
+        "input_tokens": 77603,
+        "output_tokens": 4774,
+        "cached_input_tokens": 71040,
+        "raw": 82377,
+        "uncached_input": 6563,
+        "uncached_plus_output": 11337
+      },
+      "normal_closure": true
+    }
+  },
+  "budget_brought_forward": {
+    "raw": 2024525,
+    "uncached_plus_output": 298061
+  },
+  "externally_censored_attempt": {
+    "at": 1792623402.728708,
+    "reason": "Selected cloud environment restart killed the active benchmark parent and app-server; persisted rollout contains turn_aborted. No complete caller result, no final grade, final provider usage unavailable.",
+    "thread_id": "01a160aa-08af-73b2-894e-1610e0c0c114",
+    "normal_closure_observed": false,
+    "completed_quality_outcome": "UNOBSERVED",
+    "usage_complete": false,
+    "known_usage_lower_bound": {
+      "input_tokens": 93510,
+      "cached_input_tokens": 72704,
+      "output_tokens": 6833,
+      "raw": 100343,
+      "uncached_input": 20806,
+      "uncached_plus_output": 27639
+    },
+    "last_usage_at": 1792623222.5482454,
+    "last_wire_at": 1792623231.3521311,
+    "known_active_seconds_lower_bound": 112.99908924102783,
+    "wire_sha256": "87480bd073d56d775e1b1e8d54176abf4ed440744230cca0e5ba60762ca632ac",
+    "comparative_status": "Externally interrupted/censored; not a functional code failure or a completed native baseline. No primary quality/cost advantage attributed to this interruption.",
+    "continuation_policy": "New separately registered descriptive continuation carries all23 complete outcomes byte-identically including functional failures. One fresh tickets-native invocation from identical original source, before any GoalPilot tickets outcome. Interrupted attempt and known cost remain separate lower-bound research evidence; never erased or charged as zero."
+  },
+  "targets": {
+    "time_saving_percent": 25,
+    "uncached_input_saving_percent": 45,
+    "output_saving_percent": 45,
+    "candidate_closed_correct_at_least_native": true,
+    "minimum_candidate_closed_correct": 18,
+    "candidate_correct_anchor_count_at_least_current_skill": true,
+    "installed_skill_anchor_uncached_plus_output_cost_not_higher": true,
+    "installed_skill_anchor_time_not_higher": true
+  },
+  "threshold_provenance": "User explicitly accepted a tolerance of5 percentage points:25/45/45. Original30/50/50 results remain separately reportable. Original user amendment retained at long-goals-002/user-target-amendment.json.",
+  "time_definition": "Caller execute + shutdown + independent judge runtime. Includes all setup of exact reviewed process hook trust, source context preparation, helper provisioning, coding/tests, Stop verification and any Stop repair continuation. Excludes common fixture construction, quota-reading research overhead and evidence copying. Caller-only also reported.",
+  "input_definition": "Original ordinary French goal supplied ONCE as plaintext to every arm. No prewritten goal file: skill callers create their exact original goal file INSIDE the paid/timed conversation. Same initial source bytes per case/arm in fresh initialized Git projects (version-control metadata excluded from source comparison), all workflows in README, original notes/test retained.",
+  "whole_usage": "All calling model tokenUsage counters, including every auto-continuation. Zero additional controller model calls in all arms. Bootstrap ConfigRPC permits initialize/hooks/list/config write ONLY, no model/thread/goal method. No provider quota conversion from token counts.",
+  "native": "Genuine thread/goal/set, automatic native turns until actual native terminal state; never client-forced complete. Same model/LOW/configured host permissions. Baseline properly configured; no artificial environment denial.",
+  "current_skill": "Four fresh preselected anchors with preserved engine0.10.0/skill1.1.0, normal in-session manual protocol; whole calling usage/time included, no legacy nested controller.",
+  "candidate": "Engine0.12.1/skill1.3.1 frozen before ANY new-candidate paid outcome. Thin single API, bundled implementation/test guidance, exact-hash repeated-helper context exclusion with intact original snapshots. Generic ReplayService for opt-in pure reducers/versioned backup reachability, generic JourneyMixin/race/transport checks, original and strengthened frozen tests, actual local Stop hooks. No task rules in runtime, no nested model. Exact process-only authored hook trust, no bypass/global configuration mutation.",
+  "delivery": "All worker projects get the selected verified repo-scoped skill with an explicit SKILL.md path and zero-model skills/list discovery before first model turn. Existing globally installed skill1.1 and global config remain unchanged for BOTH native and skill arms. Project installation and bootstrap elapsed included.",
+  "wall_seconds_per_whole_invocation": 600,
+  "raw_soft_cap_additional_calls": 8000000,
+  "uncached_plus_output_soft_cap_additional_calls": 900000,
+  "max_verifications_skill": 5,
+  "budget_rule": "Same original thin-skill-001 caps8M raw/900k uncached+output: all its additional completed callers PLUS known interrupted-call lower bound brought forward, then add new callers. No budget reset. Unknown interrupted excess prevents an exact whole-research cost claim; report lower bound. Checked before next whole invocation. Original controls not charged twice. Stop on fatal/incomplete meter, no retry/reset/replacing a started or failed caller. All outcomes and full costs count. No paid concurrent model studies. Native per-thread soft raw700k, all whole invocations600s.",
+  "success": "Observed normal parent completed (native actual goal complete), skill closed:true/scope_passed with actual successful Stop hook for new arm or frozen manual verification for current arm, AND all10 fixed external groups pass. Stopping/timeout/partial/infrastructure is not completing. New/old saved goal must contain verbatim original goal; end-line serialization recorded separately.",
+  "judge": "Standalone frozen stdlib host helpers/process runner, outside worker repo. Public API journeys + rejection byte preservation + fresh instance on EVERY call + three barrier races per task (six real competing processes) + backup/restore + malformed JSONL recovery + real HTTP + original data. No feedback until model outcome, no paid judge.",
+  "preflight_limits": "All20 graders compile and reject unimplemented starters. Race transport harness positive/negative doubles20/20. Independent math/algorithm trace oracles20. NO complete golden implementation of every final domain. Doubles are mechanism tests, never utility evidence.",
+  "inference_limits": "Purposefully selected SYNTHETIC stdlib stateful JSONL/HTTP applications, twenty DISTINCT business domains, same public service family. Ambitious by documented interacting workflows, not selected on observed native runtime or loops. No minimum real session duration and no real-user goal distribution; cannot infer arbitrary repositories/query success, loop prevalence or subscription quota percentages. DEVELOPMENT REUSE: same public20 cases and graders. Candidate developed using first6 paired V4 results, hand compatibility diagnostics on5 passed V4 artifacts and generic offline tests. Not a novel blinded holdout. All existing native/old outcomes carried INCLUDING failures, byte-identical; remaining controls fresh interleaved under identical model/effort/permissions/config. Case list never selected on outcome. Carried controls precede candidate; timing/cache/order variation limits causal or distributional claims. DEVELOPMENT REUSE: same public20 cases and graders. Candidate developed using seven V4 and seven V5 candidate outcomes, prior native/old controls, hand compatibility diagnostics on five V4 artifacts and generic offline tests. No task-specific rule in the runtime. SDK/hook/RPC/process algorithms remain identical to V5 except API text; new context filtering is separately verified. The previous near-target cold pilot was retired after a repeat-use context defect was discovered. Not a novel blinded holdout. All existing native/old outcomes carried INCLUDING failures, byte-identical; remaining controls fresh interleaved under identical model/effort/permissions/config. Case list never selected on outcome. Carried controls precede candidate; timing/cache/order variation limits causal or distributional claims. HOST INTERRUPTION: thin-skill-001 tickets-native was externally aborted by the selected environment restart; final usage unknown. Excluded as a censored comparative observation, known cost retained separately in research. One new independent fresh control for same predefined case, before any new-skill tickets result; all23 complete outcomes including functional failure retained. No product/prompt/spec/judge/threshold change; no completed-failure retry. Source remained frozen before all current-version outcomes.  DEVELOPMENT REUSE: same public20 cases and graders. Candidate developed using seven V4 and seven V5 candidate outcomes, prior native/old controls, hand compatibility diagnostics on five V4 artifacts and generic offline tests. No task-specific rule in the runtime. SDK/hook/RPC/process algorithms remain identical to V5 except API text; new context filtering is separately verified. The previous near-target cold pilot was retired after a repeat-use context defect was discovered. Not a novel blinded holdout. All existing native/old outcomes carried INCLUDING failures, byte-identical; remaining controls fresh interleaved under identical model/effort/permissions/config. Case list never selected on outcome. Carried controls precede candidate; timing/cache/order variation limits causal or distributional claims.",
+  "analysis": "Only complete44 outcomes/20 matched missions/four installed-skill anchors and complete meters qualify. New candidate closures>=18/20 AND >=native AND >=installed-skill anchor count; all25/45/45 native cost targets; installed-skill anchor combined uncached+output and time must not increase. Include ALL failures/costs; separately report both-successful pairs, four anchors, matched earlyV4 reference, original stricter targets. Interim MATCHED pairs only. No source/acceptance tuning after first candidate outcome.",
+  "parent_development_study": {
+    "path": "/workspace/goalpilot-research/thin-skill-001",
+    "protocol_sha256": "342672b7e891fd73975d64f1a577c50ce402213ea6c96e14522bb9a423bf56e8",
+    "operator_abort": {
+      "at": 1792623402.729711,
+      "reason": "External environment restart, incomplete active native meter; original frozen cohort remains incomplete. All completed records/costs retained. No source/criteria/judge changes.",
+      "censored_trial": "tickets-native",
+      "completed_outcomes": 23
+    },
+    "status": "Externally interrupted frozen cohort;23 complete outcomes retained byte-identically. One native control aborted before any GoalPilot tickets outcome; functional results never replaced."
+  },
+  "ci": {
+    "recorded_at": 1792621524.9535787,
+    "tests_run": 283,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 283,
+    "duration_seconds": 55.12408502499966,
+    "successful": true,
+    "live_api_calls": 0,
+    "source_fingerprint": {
+      "goalpilot/__init__.py": "0b2ab3f4957bea5294167d0b91733a727551440014b458d3b8c2dc05341cbefd",
+      "goalpilot/__main__.py": "abf5040e514c318fbae17bfb5f2b368f5889c81588c096821969fef819c942c5",
+      "goalpilot/acceptance_validation.py": "12d805dca3fd0c7b43a0ed327101eaf784d54a156f7d91034b1092ded3919ef2",
+      "goalpilot/activity.py": "f4c35ea2abee4e164ac4e99b0c7d2ed8246920199d4f02a9e0027de0a2d78850",
+      "goalpilot/adapters.py": "b7b81125c3f1407d22aeb163d915178e56428ba306413b31d8564ac1e316d92a",
+      "goalpilot/audit_recovery.py": "330a937a6a526a9ac3fdb753f567fb8bae61a1c1701bf82bced6f21be204f77f",
+      "goalpilot/autopilot.py": "55bd0cc1f6c1561b05802b02c66fb64948e32bf66fab4fbee5ba91d92de1a2e7",
+      "goalpilot/benchmark.py": "703f2be9a4ad62b0f1f127a2dffdc747a4fc42cc727263d07ef2e089c5832738",
+      "goalpilot/cli.py": "0b12b3d225ea1acc958b967283c467d71a20e2703d846e588281736b29f44899",
+      "goalpilot/dossier.py": "46744f78d4424536c85bd8b29ac994ed54deb7f0056642dee95761b1ca554d46",
+      "goalpilot/engine.py": "2cce538bdbb9f5d17ab1189fbb9dcc8a7e781fda529d029b1beee978ed403925",
+      "goalpilot/finish.py": "2e1da6b199ca576ffb429098b97b58a0de56a3bff88568aad885b93b1d5ec93b",
+      "goalpilot/gates.py": "25136572691c70afbcf8b8424a7eac853850baa926655c043a03b85814502776",
+      "goalpilot/hook_config.py": "d9d57d3200c1ceb5b232f53dac343664aabb8fdf0c2c5715cac36b124e5a2823",
+      "goalpilot/hooks.py": "45591063e758defcd157bc09a403266d55950ccb3cb3fb6176a8f8ed901c3782",
+      "goalpilot/lab.py": "7b34fbcef1036fe945676043ceb2b2bafaba5fd1d965631a662004cdecd16667",
+      "goalpilot/metrics.py": "99479102560325e5fa21879a4c81e6f95ca3dae4588de07e4e31199132fb49d8",
+      "goalpilot/model.py": "714a0c554d5387a76d231d2c7d19747cde84bcf8a341f1a02f79f56656fe7211",
+      "goalpilot/monitor.py": "aa0588ed34a6868382a032165ceed7827ceb3f157e2eea5b519a9a611a2abc20",
+      "goalpilot/originals.py": "f318186db0f60b0289e040e0f88229717f7ce6965d3c8f01e7b0310d4eae8f61",
+      "goalpilot/probe_format.py": "50b3608bdbd0c975f94f7cb655144fb59b02a186e98e134e77d5916062b2f3cd",
+      "goalpilot/probe_helpers.py": "b2b3153baa52032f54bc5700dbaf85c1b33a5f9169e30dd25fdf06a26a8955e1",
+      "goalpilot/probe_lint.py": "4785eb31b16034c45ccd5d091f5f35c4fb44d0c9881b69aa236d812f52599c06",
+      "goalpilot/process.py": "c021936952b7d38108b5a613fe9a54ffd368efb82df0fe08d37d630bd05585e5",
+      "goalpilot/quota.py": "53d6ebe6903b60ebf231d72415212d93ced04d8a66a2bece601955a2d3f91d42",
+      "goalpilot/reuse.py": "91c011fd1825992d74860185808d118196d036fdf63f2d5da113a3b7b68ca015",
+      "goalpilot/rpc.py": "9d49a6ab324058f0d3db0c292816adc8a91b9adb1c97cc25c93f4fe016ebb4f4",
+      "goalpilot/runtime_kit.py": "ad269071b5f81a2454b3216c0f8628fa07628d6fac8c9d63aa678b91a94bc327",
+      "goalpilot/scope.py": "42fee083989637be88a0dd88fc651a21af751b68b17cb26badb45e01dd32480a",
+      "goalpilot/session.py": "2a5dd7d5c154071fd15d2c4fbe88ca86ff5336919ce6302d96d1816a081febdf",
+      "goalpilot/support.py": "53cc2053bb7a3aace7dfa4e825bf3f313fa9829650bfb0ae1713fad0ffa5900e",
+      "goalpilot/view.py": "ceaf19e139f02006b156b4828a6f37719f8767e6430dbe896a8dc0590e394b1b",
+      "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests/test_acceptance_first.py": "9a7d71f198539d6060be46a84096ba1d9e0ada54a3189665e1cbcd62239626cd",
+      "tests/test_acceptance_validation.py": "d102f96193863a89816240b741a42fcb20a10a35cfd0421bcc29f18411ec759f",
+      "tests/test_adaptive.py": "5236956e742aa91349ada5b2853ed8fe235e331992a4b35cf0fc7378b424befc",
+      "tests/test_ambitious_evaluation.py": "7c99b60f31c32dee51446608f1a16b9fb3ef9b9696228840a22fdc5f08f23b3d",
+      "tests/test_audit_recovery.py": "22959fe14b970a7ffbb850176a1639cd09e2dcdbc1bd8879e87318da301f8b59",
+      "tests/test_autopilot.py": "bc2d0dce2b0a18896ad695f7c562445dcee5a3d700cb1ece8c67734e8361360f",
+      "tests/test_cached_review.py": "377152d7d3abe36e4b82a43292dadcf6a33d42ed792da26b726ae11ca9af61a2",
+      "tests/test_evaluation.py": "ba0256aec4819fc849102c2233e341d43f8a75b6562a6b1f9539b79e39745c2c",
+      "tests/test_finish.py": "64fd44287ff56c87cd87f1ec3bdefd317ac9cdc4aaa3962e4ac56d8546e6cf07",
+      "tests/test_finish_edges.py": "62fbcb3080b0521632796f08fb911513fcefe236854595dabdce91eec1f1bbcd",
+      "tests/test_finish_integrity.py": "eb83711d42b5116866bd99ca4381abbce2b6f815113a6e9816a5a9d843c8aa4a",
+      "tests/test_gates.py": "bfa04953d84bcd7da691384171078db8649efe71e9e91edafac2d4ac05eff632",
+      "tests/test_general_evaluation.py": "c71cac885aa19d694cef040426e0b9155fdc2d5eeae26f1af44af106af4014f3",
+      "tests/test_goalpilot.py": "3aed6595ea1aeff0cfddcaf26a67def9c929b54f76f18cf92137dc4e472dd5c3",
+      "tests/test_hook_config.py": "72dac4ea4e14fe8d079f82f8395deb38bb05a15663fa9218689aca8723c0fd8a",
+      "tests/test_hooks.py": "f9aed00f5e0d80ce4e9acfe4d609c92695bd31ccabd60752e40190659193d495",
+      "tests/test_journey_helpers.py": "e026f3c55c0ec4b8f816b89c175e30023fabcb221cb0519f6a4abd6502282ff7",
+      "tests/test_local_delivery.py": "c169954b48d11c6de60bae81416276f46adeaadcf1f06ad0dd8982d569e8dbbd",
+      "tests/test_monitor.py": "50809dd50db6e1a9db7f6321e1c0474f85d82183220398c3a4d108c6264dd5b2",
+      "tests/test_native_goals.py": "f24ec2eadff0f814a7ee606df2361613f894d09c3bcd40d6ccb11334c3a56d53",
+      "tests/test_originals.py": "c030b7c549fb4206a55f716009f4daf398132ba257512ac81c1feca1307b21f3",
+      "tests/test_probe_context.py": "fe1a3fa754aeb8feba46cebeb88eb7e3d5f359221b7bc1b9f045655546623f07",
+      "tests/test_probe_format.py": "32724e0927365bbc8f70a5e8a802fd96d09d3ca18b5f5863b3647fb5004cf355",
+      "tests/test_probe_helpers.py": "8d5f078cba10ab8a77313d0f8425b8dd5f7c976e05827712b8b35a15bee8e290",
+      "tests/test_probe_lint.py": "899bdbe741157c687455583edbef093225a145a6e31f8ae00edfa2b06574ec00",
+      "tests/test_reasoning_policy.py": "a4e72b0f511fd144b6ff2e50294f9cce65884ee6fc39fabc53054a799c935a66",
+      "tests/test_replay_service.py": "b73f8e55b3fa78ea35ad5500f4a49d1f00c5c90bbf4460dcfe5d13856e0a9e6b",
+      "tests/test_resume_study.py": "797427afc78b1460bee68937f0e8421090edbed03c8cf3afbc4a2a976aa932fa",
+      "tests/test_reuse.py": "ed9848ae58945a7f6bcb4918e214ae7caa47824f34e67b6095fd5b7ce3704525",
+      "tests/test_runtime_kit.py": "fc619f6d363a60b773863ca9b819e7a7b074686f94f74b63f301200a99712160",
+      "tests/test_scope.py": "cd1aab31d5a775cdf6ee473a73a7ad9f25ce34d5bbe61f5ef7c89c02a833e3c6",
+      "tests/test_session.py": "c9cac83e5358234adac5c84f486575d1df2f18f837d0798af8b024c0a6abcf73",
+      "tests/test_skill.py": "dfabd9dca3ea47a09251458ae09413e3f425cf17c9d117f9a45d3b014debbe15",
+      "tests/test_study.py": "cea90eb181b6c4266fc287173df76930a21ed5a7355df579d0a1eb4dfca92ccd",
+      "tests/test_support.py": "1881fb90f1eb5b8bf635d0d2b0427d54c358cacad79b7aa2d2cd5e9901ed6c4a",
+      "tests/test_triple_metrics.py": "b22bee82c1e0ad4f9934a7fc7df01c06d8215632229dedbcd268e560819cff0d",
+      "tests/test_uncached_budget.py": "2ebbf38dfa0179ad2f6023cfc6acf128447e31948b1956fee17362ecac48a6fb",
+      "tests/test_v2.py": "8594d07f54eea05e9e583f3e50923609ad58494ff4c6bc7c44193228a7116021"
+    },
+    "note": "Offline correctness. New context tests preserve exact original helper snapshots, omit only matching trusted SDK bytes and keep foreign or modified source visible. No paid efficiency inference."
+  },
+  "new_product": {
+    "goalpilot/__init__.py": "0b2ab3f4957bea5294167d0b91733a727551440014b458d3b8c2dc05341cbefd",
+    "goalpilot/__main__.py": "abf5040e514c318fbae17bfb5f2b368f5889c81588c096821969fef819c942c5",
+    "goalpilot/acceptance_validation.py": "12d805dca3fd0c7b43a0ed327101eaf784d54a156f7d91034b1092ded3919ef2",
+    "goalpilot/activity.py": "f4c35ea2abee4e164ac4e99b0c7d2ed8246920199d4f02a9e0027de0a2d78850",
+    "goalpilot/adapters.py": "b7b81125c3f1407d22aeb163d915178e56428ba306413b31d8564ac1e316d92a",
+    "goalpilot/audit_recovery.py": "330a937a6a526a9ac3fdb753f567fb8bae61a1c1701bf82bced6f21be204f77f",
+    "goalpilot/autopilot.py": "55bd0cc1f6c1561b05802b02c66fb64948e32bf66fab4fbee5ba91d92de1a2e7",
+    "goalpilot/benchmark.py": "703f2be9a4ad62b0f1f127a2dffdc747a4fc42cc727263d07ef2e089c5832738",
+    "goalpilot/cli.py": "0b12b3d225ea1acc958b967283c467d71a20e2703d846e588281736b29f44899",
+    "goalpilot/dossier.py": "46744f78d4424536c85bd8b29ac994ed54deb7f0056642dee95761b1ca554d46",
+    "goalpilot/engine.py": "2cce538bdbb9f5d17ab1189fbb9dcc8a7e781fda529d029b1beee978ed403925",
+    "goalpilot/finish.py": "2e1da6b199ca576ffb429098b97b58a0de56a3bff88568aad885b93b1d5ec93b",
+    "goalpilot/gates.py": "25136572691c70afbcf8b8424a7eac853850baa926655c043a03b85814502776",
+    "goalpilot/hook_config.py": "d9d57d3200c1ceb5b232f53dac343664aabb8fdf0c2c5715cac36b124e5a2823",
+    "goalpilot/hooks.py": "45591063e758defcd157bc09a403266d55950ccb3cb3fb6176a8f8ed901c3782",
+    "goalpilot/lab.py": "7b34fbcef1036fe945676043ceb2b2bafaba5fd1d965631a662004cdecd16667",
+    "goalpilot/metrics.py": "99479102560325e5fa21879a4c81e6f95ca3dae4588de07e4e31199132fb49d8",
+    "goalpilot/model.py": "714a0c554d5387a76d231d2c7d19747cde84bcf8a341f1a02f79f56656fe7211",
+    "goalpilot/monitor.py": "aa0588ed34a6868382a032165ceed7827ceb3f157e2eea5b519a9a611a2abc20",
+    "goalpilot/originals.py": "f318186db0f60b0289e040e0f88229717f7ce6965d3c8f01e7b0310d4eae8f61",
+    "goalpilot/probe_format.py": "50b3608bdbd0c975f94f7cb655144fb59b02a186e98e134e77d5916062b2f3cd",
+    "goalpilot/probe_helpers.py": "b2b3153baa52032f54bc5700dbaf85c1b33a5f9169e30dd25fdf06a26a8955e1",
+    "goalpilot/probe_lint.py": "4785eb31b16034c45ccd5d091f5f35c4fb44d0c9881b69aa236d812f52599c06",
+    "goalpilot/process.py": "c021936952b7d38108b5a613fe9a54ffd368efb82df0fe08d37d630bd05585e5",
+    "goalpilot/quota.py": "53d6ebe6903b60ebf231d72415212d93ced04d8a66a2bece601955a2d3f91d42",
+    "goalpilot/reuse.py": "91c011fd1825992d74860185808d118196d036fdf63f2d5da113a3b7b68ca015",
+    "goalpilot/rpc.py": "9d49a6ab324058f0d3db0c292816adc8a91b9adb1c97cc25c93f4fe016ebb4f4",
+    "goalpilot/runtime_kit.py": "ad269071b5f81a2454b3216c0f8628fa07628d6fac8c9d63aa678b91a94bc327",
+    "goalpilot/scope.py": "42fee083989637be88a0dd88fc651a21af751b68b17cb26badb45e01dd32480a",
+    "goalpilot/session.py": "2a5dd7d5c154071fd15d2c4fbe88ca86ff5336919ce6302d96d1816a081febdf",
+    "goalpilot/support.py": "53cc2053bb7a3aace7dfa4e825bf3f313fa9829650bfb0ae1713fad0ffa5900e",
+    "goalpilot/view.py": "ceaf19e139f02006b156b4828a6f37719f8767e6430dbe896a8dc0590e394b1b",
+    "skills/goalpilot/MANIFEST.json": "09cb60343c038cc82aee48f3eb6f9101888c3eca5bf394ed30b09430ade27edd",
+    "skills/goalpilot/SKILL.md": "3ad96d577086c9bc78cff3bbd70946c8c2f7e411b34d91e72e0f571d25e6a686",
+    "skills/goalpilot/agents/openai.yaml": "8294b9805e37daf41baefbdb672a8945e5ef2b4e52c78b99ecd5c5abc3476294",
+    "skills/goalpilot/references/baseline.json": "f3eb3d89bffc7589ec25348b368c3c772659cedd6c53c1df0e951f8e49738c49",
+    "skills/goalpilot/references/caller-invocation.json": "2de295b7576f86fa0681f1e50b7b87acbf58a4e3f26b1c3d94d4d77ce58db727",
+    "skills/goalpilot/references/launcher-parity.json": "07066a2a9737fa9336c4cc32d021dfd3ab3965b8f18599ac62e3c9511f35fe6f",
+    "skills/goalpilot/references/measurements.md": "33a1e430c477159b9c649ad0e92457fd634e51d95bb24bcb55fb34906f87c95c",
+    "skills/goalpilot/references/sdk.md": "c6904d71970ae4321fdb6d7e42d1cf4acafdb48f00aeb1305862c4aaf0676687",
+    "skills/goalpilot/references/session-study.json": "98f17b88b8735db6eedb7dfba7816e89071c8a109207fca373779f997ad0be98",
+    "skills/goalpilot/references/session-study.md": "cd7a8916d5f37d42ffd1f3fc95d6568f45b2f9cf00d84307fb92c45c34976002",
+    "skills/goalpilot/references/session.md": "6101ea912211041eba218ba898993dd66c3ecc2ce914409fda89e5a9f7168110",
+    "skills/goalpilot/runtime/goalpilot/__init__.py": "0b2ab3f4957bea5294167d0b91733a727551440014b458d3b8c2dc05341cbefd",
+    "skills/goalpilot/runtime/goalpilot/__main__.py": "abf5040e514c318fbae17bfb5f2b368f5889c81588c096821969fef819c942c5",
+    "skills/goalpilot/runtime/goalpilot/acceptance_validation.py": "12d805dca3fd0c7b43a0ed327101eaf784d54a156f7d91034b1092ded3919ef2",
+    "skills/goalpilot/runtime/goalpilot/activity.py": "f4c35ea2abee4e164ac4e99b0c7d2ed8246920199d4f02a9e0027de0a2d78850",
+    "skills/goalpilot/runtime/goalpilot/adapters.py": "b7b81125c3f1407d22aeb163d915178e56428ba306413b31d8564ac1e316d92a",
+    "skills/goalpilot/runtime/goalpilot/audit_recovery.py": "330a937a6a526a9ac3fdb753f567fb8bae61a1c1701bf82bced6f21be204f77f",
+    "skills/goalpilot/runtime/goalpilot/autopilot.py": "55bd0cc1f6c1561b05802b02c66fb64948e32bf66fab4fbee5ba91d92de1a2e7",
+    "skills/goalpilot/runtime/goalpilot/benchmark.py": "703f2be9a4ad62b0f1f127a2dffdc747a4fc42cc727263d07ef2e089c5832738",
+    "skills/goalpilot/runtime/goalpilot/cli.py": "0b12b3d225ea1acc958b967283c467d71a20e2703d846e588281736b29f44899",
+    "skills/goalpilot/runtime/goalpilot/dossier.py": "46744f78d4424536c85bd8b29ac994ed54deb7f0056642dee95761b1ca554d46",
+    "skills/goalpilot/runtime/goalpilot/engine.py": "2cce538bdbb9f5d17ab1189fbb9dcc8a7e781fda529d029b1beee978ed403925",
+    "skills/goalpilot/runtime/goalpilot/finish.py": "2e1da6b199ca576ffb429098b97b58a0de56a3bff88568aad885b93b1d5ec93b",
+    "skills/goalpilot/runtime/goalpilot/gates.py": "25136572691c70afbcf8b8424a7eac853850baa926655c043a03b85814502776",
+    "skills/goalpilot/runtime/goalpilot/hook_config.py": "d9d57d3200c1ceb5b232f53dac343664aabb8fdf0c2c5715cac36b124e5a2823",
+    "skills/goalpilot/runtime/goalpilot/hooks.py": "45591063e758defcd157bc09a403266d55950ccb3cb3fb6176a8f8ed901c3782",
+    "skills/goalpilot/runtime/goalpilot/lab.py": "7b34fbcef1036fe945676043ceb2b2bafaba5fd1d965631a662004cdecd16667",
+    "skills/goalpilot/runtime/goalpilot/metrics.py": "99479102560325e5fa21879a4c81e6f95ca3dae4588de07e4e31199132fb49d8",
+    "skills/goalpilot/runtime/goalpilot/model.py": "714a0c554d5387a76d231d2c7d19747cde84bcf8a341f1a02f79f56656fe7211",
+    "skills/goalpilot/runtime/goalpilot/monitor.py": "aa0588ed34a6868382a032165ceed7827ceb3f157e2eea5b519a9a611a2abc20",
+    "skills/goalpilot/runtime/goalpilot/originals.py": "f318186db0f60b0289e040e0f88229717f7ce6965d3c8f01e7b0310d4eae8f61",
+    "skills/goalpilot/runtime/goalpilot/probe_format.py": "50b3608bdbd0c975f94f7cb655144fb59b02a186e98e134e77d5916062b2f3cd",
+    "skills/goalpilot/runtime/goalpilot/probe_helpers.py": "b2b3153baa52032f54bc5700dbaf85c1b33a5f9169e30dd25fdf06a26a8955e1",
+    "skills/goalpilot/runtime/goalpilot/probe_lint.py": "4785eb31b16034c45ccd5d091f5f35c4fb44d0c9881b69aa236d812f52599c06",
+    "skills/goalpilot/runtime/goalpilot/process.py": "c021936952b7d38108b5a613fe9a54ffd368efb82df0fe08d37d630bd05585e5",
+    "skills/goalpilot/runtime/goalpilot/quota.py": "53d6ebe6903b60ebf231d72415212d93ced04d8a66a2bece601955a2d3f91d42",
+    "skills/goalpilot/runtime/goalpilot/reuse.py": "91c011fd1825992d74860185808d118196d036fdf63f2d5da113a3b7b68ca015",
+    "skills/goalpilot/runtime/goalpilot/rpc.py": "9d49a6ab324058f0d3db0c292816adc8a91b9adb1c97cc25c93f4fe016ebb4f4",
+    "skills/goalpilot/runtime/goalpilot/runtime_kit.py": "ad269071b5f81a2454b3216c0f8628fa07628d6fac8c9d63aa678b91a94bc327",
+    "skills/goalpilot/runtime/goalpilot/scope.py": "42fee083989637be88a0dd88fc651a21af751b68b17cb26badb45e01dd32480a",
+    "skills/goalpilot/runtime/goalpilot/session.py": "2a5dd7d5c154071fd15d2c4fbe88ca86ff5336919ce6302d96d1816a081febdf",
+    "skills/goalpilot/runtime/goalpilot/support.py": "53cc2053bb7a3aace7dfa4e825bf3f313fa9829650bfb0ae1713fad0ffa5900e",
+    "skills/goalpilot/runtime/goalpilot/view.py": "ceaf19e139f02006b156b4828a6f37719f8767e6430dbe896a8dc0590e394b1b",
+    "skills/goalpilot/scripts/goalpilot.py": "59dba571aa4f33a19569a92804acfd4ca969dfff1f7eba8454c2bd599ea728f5",
+    "skills/goalpilot/scripts/install.py": "8889e18734a7d80647c61c54a554cb7a3f5d351212e12db90cf66ea410af3df1"
+  },
+  "old_product": {
+    "goalpilot/__init__.py": "b15e04ec808086ba5ea723a750f9d87c013b873e12d3342bb79f900294d5da9d",
+    "goalpilot/__main__.py": "abf5040e514c318fbae17bfb5f2b368f5889c81588c096821969fef819c942c5",
+    "goalpilot/acceptance_validation.py": "12d805dca3fd0c7b43a0ed327101eaf784d54a156f7d91034b1092ded3919ef2",
+    "goalpilot/activity.py": "f4c35ea2abee4e164ac4e99b0c7d2ed8246920199d4f02a9e0027de0a2d78850",
+    "goalpilot/adapters.py": "b7b81125c3f1407d22aeb163d915178e56428ba306413b31d8564ac1e316d92a",
+    "goalpilot/audit_recovery.py": "330a937a6a526a9ac3fdb753f567fb8bae61a1c1701bf82bced6f21be204f77f",
+    "goalpilot/autopilot.py": "55bd0cc1f6c1561b05802b02c66fb64948e32bf66fab4fbee5ba91d92de1a2e7",
+    "goalpilot/benchmark.py": "703f2be9a4ad62b0f1f127a2dffdc747a4fc42cc727263d07ef2e089c5832738",
+    "goalpilot/cli.py": "25cf55f7b86caea9403dfa1f866f077ec38701144a86567e951397b711be1469",
+    "goalpilot/dossier.py": "eebb0772c95f5a7c856a67ec7928f68a70711735acf171278e3037b700da4417",
+    "goalpilot/engine.py": "2cce538bdbb9f5d17ab1189fbb9dcc8a7e781fda529d029b1beee978ed403925",
+    "goalpilot/finish.py": "2e1da6b199ca576ffb429098b97b58a0de56a3bff88568aad885b93b1d5ec93b",
+    "goalpilot/gates.py": "25136572691c70afbcf8b8424a7eac853850baa926655c043a03b85814502776",
+    "goalpilot/lab.py": "7b34fbcef1036fe945676043ceb2b2bafaba5fd1d965631a662004cdecd16667",
+    "goalpilot/metrics.py": "99479102560325e5fa21879a4c81e6f95ca3dae4588de07e4e31199132fb49d8",
+    "goalpilot/model.py": "714a0c554d5387a76d231d2c7d19747cde84bcf8a341f1a02f79f56656fe7211",
+    "goalpilot/originals.py": "a08557d05e626f074ce6825a325e1d98870acc0515cdfd176630ab58d3c03c5d",
+    "goalpilot/probe_format.py": "50b3608bdbd0c975f94f7cb655144fb59b02a186e98e134e77d5916062b2f3cd",
+    "goalpilot/probe_helpers.py": "90debd7108c665f1ad104f30051d1d75507e58948b5e6348af574995c3102b00",
+    "goalpilot/probe_lint.py": "4785eb31b16034c45ccd5d091f5f35c4fb44d0c9881b69aa236d812f52599c06",
+    "goalpilot/process.py": "097a73f22bc5897a0fc10697f0dc30d3844796af7dc4c7223c0a4dab9526e6a5",
+    "goalpilot/quota.py": "53d6ebe6903b60ebf231d72415212d93ced04d8a66a2bece601955a2d3f91d42",
+    "goalpilot/reuse.py": "91c011fd1825992d74860185808d118196d036fdf63f2d5da113a3b7b68ca015",
+    "goalpilot/rpc.py": "9d49a6ab324058f0d3db0c292816adc8a91b9adb1c97cc25c93f4fe016ebb4f4",
+    "goalpilot/scope.py": "42fee083989637be88a0dd88fc651a21af751b68b17cb26badb45e01dd32480a",
+    "goalpilot/session.py": "fc5b5e165110caf23e9b3b002f601cf10ec9e58a026799faeb429572c29b3132",
+    "goalpilot/support.py": "5e2a4a76bdeffbef91542ca0b009d063fda394af7371d2787d9d13f91c3be752",
+    "goalpilot/view.py": "ceaf19e139f02006b156b4828a6f37719f8767e6430dbe896a8dc0590e394b1b",
+    "skills/goalpilot/MANIFEST.json": "b259cb50d34292f222333024e2bd7c71b31b18798073f47fdcefa397febd548c",
+    "skills/goalpilot/SKILL.md": "33f43a37c3287ce0632ca7cd37a833a6513cf799ee33472b4b2ab059d0d3b9f8",
+    "skills/goalpilot/agents/openai.yaml": "8294b9805e37daf41baefbdb672a8945e5ef2b4e52c78b99ecd5c5abc3476294",
+    "skills/goalpilot/references/baseline.json": "8189fd26d4f24a576a4230f7f26c18ab2526ca288510c30b7c945a833c4352f9",
+    "skills/goalpilot/references/caller-invocation.json": "2de295b7576f86fa0681f1e50b7b87acbf58a4e3f26b1c3d94d4d77ce58db727",
+    "skills/goalpilot/references/launcher-parity.json": "07066a2a9737fa9336c4cc32d021dfd3ab3965b8f18599ac62e3c9511f35fe6f",
+    "skills/goalpilot/references/measurements.md": "33a1e430c477159b9c649ad0e92457fd634e51d95bb24bcb55fb34906f87c95c",
+    "skills/goalpilot/references/session-study.json": "98f17b88b8735db6eedb7dfba7816e89071c8a109207fca373779f997ad0be98",
+    "skills/goalpilot/references/session-study.md": "cd7a8916d5f37d42ffd1f3fc95d6568f45b2f9cf00d84307fb92c45c34976002",
+    "skills/goalpilot/references/session.md": "6101ea912211041eba218ba898993dd66c3ecc2ce914409fda89e5a9f7168110",
+    "skills/goalpilot/runtime/goalpilot/__init__.py": "b15e04ec808086ba5ea723a750f9d87c013b873e12d3342bb79f900294d5da9d",
+    "skills/goalpilot/runtime/goalpilot/__main__.py": "abf5040e514c318fbae17bfb5f2b368f5889c81588c096821969fef819c942c5",
+    "skills/goalpilot/runtime/goalpilot/acceptance_validation.py": "12d805dca3fd0c7b43a0ed327101eaf784d54a156f7d91034b1092ded3919ef2",
+    "skills/goalpilot/runtime/goalpilot/activity.py": "f4c35ea2abee4e164ac4e99b0c7d2ed8246920199d4f02a9e0027de0a2d78850",
+    "skills/goalpilot/runtime/goalpilot/adapters.py": "b7b81125c3f1407d22aeb163d915178e56428ba306413b31d8564ac1e316d92a",
+    "skills/goalpilot/runtime/goalpilot/audit_recovery.py": "330a937a6a526a9ac3fdb753f567fb8bae61a1c1701bf82bced6f21be204f77f",
+    "skills/goalpilot/runtime/goalpilot/autopilot.py": "55bd0cc1f6c1561b05802b02c66fb64948e32bf66fab4fbee5ba91d92de1a2e7",
+    "skills/goalpilot/runtime/goalpilot/benchmark.py": "703f2be9a4ad62b0f1f127a2dffdc747a4fc42cc727263d07ef2e089c5832738",
+    "skills/goalpilot/runtime/goalpilot/cli.py": "25cf55f7b86caea9403dfa1f866f077ec38701144a86567e951397b711be1469",
+    "skills/goalpilot/runtime/goalpilot/dossier.py": "eebb0772c95f5a7c856a67ec7928f68a70711735acf171278e3037b700da4417",
+    "skills/goalpilot/runtime/goalpilot/engine.py": "2cce538bdbb9f5d17ab1189fbb9dcc8a7e781fda529d029b1beee978ed403925",
+    "skills/goalpilot/runtime/goalpilot/finish.py": "2e1da6b199ca576ffb429098b97b58a0de56a3bff88568aad885b93b1d5ec93b",
+    "skills/goalpilot/runtime/goalpilot/gates.py": "25136572691c70afbcf8b8424a7eac853850baa926655c043a03b85814502776",
+    "skills/goalpilot/runtime/goalpilot/lab.py": "7b34fbcef1036fe945676043ceb2b2bafaba5fd1d965631a662004cdecd16667",
+    "skills/goalpilot/runtime/goalpilot/metrics.py": "99479102560325e5fa21879a4c81e6f95ca3dae4588de07e4e31199132fb49d8",
+    "skills/goalpilot/runtime/goalpilot/model.py": "714a0c554d5387a76d231d2c7d19747cde84bcf8a341f1a02f79f56656fe7211",
+    "skills/goalpilot/runtime/goalpilot/originals.py": "a08557d05e626f074ce6825a325e1d98870acc0515cdfd176630ab58d3c03c5d",
+    "skills/goalpilot/runtime/goalpilot/probe_format.py": "50b3608bdbd0c975f94f7cb655144fb59b02a186e98e134e77d5916062b2f3cd",
+    "skills/goalpilot/runtime/goalpilot/probe_helpers.py": "90debd7108c665f1ad104f30051d1d75507e58948b5e6348af574995c3102b00",
+    "skills/goalpilot/runtime/goalpilot/probe_lint.py": "4785eb31b16034c45ccd5d091f5f35c4fb44d0c9881b69aa236d812f52599c06",
+    "skills/goalpilot/runtime/goalpilot/process.py": "097a73f22bc5897a0fc10697f0dc30d3844796af7dc4c7223c0a4dab9526e6a5",
+    "skills/goalpilot/runtime/goalpilot/quota.py": "53d6ebe6903b60ebf231d72415212d93ced04d8a66a2bece601955a2d3f91d42",
+    "skills/goalpilot/runtime/goalpilot/reuse.py": "91c011fd1825992d74860185808d118196d036fdf63f2d5da113a3b7b68ca015",
+    "skills/goalpilot/runtime/goalpilot/rpc.py": "9d49a6ab324058f0d3db0c292816adc8a91b9adb1c97cc25c93f4fe016ebb4f4",
+    "skills/goalpilot/runtime/goalpilot/scope.py": "42fee083989637be88a0dd88fc651a21af751b68b17cb26badb45e01dd32480a",
+    "skills/goalpilot/runtime/goalpilot/session.py": "fc5b5e165110caf23e9b3b002f601cf10ec9e58a026799faeb429572c29b3132",
+    "skills/goalpilot/runtime/goalpilot/support.py": "5e2a4a76bdeffbef91542ca0b009d063fda394af7371d2787d9d13f91c3be752",
+    "skills/goalpilot/runtime/goalpilot/view.py": "ceaf19e139f02006b156b4828a6f37719f8767e6430dbe896a8dc0590e394b1b",
+    "skills/goalpilot/scripts/goalpilot.py": "59dba571aa4f33a19569a92804acfd4ca969dfff1f7eba8454c2bd599ea728f5",
+    "skills/goalpilot/scripts/install.py": "8889e18734a7d80647c61c54a554cb7a3f5d351212e12db90cf66ea410af3df1"
+  },
+  "harness": {
+    "campaign.py": "94615b2a8dd49e3e06cdf3a57a2a185f1781ecbc68e95cf92010e5ff44160b5b",
+    "cases.py": "e8f68b7f5b1e276f6e19b15363af30ce0d07cb5444c0304704250aedfce280bd",
+    "races.py": "d5633a37595ec97f5cf9eb93d8ecb8292232615d42da42be7b6ebf75c22c696c",
+    "host_helpers.py": "40985c8e9d9e5a4e3a14ea07f2ec3eef308a32f6fb179cc0bd28444270137008",
+    "host_process.py": "c021936952b7d38108b5a613fe9a54ffd368efb82df0fe08d37d630bd05585e5",
+    "native_adapter.py": "d80d9e79757e738561a6ff9af46ecdcbdf4cc2eea7cbd35a49f1fe4d60b5a1aa"
+  },
+  "launcher_sha256": "789e838aadc350d3fe7d65620e2a406dba71706da49a229fd55fc78fb940d873",
+  "quota": "Read account-wide integer windows before/after trials. Reporting delay, unknown rounding and concurrent activity prevent exact arm attribution. Zero displayed change is not free consumption.",
+  "restart": "Documented external host lifecycle interruption only: mark unfinished parent censored/usage incomplete, retain raw journal and every known token as research lower bound, stop that cohort and explicitly register continuation with unchanged product/specs/judges/targets. A fresh invocation on identical initial source replaces ONLY the censored comparative observation, before its outcome is known; policy applies symmetrically to native and skill. Completed functional failures are never rerun/excluded. Never silently reset a started/failed goal, original frozen cohort, research budget or meter. Provider failures without independent host-outage evidence remain ordinary failures.",
+  "root_conversation_tokens": "UNKNOWN; research cost lower bounds only, no net R&D payback proof",
+  "development_costs_separate": true
+}

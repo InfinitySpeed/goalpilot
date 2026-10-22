@@ -1,0 +1,50 @@
+# Architecture
+
+GoalPilot combines instructions for the calling agent with a local Python verification engine. The default path has no hosted GoalPilot service, separate reasoning model or background model fleet.
+
+```mermaid
+flowchart TD
+    U[Full user goal] --> S[Codex skill]
+    S --> R[Local run: goal, snapshots, deadline, verification budget]
+    R --> C[Current Codex session implements and tests]
+    H[Local command hooks] -. observe and diagnose .-> C
+    K[Optional implementation and test helpers] -. reusable infrastructure .-> C
+    C --> V[Stop verification]
+    V --> O[Original test gate]
+    O --> B[Strengthened frozen test gate]
+    B --> A[Submitted acceptance checks]
+    A -->|All supported checks pass| P[scope_passed and closed=true]
+    V -->|Failure with budget remaining| C
+    V -->|Unsupported, infrastructure error or exhausted| X[Goal remains open]
+```
+
+## Components
+
+| Component | Responsibility |
+| :--- | :--- |
+| [Skill instructions](../skills/goalpilot/SKILL.md) | Save the full request, guide implementation and avoid unnecessary repeated reads or verification. |
+| [Session protocol](../goalpilot/session.py) | Preserve the original contract, freeze acceptance, account for verification attempts and invalidate closure after source changes. |
+| [Test gates](../goalpilot/gates.py) | Execute retained tests against disposable worktree copies. The strengthened suite supplements the original suite. |
+| [Local hooks](../goalpilot/hooks.py) | Connect Codex command events and Stop to the local protocol. |
+| [Passive monitor](../goalpilot/monitor.py) | Report repeated failure patterns and bounded diagnostic tails without inference. |
+| [Optional runtime kit](../goalpilot/runtime_kit.py) | Supply compatible storage, transport and testing infrastructure. |
+
+## Where the savings can come from
+
+The skill supplies one compact API and discourages redundant helper reads, repeated full-suite runs and separate generation/readback rounds. Supplied helper files are excluded from repeated model context only when their exact size and hash match the expected versions; their original snapshots remain preserved. Modified or foreign files with the same names stay visible.
+
+Optional helpers avoid reimplementing generic infrastructure. Business workflows and meaningful assertions still belong to the project. The measured benefit combines these mechanisms; the experiment does not isolate a causal percentage for each component.
+
+`ReplayService` is an opt-in base for new pure applications with an unspecified compatible storage/backup format. It records accepted transitions and validates restored state by replay. Reducers require explicit request times and controlled entropy; external side effects are unsuitable. Cold replay is linear, and the default configurable event limit is 4,096. `ServiceBase` supports existing formats with a full application validator. See the [helper reference](../skills/goalpilot/references/sdk.md).
+
+## What completion means
+
+The protocol retains the original goal bytes, original tests, first accepted checks, source fingerprints and verification outcomes. Repair does not renew the deadline or replace frozen acceptance. A source change after verification invalidates closure on the next protocol check.
+
+These are local integrity receipts, not tamper-proof signatures. A successful checked scope does not prove complete coverage of an ambiguous natural-language request. Bounded snapshots are not a consistent backup of a concurrently edited database.
+
+## Model usage and portability
+
+The passive monitor and verification commands run Python and subprocesses, not inference. Repair still consumes the calling model's tokens. Total caller usage is unknown without external metering; a local token ceiling cannot enforce usage it cannot observe.
+
+Automatic hook delivery is currently integrated with Codex. Claude Code and Antigravity do not have released adapters. Reusing the local engine elsewhere requires host-specific delivery, Stop/repair integration and fresh correctness/cost measurements. The [published figures](BENCHMARKS.md) apply to the tested Codex path.

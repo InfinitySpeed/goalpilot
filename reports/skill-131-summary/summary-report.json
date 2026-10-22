@@ -1,0 +1,289 @@
+{
+  "complete": true,
+  "target_achieved": true,
+  "thresholds": {
+    "time_saving_percent": 25,
+    "uncached_input_saving_percent": 45,
+    "output_saving_percent": 45,
+    "candidate_closed_correct_at_least_native": true,
+    "minimum_candidate_closed_correct": 18,
+    "candidate_correct_anchor_count_at_least_current_skill": true,
+    "installed_skill_anchor_uncached_plus_output_cost_not_higher": true,
+    "installed_skill_anchor_time_not_higher": true
+  },
+  "primary_all_attempts": {
+    "n": 20,
+    "candidate_successful": 19,
+    "control_successful": 17,
+    "totals": {
+      "seconds": {
+        "candidate": 1540.7488056860202,
+        "control": 3918.3763564260043
+      },
+      "uncached_input": {
+        "candidate": 256343,
+        "control": 499412
+      },
+      "output_tokens": {
+        "candidate": 86013,
+        "control": 221009
+      },
+      "raw": {
+        "candidate": 2151252,
+        "control": 4716581
+      },
+      "cached_input_tokens": {
+        "candidate": 1808896,
+        "control": 3996160
+      },
+      "uncached_plus_output": {
+        "candidate": 342356,
+        "control": 720421
+      }
+    },
+    "saving_percent": {
+      "seconds": 60.67889693241833,
+      "uncached_input": 48.67103713967625,
+      "output_tokens": 61.08167540688388,
+      "raw": 54.38958856001837,
+      "cached_input_tokens": 54.73414477898784,
+      "uncached_plus_output": 52.478342524718194
+    }
+  },
+  "fresh_interleaved_native_subset": {
+    "n": 9,
+    "candidate_successful": 8,
+    "control_successful": 7,
+    "totals": {
+      "seconds": {
+        "candidate": 671.697494656004,
+        "control": 1805.7735002699956
+      },
+      "uncached_input": {
+        "candidate": 114788,
+        "control": 225023
+      },
+      "output_tokens": {
+        "candidate": 37287,
+        "control": 104266
+      },
+      "raw": {
+        "candidate": 864651,
+        "control": 2201673
+      },
+      "cached_input_tokens": {
+        "candidate": 712576,
+        "control": 1872384
+      },
+      "uncached_plus_output": {
+        "candidate": 152075,
+        "control": 329289
+      }
+    },
+    "saving_percent": {
+      "seconds": 62.80278259950247,
+      "uncached_input": 48.98832563782369,
+      "output_tokens": 64.23858208812076,
+      "raw": 60.72754673377927,
+      "cached_input_tokens": 61.94284933005196,
+      "uncached_plus_output": 53.81716364652327
+    }
+  },
+  "both_successful_only": {
+    "n": 17,
+    "candidate_successful": 17,
+    "control_successful": 17,
+    "totals": {
+      "seconds": {
+        "candidate": 1323.2019388470217,
+        "control": 3403.536954137002
+      },
+      "uncached_input": {
+        "candidate": 216248,
+        "control": 400334
+      },
+      "output_tokens": {
+        "candidate": 74100,
+        "control": 190084
+      },
+      "raw": {
+        "candidate": 1832620,
+        "control": 4040018
+      },
+      "cached_input_tokens": {
+        "candidate": 1542272,
+        "control": 3449600
+      },
+      "uncached_plus_output": {
+        "candidate": 290348,
+        "control": 590418
+      }
+    },
+    "saving_percent": {
+      "seconds": 61.122739177587924,
+      "uncached_input": 45.98310410806976,
+      "output_tokens": 61.01723448580627,
+      "raw": 54.63832091837215,
+      "cached_input_tokens": 55.291280148423006,
+      "uncached_plus_output": 50.82331500733379
+    }
+  },
+  "installed_skill_110_anchors": {
+    "n": 4,
+    "candidate_successful": 4,
+    "control_successful": 4,
+    "totals": {
+      "seconds": {
+        "candidate": 282.69919555199886,
+        "control": 688.118541464999
+      },
+      "uncached_input": {
+        "candidate": 50068,
+        "control": 77618
+      },
+      "output_tokens": {
+        "candidate": 15730,
+        "control": 40088
+      },
+      "raw": {
+        "candidate": 412038,
+        "control": 771786
+      },
+      "cached_input_tokens": {
+        "candidate": 346240,
+        "control": 654080
+      },
+      "uncached_plus_output": {
+        "candidate": 65798,
+        "control": 117706
+      }
+    },
+    "saving_percent": {
+      "seconds": 58.917079177937204,
+      "uncached_input": 35.494344095441775,
+      "output_tokens": 60.761325084813414,
+      "raw": 46.61240291998041,
+      "cached_input_tokens": 47.064579256360076,
+      "uncached_plus_output": 44.09970604727032
+    }
+  },
+  "unreleased_previous_development_matched": {
+    "n": 7,
+    "candidate_successful": 7,
+    "control_successful": 7,
+    "totals": {
+      "seconds": {
+        "candidate": 552.6719630450098,
+        "control": 697.9305167600032
+      },
+      "uncached_input": {
+        "candidate": 97045,
+        "control": 109159
+      },
+      "output_tokens": {
+        "candidate": 31112,
+        "control": 38135
+      },
+      "raw": {
+        "candidate": 938653,
+        "control": 1016926
+      },
+      "cached_input_tokens": {
+        "candidate": 810496,
+        "control": 869632
+      },
+      "uncached_plus_output": {
+        "candidate": 128157,
+        "control": 147294
+      }
+    },
+    "saving_percent": {
+      "seconds": 20.812752878227194,
+      "uncached_input": 11.097573264687288,
+      "output_tokens": 18.416153140159963,
+      "raw": 7.697020235494023,
+      "cached_input_tokens": 6.8001177509567245,
+      "uncached_plus_output": 12.99238258177523
+    }
+  },
+  "descriptive_paired_bootstrap_95_percent_intervals": {
+    "seconds": [
+      57.2307753267608,
+      63.87808979386747
+    ],
+    "uncached_input": [
+      35.94860244740366,
+      58.98512074182135
+    ],
+    "output_tokens": [
+      58.36570818538374,
+      63.843644051574145
+    ]
+  },
+  "observed_closure_wilson_95": {
+    "new": [
+      0.763868806553258,
+      0.9911185511992047
+    ],
+    "native": [
+      0.6395811352592431,
+      0.9476312541037835
+    ],
+    "old": [
+      0.5101091635454027,
+      1
+    ]
+  },
+  "failures": [
+    {
+      "id": "annotations-native",
+      "category": "external_behavior_mismatch",
+      "normal_closure": true,
+      "correct_artifact": false,
+      "observed_groups_passed": [],
+      "note": "Judge stops at first failed assertion; subsequent groups are unobserved, not proved all incorrect."
+    },
+    {
+      "id": "subscriptions-native",
+      "category": "external_behavior_mismatch",
+      "normal_closure": true,
+      "correct_artifact": false,
+      "observed_groups_passed": [
+        "catchup_no_double_billing",
+        "payment_and_exact_proration",
+        "cancellation_and_reporting",
+        "payment_batch_types"
+      ],
+      "note": "Judge stops at first failed assertion; subsequent groups are unobserved, not proved all incorrect."
+    },
+    {
+      "id": "subscriptions-new",
+      "category": "external_behavior_mismatch",
+      "normal_closure": true,
+      "correct_artifact": false,
+      "observed_groups_passed": [
+        "catchup_no_double_billing",
+        "payment_and_exact_proration",
+        "cancellation_and_reporting",
+        "payment_batch_types"
+      ],
+      "note": "Judge stops at first failed assertion; subsequent groups are unobserved, not proved all incorrect."
+    },
+    {
+      "id": "tickets-native",
+      "category": "external_behavior_mismatch",
+      "normal_closure": true,
+      "correct_artifact": false,
+      "observed_groups_passed": [
+        "seat_atomicity_expiry"
+      ],
+      "note": "Judge stops at first failed assertion; subsequent groups are unobserved, not proved all incorrect."
+    }
+  ],
+  "scope": "Purposefully selected SYNTHETIC stdlib stateful JSONL/HTTP applications, twenty DISTINCT business domains, same public service family. Ambitious by documented interacting workflows, not selected on observed native runtime or loops. No minimum real session duration and no real-user goal distribution; cannot infer arbitrary repositories/query success, loop prevalence or subscription quota percentages. DEVELOPMENT REUSE: same public20 cases and graders. Candidate developed using first6 paired V4 results, hand compatibility diagnostics on5 passed V4 artifacts and generic offline tests. Not a novel blinded holdout. All existing native/old outcomes carried INCLUDING failures, byte-identical; remaining controls fresh interleaved under identical model/effort/permissions/config. Case list never selected on outcome. Carried controls precede candidate; timing/cache/order variation limits causal or distributional claims. DEVELOPMENT REUSE: same public20 cases and graders. Candidate developed using seven V4 and seven V5 candidate outcomes, prior native/old controls, hand compatibility diagnostics on five V4 artifacts and generic offline tests. No task-specific rule in the runtime. SDK/hook/RPC/process algorithms remain identical to V5 except API text; new context filtering is separately verified. The previous near-target cold pilot was retired after a repeat-use context defect was discovered. Not a novel blinded holdout. All existing native/old outcomes carried INCLUDING failures, byte-identical; remaining controls fresh interleaved under identical model/effort/permissions/config. Case list never selected on outcome. Carried controls precede candidate; timing/cache/order variation limits causal or distributional claims. HOST INTERRUPTION: thin-skill-001 tickets-native was externally aborted by the selected environment restart; final usage unknown. Excluded as a censored comparative observation, known cost retained separately in research. One new independent fresh control for same predefined case, before any new-skill tickets result; all23 complete outcomes including functional failure retained. No product/prompt/spec/judge/threshold change; no completed-failure retry. Source remained frozen before all current-version outcomes.  DEVELOPMENT REUSE: same public20 cases and graders. Candidate developed using seven V4 and seven V5 candidate outcomes, prior native/old controls, hand compatibility diagnostics on five V4 artifacts and generic offline tests. No task-specific rule in the runtime. SDK/hook/RPC/process algorithms remain identical to V5 except API text; new context filtering is separately verified. The previous near-target cold pilot was retired after a repeat-use context defect was discovered. Not a novel blinded holdout. All existing native/old outcomes carried INCLUDING failures, byte-identical; remaining controls fresh interleaved under identical model/effort/permissions/config. Case list never selected on outcome. Carried controls precede candidate; timing/cache/order variation limits causal or distributional claims.",
+  "uncertainty_note": "User tolerance of5 percentage points is an acceptance rule, NOT a confidence interval. Purposefully selected known synthetic cases: neither Wilson nor conditional paired bootstrap establishes population representativeness, universal noninferiority or guaranteed future savings. Point estimates are exact for observed provider counters/time; cached and uncached classes remain distinct.",
+  "quota_conversion_known": false,
+  "root_development_chat_tokens": "UNKNOWN",
+  "model_calls": 0,
+  "no_failed_outcome_or_cost_excluded_from_primary": true
+}

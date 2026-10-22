@@ -1,0 +1,33 @@
+{
+  "version": "0.9.1",
+  "planned": 8,
+  "executed": 8,
+  "correct_closed": 8,
+  "independent_groups_passed": 208,
+  "independent_groups_planned": 208,
+  "model_attempts": 0,
+  "raw_tokens": 0,
+  "complete": true,
+  "modes": {
+    "initial": {
+      "planned": 2,
+      "correct_closed": 2,
+      "mean_seconds": 2.072006750499895,
+      "min_seconds": 1.9363233469994157,
+      "max_seconds": 2.2076901540003746
+    },
+    "delivered": {
+      "planned": 6,
+      "correct_closed": 6,
+      "mean_seconds": 2.1378987701665815,
+      "min_seconds": 1.986977657999887,
+      "max_seconds": 2.3394609399992987
+    }
+  },
+  "source_version": "0.9.0",
+  "replay_version": "0.9.1",
+  "new_inference_cost": 0,
+  "known_learning_raw_tokens": 454622,
+  "limits": "Both domains and learned artifacts are known. No new cold candidate or new native model run. Cached data and original acceptance from0.9.0, replay implementation0.9.1. Delivered-mode timing is NOT directly comparable to cold native initial inputs. Learning costs retained, not free. No general guarantee for new/changed goals.",
+  "quota": "Model inference is guarded off. Successful hits consume zero new Codex model quota; no subscription-quota percentage or monetary conversion inferred. Host checks still consume local CPU/time."
+}

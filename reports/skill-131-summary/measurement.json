@@ -1,0 +1,202 @@
+{
+  "engine_version": "0.12.1",
+  "skill_version": "1.3.1",
+  "study": "/workspace/goalpilot-research/thin-skill-002",
+  "target_achieved": true,
+  "complete": true,
+  "engine_files": {
+    "__init__.py": "0b2ab3f4957bea5294167d0b91733a727551440014b458d3b8c2dc05341cbefd",
+    "__main__.py": "abf5040e514c318fbae17bfb5f2b368f5889c81588c096821969fef819c942c5",
+    "acceptance_validation.py": "12d805dca3fd0c7b43a0ed327101eaf784d54a156f7d91034b1092ded3919ef2",
+    "activity.py": "f4c35ea2abee4e164ac4e99b0c7d2ed8246920199d4f02a9e0027de0a2d78850",
+    "adapters.py": "b7b81125c3f1407d22aeb163d915178e56428ba306413b31d8564ac1e316d92a",
+    "audit_recovery.py": "330a937a6a526a9ac3fdb753f567fb8bae61a1c1701bf82bced6f21be204f77f",
+    "autopilot.py": "55bd0cc1f6c1561b05802b02c66fb64948e32bf66fab4fbee5ba91d92de1a2e7",
+    "benchmark.py": "703f2be9a4ad62b0f1f127a2dffdc747a4fc42cc727263d07ef2e089c5832738",
+    "cli.py": "0b12b3d225ea1acc958b967283c467d71a20e2703d846e588281736b29f44899",
+    "dossier.py": "46744f78d4424536c85bd8b29ac994ed54deb7f0056642dee95761b1ca554d46",
+    "engine.py": "2cce538bdbb9f5d17ab1189fbb9dcc8a7e781fda529d029b1beee978ed403925",
+    "finish.py": "2e1da6b199ca576ffb429098b97b58a0de56a3bff88568aad885b93b1d5ec93b",
+    "gates.py": "25136572691c70afbcf8b8424a7eac853850baa926655c043a03b85814502776",
+    "hook_config.py": "d9d57d3200c1ceb5b232f53dac343664aabb8fdf0c2c5715cac36b124e5a2823",
+    "hooks.py": "45591063e758defcd157bc09a403266d55950ccb3cb3fb6176a8f8ed901c3782",
+    "lab.py": "7b34fbcef1036fe945676043ceb2b2bafaba5fd1d965631a662004cdecd16667",
+    "metrics.py": "99479102560325e5fa21879a4c81e6f95ca3dae4588de07e4e31199132fb49d8",
+    "model.py": "714a0c554d5387a76d231d2c7d19747cde84bcf8a341f1a02f79f56656fe7211",
+    "monitor.py": "aa0588ed34a6868382a032165ceed7827ceb3f157e2eea5b519a9a611a2abc20",
+    "originals.py": "f318186db0f60b0289e040e0f88229717f7ce6965d3c8f01e7b0310d4eae8f61",
+    "probe_format.py": "50b3608bdbd0c975f94f7cb655144fb59b02a186e98e134e77d5916062b2f3cd",
+    "probe_helpers.py": "b2b3153baa52032f54bc5700dbaf85c1b33a5f9169e30dd25fdf06a26a8955e1",
+    "probe_lint.py": "4785eb31b16034c45ccd5d091f5f35c4fb44d0c9881b69aa236d812f52599c06",
+    "process.py": "c021936952b7d38108b5a613fe9a54ffd368efb82df0fe08d37d630bd05585e5",
+    "quota.py": "53d6ebe6903b60ebf231d72415212d93ced04d8a66a2bece601955a2d3f91d42",
+    "reuse.py": "91c011fd1825992d74860185808d118196d036fdf63f2d5da113a3b7b68ca015",
+    "rpc.py": "9d49a6ab324058f0d3db0c292816adc8a91b9adb1c97cc25c93f4fe016ebb4f4",
+    "runtime_kit.py": "ad269071b5f81a2454b3216c0f8628fa07628d6fac8c9d63aa678b91a94bc327",
+    "scope.py": "42fee083989637be88a0dd88fc651a21af751b68b17cb26badb45e01dd32480a",
+    "session.py": "2a5dd7d5c154071fd15d2c4fbe88ca86ff5336919ce6302d96d1816a081febdf",
+    "support.py": "53cc2053bb7a3aace7dfa4e825bf3f313fa9829650bfb0ae1713fad0ffa5900e",
+    "view.py": "ceaf19e139f02006b156b4828a6f37719f8767e6430dbe896a8dc0590e394b1b"
+  },
+  "skill_sha256": "3ad96d577086c9bc78cff3bbd70946c8c2f7e411b34d91e72e0f571d25e6a686",
+  "frozen_zip_sha256": "ccd47380958f1f03fb14ea55dfd92bcda67d0bc0da12ff3ebafe0ca156eaa2f3",
+  "primary": {
+    "n": 20,
+    "new": {
+      "executed": 20,
+      "successful": 20,
+      "caller_seconds": 1532.452997462009,
+      "judge_seconds": 9.166189307008608,
+      "seconds": 1541.6191867690177,
+      "meter_complete": true,
+      "known_usage": {
+        "input_tokens": 2065239,
+        "cached_input_tokens": 1808896,
+        "output_tokens": 86013,
+        "raw": 2151252,
+        "uncached_input": 256343,
+        "uncached_plus_output": 342356
+      },
+      "actual_usage": {
+        "input_tokens": 2065239,
+        "cached_input_tokens": 1808896,
+        "output_tokens": 86013,
+        "raw": 2151252,
+        "uncached_input": 256343,
+        "uncached_plus_output": 342356
+      },
+      "unknown_or_partial_usage_trials": 0,
+      "backend_model_calls": 0
+    },
+    "control": {
+      "executed": 20,
+      "successful": 19,
+      "caller_seconds": 3911.504066096004,
+      "judge_seconds": 7.573362980001548,
+      "seconds": 3919.0774290760055,
+      "meter_complete": true,
+      "known_usage": {
+        "input_tokens": 4495572,
+        "cached_input_tokens": 3996160,
+        "output_tokens": 221009,
+        "raw": 4716581,
+        "uncached_input": 499412,
+        "uncached_plus_output": 720421
+      },
+      "actual_usage": {
+        "input_tokens": 4495572,
+        "cached_input_tokens": 3996160,
+        "output_tokens": 221009,
+        "raw": 4716581,
+        "uncached_input": 499412,
+        "uncached_plus_output": 720421
+      },
+      "unknown_or_partial_usage_trials": 0,
+      "backend_model_calls": 0
+    },
+    "saving_percent": {
+      "seconds": 60.663722147166595,
+      "raw": 54.38958856001837,
+      "uncached_input": 48.67103713967625,
+      "cached_input_tokens": 54.73414477898784,
+      "output_tokens": 61.08167540688388,
+      "uncached_plus_output": 52.478342524718194
+    },
+    "exact": true
+  },
+  "original_scores": {
+    "new": 19,
+    "native": 17
+  },
+  "reviewed_scores": {
+    "new": 20,
+    "native": 19
+  },
+  "installed_skill_110_anchors": {
+    "n": 4,
+    "new": {
+      "executed": 4,
+      "successful": 4,
+      "caller_seconds": 281.0201248789999,
+      "judge_seconds": 1.6790706729989324,
+      "seconds": 282.69919555199886,
+      "meter_complete": true,
+      "known_usage": {
+        "input_tokens": 396308,
+        "cached_input_tokens": 346240,
+        "output_tokens": 15730,
+        "raw": 412038,
+        "uncached_input": 50068,
+        "uncached_plus_output": 65798
+      },
+      "actual_usage": {
+        "input_tokens": 396308,
+        "cached_input_tokens": 346240,
+        "output_tokens": 15730,
+        "raw": 412038,
+        "uncached_input": 50068,
+        "uncached_plus_output": 65798
+      },
+      "unknown_or_partial_usage_trials": 0,
+      "backend_model_calls": 0
+    },
+    "control": {
+      "executed": 4,
+      "successful": 4,
+      "caller_seconds": 686.6593004789975,
+      "judge_seconds": 1.4592409860015323,
+      "seconds": 688.118541464999,
+      "meter_complete": true,
+      "known_usage": {
+        "input_tokens": 731698,
+        "cached_input_tokens": 654080,
+        "output_tokens": 40088,
+        "raw": 771786,
+        "uncached_input": 77618,
+        "uncached_plus_output": 117706
+      },
+      "actual_usage": {
+        "input_tokens": 731698,
+        "cached_input_tokens": 654080,
+        "output_tokens": 40088,
+        "raw": 771786,
+        "uncached_input": 77618,
+        "uncached_plus_output": 117706
+      },
+      "unknown_or_partial_usage_trials": 0,
+      "backend_model_calls": 0
+    },
+    "saving_percent": {
+      "seconds": 58.917079177937204,
+      "raw": 46.61240291998041,
+      "uncached_input": 35.494344095441775,
+      "cached_input_tokens": 47.064579256360076,
+      "output_tokens": 60.761325084813414,
+      "uncached_plus_output": 44.09970604727032
+    },
+    "exact": true
+  },
+  "targets": {
+    "time_saving_percent": 25,
+    "uncached_input_saving_percent": 45,
+    "output_saving_percent": 45,
+    "candidate_closed_correct_at_least_native": true,
+    "minimum_candidate_closed_correct": 18,
+    "candidate_correct_anchor_count_at_least_current_skill": true,
+    "installed_skill_anchor_uncached_plus_output_cost_not_higher": true,
+    "installed_skill_anchor_time_not_higher": true
+  },
+  "scope": "Purposefully selected SYNTHETIC stdlib stateful JSONL/HTTP applications, twenty DISTINCT business domains, same public service family. Ambitious by documented interacting workflows, not selected on observed native runtime or loops. No minimum real session duration and no real-user goal distribution; cannot infer arbitrary repositories/query success, loop prevalence or subscription quota percentages. DEVELOPMENT REUSE: same public20 cases and graders. Candidate developed using first6 paired V4 results, hand compatibility diagnostics on5 passed V4 artifacts and generic offline tests. Not a novel blinded holdout. All existing native/old outcomes carried INCLUDING failures, byte-identical; remaining controls fresh interleaved under identical model/effort/permissions/config. Case list never selected on outcome. Carried controls precede candidate; timing/cache/order variation limits causal or distributional claims. DEVELOPMENT REUSE: same public20 cases and graders. Candidate developed using seven V4 and seven V5 candidate outcomes, prior native/old controls, hand compatibility diagnostics on five V4 artifacts and generic offline tests. No task-specific rule in the runtime. SDK/hook/RPC/process algorithms remain identical to V5 except API text; new context filtering is separately verified. The previous near-target cold pilot was retired after a repeat-use context defect was discovered. Not a novel blinded holdout. All existing native/old outcomes carried INCLUDING failures, byte-identical; remaining controls fresh interleaved under identical model/effort/permissions/config. Case list never selected on outcome. Carried controls precede candidate; timing/cache/order variation limits causal or distributional claims. HOST INTERRUPTION: thin-skill-001 tickets-native was externally aborted by the selected environment restart; final usage unknown. Excluded as a censored comparative observation, known cost retained separately in research. One new independent fresh control for same predefined case, before any new-skill tickets result; all23 complete outcomes including functional failure retained. No product/prompt/spec/judge/threshold change; no completed-failure retry. Source remained frozen before all current-version outcomes.  DEVELOPMENT REUSE: same public20 cases and graders. Candidate developed using seven V4 and seven V5 candidate outcomes, prior native/old controls, hand compatibility diagnostics on five V4 artifacts and generic offline tests. No task-specific rule in the runtime. SDK/hook/RPC/process algorithms remain identical to V5 except API text; new context filtering is separately verified. The previous near-target cold pilot was retired after a repeat-use context defect was discovered. Not a novel blinded holdout. All existing native/old outcomes carried INCLUDING failures, byte-identical; remaining controls fresh interleaved under identical model/effort/permissions/config. Case list never selected on outcome. Carried controls precede candidate; timing/cache/order variation limits causal or distributional claims.",
+  "audit_successful": true,
+  "persisted_counter_matches": 44,
+  "tests_passed": 283,
+  "tests_skipped": 0,
+  "review_disclosure": "Original preregistered scorer/outcomes stay intact. Post-registration symmetric subscription precondition correction; additional conservative annotation return-shape ambiguity interpretation. Publish all three scores. No product/source/prompt changes or model retries; extra actual judging time added, no original cost erased.",
+  "subscription_quota_conversion_known": false,
+  "metadata_added_after_measurement": [
+    "MANIFEST.json",
+    "references/baseline.json",
+    "references/measurements.json"
+  ],
+  "runtime_and_skill_instructions_unchanged": true
+}

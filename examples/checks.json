@@ -1,0 +1,13 @@
+[
+  {
+    "id": "normalization",
+    "description": "Normalize labels including Unicode, duplicates, blank values and empty input",
+    "command": [
+      "python3",
+      "-B",
+      "-c",
+      "from transform import transform; assert transform([' B ', 'a', 'A', ' ', 'ÉTÉ', 'été']) == ['a', 'b', 'été']; assert transform([]) == []"
+    ],
+    "timeout_seconds": 5
+  }
+]

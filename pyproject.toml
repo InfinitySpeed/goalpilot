@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "goalpilot"
+version = "0.12.1"
+description = "Persistent, evidence-driven supervision for ambitious coding goals"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+goalpilot = "goalpilot.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["goalpilot*"]

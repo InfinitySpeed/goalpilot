@@ -1,0 +1,125 @@
+{
+  "original": {
+    "totals": {
+      "new": {
+        "executed": 20,
+        "successful": 19,
+        "seconds": 1540.7488056860202,
+        "usage": {
+          "input_tokens": 2065239,
+          "cached_input_tokens": 1808896,
+          "uncached_input": 256343,
+          "output_tokens": 86013,
+          "raw": 2151252,
+          "uncached_plus_output": 342356
+        }
+      },
+      "native": {
+        "executed": 20,
+        "successful": 17,
+        "seconds": 3918.3763564260043,
+        "usage": {
+          "input_tokens": 4495572,
+          "cached_input_tokens": 3996160,
+          "uncached_input": 499412,
+          "output_tokens": 221009,
+          "raw": 4716581,
+          "uncached_plus_output": 720421
+        }
+      },
+      "old": {
+        "executed": 4,
+        "successful": 4,
+        "seconds": 688.118541464999,
+        "usage": {
+          "input_tokens": 731698,
+          "cached_input_tokens": 654080,
+          "uncached_input": 77618,
+          "output_tokens": 40088,
+          "raw": 771786,
+          "uncached_plus_output": 117706
+        }
+      }
+    },
+    "saving_percent": {
+      "seconds": 60.67889693241833,
+      "input_tokens": 54.06059562609609,
+      "cached_input_tokens": 54.73414477898784,
+      "uncached_input": 48.67103713967625,
+      "output_tokens": 61.08167540688388,
+      "raw": 54.38958856001837,
+      "uncached_plus_output": 52.478342524718194
+    },
+    "anchor_saving_percent": {
+      "seconds": 58.917079177937204,
+      "input_tokens": 45.83721699389639,
+      "cached_input_tokens": 47.064579256360076,
+      "uncached_input": 35.494344095441775,
+      "output_tokens": 60.761325084813414,
+      "raw": 46.61240291998041,
+      "uncached_plus_output": 44.09970604727032
+    }
+  },
+  "reviewed": {
+    "totals": {
+      "new": {
+        "executed": 20,
+        "successful": 20,
+        "seconds": 1541.6191867690177,
+        "usage": {
+          "input_tokens": 2065239,
+          "cached_input_tokens": 1808896,
+          "uncached_input": 256343,
+          "output_tokens": 86013,
+          "raw": 2151252,
+          "uncached_plus_output": 342356
+        }
+      },
+      "native": {
+        "executed": 20,
+        "successful": 19,
+        "seconds": 3919.0774290760055,
+        "usage": {
+          "input_tokens": 4495572,
+          "cached_input_tokens": 3996160,
+          "uncached_input": 499412,
+          "output_tokens": 221009,
+          "raw": 4716581,
+          "uncached_plus_output": 720421
+        }
+      },
+      "old": {
+        "executed": 4,
+        "successful": 4,
+        "seconds": 688.118541464999,
+        "usage": {
+          "input_tokens": 731698,
+          "cached_input_tokens": 654080,
+          "uncached_input": 77618,
+          "output_tokens": 40088,
+          "raw": 771786,
+          "uncached_plus_output": 117706
+        }
+      }
+    },
+    "saving_percent": {
+      "seconds": 60.663722147166595,
+      "input_tokens": 54.06059562609609,
+      "cached_input_tokens": 54.73414477898784,
+      "uncached_input": 48.67103713967625,
+      "output_tokens": 61.08167540688388,
+      "raw": 54.38958856001837,
+      "uncached_plus_output": 52.478342524718194
+    },
+    "anchor_saving_percent": {
+      "seconds": 58.917079177937204,
+      "input_tokens": 45.83721699389639,
+      "cached_input_tokens": 47.064579256360076,
+      "uncached_input": 35.494344095441775,
+      "output_tokens": 60.761325084813414,
+      "raw": 46.61240291998041,
+      "uncached_plus_output": 44.09970604727032
+    }
+  },
+  "source_matches_measured": true
+}

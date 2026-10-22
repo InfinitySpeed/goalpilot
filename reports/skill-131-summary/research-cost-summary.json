@@ -1,0 +1,21 @@
+{
+  "current_task_observed_callers": 70,
+  "completed_callers": 69,
+  "externally_interrupted_partial_callers": 1,
+  "known_tokens": {
+    "input_tokens": 11180327,
+    "cached_input_tokens": 9909888,
+    "output_tokens": 506002,
+    "raw": 11686329,
+    "uncached_input": 1270439,
+    "uncached_plus_output": 1776441
+  },
+  "complete_completed_trial_meters": true,
+  "complete_all_research_callers": false,
+  "unknown_root_development_chat_usage": true,
+  "active_inflight_calls_excluded": true,
+  "net_rd_payback_proven": false,
+  "subscription_quota_conversion_known": false,
+  "note": "Includes rejected development variants, setup error, mechanism-only trials and last observed provider counters from externally interrupted callers. Missing final interrupted usage is UNKNOWN, never zero; totals are lower bounds. Carried/archived/copied controls count once per provider thread. Active callers appear when final usage is persisted; unknown root chat prevents any exact total-R&D/ROI claim.",
+  "public_export_note": "Aggregate research-cost disclosure. Per-thread development records and local session files are not distributed."
+}

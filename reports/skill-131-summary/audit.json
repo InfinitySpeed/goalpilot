@@ -1,0 +1,6023 @@
+{
+  "checks": [
+    {
+      "check": "protocol bytes unchanged",
+      "passed": true
+    },
+    {
+      "check": "frozen harness campaign.py",
+      "passed": true
+    },
+    {
+      "check": "frozen harness cases.py",
+      "passed": true
+    },
+    {
+      "check": "frozen harness races.py",
+      "passed": true
+    },
+    {
+      "check": "frozen harness host_helpers.py",
+      "passed": true
+    },
+    {
+      "check": "frozen harness host_process.py",
+      "passed": true
+    },
+    {
+      "check": "frozen harness native_adapter.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/__init__.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/__main__.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/acceptance_validation.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/activity.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/adapters.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/audit_recovery.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/autopilot.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/benchmark.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/cli.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/dossier.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/engine.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/finish.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/gates.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/hook_config.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/hooks.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/lab.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/metrics.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/model.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/monitor.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/originals.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/probe_format.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/probe_helpers.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/probe_lint.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/process.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/quota.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/reuse.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/rpc.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/runtime_kit.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/scope.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/session.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/support.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product goalpilot/view.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/MANIFEST.json",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/SKILL.md",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/agents/openai.yaml",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/references/baseline.json",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/references/caller-invocation.json",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/references/launcher-parity.json",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/references/measurements.md",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/references/sdk.md",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/references/session-study.json",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/references/session-study.md",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/references/session.md",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/__init__.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/__main__.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/acceptance_validation.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/activity.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/adapters.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/audit_recovery.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/autopilot.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/benchmark.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/cli.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/dossier.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/engine.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/finish.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/gates.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/hook_config.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/hooks.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/lab.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/metrics.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/model.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/monitor.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/originals.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/probe_format.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/probe_helpers.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/probe_lint.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/process.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/quota.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/reuse.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/rpc.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/runtime_kit.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/scope.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/session.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/support.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/runtime/goalpilot/view.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/scripts/goalpilot.py",
+      "passed": true
+    },
+    {
+      "check": "frozen new product skills/goalpilot/scripts/install.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/__init__.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/__main__.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/acceptance_validation.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/activity.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/adapters.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/audit_recovery.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/autopilot.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/benchmark.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/cli.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/dossier.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/engine.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/finish.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/gates.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/lab.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/metrics.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/model.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/originals.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/probe_format.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/probe_helpers.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/probe_lint.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/process.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/quota.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/reuse.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/rpc.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/scope.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/session.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/support.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product goalpilot/view.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/MANIFEST.json",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/SKILL.md",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/agents/openai.yaml",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/references/baseline.json",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/references/caller-invocation.json",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/references/launcher-parity.json",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/references/measurements.md",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/references/session-study.json",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/references/session-study.md",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/references/session.md",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/__init__.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/__main__.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/acceptance_validation.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/activity.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/adapters.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/audit_recovery.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/autopilot.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/benchmark.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/cli.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/dossier.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/engine.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/finish.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/gates.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/lab.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/metrics.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/model.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/originals.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/probe_format.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/probe_helpers.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/probe_lint.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/process.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/quota.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/reuse.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/rpc.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/scope.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/session.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/support.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/runtime/goalpilot/view.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/scripts/goalpilot.py",
+      "passed": true
+    },
+    {
+      "check": "frozen old product skills/goalpilot/scripts/install.py",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact annotations-native",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved annotations-native",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact annotations-new",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved annotations-new",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact clinic-native",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved clinic-native",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact clinic-new",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved clinic-new",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact flags-native",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved flags-native",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact flags-new",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved flags-new",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact incidents-native",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved incidents-native",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact incidents-new",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved incidents-new",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact invoices-native",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved invoices-native",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact invoices-new",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved invoices-new",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact invoices-old",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved invoices-old",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact learning-native",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved learning-native",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact learning-new",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved learning-new",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact outbox-native",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved outbox-native",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact outbox-new",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved outbox-new",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact procurement-native",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved procurement-native",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact procurement-new",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved procurement-new",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact timesheets-native",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved timesheets-native",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact timesheets-new",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved timesheets-new",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact vault-native",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved vault-native",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact vault-new",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved vault-new",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact voting-native",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved voting-native",
+      "passed": true
+    },
+    {
+      "check": "carried outcome exact voting-new",
+      "passed": true
+    },
+    {
+      "check": "original carried outcome preserved voting-new",
+      "passed": true
+    },
+    {
+      "check": "no unregistered outcome IDs",
+      "passed": true
+    },
+    {
+      "check": "no duplicate outcomes",
+      "passed": true
+    },
+    {
+      "check": "all44 planned outcomes observed",
+      "passed": true
+    },
+    {
+      "check": "censored raw journal preserved",
+      "passed": true
+    },
+    {
+      "check": "censored final billing never treated as exact or zero",
+      "passed": true
+    },
+    {
+      "check": "censored thread excluded from comparative completed callers",
+      "passed": true
+    },
+    {
+      "check": "fresh external-outage replacement gets exact original source, no partial work",
+      "passed": true
+    },
+    {
+      "check": "product and skill instructions unchanged across host recovery",
+      "passed": true
+    },
+    {
+      "check": "accounting-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "accounting-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "accounting-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "accounting-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "accounting-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "accounting-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "accounting-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "accounting-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "accounting-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "accounting-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "accounting-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "accounting-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "accounting-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "accounting-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "accounting-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "accounting-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "accounting-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "accounting-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "accounting-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "accounting-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "accounting-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "accounting-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "accounting-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "accounting-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "accounting-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "accounting-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "accounting-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "accounting-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "accounting-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "accounting-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "accounting-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "accounting-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "accounting-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "accounting-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "accounting-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "accounting-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "accounting-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "accounting-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "accounting-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "accounting-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "accounting-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "accounting-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "accounting-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "accounting-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "accounting-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "accounting-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "accounting-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "accounting-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "accounting-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "accounting-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "accounting-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "accounting-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "accounting-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "accounting-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "accounting-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "accounting-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "accounting-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "annotations-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "annotations-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "annotations-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "annotations-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "annotations-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "annotations-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "annotations-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "annotations-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "annotations-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "annotations-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "annotations-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "annotations-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "annotations-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "annotations-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "annotations-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "annotations-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "annotations-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "annotations-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "annotations-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "annotations-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "annotations-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "annotations-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "annotations-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "annotations-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "annotations-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "annotations-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "annotations-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "annotations-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "annotations-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "annotations-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "annotations-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "annotations-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "annotations-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "annotations-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "annotations-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "annotations-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "annotations-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "annotations-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "annotations-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "annotations-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "annotations-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "annotations-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "annotations-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "annotations-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "annotations-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "annotations-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "annotations-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "annotations-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "annotations-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "annotations-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "annotations-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "annotations-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "annotations-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "annotations-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "annotations-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "annotations-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "clinic-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "clinic-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "clinic-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "clinic-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "clinic-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "clinic-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "clinic-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "clinic-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "clinic-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "clinic-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "clinic-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "clinic-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "clinic-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "clinic-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "clinic-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "clinic-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "clinic-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "clinic-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "clinic-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "clinic-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "clinic-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "clinic-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "clinic-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "clinic-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "clinic-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "clinic-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "clinic-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "clinic-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "clinic-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "clinic-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "clinic-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "clinic-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "clinic-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "clinic-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "clinic-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "clinic-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "clinic-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "clinic-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "clinic-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "clinic-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "clinic-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "clinic-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "clinic-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "clinic-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "clinic-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "clinic-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "clinic-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "clinic-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "clinic-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "clinic-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "clinic-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "clinic-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "clinic-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "clinic-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "clinic-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "clinic-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "clinic-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "documents-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "documents-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "documents-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "documents-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "documents-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "documents-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "documents-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "documents-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "documents-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "documents-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "documents-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "documents-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "documents-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "documents-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "documents-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "documents-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "documents-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "documents-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "documents-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "documents-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "documents-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "documents-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "documents-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "documents-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "documents-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "documents-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "documents-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "documents-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "documents-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "documents-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "documents-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "documents-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "documents-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "documents-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "documents-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "documents-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "documents-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "documents-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "documents-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "documents-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "documents-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "documents-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "documents-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "documents-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "documents-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "documents-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "documents-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "documents-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "documents-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "documents-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "documents-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "documents-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "documents-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "documents-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "documents-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "documents-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "documents-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "documents-old one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "documents-old same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "documents-old actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "documents-old actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "documents-old unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "documents-old provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "documents-old valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "documents-old whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "documents-old exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "documents-old cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "documents-old meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "documents-old no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "documents-old no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "documents-old total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "documents-old actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "documents-old preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "documents-old sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "documents-old sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "documents-old sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "documents-old immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "documents-old actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "documents-old ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "documents-old frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "documents-old no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "documents-old exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "documents-old ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "documents-old actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "documents-old complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "documents-old stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "etl-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "etl-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "etl-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "etl-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "etl-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "etl-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "etl-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "etl-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "etl-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "etl-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "etl-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "etl-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "etl-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "etl-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "etl-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "etl-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "etl-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "etl-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "etl-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "etl-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "etl-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "etl-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "etl-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "etl-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "etl-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "etl-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "etl-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "etl-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "etl-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "etl-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "etl-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "etl-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "etl-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "etl-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "etl-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "etl-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "etl-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "etl-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "etl-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "etl-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "etl-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "etl-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "etl-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "etl-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "etl-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "etl-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "etl-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "etl-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "etl-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "etl-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "etl-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "etl-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "etl-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "etl-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "etl-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "etl-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "etl-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "flags-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "flags-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "flags-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "flags-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "flags-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "flags-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "flags-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "flags-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "flags-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "flags-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "flags-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "flags-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "flags-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "flags-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "flags-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "flags-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "flags-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "flags-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "flags-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "flags-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "flags-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "flags-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "flags-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "flags-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "flags-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "flags-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "flags-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "flags-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "flags-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "flags-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "flags-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "flags-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "flags-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "flags-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "flags-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "flags-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "flags-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "flags-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "flags-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "flags-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "flags-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "flags-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "flags-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "flags-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "flags-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "flags-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "flags-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "flags-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "flags-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "flags-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "flags-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "flags-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "flags-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "flags-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "flags-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "flags-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "flags-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "incidents-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "incidents-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "incidents-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "incidents-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "incidents-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "incidents-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "incidents-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "incidents-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "incidents-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "incidents-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "incidents-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "incidents-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "incidents-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "incidents-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "incidents-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "incidents-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "incidents-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "incidents-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "incidents-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "incidents-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "incidents-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "incidents-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "incidents-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "incidents-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "incidents-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "incidents-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "incidents-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "incidents-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "incidents-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "incidents-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "incidents-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "incidents-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "incidents-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "incidents-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "incidents-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "incidents-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "incidents-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "incidents-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "incidents-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "incidents-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "incidents-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "incidents-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "incidents-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "incidents-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "incidents-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "incidents-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "incidents-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "incidents-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "incidents-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "incidents-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "incidents-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "incidents-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "incidents-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "incidents-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "incidents-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "incidents-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "incidents-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "invoices-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "invoices-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "invoices-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "invoices-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "invoices-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "invoices-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "invoices-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "invoices-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "invoices-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "invoices-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "invoices-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "invoices-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "invoices-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "invoices-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "invoices-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "invoices-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "invoices-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "invoices-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "invoices-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "invoices-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "invoices-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "invoices-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "invoices-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "invoices-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "invoices-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "invoices-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "invoices-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "invoices-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "invoices-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "invoices-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "invoices-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "invoices-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "invoices-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "invoices-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "invoices-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "invoices-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "invoices-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "invoices-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "invoices-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "invoices-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "invoices-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "invoices-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "invoices-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "invoices-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "invoices-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "invoices-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "invoices-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "invoices-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "invoices-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "invoices-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "invoices-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "invoices-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "invoices-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "invoices-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "invoices-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "invoices-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "invoices-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "invoices-old one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "invoices-old same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "invoices-old actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "invoices-old actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "invoices-old unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "invoices-old provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "invoices-old valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "invoices-old whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "invoices-old exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "invoices-old cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "invoices-old meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "invoices-old no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "invoices-old no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "invoices-old total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "invoices-old actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "invoices-old preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "invoices-old sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "invoices-old sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "invoices-old sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "invoices-old immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "invoices-old actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "invoices-old ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "invoices-old frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "invoices-old no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "invoices-old exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "invoices-old ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "invoices-old actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "invoices-old complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "invoices-old stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "learning-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "learning-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "learning-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "learning-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "learning-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "learning-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "learning-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "learning-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "learning-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "learning-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "learning-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "learning-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "learning-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "learning-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "learning-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "learning-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "learning-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "learning-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "learning-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "learning-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "learning-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "learning-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "learning-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "learning-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "learning-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "learning-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "learning-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "learning-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "learning-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "learning-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "learning-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "learning-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "learning-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "learning-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "learning-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "learning-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "learning-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "learning-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "learning-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "learning-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "learning-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "learning-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "learning-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "learning-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "learning-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "learning-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "learning-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "learning-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "learning-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "learning-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "learning-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "learning-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "learning-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "learning-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "learning-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "learning-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "learning-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "outbox-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "outbox-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "outbox-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "outbox-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "outbox-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "outbox-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "outbox-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "outbox-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "outbox-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "outbox-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "outbox-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "outbox-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "outbox-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "outbox-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "outbox-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "outbox-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "outbox-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "outbox-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "outbox-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "outbox-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "outbox-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "outbox-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "outbox-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "outbox-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "outbox-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "outbox-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "outbox-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "outbox-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "outbox-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "outbox-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "outbox-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "outbox-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "outbox-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "outbox-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "outbox-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "outbox-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "outbox-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "outbox-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "outbox-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "outbox-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "outbox-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "outbox-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "outbox-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "outbox-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "outbox-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "outbox-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "outbox-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "outbox-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "outbox-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "outbox-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "outbox-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "outbox-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "outbox-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "outbox-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "outbox-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "outbox-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "outbox-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "procurement-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "procurement-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "procurement-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "procurement-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "procurement-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "procurement-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "procurement-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "procurement-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "procurement-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "procurement-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "procurement-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "procurement-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "procurement-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "procurement-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "procurement-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "procurement-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "procurement-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "procurement-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "procurement-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "procurement-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "procurement-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "procurement-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "procurement-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "procurement-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "procurement-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "procurement-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "procurement-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "procurement-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "procurement-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "procurement-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "procurement-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "procurement-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "procurement-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "procurement-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "procurement-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "procurement-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "procurement-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "procurement-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "procurement-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "procurement-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "procurement-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "procurement-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "procurement-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "procurement-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "procurement-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "procurement-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "procurement-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "procurement-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "procurement-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "procurement-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "procurement-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "procurement-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "procurement-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "procurement-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "procurement-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "procurement-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "procurement-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "rental-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "rental-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "rental-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "rental-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "rental-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "rental-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "rental-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "rental-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "rental-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "rental-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "rental-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "rental-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "rental-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "rental-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "rental-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "rental-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "rental-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "rental-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "rental-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "rental-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "rental-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "rental-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "rental-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "rental-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "rental-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "rental-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "rental-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "rental-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "rental-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "rental-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "rental-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "rental-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "rental-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "rental-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "rental-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "rental-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "rental-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "rental-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "rental-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "rental-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "rental-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "rental-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "rental-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "rental-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "rental-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "rental-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "rental-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "rental-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "rental-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "rental-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "rental-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "rental-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "rental-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "rental-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "rental-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "rental-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "rental-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "rental-old one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "rental-old same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "rental-old actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "rental-old actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "rental-old unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "rental-old provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "rental-old valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "rental-old whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "rental-old exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "rental-old cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "rental-old meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "rental-old no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "rental-old no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "rental-old total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "rental-old actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "rental-old preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "rental-old sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "rental-old sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "rental-old sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "rental-old immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "rental-old actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "rental-old ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "rental-old frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "rental-old no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "rental-old exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "rental-old ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "rental-old actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "rental-old complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "rental-old stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "tickets-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "tickets-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "tickets-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "tickets-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "tickets-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "tickets-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "tickets-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "tickets-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "tickets-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "tickets-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "tickets-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "tickets-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "tickets-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "tickets-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "tickets-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "tickets-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "tickets-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "tickets-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "tickets-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "tickets-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "tickets-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "tickets-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "tickets-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "tickets-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "tickets-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "tickets-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "tickets-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "tickets-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "tickets-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "tickets-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "tickets-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "tickets-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "tickets-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "tickets-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "tickets-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "tickets-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "tickets-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "tickets-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "tickets-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "tickets-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "tickets-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "tickets-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "tickets-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "tickets-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "tickets-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "tickets-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "tickets-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "tickets-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "tickets-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "tickets-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "tickets-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "tickets-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "tickets-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "tickets-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "tickets-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "tickets-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "vault-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "vault-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "vault-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "vault-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "vault-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "vault-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "vault-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "vault-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "vault-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "vault-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "vault-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "vault-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "vault-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "vault-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "vault-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "vault-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "vault-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "vault-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "vault-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "vault-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "vault-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "vault-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "vault-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "vault-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "vault-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "vault-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "vault-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "vault-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "vault-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "vault-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "vault-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "vault-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "vault-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "vault-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "vault-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "vault-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "vault-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "vault-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "vault-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "vault-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "vault-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "vault-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "vault-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "vault-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "vault-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "vault-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "vault-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "vault-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "vault-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "vault-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "vault-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "vault-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "vault-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "vault-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "vault-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "vault-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "vault-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "voting-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "voting-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "voting-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "voting-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "voting-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "voting-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "voting-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "voting-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "voting-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "voting-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "voting-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "voting-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "voting-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "voting-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "voting-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "voting-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "voting-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "voting-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "voting-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "voting-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "voting-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "voting-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "voting-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "voting-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "voting-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "voting-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "voting-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "voting-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "voting-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "voting-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "voting-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "voting-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "voting-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "voting-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "voting-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "voting-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "voting-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "voting-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "voting-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "voting-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "voting-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "voting-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "voting-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "voting-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "voting-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "voting-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "voting-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "voting-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "voting-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "voting-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "voting-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "voting-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "voting-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "voting-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "voting-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "voting-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "voting-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native genuine native goal created",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native no client-forced native completion",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native genuine complete at stop",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new one fresh caller thread",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new same requested model effort permissions",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new actual effective execution permissions",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new actual provider model and effort",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new unique actual model thread",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new provider usage observed",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new valid raw counters",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new whole caller exact counter reconstruction",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new exact raw and uncached arithmetic",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new cumulative counters monotonic",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new meter complete, no unknown billed as zero",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new no unmetered subagents",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new no nested controller model",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new total elapsed includes independent judge",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new actual explicit discovered project skill",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new preflight discovery before paid coding",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new sealed session.json",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new sealed session-state.json",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new sealed acceptance.json",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new immutable goal bytes",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new actual supported closure",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new actual Stop verification owns closure",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new calling session preserved",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new real Codex Stop hook completion observed",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new ordinary user goal supplied once",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new frozen public goal unchanged",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new no free prewritten goal in repo",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new exact frozen independent grader executed",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new ten fixed behavioral groups present",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new actual external judge log agrees",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new complete external domain/API/concurrency/data result",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new stopping or incorrect artifact never counted as success",
+      "passed": true
+    },
+    {
+      "check": "accounting byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "annotations byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "clinic byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "documents byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "etl byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "flags byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "incidents byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "invoices byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "learning byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "loyalty byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "manufacturing byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "outbox byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "procurement byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "rental byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "subscriptions byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "tickets byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "timesheets byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "vault byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "voting byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "warehouse byte-identical initial application source across arms",
+      "passed": true
+    },
+    {
+      "check": "new exact closure count",
+      "passed": true
+    },
+    {
+      "check": "new exact sum raw",
+      "passed": true
+    },
+    {
+      "check": "new exact sum input_tokens",
+      "passed": true
+    },
+    {
+      "check": "new exact sum cached_input_tokens",
+      "passed": true
+    },
+    {
+      "check": "new exact sum output_tokens",
+      "passed": true
+    },
+    {
+      "check": "new exact sum uncached_input",
+      "passed": true
+    },
+    {
+      "check": "new exact sum uncached_plus_output",
+      "passed": true
+    },
+    {
+      "check": "native exact closure count",
+      "passed": true
+    },
+    {
+      "check": "native exact sum raw",
+      "passed": true
+    },
+    {
+      "check": "native exact sum input_tokens",
+      "passed": true
+    },
+    {
+      "check": "native exact sum cached_input_tokens",
+      "passed": true
+    },
+    {
+      "check": "native exact sum output_tokens",
+      "passed": true
+    },
+    {
+      "check": "native exact sum uncached_input",
+      "passed": true
+    },
+    {
+      "check": "native exact sum uncached_plus_output",
+      "passed": true
+    },
+    {
+      "check": "old exact closure count",
+      "passed": true
+    },
+    {
+      "check": "old exact sum raw",
+      "passed": true
+    },
+    {
+      "check": "old exact sum input_tokens",
+      "passed": true
+    },
+    {
+      "check": "old exact sum cached_input_tokens",
+      "passed": true
+    },
+    {
+      "check": "old exact sum output_tokens",
+      "passed": true
+    },
+    {
+      "check": "old exact sum uncached_input",
+      "passed": true
+    },
+    {
+      "check": "old exact sum uncached_plus_output",
+      "passed": true
+    },
+    {
+      "check": "independent matched saving seconds",
+      "passed": true
+    },
+    {
+      "check": "independent matched saving uncached_input",
+      "passed": true
+    },
+    {
+      "check": "independent matched saving output_tokens",
+      "passed": true
+    },
+    {
+      "check": "whole preregistered continuation completed",
+      "passed": true
+    }
+  ],
+  "passed": 1503,
+  "failed": 0,
+  "successful": true,
+  "outcomes_observed": 44,
+  "planned_outcomes": 44,
+  "model_calls": 0,
+  "scope": "Integrity/counter/contract audit only; target achievement remains separate and cannot be manufactured by this audit."
+}

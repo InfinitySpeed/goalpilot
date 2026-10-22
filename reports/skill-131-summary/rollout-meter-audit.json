@@ -1,0 +1,449 @@
+{
+  "outcomes_observed": 44,
+  "passed": 44,
+  "successful": true,
+  "model_calls": 0,
+  "reasoning_text_exposed": false,
+  "checks": [
+    {
+      "id": "accounting-native",
+      "metadata_observations": 11,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 275224,
+        "cached_input_tokens": 249856,
+        "output_tokens": 12761
+      }
+    },
+    {
+      "id": "accounting-new",
+      "metadata_observations": 4,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 75579,
+        "cached_input_tokens": 69120,
+        "output_tokens": 3431
+      }
+    },
+    {
+      "id": "annotations-native",
+      "metadata_observations": 8,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 171453,
+        "cached_input_tokens": 137728,
+        "output_tokens": 9234
+      }
+    },
+    {
+      "id": "annotations-new",
+      "metadata_observations": 7,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 132003,
+        "cached_input_tokens": 116736,
+        "output_tokens": 4042
+      }
+    },
+    {
+      "id": "clinic-native",
+      "metadata_observations": 9,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 205835,
+        "cached_input_tokens": 174464,
+        "output_tokens": 10815
+      }
+    },
+    {
+      "id": "clinic-new",
+      "metadata_observations": 4,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 77245,
+        "cached_input_tokens": 66304,
+        "output_tokens": 4481
+      }
+    },
+    {
+      "id": "documents-native",
+      "metadata_observations": 9,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 203508,
+        "cached_input_tokens": 185728,
+        "output_tokens": 10479
+      }
+    },
+    {
+      "id": "documents-new",
+      "metadata_observations": 6,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 110378,
+        "cached_input_tokens": 99072,
+        "output_tokens": 4475
+      }
+    },
+    {
+      "id": "documents-old",
+      "metadata_observations": 7,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 155667,
+        "cached_input_tokens": 124416,
+        "output_tokens": 10293
+      }
+    },
+    {
+      "id": "etl-native",
+      "metadata_observations": 9,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 208657,
+        "cached_input_tokens": 186368,
+        "output_tokens": 11759
+      }
+    },
+    {
+      "id": "etl-new",
+      "metadata_observations": 5,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 94912,
+        "cached_input_tokens": 72576,
+        "output_tokens": 4232
+      }
+    },
+    {
+      "id": "flags-native",
+      "metadata_observations": 9,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 200353,
+        "cached_input_tokens": 179456,
+        "output_tokens": 9686
+      }
+    },
+    {
+      "id": "flags-new",
+      "metadata_observations": 3,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 54519,
+        "cached_input_tokens": 48512,
+        "output_tokens": 3910
+      }
+    },
+    {
+      "id": "incidents-native",
+      "metadata_observations": 9,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 200389,
+        "cached_input_tokens": 189184,
+        "output_tokens": 9185
+      }
+    },
+    {
+      "id": "incidents-new",
+      "metadata_observations": 5,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 98901,
+        "cached_input_tokens": 87936,
+        "output_tokens": 4134
+      }
+    },
+    {
+      "id": "invoices-native",
+      "metadata_observations": 11,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 266472,
+        "cached_input_tokens": 231296,
+        "output_tokens": 11246
+      }
+    },
+    {
+      "id": "invoices-new",
+      "metadata_observations": 6,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 109365,
+        "cached_input_tokens": 94976,
+        "output_tokens": 3617
+      }
+    },
+    {
+      "id": "invoices-old",
+      "metadata_observations": 9,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 209988,
+        "cached_input_tokens": 201856,
+        "output_tokens": 10207
+      }
+    },
+    {
+      "id": "learning-native",
+      "metadata_observations": 10,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 229112,
+        "cached_input_tokens": 201856,
+        "output_tokens": 10539
+      }
+    },
+    {
+      "id": "learning-new",
+      "metadata_observations": 11,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 235091,
+        "cached_input_tokens": 214656,
+        "output_tokens": 5228
+      }
+    },
+    {
+      "id": "loyalty-native",
+      "metadata_observations": 10,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 233296,
+        "cached_input_tokens": 207616,
+        "output_tokens": 12874
+      }
+    },
+    {
+      "id": "loyalty-new",
+      "metadata_observations": 5,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 93993,
+        "cached_input_tokens": 82816,
+        "output_tokens": 4713
+      }
+    },
+    {
+      "id": "manufacturing-native",
+      "metadata_observations": 9,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 199342,
+        "cached_input_tokens": 170496,
+        "output_tokens": 10228
+      }
+    },
+    {
+      "id": "manufacturing-new",
+      "metadata_observations": 5,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 100424,
+        "cached_input_tokens": 86272,
+        "output_tokens": 3865
+      }
+    },
+    {
+      "id": "manufacturing-old",
+      "metadata_observations": 8,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 182117,
+        "cached_input_tokens": 162304,
+        "output_tokens": 9505
+      }
+    },
+    {
+      "id": "outbox-native",
+      "metadata_observations": 9,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 201470,
+        "cached_input_tokens": 193792,
+        "output_tokens": 9887
+      }
+    },
+    {
+      "id": "outbox-new",
+      "metadata_observations": 4,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 76585,
+        "cached_input_tokens": 60544,
+        "output_tokens": 4225
+      }
+    },
+    {
+      "id": "procurement-native",
+      "metadata_observations": 12,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 314671,
+        "cached_input_tokens": 289408,
+        "output_tokens": 13733
+      }
+    },
+    {
+      "id": "procurement-new",
+      "metadata_observations": 6,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 117789,
+        "cached_input_tokens": 96640,
+        "output_tokens": 4888
+      }
+    },
+    {
+      "id": "rental-native",
+      "metadata_observations": 10,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 249491,
+        "cached_input_tokens": 237312,
+        "output_tokens": 13174
+      }
+    },
+    {
+      "id": "rental-new",
+      "metadata_observations": 4,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 76141,
+        "cached_input_tokens": 65920,
+        "output_tokens": 3773
+      }
+    },
+    {
+      "id": "rental-old",
+      "metadata_observations": 8,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 183926,
+        "cached_input_tokens": 165504,
+        "output_tokens": 10083
+      }
+    },
+    {
+      "id": "subscriptions-native",
+      "metadata_observations": 11,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 277303,
+        "cached_input_tokens": 232576,
+        "output_tokens": 12869
+      }
+    },
+    {
+      "id": "subscriptions-new",
+      "metadata_observations": 5,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 98659,
+        "cached_input_tokens": 89216,
+        "output_tokens": 4106
+      }
+    },
+    {
+      "id": "tickets-native",
+      "metadata_observations": 9,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 196882,
+        "cached_input_tokens": 176256,
+        "output_tokens": 8822
+      }
+    },
+    {
+      "id": "tickets-new",
+      "metadata_observations": 4,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 76057,
+        "cached_input_tokens": 60672,
+        "output_tokens": 3765
+      }
+    },
+    {
+      "id": "timesheets-native",
+      "metadata_observations": 8,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 175294,
+        "cached_input_tokens": 138880,
+        "output_tokens": 10282
+      }
+    },
+    {
+      "id": "timesheets-new",
+      "metadata_observations": 7,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 134066,
+        "cached_input_tokens": 121472,
+        "output_tokens": 4506
+      }
+    },
+    {
+      "id": "vault-native",
+      "metadata_observations": 9,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 202218,
+        "cached_input_tokens": 180224,
+        "output_tokens": 10708
+      }
+    },
+    {
+      "id": "vault-new",
+      "metadata_observations": 6,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 124708,
+        "cached_input_tokens": 117504,
+        "output_tokens": 4921
+      }
+    },
+    {
+      "id": "voting-native",
+      "metadata_observations": 10,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 230898,
+        "cached_input_tokens": 207488,
+        "output_tokens": 11428
+      }
+    },
+    {
+      "id": "voting-new",
+      "metadata_observations": 4,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 77603,
+        "cached_input_tokens": 71040,
+        "output_tokens": 4774
+      }
+    },
+    {
+      "id": "warehouse-native",
+      "metadata_observations": 11,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 253704,
+        "cached_input_tokens": 226176,
+        "output_tokens": 11300
+      }
+    },
+    {
+      "id": "warehouse-new",
+      "metadata_observations": 5,
+      "matched_persisted_final_counters": true,
+      "final_counters": {
+        "input_tokens": 101221,
+        "cached_input_tokens": 86912,
+        "output_tokens": 4927
+      }
+    }
+  ]
+}

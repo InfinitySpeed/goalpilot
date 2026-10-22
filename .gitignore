@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.coverage
+.pytest_cache/
+.DS_Store
+.env
+.env.*
+auth.json
+credentials.json
+reports/tests.json
+reports/tests.txt
+validation.json

@@ -1,0 +1,27 @@
+name: Offline checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run offline regressions
+        run: python validate.py > validation.json
+      - name: Recompute benchmark aggregates
+        run: python tools/check_benchmark.py
+      - name: Build and verify the portable skill
+        run: python tools/build_skill.py

@@ -1,0 +1,6 @@
+interface:
+  display_name: "GoalPilot"
+  short_description: "Terminer, vérifier et reprendre un goal de code"
+  default_prompt: "Utilise $goalpilot pour réaliser mon objectif dans ce projet, avec vérifications et preuves persistantes."
+policy:
+  allow_implicit_invocation: false

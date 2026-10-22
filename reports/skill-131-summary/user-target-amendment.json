@@ -1,0 +1,19 @@
+{
+  "accepted_at": 1792619619.7193072,
+  "instruction": "Tolérance de 5 points : au moins 25 % de temps et 45 % de tokens",
+  "time_saving_percent": 25,
+  "uncached_input_saving_percent": 45,
+  "output_saving_percent": 45,
+  "correct_closures_at_least_native": true,
+  "minimum_candidate_closures": 18,
+  "primary_distinct_missions": 20,
+  "all_other_registered_criteria_unchanged": true,
+  "observed_outcomes_at_amendment": 9,
+  "observed_matched_pairs_at_amendment": 4,
+  "original_registered_thresholds_preserved": {
+    "time": 30,
+    "uncached_input": 50,
+    "output": 50
+  },
+  "reason": "Explicit user revision during ongoing work, disclosed supplementary analysis; do not rewrite preregistration."
+}

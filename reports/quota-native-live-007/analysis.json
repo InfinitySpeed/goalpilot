@@ -1,0 +1,143 @@
+{
+  "complete": true,
+  "planned_trials": 4,
+  "completed_trials": 4,
+  "totals": {
+    "native_goal": {
+      "executed": 2,
+      "closed_correct": 0,
+      "correct_artifacts": 2,
+      "seconds": 675.078631264,
+      "raw_tokens": 1480502,
+      "uncached_tokens": 106678,
+      "output_tokens": 28697,
+      "uncached_input_tokens": 77981,
+      "cached_input_tokens": 1373824,
+      "groups_passed": 52
+    },
+    "goalpilot": {
+      "executed": 2,
+      "closed_correct": 2,
+      "correct_artifacts": 2,
+      "seconds": 576.6831837600002,
+      "raw_tokens": 454622,
+      "uncached_tokens": 78430,
+      "output_tokens": 28207,
+      "uncached_input_tokens": 50223,
+      "cached_input_tokens": 376192,
+      "groups_passed": 52
+    }
+  },
+  "savings_percent": {
+    "seconds": 14.575405433848,
+    "raw_tokens": 69.29271287711872,
+    "uncached_tokens": 26.479686533305834,
+    "output_tokens": 1.7074955570268724,
+    "uncached_input_tokens": 35.59585027121991,
+    "cached_input_tokens": 72.61716202366533
+  },
+  "no_paired_regressions": true,
+  "joint_20_percent_target_met": false,
+  "integrity_verified": true,
+  "usage_complete": true,
+  "new_known_raw_tokens": 454622,
+  "limitation": "Two familiar synthetic cases; single run per arm. No population claim, quota conversion or pooled old-version savings.",
+  "historical_controls": true,
+  "comparison_known_raw_tokens": 1935124,
+  "quota_observations": {
+    "stockroom-goalpilot": {
+      "windows": [
+        {
+          "bucket": "codex",
+          "window": "primary",
+          "before": {
+            "usedPercent": 65,
+            "resetsAt": 1793119394,
+            "windowDurationMins": 10080
+          },
+          "after": {
+            "usedPercent": 65,
+            "resetsAt": 1793119394,
+            "windowDurationMins": 10080
+          },
+          "same_window": true,
+          "reported_percentage_point_delta": 0,
+          "usable_monotonic_observation": true
+        }
+      ],
+      "exact_attributable_quota_known": false,
+      "limitations": "Integer account-wide percentages; unknown rounding and reporting delay, possible concurrent activity. A zero displayed change does not mean zero quota consumed. Window resets cannot be compared. No exact token-to-quota conversion."
+    },
+    "flowdesk-native_goal": {
+      "windows": [
+        {
+          "bucket": "codex",
+          "window": "primary",
+          "before": {
+            "usedPercent": 58,
+            "resetsAt": 1793119394,
+            "windowDurationMins": 10080
+          },
+          "after": {
+            "usedPercent": 59,
+            "resetsAt": 1793119394,
+            "windowDurationMins": 10080
+          },
+          "same_window": true,
+          "reported_percentage_point_delta": 1,
+          "usable_monotonic_observation": true
+        }
+      ],
+      "exact_attributable_quota_known": false,
+      "limitations": "Integer account-wide percentages; unknown rounding and reporting delay, possible concurrent activity. A zero displayed change does not mean zero quota consumed. Window resets cannot be compared. No exact token-to-quota conversion."
+    },
+    "stockroom-native_goal": {
+      "windows": [
+        {
+          "bucket": "codex",
+          "window": "primary",
+          "before": {
+            "usedPercent": 59,
+            "resetsAt": 1793119394,
+            "windowDurationMins": 10080
+          },
+          "after": {
+            "usedPercent": 59,
+            "resetsAt": 1793119394,
+            "windowDurationMins": 10080
+          },
+          "same_window": true,
+          "reported_percentage_point_delta": 0,
+          "usable_monotonic_observation": true
+        }
+      ],
+      "exact_attributable_quota_known": false,
+      "limitations": "Integer account-wide percentages; unknown rounding and reporting delay, possible concurrent activity. A zero displayed change does not mean zero quota consumed. Window resets cannot be compared. No exact token-to-quota conversion."
+    },
+    "flowdesk-goalpilot": {
+      "windows": [
+        {
+          "bucket": "codex",
+          "window": "primary",
+          "before": {
+            "usedPercent": 64,
+            "resetsAt": 1793119394,
+            "windowDurationMins": 10080
+          },
+          "after": {
+            "usedPercent": 65,
+            "resetsAt": 1793119394,
+            "windowDurationMins": 10080
+          },
+          "same_window": true,
+          "reported_percentage_point_delta": 1,
+          "usable_monotonic_observation": true
+        }
+      ],
+      "exact_attributable_quota_known": false,
+      "limitations": "Integer account-wide percentages; unknown rounding and reporting delay, possible concurrent activity. A zero displayed change does not mean zero quota consumed. Window resets cannot be compared. No exact token-to-quota conversion."
+    }
+  },
+  "exact_attributable_quota_saving_proven": false,
+  "quota_limitation": "Reported account percentages are integral, account-wide and may be delayed. Token savings are not an exact subscription-quota conversion."
+}

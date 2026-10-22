@@ -1,0 +1,1 @@
+Crée un module Python transform.py avec une fonction transform(items) qui nettoie les libellés, retire les valeurs vides, normalise la casse Unicode, déduplique et trie. Utilise uniquement la bibliothèque standard et documente son utilisation.

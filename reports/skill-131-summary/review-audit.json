@@ -1,0 +1,809 @@
+{
+  "successful": true,
+  "passed": 200,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "complete original source/wire/counter/contract audit passed",
+      "passed": true
+    },
+    {
+      "check": "provider wire counters match persisted CLI metadata",
+      "passed": true
+    },
+    {
+      "check": "review derived from exact current original data",
+      "passed": true
+    },
+    {
+      "check": "all44 complete outcomes/20 primary pairs present",
+      "passed": true
+    },
+    {
+      "check": "no outcome or failed attempt removed from completed cohort",
+      "passed": true
+    },
+    {
+      "check": "accounting-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "accounting-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "accounting-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "accounting-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "accounting-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "accounting-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "accounting-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "accounting-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "annotations-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "annotations-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "annotations-native original verdict retained",
+      "passed": true
+    },
+    {
+      "check": "annotations-native declared symmetric review basis",
+      "passed": true
+    },
+    {
+      "check": "annotations-native exact declared reviewed grader",
+      "passed": true
+    },
+    {
+      "check": "annotations-native ten actual external groups passed",
+      "passed": true
+    },
+    {
+      "check": "annotations-native reviewed closure requires real correct artifact",
+      "passed": true
+    },
+    {
+      "check": "annotations-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "annotations-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "annotations-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "annotations-new original verdict retained",
+      "passed": true
+    },
+    {
+      "check": "annotations-new declared symmetric review basis",
+      "passed": true
+    },
+    {
+      "check": "annotations-new exact declared reviewed grader",
+      "passed": true
+    },
+    {
+      "check": "annotations-new ten actual external groups passed",
+      "passed": true
+    },
+    {
+      "check": "annotations-new reviewed closure requires real correct artifact",
+      "passed": true
+    },
+    {
+      "check": "annotations-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "clinic-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "clinic-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "clinic-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "clinic-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "clinic-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "clinic-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "clinic-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "clinic-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "documents-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "documents-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "documents-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "documents-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "documents-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "documents-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "documents-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "documents-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "documents-old original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "documents-old original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "documents-old unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "documents-old all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "etl-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "etl-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "etl-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "etl-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "etl-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "etl-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "etl-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "etl-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "flags-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "flags-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "flags-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "flags-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "flags-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "flags-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "flags-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "flags-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "incidents-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "incidents-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "incidents-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "incidents-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "incidents-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "incidents-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "incidents-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "incidents-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "invoices-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "invoices-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "invoices-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "invoices-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "invoices-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "invoices-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "invoices-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "invoices-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "invoices-old original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "invoices-old original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "invoices-old unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "invoices-old all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "learning-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "learning-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "learning-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "learning-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "learning-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "learning-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "learning-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "learning-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "loyalty-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "loyalty-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "manufacturing-old all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "outbox-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "outbox-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "outbox-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "outbox-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "outbox-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "outbox-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "outbox-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "outbox-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "procurement-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "procurement-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "procurement-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "procurement-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "procurement-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "procurement-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "procurement-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "procurement-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "rental-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "rental-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "rental-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "rental-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "rental-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "rental-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "rental-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "rental-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "rental-old original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "rental-old original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "rental-old unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "rental-old all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native original verdict retained",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native declared symmetric review basis",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native exact declared reviewed grader",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native ten actual external groups passed",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native reviewed closure requires real correct artifact",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new original verdict retained",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new declared symmetric review basis",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new exact declared reviewed grader",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new ten actual external groups passed",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new reviewed closure requires real correct artifact",
+      "passed": true
+    },
+    {
+      "check": "subscriptions-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "tickets-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "tickets-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "tickets-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "tickets-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "tickets-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "tickets-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "tickets-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "tickets-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "timesheets-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "timesheets-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "vault-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "vault-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "vault-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "vault-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "vault-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "vault-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "vault-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "vault-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "voting-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "voting-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "voting-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "voting-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "voting-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "voting-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "voting-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "voting-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "warehouse-native all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new original entire caller usage/time unchanged",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new original completion lifecycle unchanged",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new unaffected quality outcome unchanged",
+      "passed": true
+    },
+    {
+      "check": "warehouse-new all extra real judging cost added, no original cost erased",
+      "passed": true
+    },
+    {
+      "check": "new exact reviewed completion sum",
+      "passed": true
+    },
+    {
+      "check": "native exact reviewed completion sum",
+      "passed": true
+    },
+    {
+      "check": "old exact reviewed completion sum",
+      "passed": true
+    }
+  ],
+  "model_calls": 0,
+  "disclosure": "Reviewed results are post-registration, symmetric and published alongside immutable original scores. No product/goal/source/model outcome change; wire+persisted counters unchanged."
+}
