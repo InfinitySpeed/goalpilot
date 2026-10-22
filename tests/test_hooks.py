@@ -36,9 +36,10 @@ class HookTests(unittest.TestCase):
 
     def test_stop_owns_verification_without_a_model_or_fake_closure(self):
         self.assertEqual(self.activate()['completion_owner'],'codex_stop_hook')
+        self.write_handoff();gp.submit(self.run,self.handoff)
         with patch('goalpilot.adapters.CodexAdapter.execute',side_effect=AssertionError('model')):
             out=hooks.handle(self.event('Stop'))
-        self.assertIn('verified',out['systemMessage'])
+        self.assertIn('goal_complete=true',out['systemMessage'])
         self.assertTrue(self.state()['closed']);self.assertEqual(self.state()['engine_model_calls'],0)
         frozen=(self.run/'acceptance.json').read_bytes()
         hooks.handle(self.event('Stop'))
@@ -49,7 +50,8 @@ class HookTests(unittest.TestCase):
         self.assertEqual(len(self.state()['verifications']),1)
 
     def test_failed_stop_requests_same_session_repair_and_same_checks(self):
-        self.activate();(self.repo/'app.py').write_text('def normalize(xs):return []\n')
+        self.activate();self.write_handoff();gp.submit(self.run,self.handoff)
+        (self.repo/'app.py').write_text('def normalize(xs):return []\n')
         failed=hooks.handle(self.event('Stop'))
         self.assertEqual(failed['decision'],'block');self.assertIn('SAME original goal',failed['reason'])
         self.assertFalse(self.state()['closed']);frozen=(self.run/'acceptance.json').read_bytes()
@@ -57,6 +59,11 @@ class HookTests(unittest.TestCase):
         hooks.handle({**self.event('Stop'),'stop_hook_active':True})
         self.assertTrue(self.state()['closed']);self.assertEqual((self.run/'acceptance.json').read_bytes(),frozen)
         self.assertEqual(len(self.state()['verifications']),2)
+
+    def test_stop_without_criteria_requires_mapping_before_it_can_close(self):
+        self.activate();out=hooks.handle(self.event('Stop'))
+        self.assertEqual(out['decision'],'block');self.assertIn('inventory every atomic outcome',out['reason'])
+        self.assertFalse(self.state()['closed']);self.assertFalse((self.run/'acceptance.json').exists())
 
     def test_budget_expiry_never_requests_more_model_work_or_marks_complete(self):
         self.activate();state=self.state();state['started_at']-=100;gp.sealed_write(self.run,'session-state.json',state)

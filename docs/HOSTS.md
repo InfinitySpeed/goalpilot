@@ -43,13 +43,13 @@ python install.py --host hermes --doctor
 
 The bootstraps reuse Python3.11+ or prepare a user-local Python through uv. The installed skill records the interpreter in `RUNTIME.json`, so the agent does not rely on a user-managed `python3` command or PATH edits. Missing dependency/source downloads need network access; existing-runtime installations work offline.
 
-Engine0.13.0 adds Windows file locking, process-tree cleanup using Windows Job Objects, normalized snapshot paths and UTF-8 launcher behavior. Local Python unittest verification is available on Linux, macOS and Windows. Optional `service_race` still requires POSIX fork and is not a Windows feature. Restricted runners that cannot create the required process job fail verification rather than silently claiming success.
+Engine0.15.0 adds a frozen inventory of goal requirements mapped to verified criteria, alongside exact source quotes and executable-check links. Local Python unittest verification is available on Linux, macOS and Windows. Optional `service_race` still requires POSIX fork and is not a Windows feature. Restricted runners that cannot create the required process job fail verification rather than silently claiming success.
 
 Codex on POSIX can use its optional native Stop hooks. Windows and portable adapters call verification explicitly in the current agent session. They do not install Codex hooks or launch a separate model. Other test frameworks and blanket compatibility with every agent remain outside the supported verified scope.
 
 ## Performance scope
 
-Current engine0.13.0, skill1.4.0 and adapters1.1.0 have no new model benchmark. Published figures describe Codex skill1.3.1 / engine0.12.1. That exact source is retained under [benchmarks/codex-1.3.1](../benchmarks/codex-1.3.1), and the published arithmetic remains reproducible. Do not transfer its percentages to new versions, Windows or other hosts.
+Current engine0.15.0, skill1.6.0 and adapters1.1.0 have no new model benchmark. Published figures describe Codex skill1.3.1 / engine0.12.1. That exact source is retained under [benchmarks/codex-1.3.1](../benchmarks/codex-1.3.1), and the published arithmetic remains reproducible. Do not transfer its percentages to new versions, Windows or other hosts.
 
 ## Sources
 

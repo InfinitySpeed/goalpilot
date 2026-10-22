@@ -18,9 +18,9 @@ Use `--doctor` to validate installed files and the recorded runtime, and `--dry-
 
 In Codex use `$goalpilot <complete goal>`, in Claude Code `/goalpilot <complete goal>`, and in Antigravity/Hermes ask the agent to load and use GoalPilot for the goal. T3 Code uses its underlying provider's integration. For another tool, have the agent read the installed `SKILL.md` from the returned path.
 
-Include the desired outcome, constraints and behavior/data to preserve. The skill saves the complete request, captures original tests and records deadlines and verification limits. Work happens in the calling agent session. The agent calls local verification before concluding; configured Codex Stop hooks can do this automatically on POSIX.
+Include the desired outcome, constraints and behavior/data to preserve. Before coding, GoalPilot's skill inventories each atomic requirement, including negative constraints, then maps every requirement to observable criteria. For vague quality words, it inspects the project for a defensible measurable proxy or leaves that requirement blocked. Quotes are checked against the original request; each criterion links to executable checks. The original request and tests remain frozen. Work happens in the calling agent session.
 
-A success requires `scope_passed` and `closed:true`. Failures, unsupported checks, infrastructure restrictions and exhausted budgets stay open. Repair retains the same run, acceptance, tests and budget; do not reset evidence to claim completion.
+The agent submits this requirement-to-criterion-to-check map before finishing. A configured Codex Stop hook verifies it automatically on POSIX; other hosts use explicit local verification. A goal is complete only when `goal_complete:true`: every inventoried requirement, criterion and frozen test passed. A green suite without mapped requirements and criteria cannot be accepted. Missing behavior, blockers, unsupported checks and exhausted budgets stay open. Repair retains the same goal, inventory, criteria, checks, tests and budget. The map makes omissions easier to detect but cannot prove the agent's inventory captured all implicit intent.
 
 ## Optional Codex Stop hooks
 

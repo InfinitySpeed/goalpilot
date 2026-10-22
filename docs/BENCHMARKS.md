@@ -2,7 +2,7 @@
 
 This report covers skill **1.3.1**, engine **0.12.1**, and the complete calling invocation. It distinguishes observed results from general product guarantees.
 
-This is the recorded **Codex automatic-hook benchmark**. The new installer and Claude Code / Antigravity adapter are not additional measured treatments. Their availability does not extend these performance figures to other hosts or explicit-finish delivery modes. The measured reference is retained in benchmarks/codex-1.3.1; current engine0.13.0/skill1.4.0 and its portability changes are not the measured treatment.
+This is the recorded **Codex automatic-hook benchmark**. The new installer and Claude Code / Antigravity adapter are not additional measured treatments. Their availability does not extend these performance figures to other hosts or explicit-finish delivery modes. The measured reference is retained in benchmarks/codex-1.3.1; current engine0.15.0/skill1.6.0 and its goal-requirement mapping are not the measured treatment.
 
 ## Primary comparison
 

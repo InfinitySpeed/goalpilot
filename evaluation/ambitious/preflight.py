@@ -1,6 +1,7 @@
 """Validate the frozen judge on correct complete platforms and isolated faults."""
 from pathlib import Path
 import tempfile
+from concurrent.futures import ThreadPoolExecutor
 from .cases import materialize
 from .specs import SPECS
 from .judge import evaluate
@@ -34,25 +35,29 @@ MUTANTS={
 ]}
 
 
+def _run_case(root,name):
+    repo=materialize(root/name,name,True);correct=[]
+    for seed in(90173,470117):correct.extend(evaluate(name,repo,seed))
+    failures=[r for r in correct if not r['passed']]
+    if failures:raise AssertionError((name,'Correct reference rejected',failures))
+    original=(repo/'engine.py').read_text();mutants=[]
+    for label,group,replacements in MUTANTS[name]:
+        mutated=original
+        for old,new in replacements:
+            assert old in mutated,(name,label,old);mutated=mutated.replace(old,new)
+        compile(mutated,label,'exec');(repo/'engine.py').write_text(mutated)
+        rows=evaluate(name,repo,groups=[group]);assert not rows[0]['passed'],(name,'Fault not detected',label)
+        mutants.append({'id':label,'group':group,'rejected':True})
+    (repo/'engine.py').write_text(original)
+    stub=materialize(root/(name+'-stub'),name);initial=evaluate(name,stub,groups=['public','journey'])
+    assert not any(r['passed']for r in initial)
+    return name,{'reference_groups_passed':len(correct),'initial_groups_failed':len(initial),'isolated_faults':mutants}
+
+
 def run():
-    result={}
     with tempfile.TemporaryDirectory(prefix='goalpilot-ambitious-preflight-')as t:
         root=Path(t)
-        for name in SPECS:
-            repo=materialize(root/name,name,True);correct=[]
-            for seed in(90173,470117):correct.extend(evaluate(name,repo,seed))
-            failures=[r for r in correct if not r['passed']]
-            if failures:raise AssertionError((name,'Correct reference rejected',failures))
-            original=(repo/'engine.py').read_text();mutants=[]
-            for label,group,replacements in MUTANTS[name]:
-                mutated=original
-                for old,new in replacements:
-                    assert old in mutated,(name,label,old);mutated=mutated.replace(old,new)
-                compile(mutated,label,'exec');(repo/'engine.py').write_text(mutated)
-                rows=evaluate(name,repo,groups=[group]);assert not rows[0]['passed'],(name,'Fault not detected',label)
-                mutants.append({'id':label,'group':group,'rejected':True})
-            (repo/'engine.py').write_text(original)
-            stub=materialize(root/(name+'-stub'),name);initial=evaluate(name,stub,groups=['public','journey'])
-            assert not any(r['passed']for r in initial)
-            result[name]={'reference_groups_passed':len(correct),'initial_groups_failed':len(initial),'isolated_faults':mutants}
-    return result
+        # Each platform uses a distinct temporary workspace and only reads the
+        # shared immutable specifications. Keep report order deterministic.
+        with ThreadPoolExecutor(max_workers=3)as pool:
+            return dict(pool.map(lambda name:_run_case(root,name),SPECS))

@@ -4,17 +4,18 @@ GoalPilot combines instructions for the calling agent with a local Python verifi
 
 ```mermaid
 flowchart TD
-    U[Full user goal] --> S[Coding-agent skill]
-    S --> R[Local run: goal, snapshots, deadline, verification budget]
-    R --> C[Current coding-agent session implements and tests]
+    U[Full user goal] --> S[Coding-agent inventories quoted requirements]
+    S --> R[Local run: exact goal, snapshots, deadline, verification budget]
+    R --> C[Current coding-agent session implements and links checks]
     H[Optional Codex command hooks] -. observe and diagnose .-> C
     K[Optional implementation and test helpers] -. reusable infrastructure .-> C
-    C --> V[Explicit finish or Codex Stop verification]
+    C --> V[Requirements map to criteria and executable checks]
     V --> O[Original test gate]
     O --> B[Strengthened frozen test gate]
     B --> A[Submitted acceptance checks]
-    A -->|All supported checks pass| P[scope_passed and closed=true]
-    V -->|Failure with budget remaining| C
+    A -->|All checks, requirements and criteria pass| P[goal_complete=true]
+    A -->|Missing or blocked requirement| C
+    V -->|Check failure with budget remaining| C
     V -->|Unsupported, infrastructure error or exhausted| X[Goal remains open]
 ```
 
@@ -25,6 +26,7 @@ flowchart TD
 | [Host installer](../install.py) and [portable adapter](../integrations/portable/SKILL.md) | Auto-select or explicitly configure native/generic skills, prepare a runtime and use explicit verification where native Stop hooks are absent. |
 | [Skill instructions](../skills/goalpilot/SKILL.md) | Save the full request, guide implementation and avoid unnecessary repeated reads or verification. |
 | [Session protocol](../goalpilot/session.py) | Preserve the original contract, freeze acceptance, account for verification attempts and invalidate closure after source changes. |
+| [Criterion mapper](../goalpilot/criteria.py) | Require an exact-quoted requirement inventory, ensure every requirement and criterion maps, validate check links, and report verified, missing, blocked or pending status. |
 | [Test gates](../goalpilot/gates.py) | Execute retained tests against disposable worktree copies. The strengthened suite supplements the original suite. |
 | [Local hooks](../goalpilot/hooks.py) | Connect Codex command events and Stop to the local protocol. |
 | [Passive monitor](../goalpilot/monitor.py) | Report repeated failure patterns and bounded diagnostic tails without inference. |
@@ -40,9 +42,9 @@ Optional helpers avoid reimplementing generic infrastructure. Business workflows
 
 ## What completion means
 
-The protocol retains the original goal bytes, original tests, first accepted checks, source fingerprints and verification outcomes. Repair does not renew the deadline or replace frozen acceptance. A source change after verification invalidates closure on the next protocol check.
+The protocol retains the original goal bytes, original tests, goal-derived requirement inventory and criteria, linked checks, source fingerprints and verification outcomes. Each requirement and criterion must quote text in the original goal; every requirement maps to one or more criteria, which link to a submitted check or state an explicit blocker. Repair does not renew the deadline or replace frozen acceptance. A source change after verification invalidates closure on the next protocol check.
 
-These are local integrity receipts, not tamper-proof signatures. A successful checked scope does not prove complete coverage of an ambiguous natural-language request. Bounded snapshots are not a consistent backup of a concurrently edited database.
+These are local integrity receipts, not tamper-proof signatures. GoalPilot reports requirement and criterion coverage and check outcomes. The calling agent still creates the requirement inventory: exact quotes and complete mappings do not prove that it identified every meaningful outcome in a vague request. Tests are evidence for stated criteria, not proof that unstated intent was captured. Bounded snapshots are not a consistent backup of a concurrently edited database.
 
 ## Model usage and portability
 

@@ -2,11 +2,11 @@
 
 **Make coding goals verifiable. Spend less effort on repeated work.**
 
-GoalPilot is a skill for coding agents that helps complete ambitious goals with local verification, focused repairs, and less repeated work. It uses one local Python engine. It preserves your original goal and tests, gives the coding session a clear verification path, and checks the result before accepting completion. Failed checks are repaired in the same session, within the original deadline and verification budget.
+GoalPilot is a skill for coding agents that turns goals into a short, traceable checklist. Before coding, the agent inventories atomic requirements and constraints, then maps each to a criterion quoted from the request. Before finishing, it links criteria to executable checks. The local engine reports requirement coverage and what passed, remains missing or blocked; it marks the goal complete only when every inventoried requirement, criterion and frozen test passes.
 
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
 [![Agent skill](https://img.shields.io/badge/Agent_skill-portable-0F766E)](docs/HOSTS.md)
-[![Engine 0.13.0](https://img.shields.io/badge/Engine-0.13.0-334155)](goalpilot/__init__.py)
+[![Engine 0.15.0](https://img.shields.io/badge/Engine-0.15.0-334155)](goalpilot/__init__.py)
 
 [Install with your agent](INSTALL.md) · [Get started](docs/GETTING_STARTED.md) · [Supported hosts](docs/HOSTS.md) · [How it works](docs/ARCHITECTURE.md) · [Benchmark methodology](docs/BENCHMARKS.md) · [Contributing](CONTRIBUTING.md)
 
@@ -51,7 +51,7 @@ Already have Python 3.11+ and the repository? Run `python install.py`. It defaul
 
 For dependency-free onboarding, the shell and PowerShell bootstraps prepare a user-local Python when needed, download source without Git and run the same installer. See [INSTALL.md](INSTALL.md) and [host adapters](docs/HOSTS.md). `--doctor` checks readiness without model calls; `--dry-run` previews destination paths.
 
-The current local verifier supports bounded Python unittest projects on Linux/macOS/Windows. The optional cross-process `service_race` helper still requires POSIX fork. Other test frameworks and arbitrary hosted agents are not automatically supported. Your coding agent still consumes tokens; local installation and verification do not launch models.
+The local verifier supports bounded Python unittest projects on Linux/macOS/Windows. The optional cross-process `service_race` helper still requires POSIX fork. Other test frameworks and arbitrary hosted agents are not automatically supported. Local verification makes no model calls; usage by your coding agent depends on host metering.
 
 
 ## Recorded benchmark (Codex skill 1.3.1 / engine 0.12.1)
@@ -78,20 +78,22 @@ In the recorded **Codex benchmark on 20 selected synthetic Python service missio
 
 ```mermaid
 flowchart LR
-    A[Original goal and initial tests] --> B[Preserve goal, tests and budgets]
-    B --> C[Your coding agent implements in this session]
-    C --> D[Local finish command or Codex Stop verification]
-    D -->|Checks pass| E[Supported scope closed]
-    D -->|Checks fail, budget remains| C
+    A[Original goal and initial tests] --> B[Inventory quoted requirements and preserve goal, tests, budgets]
+    B --> C[Your coding agent implements and links checks in this session]
+    C --> D[Map every requirement to criteria and executable checks]
+    D -->|All checks, requirements and criteria pass| E[goal_complete true]
+    D -->|Missing or blocked requirement| C
+    D -->|Check fails, budget remains| C
     D -->|Unsupported or budget exhausted| F[Goal remains open]
 ```
 
-- **Preserve acceptance.** Initial tests are retained. The strengthened suite and submitted checks are frozen before final verification, so weakening a working test cannot erase the initial gate.
+- **Trace the goal.** The final receipt reports requirement-to-criterion coverage and per-criterion check evidence. Missing mappings or blocked criteria keep `goal_complete` false.
+- **Preserve acceptance.** Initial tests are retained. The strengthened suite, criteria and submitted checks are frozen before final verification, so weakening a working test cannot erase the initial gate.
 - **Reduce repeated work.** Compact context, exact-hash helper reuse and optional storage/transport/test helpers avoid repeatedly generating the same infrastructure.
 - **Diagnose loops locally.** Hooks observe supported commands and report repeated failures; they do not launch another model or silently retry the task.
 - **Verify completion.** Successful verification requires the retained original suite, the strengthened suite and submitted checks. Unsupported verification remains open.
 
-Passing tests establishes the supported checked scope. It does not prove every unstated intention in a vague goal. Read the [architecture and boundaries](docs/ARCHITECTURE.md).
+Passing tests establishes evidence for listed criteria. The calling agent still has to capture intent in a vague request; quotes and mappings improve the audit trail but cannot prove no requirement was omitted. Read the [architecture and boundaries](docs/ARCHITECTURE.md).
 
 ## Compatibility
 
@@ -106,13 +108,13 @@ Passing tests establishes the supported checked scope. It does not prove every u
 | Other coding agents | Generic bundle and custom native directory or explicit-load fallback; discovery depends on the host. |
 | Other test frameworks, oversized snapshots, unsupported environments | Supported closure is not claimed |
 
-New engine0.13.0 and adapters have not been model-benchmarked. Recorded performance belongs to the archived Codex reference above.
+New engine0.15.0 and adapters have not been model-benchmarked. Recorded performance belongs to the archived Codex reference above.
 
 Optional helpers suit their documented interfaces. `ReplayService` is intended for new pure applications with a compatible storage format; existing formats and external side effects require a different strategy. See [architecture](docs/ARCHITECTURE.md).
 
 ## Development
 
-The engine uses the Python standard library. The published version has **283 passing offline tests, with no skips**.
+The engine uses the Python standard library. The current version has **291 passing offline tests, with no skips**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
 
 ```bash
 python3 validate.py

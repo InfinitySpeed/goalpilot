@@ -14,6 +14,7 @@ import time
 from . import __version__
 from .engine import atomic_json, artifacts_intact, lock, verify
 from .gates import make_gate
+from .criteria import assess, validate as validate_criteria, validate_requirements
 from .model import ContractError, digest, positive, validate
 from .originals import capture, intact
 from .reuse import inventory
@@ -235,7 +236,7 @@ def expired(contract, state):
     return False
 
 
-def submit(run_dir, handoff_file, *, suite_only=False):
+def submit(run_dir, handoff_file):
     # Parse before any writes. Invalid submissions never consume the first freeze.
     raw = Path(handoff_file).read_bytes()
     handoff = json.loads(raw.decode('utf-8'))
@@ -243,9 +244,14 @@ def submit(run_dir, handoff_file, *, suite_only=False):
         raise ContractError('Handoff needs summary and executable checks')
     with session(run_dir, 'submit') as (run, contract, state, acceptance):
         candidate = validate({'goal': contract['goal'], 'repo': contract['repo'],
-                              'checks': ([{'id': 'internal', 'description': 'Validate suite-only submission schema', 'command': [sys.executable, '-c', 'pass'], 'timeout_seconds': 1}] if suite_only else handoff.get('checks')),
+                              'checks': handoff.get('checks', []),
                               'assumptions': handoff.get('assumptions', []),
-                              'limitations': handoff.get('limitations', [])})
+                              'limitations': handoff.get('limitations', [])}, require_checks=False)
+        criteria = validate_criteria(handoff.get('criteria'), contract['goal'],
+                                     [check['id'] for check in candidate['checks']] + ['original-tests','builder-tests'])
+        if not criteria:
+            raise ContractError('Submit goal-derived criteria linked to executable checks before verification')
+        requirements = validate_requirements(handoff.get('requirements'), criteria, contract['goal'])
         if acceptance:
             raise ContractError('Acceptance already frozen; repair then verify with the SAME checks')
         if expired(contract, state):
@@ -273,8 +279,6 @@ def submit(run_dir, handoff_file, *, suite_only=False):
         except BaseException:
             shutil.rmtree(builder)
             raise
-        if suite_only:
-            candidate['checks'] = []
         checks = [contract['original_gate']['check'],
                   {**gate['check'], 'id': 'builder-tests'}, *candidate['checks']]
         if len({c['id'] for c in checks}) != len(checks):
@@ -282,7 +286,8 @@ def submit(run_dir, handoff_file, *, suite_only=False):
         frozen = {'repo': contract['repo'], 'goal': contract['goal'], 'scope': 'inferred',
                   'checks': checks, 'tests': current,
                   'artifacts': contract['original_gate']['artifacts'] + gate['artifacts'],
-                  'handoff': handoff, 'handoff_sha256': hashlib.sha256(raw).hexdigest()}
+                  'handoff': handoff, 'handoff_sha256': hashlib.sha256(raw).hexdigest(),
+                  'criteria': criteria, 'requirements': requirements}
         # A supplied Python assertion script is acceptance, not repairable code.
         # Inline programs are already immutable JSON; unittest uses frozen tests.
         for index, check in enumerate(candidate['checks']):
@@ -305,7 +310,7 @@ def submit(run_dir, handoff_file, *, suite_only=False):
         sealed_write(run, 'acceptance.json', frozen)
         state['acceptance_sha256'] = sha(run / 'acceptance.json')
         state['status'], state['closed'] = 'awaiting_verification', False
-        return compact(run, contract, state)
+        return compact(run, contract, state, frozen)
 
 
 def verify_session(run_dir):
@@ -329,11 +334,17 @@ def verify_session(run_dir):
             if after != before:
                 raise ContractError('Verification mutated repository inputs')
             passed = bool(results) and all(r['passed'] for r in results)
+            goal_assessment = assess(acceptance.get('criteria'), results,
+                                     requirements=acceptance.get('requirements'))
+            record['goal_assessment'] = goal_assessment
             state['status'] = ('scope_passed' if passed else
                                'verification_unavailable' if any(r.get('infrastructure_error') for r in results) else
                                'timed_out' if any(r.get('timed_out') for r in results) else 'failed')
-            state['closed'] = passed and remaining(contract, state) > 0
-            if passed and not state['closed']:
+            if passed and acceptance.get('criteria') and goal_assessment['status'] != 'verified':
+                state['status'] = 'criteria_blocked' if goal_assessment['status'] == 'blocked' else 'criteria_incomplete'
+            state['closed'] = (passed and (not acceptance.get('criteria') or goal_assessment['goal_complete'])
+                               and remaining(contract, state) > 0)
+            if passed and remaining(contract, state) <= 0:
                 state['status'] = 'budget_exhausted'
             if state['closed']:
                 state['verified_source'] = after
@@ -344,33 +355,20 @@ def verify_session(run_dir):
             raise
         finally:
             record['duration_seconds'] = time.monotonic() - begun
-        return compact(run, contract, state)
+        return compact(run, contract, state, acceptance)
 
 
 
 def finish(run_dir):
-    """Freeze the complete current suite and verify, without a generated handoff.
-
-    Calling again repairs against the SAME frozen tests and consumes another
-    verification. Never substitutes a new gate or resets the session deadline.
-    """
+    """Verify frozen goal criteria; request a mapped handoff when none exists."""
     current = status(run_dir)  # Validate integrity/budget BEFORE writing any handoff.
     if current['closed'] or current['status'] in ('unsupported', 'budget_exhausted'):
         return current
     run, contract, state = load(run_dir)
     if not state.get('acceptance_sha256'):
-        # A real test gate is mandatory. The handoff records the honest scope:
-        # existing + current tests, not a promise of semantic completeness.
-        handoff = run / 'suite-handoff.json'
-        if handoff.exists() or handoff.is_symlink():
-            raise ContractError('Unsubmitted finish artifact exists; inspect instead of overwriting')
-        atomic_json(handoff, {
-            'summary': 'Verify original regressions and the full frozen current unittest suite',
-            'limitations': ['Suite passing is local evidence; independent evaluation must judge the full natural-language goal.'],
-            'checks': []})
-        result = submit(run, handoff, suite_only=True)
-        if result['status'] != 'awaiting_verification':
-            return result
+        return {**current, 'status': 'criteria_required', 'closed': False,
+                'goal_assessment': assess(None, []), 'goal_complete': False,
+                'next_action': 'Derive concise criteria from the preserved goal, link each to an executable check, submit the handoff, then verify.'}
     return verify_session(run)
 
 
@@ -380,7 +378,7 @@ def repair(run_dir):
             raise ContractError('No frozen acceptance; submit first')
         if not expired(contract, state):
             state['status'], state['closed'] = 'repairing', False
-        return compact(run, contract, state)
+        return compact(run, contract, state, acceptance)
 
 
 def status(run_dir):
@@ -389,17 +387,33 @@ def status(run_dir):
             state['status'] = 'budget_exhausted'
         if state['status'] == 'verifying':
             state['status'], state['closed'] = 'interrupted', False
-        return compact(run, contract, state)
+        return compact(run, contract, state, acceptance)
 
 
-def compact(run, contract, state):
+def compact(run, contract, state, acceptance=None):
     latest = state['verifications'][-1]['checks'] if state['verifications'] else []
+    remaining_seconds = max(0, remaining(contract, state))
+    wall_seconds = contract['budget']['wall_seconds']
+    # Keep a bounded closure window for submit, the frozen gates, and the final
+    # receipt. The agent can still use it when necessary; this is guidance, not
+    # a new deadline or a reason to suppress verification.
+    closure_reserve = min(wall_seconds * 0.35, max(60, wall_seconds * 0.20))
     result = {'status': state['status'], 'closed': state['closed'], 'run_dir': str(run),
               'checks_passed': sum(x['passed'] for x in latest), 'checks_total': len(latest),
               'attempts': len(state['verifications']), 'elapsed_seconds': round(time.time() - state['started_at'], 3),
+              'remaining_seconds_estimate': round(remaining_seconds, 1),
+              'closure_reserve_seconds': round(closure_reserve, 1),
+              'implementation_window_seconds': round(max(0, remaining_seconds - closure_reserve), 1),
               'engine_model_calls': 0, 'caller_usage': 'UNKNOWN', 'total_tokens': None,
               'details': str(run / 'session-state.json'),
               'completion_owner': state.get('completion_owner', 'calling_model')}
+    if not state['closed'] and remaining_seconds <= closure_reserve:
+        result['next_action'] = 'Closure reserve reached: stop implementation, submit the current criteria/check map, and verify now.'
+    record = state['verifications'][-1] if state['verifications'] else {}
+    stale = state['status'] in ('source_drift', 'repairing', 'interrupted', 'integrity_failed')
+    result['goal_assessment'] = assess((acceptance or {}).get('criteria'), record.get('checks', []),
+                                       requirements=(acceptance or {}).get('requirements'), stale=stale)
+    result['goal_complete'] = bool(state['closed'] and result['goal_assessment']['goal_complete'])
     failed = [x for x in latest if not x['passed']]
     if failed:
         result['failures'] = [{'id': x['id'], 'output': x.get('output', '')[-1600:],

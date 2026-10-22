@@ -7,4 +7,4 @@ GoalPilot is a skill for coding agents: local verification, focused repairs and 
 - Choose the current agent explicitly when you know it. T3 Code is a control surface: select its underlying provider. For unknown agents, confirm the native skills location from their documentation or use the generic explicit-load option; do not invent a registration mechanism.
 - Preserve original goals, frozen tests, deadlines and failed evidence. Do not launch nested agents/models or live benchmarks unless requested.
 - Documentation is in English. Respond to users in their language.
-- Historical performance belongs to Codex skill1.3.1/engine0.12.1. Current engine0.13.0/skill1.4.0 and adapters are unbenchmarked; keep archived records intact and do not transfer percentages to new versions or hosts.
+- Historical performance belongs to Codex skill1.3.1/engine0.12.1. Current engine0.15.0/skill1.6.0 and adapters are unbenchmarked; keep archived records intact and do not transfer percentages to new versions or hosts.

@@ -1,8 +1,10 @@
 import copy
+import json
 from pathlib import Path
 import tempfile
 import time
 import unittest
+import sys
 
 from goalpilot.probe_helpers import JourneyMixin, service_race
 from goalpilot.runtime_kit import ServiceBase, fields, integer, require
@@ -124,8 +126,19 @@ class Additions(JourneyMixin,unittest.TestCase):
  def test_additions(self):self.assertSteps(('add',{'value':2},2),('add',{'value':3},5))
 """)
             app.write_text(implementation.replace('+=integer','-=integer'))
+            code="from app import Service; s=object.__new__(Service); state={'n':0}; assert s.handle(state,'add',{'value':2})==2; assert s.handle(state,'add',{'value':3})==5; s.validate(state)"
+            handoff=root/'handoff.json';handoff.write_text(json.dumps({'summary':'Persist additions',
+                'checks':[{'id':'journey','description':'The domain test suite passes',
+                           'command':[sys.executable,'-B','-c',code],
+                           'timeout_seconds':8}],
+                'criteria':[{'id':'additions','statement':'Persist exact additions',
+                             'source_quote':'Persist exact additions','check_ids':['journey']}],
+                'requirements':[{'id':'persist-additions','statement':'Persist the requested additions',
+                                'source_quote':'Persist exact additions','criterion_ids':['additions']}]}))
+            session.submit(run,handoff)
             self.assertFalse(session.finish(run)['closed'])
             acceptance=(run/'acceptance.json').read_bytes()
             app.write_text(implementation)
-            self.assertTrue(session.finish(run)['closed'])
+            final=session.finish(run)
+            self.assertTrue(final['closed'],final)
             self.assertEqual((run/'acceptance.json').read_bytes(),acceptance)

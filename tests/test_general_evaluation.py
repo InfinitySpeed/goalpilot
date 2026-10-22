@@ -5,10 +5,10 @@ import unittest
 from unittest.mock import patch
 
 from evaluation.general.campaign import plan,run_next,recover,telemetry,outcome
-from evaluation.general.preflight import run as preflight
 from evaluation.general.report import summarize
 from goalpilot.adapters import AgentResult
 from goalpilot.model import ContractError
+from tests.preflight_cache import reference_preflights
 
 
 class GeneralEvaluationTests(unittest.TestCase):
@@ -78,7 +78,7 @@ class GeneralEvaluationTests(unittest.TestCase):
             self.assertEqual(len(checks),2)
             self.assertTrue(all(not x['passed'] for x in checks))
     def test_reference_preflight_is_attainable_and_rejects_semantic_faults(self):
-        data=preflight()
+        data=reference_preflights()[2]
         self.assertEqual(data['model_calls'],0)
         self.assertEqual(sum(x['reference_checks_passed'] for x in data['cases']),12)
         self.assertTrue(all(x['semantic_mutation_rejected_by'] for x in data['cases']))

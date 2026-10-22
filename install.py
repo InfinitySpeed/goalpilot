@@ -76,7 +76,7 @@ def prepare_bundle(destination,host):
     skill=destination/'SKILL.md';body=skill.read_text(encoding='utf-8')
     note=('\n## Installed runtime\n\nUse the Python interpreter at `'+sys.executable+'` for EVERY command shown with python3. Do not rely on a system python3. Quote paths containing spaces; in PowerShell prefix a quoted executable with &. RUNTIME.json records the interpreter and entry point. No manual Python setup is needed.\n')
     skill.write_text(body.replace('# GoalPilot\n','# GoalPilot\n'+note,1),encoding='utf-8')
-    runtime={'python':sys.executable,'python_version':sys.version.split()[0],'entry_point':entry,'host':host,'engine_version':'0.13.0','adapter_version':'1.1.0'}
+runtime={'python':sys.executable,'python_version':sys.version.split()[0],'entry_point':entry,'host':host,'engine_version':'0.15.0','adapter_version':'1.1.0'}
     (destination/'RUNTIME.json').write_text(json.dumps(runtime,indent=2)+'\n',encoding='utf-8')
     manifest=json.loads((destination/'MANIFEST.json').read_text(encoding='utf-8'))
     manifest.update(host_profile=host,adapter_version='1.1.0',entry_point=entry,

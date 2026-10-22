@@ -50,6 +50,6 @@ class NativeGoalTests(unittest.TestCase):
 
 class NativeGoalCaseTests(unittest.TestCase):
     def test_real_worker_reference_passes_and_behavioral_faults_are_detected(self):
-        from evaluation.native_goals.preflight import run
-        data=run();self.assertEqual(data['runforge']['reference_groups_passed'],26);self.assertEqual(data['automation']['reference_groups_passed'],32)
+        from tests.preflight_cache import reference_preflights
+        data=reference_preflights()[1];self.assertEqual(data['runforge']['reference_groups_passed'],26);self.assertEqual(data['automation']['reference_groups_passed'],32)
         self.assertEqual(len(data['automation']['isolated_worker_faults_rejected']),4)

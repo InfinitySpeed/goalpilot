@@ -19,11 +19,13 @@ class MonitorTests(unittest.TestCase):
     def test_finish_passes_real_original_and_builder_suites(self):
         self.start()
         (self.repo/'tests/test_extra.py').write_text("import unittest\nfrom app import normalize\nclass Added(unittest.TestCase):\n def test_empty(self):self.assertEqual(normalize([]),[])\n")
+        self.write_handoff();gp.submit(self.run,self.handoff)
         with patch('goalpilot.adapters.CodexAdapter.execute',side_effect=AssertionError('inference')):
             result=gp.finish(self.run)
         self.assertTrue(result['closed'])
+        self.assertTrue(result['goal_complete'])
         acceptance=gp.sealed_read(self.run,'acceptance.json')
-        self.assertEqual([x['id']for x in acceptance['checks']],['original-tests','builder-tests'])
+        self.assertEqual([x['id']for x in acceptance['checks']],['original-tests','builder-tests','behavior'])
         self.assertEqual(self.state()['engine_model_calls'],0)
         attempts=result['attempts']
         self.assertTrue(gp.finish(self.run)['closed'])
@@ -31,6 +33,7 @@ class MonitorTests(unittest.TestCase):
 
     def test_finish_failure_repairs_same_immutable_tests(self):
         self.start();(self.repo/'app.py').write_text('def normalize(xs):return []\n')
+        self.write_handoff();gp.submit(self.run,self.handoff)
         failed=gp.finish(self.run)
         self.assertFalse(failed['closed'])
         self.assertIn('AssertionError',failed['failures'][0]['output'])
@@ -79,6 +82,7 @@ class MonitorTests(unittest.TestCase):
 
     def test_installed_helpers_are_immutable_acceptance_inputs(self):
         gp.start(self.goal,self.repo,self.run,wall_seconds=60,helpers=True)
+        self.write_handoff();gp.submit(self.run,self.handoff)
         helper=self.repo/'goalpilot_runtime.py';raw=helper.read_bytes();helper.write_text('changed helper')
         with self.assertRaises(ContractError):gp.finish(self.run)
         self.assertFalse(self.state()['closed'])

@@ -2,8 +2,7 @@ import copy
 import unittest
 
 from evaluation.dossier_study import summarize
-from evaluation.reference_oracles import preflight
-from evaluation.reference_oracles_v21 import preflight as preflight_v21
+from tests.preflight_cache import reference_preflights
 
 
 class StudyTests(unittest.TestCase):
@@ -48,13 +47,13 @@ class StudyTests(unittest.TestCase):
         self.assertFalse(summary['primary_threshold_met'])
 
     def test_hidden_verifiers_accept_independent_references_and_reject_stubs(self):
-        result=preflight()
+        result=reference_preflights()[3]
         self.assertEqual(len(result['cases']),3)
         self.assertTrue(all(x['unfinished_seed_rejected'] for x in result['cases']))
         self.assertEqual(sum(x['reference_checks_passed'] for x in result['cases']),8)
 
     def test_fresh_verifiers_accept_references_and_reject_stubs(self):
-        result=preflight_v21()
+        result=reference_preflights()[4]
         self.assertEqual(len(result['cases']),3)
         self.assertTrue(all(x['unfinished_seed_rejected'] for x in result['cases']))
         self.assertEqual(sum(x['reference_checks_passed'] for x in result['cases']),6)

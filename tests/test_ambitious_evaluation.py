@@ -1,7 +1,7 @@
 """Offline oracle and metric validation; never a claim of agent effectiveness."""
 import unittest
-from evaluation.ambitious.preflight import run
 from evaluation.ambitious.report import calculate
+from tests.preflight_cache import reference_preflights
 
 
 def row(mode,success,seconds=10,repeat=0,case='x'):
@@ -14,7 +14,7 @@ def protocol(order,cases=['x'],repeats=1):return {'order':order,'cases':cases,'r
 
 class AmbitiousEvaluationTests(unittest.TestCase):
     def test_complete_references_pass_and_isolated_faults_are_rejected(self):
-        data=run()
+        data=reference_preflights()[0]
         self.assertEqual(set(data),{'flowdesk','stockroom','runforge'})
         self.assertTrue(all(v['reference_groups_passed']==26 and v['initial_groups_failed']==2 for v in data.values()))
         self.assertEqual(sum(len(v['isolated_faults'])for v in data.values()),21)

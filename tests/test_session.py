@@ -42,7 +42,11 @@ class SessionTests(unittest.TestCase):
         self.write_handoff()
 
     def write_handoff(self, **extra):
-        self.handoff.write_text(json.dumps({'summary': 'Claim only; not trusted', 'checks': self.checks, **extra}))
+        self.handoff.write_text(json.dumps({'summary': 'Claim only; not trusted', 'checks': self.checks,
+            'criteria': [{'id':'behavior','statement':'Normalize labels and handle empty input',
+                          'source_quote':'preserve everything','check_ids':['behavior']}],
+            'requirements': [{'id':'coverage','statement':'Preserve the complete request',
+                              'source_quote':'preserve everything','criterion_ids':['behavior']}], **extra}))
 
     def start(self, **options):
         return gp.start(self.goal, self.repo, self.run, wall_seconds=60, **options)
@@ -52,7 +56,11 @@ class SessionTests(unittest.TestCase):
 
     def test_full_protocol_and_real_failure_repair_without_model(self):
         with patch('goalpilot.adapters.CodexAdapter.execute', side_effect=AssertionError('nested model')):
-            self.assertEqual(self.start()['status'], 'ready')
+            started = self.start()
+            self.assertEqual(started['status'], 'ready')
+            self.assertEqual(started['closure_reserve_seconds'], 21.0)
+            self.assertEqual(started['implementation_window_seconds'], 39.0)
+            self.assertEqual(started['remaining_seconds_estimate'], 60.0)
             self.assertEqual((self.run / 'goal.bin').read_bytes(), self.goal.read_bytes())
             (self.repo / 'tests/test_unicode.py').write_text(
                 "import unittest\nfrom app import normalize\nclass Unicode(unittest.TestCase):\n def test_unicode(self):self.assertEqual(normalize([' ÉTÉ ','été']),['été'])\n")
@@ -97,9 +105,50 @@ class SessionTests(unittest.TestCase):
         started=self.start()
         self.assertEqual(started['status'],'ready')
         self.assertEqual((self.run/'originals/.gitignore').read_text(),'__pycache__/\n')
+        self.assertEqual(gp.finish(self.run)['status'],'criteria_required')
+        self.assertFalse((self.run/'acceptance.json').exists())
+        gp.submit(self.run,self.handoff)
         result=gp.finish(self.run)
         self.assertTrue(result['closed'])
         self.assertEqual((self.run/'builder/originals/.editorconfig').read_text(),'root = true\n')
+
+    def test_goal_criteria_are_traced_and_only_verified_criteria_close_the_goal(self):
+        self.goal.write_text('Make export restore the saved report; preserve exact user wording.')
+        checks=[{'id':'export','description':'Exported report restores correctly',
+                 'command':[sys.executable,'-c','assert 2 + 2 == 4'],'timeout_seconds':3},
+                {'id':'wording','description':'Original goal text is retained',
+                 'command':[sys.executable,'-c','assert 2 + 2 == 4'],'timeout_seconds':3}]
+        criteria=[{'id':'restore','statement':'Restore the saved report','source_quote':'restore the saved report','check_ids':['export']},
+                  {'id':'wording','statement':'Preserve the exact wording','source_quote':'preserve exact user wording','check_ids':['wording']}]
+        requirements=[{'id':'restore-report','statement':'The saved report can be restored',
+                       'source_quote':'restore the saved report','criterion_ids':['restore']},
+                      {'id':'preserve-wording','statement':'Keep the exact original wording',
+                       'source_quote':'preserve exact user wording','criterion_ids':['wording']}]
+        self.start();self.handoff.write_text(json.dumps({'summary':'Mapped goal','checks':checks,
+                                                          'criteria':criteria,'requirements':requirements}))
+        gp.submit(self.run,self.handoff)
+        result=gp.verify_session(self.run)
+        self.assertTrue(result['closed']);self.assertTrue(result['goal_complete'])
+        self.assertEqual(result['goal_assessment']['coverage_percent'],100)
+        self.assertEqual(result['goal_assessment']['verified'],2)
+        self.assertEqual(result['goal_assessment']['requirements_coverage_percent'],100)
+        self.assertEqual(result['goal_assessment']['requirements_verified'],2)
+        self.assertEqual([x['source_quote'] for x in result['goal_assessment']['criteria']],
+                         ['restore the saved report','preserve exact user wording'])
+
+    def test_external_blocker_stays_open_after_all_project_tests_pass(self):
+        self.start()
+        handoff={'summary':'Deployment needs access','checks':[],
+                 'criteria':[{'id':'deploy','statement':'Deploy the release',
+                              'source_quote':'preserve everything','check_ids':[],
+                              'blocker':'No deployment credentials in this environment'}],
+                 'requirements':[{'id':'deployment','statement':'Deploy the release',
+                                  'source_quote':'preserve everything','criterion_ids':['deploy']} ]}
+        self.handoff.write_text(json.dumps(handoff));gp.submit(self.run,self.handoff)
+        result=gp.verify_session(self.run)
+        self.assertEqual(result['checks_passed'],2)
+        self.assertEqual(result['status'],'criteria_blocked')
+        self.assertFalse(result['closed']);self.assertFalse(result['goal_complete'])
 
     def test_invalid_and_duplicate_submissions_cannot_change_acceptance(self):
         self.start()
@@ -108,6 +157,7 @@ class SessionTests(unittest.TestCase):
             with self.assertRaises((ValueError, ContractError)):
                 gp.submit(self.run, self.handoff)
             self.assertFalse((self.run / 'acceptance.json').exists())
+
         self.checks[0]['id'] = 'original-tests'
         self.write_handoff()
         with self.assertRaises(ContractError):gp.submit(self.run, self.handoff)
@@ -120,6 +170,20 @@ class SessionTests(unittest.TestCase):
         with self.assertRaises(ContractError):gp.submit(self.run, self.handoff)
         self.assertEqual(original, (self.run / 'acceptance.json').read_bytes())
         self.assertTrue(gp.verify_session(self.run)['closed'])
+
+    def test_missing_or_orphaned_requirement_inventory_cannot_freeze_acceptance(self):
+        self.start()
+        handoff={'summary':'Mapped goal','checks':self.checks,
+                 'criteria':[{'id':'behavior','statement':'Normalize labels',
+                              'source_quote':'preserve everything','check_ids':['behavior']}]}
+        self.handoff.write_text(json.dumps(handoff))
+        with self.assertRaises(ContractError):gp.submit(self.run,self.handoff)
+        self.assertFalse((self.run/'acceptance.json').exists())
+        handoff['requirements']=[{'id':'unmapped','statement':'Invented requirement',
+                                  'source_quote':'preserve everything','criterion_ids':['unknown']}]
+        self.handoff.write_text(json.dumps(handoff))
+        with self.assertRaises(ContractError):gp.submit(self.run,self.handoff)
+        self.assertFalse((self.run/'acceptance.json').exists())
 
     def test_test_drift_refused_and_restoration_allows_normal_repair(self):
         self.start();gp.submit(self.run, self.handoff)

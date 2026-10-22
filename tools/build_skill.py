@@ -46,7 +46,7 @@ def build(root=ROOT):
     (skill/'references/baseline.json').write_text(json.dumps(baseline,ensure_ascii=False,indent=2)+'\n')
     files={str(p.relative_to(skill)):sha(p)for p in sorted(skill.rglob('*'))
            if p.is_file()and '__pycache__'not in p.parts and p.suffix!='.pyc'and p.name!='MANIFEST.json'}
-    manifest={'package':'goalpilot-codex-skill','skill_version':'1.4.0',
+    manifest={'package':'goalpilot-codex-skill','skill_version':'1.6.0',
               'engine':{'version':__version__,'files':source_files,'unchanged_source':True},'files':files,
               'meter_scope':('Default session: zero nested engine model calls. Entire caller usage/time measured on20 selected synthetic Python service missions; see references/measurements.json and its scope/review/continuation disclosures. General caller usage remains UNKNOWN without external metering; no subscription-quota conversion.'if applies else
               'Default session: zero nested engine model calls; caller usage UNKNOWN, measured externally. Current source/skill savings not established by retained historical measurements. Legacy controller meters backend calls only.'),
