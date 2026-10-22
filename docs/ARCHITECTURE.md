@@ -4,12 +4,12 @@ GoalPilot combines instructions for the calling agent with a local Python verifi
 
 ```mermaid
 flowchart TD
-    U[Full user goal] --> S[Codex skill]
+    U[Full user goal] --> S[Host skill: Codex, Claude Code or Antigravity]
     S --> R[Local run: goal, snapshots, deadline, verification budget]
-    R --> C[Current Codex session implements and tests]
-    H[Local command hooks] -. observe and diagnose .-> C
+    R --> C[Current coding-agent session implements and tests]
+    H[Optional Codex command hooks] -. observe and diagnose .-> C
     K[Optional implementation and test helpers] -. reusable infrastructure .-> C
-    C --> V[Stop verification]
+    C --> V[Explicit finish or Codex Stop verification]
     V --> O[Original test gate]
     O --> B[Strengthened frozen test gate]
     B --> A[Submitted acceptance checks]
@@ -22,6 +22,7 @@ flowchart TD
 
 | Component | Responsibility |
 | :--- | :--- |
+| [Host installer](../install.py) and [portable adapter](../integrations/portable/SKILL.md) | Place a self-contained skill in each host's discovery directory and use explicit verification where native Stop hooks are absent. |
 | [Skill instructions](../skills/goalpilot/SKILL.md) | Save the full request, guide implementation and avoid unnecessary repeated reads or verification. |
 | [Session protocol](../goalpilot/session.py) | Preserve the original contract, freeze acceptance, account for verification attempts and invalidate closure after source changes. |
 | [Test gates](../goalpilot/gates.py) | Execute retained tests against disposable worktree copies. The strengthened suite supplements the original suite. |
@@ -47,4 +48,6 @@ These are local integrity receipts, not tamper-proof signatures. A successful ch
 
 The passive monitor and verification commands run Python and subprocesses, not inference. Repair still consumes the calling model's tokens. Total caller usage is unknown without external metering; a local token ceiling cannot enforce usage it cannot observe.
 
-Automatic hook delivery is currently integrated with Codex. Claude Code and Antigravity do not have released adapters. Reusing the local engine elsewhere requires host-specific delivery, Stop/repair integration and fresh correctness/cost measurements. The [published figures](BENCHMARKS.md) apply to the tested Codex path.
+Automatic hook delivery is integrated with Codex. Claude Code and Antigravity have installable adapters using explicit local verification and repair instructions in the calling session. They do not install or depend on Codex hooks. The same engine is bundled for each host; the portable launcher avoids accidentally inheriting a Codex hook binding. See [host adapters](HOSTS.md).
+
+No live model benchmark has been run for the new adapters. The [published figures](BENCHMARKS.md) apply to the recorded Codex automatic-hook path only, not all hosts or all installation/verification modes.

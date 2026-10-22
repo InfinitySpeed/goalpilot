@@ -2,17 +2,17 @@
 
 **Make coding goals verifiable. Spend less effort on repeated work.**
 
-GoalPilot is a Codex skill backed by a local Python engine. It preserves your original goal and tests, gives the coding session a clear verification path, and checks the result before accepting completion. Failed checks send the same session back to repair, within the original deadline and verification budget.
+GoalPilot is a skill for **Codex, Claude Code and Antigravity**, backed by one local Python engine. It preserves your original goal and tests, gives the coding session a clear verification path, and checks the result before accepting completion. Failed checks are repaired in the same session, within the original deadline and verification budget.
 
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
-[![Codex skill 1.3.1](https://img.shields.io/badge/Codex_skill-1.3.1-0F766E)](skills/goalpilot/SKILL.md)
+[![Agent skills](https://img.shields.io/badge/Agent_skills-Codex_%7C_Claude_Code_%7C_Antigravity-0F766E)](docs/HOSTS.md)
 [![Engine 0.12.1](https://img.shields.io/badge/Engine-0.12.1-334155)](goalpilot/__init__.py)
 
-[Get started](docs/GETTING_STARTED.md) · [How it works](docs/ARCHITECTURE.md) · [Benchmark methodology](docs/BENCHMARKS.md) · [Contributing](CONTRIBUTING.md)
+[Get started](docs/GETTING_STARTED.md) · [Supported hosts](docs/HOSTS.md) · [How it works](docs/ARCHITECTURE.md) · [Benchmark methodology](docs/BENCHMARKS.md) · [Contributing](CONTRIBUTING.md)
 
 ## Measured performance
 
-On **20 selected synthetic Python service missions**, the complete GoalPilot invocation used **54.39% fewer raw tokens** and **60.66% less total time** than native Codex `/goal`.
+In the recorded **Codex benchmark on 20 selected synthetic Python service missions**, the complete GoalPilot invocation used **54.39% fewer raw tokens** and **60.66% less total time** than native Codex `/goal`. Claude Code and Antigravity adapters have not been benchmarked.
 
 ![Measured time, raw token composition, and completion results for GoalPilot and native Codex on twenty synthetic Python service missions.](docs/assets/benchmark.png)
 
@@ -32,16 +32,32 @@ On **20 selected synthetic Python service missions**, the complete GoalPilot inv
 
 ## Install
 
-Requirements: **Python 3.11+, a POSIX environment, and an authenticated Codex CLI**. The measured environment used Linux, Python 3.12.14 and Codex CLI 0.163.0. Other CLI versions may need compatibility checks.
+Requirements: **Python 3.11+, a POSIX environment, and your chosen coding agent with terminal access**. Claude Code and Antigravity do not need Codex installed.
 
 ```bash
 git clone https://github.com/InfinitySpeed/goalpilot.git
 cd goalpilot
-python3 skills/goalpilot/scripts/install.py
-python3 ~/.agents/skills/goalpilot/scripts/goalpilot.py hook-config install
+python3 install.py --host all
 ```
 
-Restart Codex if needed to discover the installed skill, then invoke it:
+Or install for just one tool:
+
+```bash
+python3 install.py --host codex
+python3 install.py --host claude-code
+python3 install.py --host antigravity
+```
+
+Reload skills or restart your tool, then invoke GoalPilot:
+
+| Tool | Invocation | Verification |
+| :--- | :--- | :--- |
+| Codex | `$goalpilot <goal>` | Explicit finish, or automatic Stop hooks when configured. |
+| Claude Code | `/goalpilot <goal>` | The skill calls local verification before concluding. |
+| Antigravity IDE / App | Ask the agent to use GoalPilot for your goal. | The skill calls local verification before concluding. |
+| Antigravity CLI | `/goalpilot <goal>` | The same portable adapter and local engine. |
+
+For example, in Codex:
 
 ```text
 $goalpilot Add durable task scheduling to this Python service. Preserve its current
@@ -49,7 +65,15 @@ API and data. Cover scheduling, cancellation, restart recovery and concurrent
 workers with meaningful tests. Finish only when the frozen checks pass.
 ```
 
-No separate inference service, Python runtime dependencies or additional API key is required for the default skill path. **Codex still consumes tokens.** Installation and the passive monitor do not create model calls.
+No separate inference service, Python runtime dependencies or additional API key is required for the skill path. **Your coding agent still consumes tokens.** Installation and local verification do not create model calls.
+
+For Codex's optional automatic Stop verification, configure its hooks after installation:
+
+```bash
+python3 ~/.agents/skills/goalpilot/scripts/goalpilot.py hook-config install
+```
+
+This hook setup is for Codex only; the other adapters work without it. The recorded Codex benchmark used the automatic-hook path. See [host adapters and custom paths](docs/HOSTS.md).
 
 See [setup, manual operation and troubleshooting](docs/GETTING_STARTED.md).
 
@@ -58,8 +82,8 @@ See [setup, manual operation and troubleshooting](docs/GETTING_STARTED.md).
 ```mermaid
 flowchart LR
     A[Original goal and initial tests] --> B[Preserve goal, tests and budgets]
-    B --> C[Codex implements in the calling session]
-    C --> D[Local verification at Stop]
+    B --> C[Your coding agent implements in this session]
+    C --> D[Local finish command or Codex Stop verification]
     D -->|Checks pass| E[Supported scope closed]
     D -->|Checks fail, budget remains| C
     D -->|Unsupported or budget exhausted| F[Goal remains open]
@@ -76,9 +100,11 @@ Passing tests establishes the supported checked scope. It does not prove every u
 
 | Host or project | Current status |
 | :--- | :--- |
-| Codex CLI | Implemented and benchmarked integration |
+| Codex CLI | Native skill and optional Stop hooks; recorded Codex benchmark available. |
+| Claude Code | Installable skill adapter using explicit local verification; no host performance benchmark. |
+| Antigravity IDE, App and CLI | Installable skill adapter using explicit local verification; no host performance benchmark. |
 | Bounded Python `unittest` projects with compatible initial tests | Supported verification path |
-| Claude Code, Antigravity and other agents | No released adapter; local engine reuse needs integration and testing |
+| Other agents | No dedicated adapter supplied. |
 | Other test frameworks, oversized snapshots, unsupported environments | Supported closure is not claimed |
 
 Optional helpers suit their documented interfaces. `ReplayService` is intended for new pure applications with a compatible storage format; existing formats and external side effects require a different strategy. See [architecture](docs/ARCHITECTURE.md).
@@ -93,4 +119,4 @@ python3 tools/check_benchmark.py
 python3 tools/build_skill.py
 ```
 
-`dist/goalpilot-skill.zip` contains the self-contained installable skill. These commands run local verification and packaging; they do not launch model benchmarks. See [CONTRIBUTING.md](CONTRIBUTING.md) for chart generation and measurement rules.
+`dist/goalpilot-skill.zip` contains the original self-contained Codex bundle. The repository's `install.py` derives the other host bundles locally. These commands run local verification and packaging; they do not launch model benchmarks. See [CONTRIBUTING.md](CONTRIBUTING.md) for chart generation and measurement rules.

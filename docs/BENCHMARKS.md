@@ -2,6 +2,8 @@
 
 This report covers skill **1.3.1**, engine **0.12.1**, and the complete calling invocation. It distinguishes observed results from general product guarantees.
 
+This is the recorded **Codex automatic-hook benchmark**. The new installer and Claude Code / Antigravity adapter are not additional measured treatments. Their availability does not extend these performance figures to other hosts or explicit-finish delivery modes. The Codex engine and skill instructions remain unchanged.
+
 ## Primary comparison
 
 Twenty fixed missions, 20 attempts per arm, matching initial application source and public requirements:
