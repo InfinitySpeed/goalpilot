@@ -60,7 +60,7 @@ def test_inventory(repo):
         if p.is_symlink():
             raise ContractError('Symlink tests are unsupported')
         if p.is_file():
-            result[str(p.relative_to(repo))] = sha(p)
+            result[p.relative_to(repo).as_posix()] = sha(p)
     return result
 
 

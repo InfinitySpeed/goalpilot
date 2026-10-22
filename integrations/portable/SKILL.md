@@ -33,6 +33,7 @@ models or Codex controller. Do not run hook-config: this adapter needs no Codex 
 
 Only `scope_passed` with `closed:true` means the supported frozen checks passed.
 Unsupported/infrastructure/budget-exhausted stays open; explain the actual blocker.
-Support remains bounded Python unittest projects on POSIX with Python 3.11+.
+Support: bounded Python unittest projects on Linux/macOS/Windows with Python 3.11+.
+The optional service_race helper requires POSIX fork; do not use it on Windows.
 The local verifier launches no models; calling-agent token usage is not zero.
 Published performance figures concern the Codex integration, not this host adapter.

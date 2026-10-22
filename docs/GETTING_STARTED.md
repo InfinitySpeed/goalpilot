@@ -1,77 +1,35 @@
 # Getting started
 
+The simplest route is to ask your coding agent to install GoalPilot from the GitHub URL. Copy the [installation and task prompts](../README.md#how-to-use-it). The agent follows [INSTALL.md](../INSTALL.md), handles dependencies and verifies the installed local command.
+
 ## Requirements
 
-- Python 3.11 or later and a POSIX host. Linux/Python 3.12.14 was used in the benchmark; native Windows is not a supported target.
-- Codex, Claude Code or Antigravity installed and authenticated, with terminal execution available. The recorded Codex benchmark used CLI 0.163.0.
-- A bounded Python project with discoverable, compatible `unittest` tests for supported closure.
+Your agent must be able to read skill instructions, write user-local files and run commands under its normal permissions. The bootstraps can prepare Python and download source without Git; missing dependencies need network access. No separate model account, GoalPilot service or API key is needed.
 
-The engine has no third-party runtime dependencies. Your coding agent supplies the model; GoalPilot does not require a separate hosted backend. Claude Code and Antigravity do not require Codex installed.
+The local verifier supports bounded compatible Python unittest projects with initial tests on Linux, macOS and Windows. The optional `service_race` helper requires POSIX fork. Native registration depends on the host; a generic bundle can be read explicitly where automatic skill discovery is unavailable.
 
-## Install the skill
+## Installation and diagnosis
 
-```bash
-git clone https://github.com/InfinitySpeed/goalpilot.git
-cd goalpilot
-python3 install.py --host all
-```
+Use [INSTALL.md](../INSTALL.md) for shell and PowerShell bootstraps, or run `python install.py` from an existing checkout/Python environment. Selection defaults to the active or uniquely discovered host. Ambiguous cases return a generic skill path rather than modifying every tool.
 
-Choose `--host codex`, `--host claude-code` or `--host antigravity` instead of `all` to install for one tool. A single host can use `--target /path/to/skill-directory` for a custom location. The installer validates each bundle and refuses to replace an unrelated skill. See [host locations and compatibility](HOSTS.md).
+Use `--doctor` to validate installed files and the recorded runtime, and `--dry-run` to preview paths. Use `--host` to select a known tool or `--target` for a documented custom location. [Host details and examples](HOSTS.md).
 
-For Codex only, optional automatic Stop hooks can be enabled separately:
+## Using the skill
+
+In Codex use `$goalpilot <complete goal>`, in Claude Code `/goalpilot <complete goal>`, and in Antigravity/Hermes ask the agent to load and use GoalPilot for the goal. T3 Code uses its underlying provider's integration. For another tool, have the agent read the installed `SKILL.md` from the returned path.
+
+Include the desired outcome, constraints and behavior/data to preserve. The skill saves the complete request, captures original tests and records deadlines and verification limits. Work happens in the calling agent session. The agent calls local verification before concluding; configured Codex Stop hooks can do this automatically on POSIX.
+
+A success requires `scope_passed` and `closed:true`. Failures, unsupported checks, infrastructure restrictions and exhausted budgets stay open. Repair retains the same run, acceptance, tests and budget; do not reset evidence to claim completion.
+
+## Optional Codex Stop hooks
+
+On a compatible POSIX Codex installation:
 
 ```bash
 python3 ~/.agents/skills/goalpilot/scripts/goalpilot.py hook-config install
 ```
 
-This installs the three local Codex hooks and verifies trust for their exact command definitions. It preserves unrelated handlers rather than broadly trusting hooks. Claude Code and Antigravity use explicit verification in the skill and do not run this hook setup. Configuration uses no inference. Tests execute local commands with the calling process's permissions: review commands from untrusted projects before running them.
+This verifies trust in exact local hook commands and preserves unrelated handlers. It is optional and is not used by the other hosts or the Windows portable path. Tests execute commands with the caller's permissions; review commands in untrusted projects.
 
-Reload or restart your coding tool if the skill is not immediately listed. In Codex, use:
-
-```text
-$goalpilot Implement the complete goal below, preserve the existing API and data,
-and verify all important workflows before closing it: ...
-```
-
-Include the desired user outcome, existing behavior to preserve, constraints and important edge cases. A vague goal still needs concrete acceptance decisions; the verifier cannot discover every implicit expectation.
-
-In Claude Code use `/goalpilot <goal>`. In Antigravity IDE/App ask the agent to use GoalPilot for your goal; in its CLI use `/goalpilot <goal>`.
-
-## What happens during a goal
-
-The skill saves the full original request, captures the original tests and records the deadline and verification limits. Coding happens in the current agent session. Claude Code and Antigravity call local verification explicitly before reporting completion. Codex can also delegate final verification to configured Stop hooks. On failure, repair continues in that same session with the same acceptance and remaining budget.
-
-`scope_passed` together with `closed: true` means supported frozen checks passed. An unsupported environment, infrastructure error or exhausted budget leaves the goal open. It is not counted as successful completion.
-
-## Manual local protocol
-
-For a compatible project when automatic hooks are unavailable, run the following from the cloned GoalPilot directory. Create the goal file first. The run directory must be new and outside the target repository.
-
-```bash
-python3 -m goalpilot session start \
-  --goal-file /tmp/my-goal.txt \
-  --repo /absolute/path/to/project \
-  --run-dir /tmp/goalpilot-my-goal-001 \
-  --helpers --context
-
-# Implement the complete goal and meaningful tests in the calling session.
-
-python3 -m goalpilot session finish /tmp/goalpilot-my-goal-001
-python3 -m goalpilot session status /tmp/goalpilot-my-goal-001
-```
-
-If a helper filename collides with existing source, repeat the same start without `--helpers`; the existing file must not be overwritten. On verification failure, repair the implementation, preserve the run and frozen acceptance, then run `finish` again. Do not reset the goal to refresh its budget. If `completion_owner=codex_stop_hook` is reported, let the hook own final verification instead of duplicating it manually.
-
-Manual operation has not been assigned the measured automatic-hook performance figures. See the bundled [protocol reference](../skills/goalpilot/references/session.md) for explicit handoff checks, deadlines and repair semantics.
-
-## Troubleshooting
-
-| Symptom | Action |
-| :--- | :--- |
-| Skill missing in your host | Confirm the selected host/location, then restart or reload skill discovery. |
-| Hook setup fails | Check CLI compatibility and the exact configuration error. Do not enable a blanket trust bypass. Use the manual protocol where supported. |
-| Verification says unsupported | Inspect test discovery, capture limits and excluded inputs. Successful shell execution alone does not establish closure. |
-| Tests fail | Repair the implementation within the existing run and frozen acceptance. |
-| Budget exhausted | Keep the original run as open/exhausted evidence; a new task is a separate attempt, not a free reset. |
-
-The historical `go` and `continue` controller commands can launch additional coding/review model sessions when explicitly used. They are distinct from the default in-session skill and its zero-model passive monitor.
+Legacy `go`/`continue` controller commands can launch additional model sessions when explicitly used. They are not the default in-session skill path. Historical performance figures apply only to the recorded Codex automatic-hook benchmark, not every installation mode or current host.

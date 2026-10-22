@@ -8,6 +8,9 @@ import sys
 
 def main():
     args = sys.argv[1:]
+    os.environ.setdefault('PYTHONUTF8', '1')
+    if os.name == 'nt' and not sys.flags.utf8_mode:
+        os.execv(sys.executable, [sys.executable, '-X', 'utf8', str(Path(__file__).resolve()), *args])
     if not args or args[0] in ('--help', '-h'):
         print('GoalPilot local session adapter\n'
               'Usage: python3 host.py session {start,check,finish,status,submit,verify,repair} ...\n'

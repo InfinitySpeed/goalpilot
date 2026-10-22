@@ -32,5 +32,5 @@ GP = `scripts/goalpilot.py` beside this file. Build HERE; no nested agent/model/
    Otherwise `python3 GP session finish RUN`; repair and repeat against the same acceptance.
 
 Only scope_passed+closed:true means supported frozen checks passed. Unsupported/infrastructure
-stays open. Support: bounded Python unittest projects. Zero nested calls does not mean free
+stays open. Support: bounded Python unittest projects on Linux/macOS/Windows; service_race requires POSIX fork. Zero nested calls does not mean free
 caller usage; total tokens UNKNOWN without external metering. Legacy: references/session.md.

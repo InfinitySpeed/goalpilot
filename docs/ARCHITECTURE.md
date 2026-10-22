@@ -4,7 +4,7 @@ GoalPilot combines instructions for the calling agent with a local Python verifi
 
 ```mermaid
 flowchart TD
-    U[Full user goal] --> S[Host skill: Codex, Claude Code or Antigravity]
+    U[Full user goal] --> S[Coding-agent skill]
     S --> R[Local run: goal, snapshots, deadline, verification budget]
     R --> C[Current coding-agent session implements and tests]
     H[Optional Codex command hooks] -. observe and diagnose .-> C
@@ -22,7 +22,7 @@ flowchart TD
 
 | Component | Responsibility |
 | :--- | :--- |
-| [Host installer](../install.py) and [portable adapter](../integrations/portable/SKILL.md) | Place a self-contained skill in each host's discovery directory and use explicit verification where native Stop hooks are absent. |
+| [Host installer](../install.py) and [portable adapter](../integrations/portable/SKILL.md) | Auto-select or explicitly configure native/generic skills, prepare a runtime and use explicit verification where native Stop hooks are absent. |
 | [Skill instructions](../skills/goalpilot/SKILL.md) | Save the full request, guide implementation and avoid unnecessary repeated reads or verification. |
 | [Session protocol](../goalpilot/session.py) | Preserve the original contract, freeze acceptance, account for verification attempts and invalidate closure after source changes. |
 | [Test gates](../goalpilot/gates.py) | Execute retained tests against disposable worktree copies. The strengthened suite supplements the original suite. |
@@ -48,6 +48,10 @@ These are local integrity receipts, not tamper-proof signatures. A successful ch
 
 The passive monitor and verification commands run Python and subprocesses, not inference. Repair still consumes the calling model's tokens. Total caller usage is unknown without external metering; a local token ceiling cannot enforce usage it cannot observe.
 
-Automatic hook delivery is integrated with Codex. Claude Code and Antigravity have installable adapters using explicit local verification and repair instructions in the calling session. They do not install or depend on Codex hooks. The same engine is bundled for each host; the portable launcher avoids accidentally inheriting a Codex hook binding. See [host adapters](HOSTS.md).
+Automatic hook delivery is integrated with Codex on POSIX. Other hosts and Windows use installable adapters with explicit local verification and repair instructions in the calling session. They do not install or depend on Codex hooks. The same engine is bundled for each host; the portable launcher avoids accidentally inheriting a Codex hook binding. See [host adapters](HOSTS.md).
 
 No live model benchmark has been run for the new adapters. The [published figures](BENCHMARKS.md) apply to the recorded Codex automatic-hook path only, not all hosts or all installation/verification modes.
+
+## Installation portability
+
+The repository entry point guides agents through INSTALL.md. Shell/PowerShell bootstraps prepare a user-local Python when needed; installed skills record its executable. Native Windows verification uses msvcrt file locks and Windows Job Objects, while POSIX keeps flock and process groups. Snapshot inventory paths use POSIX separators across systems. Optional fork-based race probes remain POSIX-only. The current implementation is not the historical measured engine; that reference is archived separately.

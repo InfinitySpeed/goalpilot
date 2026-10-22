@@ -4,7 +4,7 @@ Use English for user-facing documentation, issues and pull requests. Keep change
 
 ## Local verification
 
-Python 3.11+ on a POSIX host is required. The runtime has no third-party dependencies.
+Python 3.11+ is required; local installation and verifier checks also run on Windows. Optional fork-based probes remain POSIX-only. The runtime has no third-party dependencies.
 
 ```bash
 python3 validate.py

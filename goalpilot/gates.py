@@ -58,7 +58,7 @@ def make_gate(repo, run_dir, snapshot):
         supported.append(item)
     if not supported:return None
     # An incomplete initial test directory cannot be represented as complete.
-    actual={str(p.relative_to(repo)) for p in (Path(repo)/'tests').rglob('*')
+    actual={p.relative_to(repo).as_posix() for p in (Path(repo)/'tests').rglob('*')
             if p.is_file() and not p.is_symlink() and '__pycache__' not in p.parts}
     if not actual.issubset({x['path'] for x in entries}):return None
     folder=Path(run_dir)/'original-tests';folder.mkdir(exist_ok=True)

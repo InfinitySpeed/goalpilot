@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from contextlib import contextmanager
-import fcntl
 import hashlib
 import json
 import os
@@ -14,12 +13,13 @@ import uuid
 from .model import ContractError, digest, validate
 from .activity import changes, snapshot
 from .process import run_process
+from .runtime_kit import _lock_stream, _unlock_stream
 
 
 def atomic_json(path: Path, value: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(path.name + f".{os.getpid()}.tmp")
-    with temporary.open("w") as stream:
+    with temporary.open("w", encoding="utf-8") as stream:
         json.dump(value, stream, ensure_ascii=False, indent=2, allow_nan=False)
         stream.write("\n")
         stream.flush()
@@ -30,15 +30,15 @@ def atomic_json(path: Path, value: object) -> None:
 @contextmanager
 def lock(path: Path):
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("a+") as stream:
+    with path.open("a+b") as stream:
         try:
-            fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            _lock_stream(stream, blocking=False)
         except BlockingIOError:
             raise ContractError("This mission is already running") from None
         try:
             yield
         finally:
-            fcntl.flock(stream, fcntl.LOCK_UN)
+            _unlock_stream(stream)
 
 
 def token_totals(calls: list[dict]) -> dict:

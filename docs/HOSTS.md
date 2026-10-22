@@ -1,78 +1,62 @@
-# Host adapters
+# Coding-agent compatibility
 
-One Python engine, the shared `SKILL.md` format, and a local installer for **Codex, Claude Code and Antigravity**. Installation copies a self-contained bundle; it makes no network requests, starts no models and changes no agent settings.
+GoalPilot is a skill for coding agents, not a separate model. One local verifier is delivered through native skill folders where documented, with an explicit-load fallback elsewhere.
 
-## Install
+## Automatic installation
 
-From the cloned repository:
+Send your agent the repository URL and the installation prompt in [the README](../README.md#how-to-use-it). [INSTALL.md](../INSTALL.md) tells the agent to select its host, prepare the runtime and confirm readiness. The user does not need to install Python or Git manually.
 
-```bash
-# All supported hosts, user-wide:
-python3 install.py --host all
+`install.py` defaults to `--host auto`. Explicit `GOALPILOT_HOST` and recognized session hints take precedence, then a single discovered host. Ambiguous discovery returns a generic installation and its explicit skill path; it does not configure every tool. An agent that knows its identity should choose it explicitly.
 
-# Or choose one:
-python3 install.py --host codex
-python3 install.py --host claude-code
-python3 install.py --host antigravity
-```
+## Native paths and prompts
 
-Default installation targets:
-
-| Host | User-wide skill directory | How to invoke |
+| Host | Default destination | Prompt after installation |
 | :--- | :--- | :--- |
-| Codex | `~/.agents/skills/goalpilot/` | `$goalpilot <goal>` |
-| Claude Code | `~/.claude/skills/goalpilot/` | `/goalpilot <goal>` |
-| Antigravity IDE / App | `~/.gemini/config/skills/goalpilot/` | Ask the agent to use GoalPilot; inspect the IDE's Customizations/skills menu. |
-| Antigravity CLI | `~/.gemini/antigravity-cli/skills/goalpilot/` | `/goalpilot <goal>` |
+| Codex | `~/.agents/skills/goalpilot/` | `$goalpilot [goal]` |
+| Claude Code | `~/.claude/skills/goalpilot/` | `/goalpilot [goal]` |
+| Antigravity IDE / App | `~/.gemini/config/skills/goalpilot/` | `Use GoalPilot to achieve: [goal]` |
+| Antigravity CLI | `~/.gemini/antigravity-cli/skills/goalpilot/` | `/goalpilot [goal]` |
+| Hermes Agent | `$HERMES_HOME/skills/goalpilot/`, otherwise the default Hermes home | `Load GoalPilot and use it to achieve: [goal]` |
+| T3 Code | The underlying provider's native skill folder | `Use GoalPilot with this session's agent to achieve: [goal]` |
+| Other tools | Custom `--target`, or GoalPilot's own user-data skill directory | Read the returned `skill_file` and ask the agent to follow it. |
 
-`--host antigravity` installs both the IDE/App and CLI locations. Reload skill discovery or restart the selected tool if needed. Terminal execution permissions remain under the host's normal control; the installer does not change trust or approval settings.
+Antigravity installs its IDE/App and CLI locations. Hermes respects `HERMES_HOME`; its default is `~/.hermes` on POSIX and `%LOCALAPPDATA%/hermes` on Windows. For a different active Hermes profile, pass its actual skill directory with `--target` rather than guessing. T3 Code is a control surface; it does not require a separate fictional skills directory.
 
-## Custom locations
+Generic installation defaults to `~/.local/share/goalpilot/skills/goalpilot` on POSIX (respecting `XDG_DATA_HOME`) and `%LOCALAPPDATA%/GoalPilot/skills/goalpilot` on Windows. This does not overwrite a native Codex installation or claim automatic discovery by every unknown host. Agents without file-reading and command-execution capabilities cannot run the local verifier.
 
-```bash
-python3 install.py --host claude-code \
-  --target /absolute/path/to/project/.claude/skills/goalpilot
-```
+## Direct commands
 
-Use `--target` for an explicit host-compatible location. For simultaneous use across all three tools, the default user-wide installation keeps host-specific entries separate and avoids duplicate workspace skill names. Host project-skill discovery and precedence rules vary; do not install conflicting entries with the same name in multiple discovery directories.
-
-To preview destinations without writing files:
+With an existing Python3.11+ and checkout:
 
 ```bash
-python3 install.py --host all --dry-run
+python install.py                         # auto-select and verify
+python install.py --host hermes
+python install.py --host t3-code --provider claude-code
+python install.py --host generic --target /path/to/native/skills/goalpilot
+python install.py --host auto --dry-run
+python install.py --host hermes --doctor
 ```
 
-For an older Antigravity IDE using its legacy global directory, or another custom installation location:
+`--host all` is an explicit opt-in for all named native hosts. Existing unrelated skills and symlink destinations are refused. Each replacement is staged and hash-validated; goals and evidence outside the bundle are not reset. Installation does not modify host trust, permissions or settings.
 
-```bash
-python3 install.py --host antigravity \
-  --target ~/.gemini/antigravity/skills/goalpilot
-```
+## Runtime and Windows
 
-`--target` requires a single host and specifies the complete skill directory, including `goalpilot`. Existing unrelated skills and symlink destinations are refused. Each bundle replacement is staged, hash-validated and installed atomically; existing local GoalPilot runs outside the bundle are not reset.
+The bootstraps reuse Python3.11+ or prepare a user-local Python through uv. The installed skill records the interpreter in `RUNTIME.json`, so the agent does not rely on a user-managed `python3` command or PATH edits. Missing dependency/source downloads need network access; existing-runtime installations work offline.
 
-## Completion behavior
+Engine0.13.0 adds Windows file locking, process-tree cleanup using Windows Job Objects, normalized snapshot paths and UTF-8 launcher behavior. Local Python unittest verification is available on Linux, macOS and Windows. Optional `service_race` still requires POSIX fork and is not a Windows feature. Restricted runners that cannot create the required process job fail verification rather than silently claiming success.
 
-**Codex:** its existing instructions and engine are preserved. By default the skill calls `session finish` explicitly. Optional native Stop hooks can take ownership of final verification:
+Codex on POSIX can use its optional native Stop hooks. Windows and portable adapters call verification explicitly in the current agent session. They do not install Codex hooks or launch a separate model. Other test frameworks and blanket compatibility with every agent remain outside the supported verified scope.
 
-```bash
-python3 ~/.agents/skills/goalpilot/scripts/goalpilot.py hook-config install
-```
+## Performance scope
 
-**Claude Code and Antigravity:** the portable adapter tells the calling agent to run `session finish` before concluding, inspect the result, repair failures in the same session and retain the same goal, tests, deadline and remaining budget. No host-specific Stop hook is assumed or installed. This works through the tool's terminal execution capability and requires no Codex executable, Codex login or GoalPilot service.
+Current engine0.13.0, skill1.4.0 and adapters1.1.0 have no new model benchmark. Published figures describe Codex skill1.3.1 / engine0.12.1. That exact source is retained under [benchmarks/codex-1.3.1](../benchmarks/codex-1.3.1), and the published arithmetic remains reproducible. Do not transfer its percentages to new versions, Windows or other hosts.
 
-The portable launcher clears an inherited Codex thread identifier in its own process so that another host cannot accidentally bind to a parent Codex session. It exposes only local `session` commands and uses the same bundled engine. The adapters do not intercept a host that ignores the skill or stops before executing its instructions. Closure requires `scope_passed` and `closed:true` from the verifier.
+## Sources
 
-## Requirements and measured scope
+Host registration choices were checked against official sources on October22,2026:
 
-Agent portability does not change the engine's project/OS scope: Python 3.11+, POSIX, bounded compatible Python `unittest` projects and initial tests. Native Windows support and arbitrary test-framework support are separate work.
-
-The portable adapter version is **1.0.0**. The base Codex skill remains **1.3.1** and the engine remains **0.12.1**. Local installation and verifier-command checks were performed; no end-to-end agent runs or model benchmarks were run for these new adapters. Published time/token/completion figures describe the recorded Codex automatic-hook integration only. Portable bundle metadata explicitly marks its host performance as unmeasured.
-
-## Host documentation
-
-Installation formats and paths were checked against the official documentation on October 22, 2026:
-
-- [Claude Code skills](https://code.claude.com/docs/en/skills): personal and project skill directories, slash-command invocation and bundled scripts.
-- [Antigravity skills](https://antigravity.google/docs/skills/): IDE/App/CLI locations, `SKILL.md`, CLI slash-command conversion and legacy `.agent/skills` compatibility.
-- [Codex skills](https://developers.openai.com/codex/skills/): skill format and discovery. The existing Codex bundle and integration are retained.
+- [Claude Code skills](https://code.claude.com/docs/en/skills)
+- [Antigravity skills](https://antigravity.google/docs/skills/)
+- [Hermes skills implementation](https://github.com/NousResearch/hermes-agent/blob/main/tools/skills_tool.py) and [runtime home implementation](https://github.com/NousResearch/hermes-agent/blob/main/hermes_constants.py)
+- [T3 Code provider model](https://github.com/pingdotgg/t3code#readme)
+- [uv managed Python](https://docs.astral.sh/uv/guides/install-python/)

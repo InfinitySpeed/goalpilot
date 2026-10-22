@@ -20,7 +20,7 @@ def capture(repo, destination, *, max_files=128, max_bytes=16000000, max_file_by
         visited+=len(dirs)+len(names)
         if visited>max_entries:complete=False;break
         for name in sorted(names):
-            path=Path(root)/name;relative=str(path.relative_to(repo));lower=name.lower()
+            path=Path(root)/name;relative=path.relative_to(repo).as_posix();lower=name.lower()
             if (path.is_symlink() or not path.is_file() or name.startswith('.') and name not in PROJECT_METADATA or
                 any(x in lower for x in ('credential','secret','auth.json','id_rsa','id_ed25519')) or
                 path.suffix.lower() in ('.pem','.key')):

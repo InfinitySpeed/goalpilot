@@ -100,13 +100,17 @@ def load_and_verify():
         require(row['judge_seconds'] >= old['judge_seconds'], 'Review removed judging cost')
     measurement = json.loads((EVIDENCE / 'measurement.json').read_text())
     actual = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in (ROOT / 'goalpilot').glob('*.py')}
-    require(actual == measurement['engine_files'], 'Current engine differs from measured source')
-    require(hashlib.sha256((ROOT / 'skills/goalpilot/SKILL.md').read_bytes()).hexdigest() ==
-            measurement['skill_sha256'], 'Skill instructions differ from measured version')
-    return {'original': original, 'reviewed': reviewed, 'source_matches_measured': True}
+    current_matches = (actual == measurement['engine_files'] and
+        hashlib.sha256((ROOT / 'skills/goalpilot/SKILL.md').read_bytes()).hexdigest() == measurement['skill_sha256'])
+    reference = ROOT / 'benchmarks/codex-1.3.1'
+    reference_files = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in (reference/'goalpilot').glob('*.py')}
+    require(reference_files == measurement['engine_files'], 'Archived measured engine differs')
+    require(hashlib.sha256((reference/'SKILL.md').read_bytes()).hexdigest() == measurement['skill_sha256'], 'Archived measured instructions differ')
+    return {'original': original, 'reviewed': reviewed, 'source_matches_measured': current_matches,
+            'archived_measured_reference_verified': True}
 
 
 if __name__ == '__main__':
     result = load_and_verify()
     print(json.dumps(result, indent=2))
-    print('PASS: both scoring definitions, whole-attempt aggregates, targets and source identity. No model calls.')
+    print('PASS: scoring definitions, aggregates, targets and archived measured-source identity. No model calls.')

@@ -2,7 +2,7 @@
 
 This report covers skill **1.3.1**, engine **0.12.1**, and the complete calling invocation. It distinguishes observed results from general product guarantees.
 
-This is the recorded **Codex automatic-hook benchmark**. The new installer and Claude Code / Antigravity adapter are not additional measured treatments. Their availability does not extend these performance figures to other hosts or explicit-finish delivery modes. The Codex engine and skill instructions remain unchanged.
+This is the recorded **Codex automatic-hook benchmark**. The new installer and Claude Code / Antigravity adapter are not additional measured treatments. Their availability does not extend these performance figures to other hosts or explicit-finish delivery modes. The measured reference is retained in benchmarks/codex-1.3.1; current engine0.13.0/skill1.4.0 and its portability changes are not the measured treatment.
 
 ## Primary comparison
 
@@ -85,8 +85,8 @@ Across the development experiments, observed research consumption is **at least 
 | [Measured source hashes](../reports/skill-131-summary/measurement.json) | Exact engine and skill-instruction identity, versions and scope. |
 | [Research cost summary](../reports/skill-131-summary/research-cost-summary.json) | Deduplicated aggregate lower bounds and unknowns. |
 
-Run `python3 tools/check_benchmark.py` to reconstruct published aggregates from the included rows and verify current source identity. Run `python3 validate.py` for offline technical regressions. These commands do not repeat paid model experiments.
+Run `python3 tools/check_benchmark.py` to reconstruct published aggregates from the included rows and verify the archived measured-source identity and report whether current source matches. Run `python3 validate.py` for offline technical regressions. These commands do not repeat paid model experiments.
 
 The public repository contains analyses and audit receipts, not the full raw model transcripts, external judge worktrees or development-session journals. Historical receipts retain their original local paths. Aggregate arithmetic can be reproduced from this repository; independent re-auditing of the original provider telemetry requires the retained raw journals and cannot be performed from summaries alone. No fresh paid replication has been run for this public documentation release.
 
-Engine source and skill instructions are unchanged from the measured version. Public documentation, chart/check tooling and repository packaging are publication work; they were not an additional measured treatment.
+The exact measured engine source and skill instructions are retained in benchmarks/codex-1.3.1. Current portability and onboarding changes are a new unbenchmarked version; recorded gains are historical evidence, not a fresh performance claim for this release.

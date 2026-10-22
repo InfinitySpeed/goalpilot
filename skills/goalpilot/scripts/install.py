@@ -51,11 +51,11 @@ def install(source,target):
 
 
 def main():
-    parser=argparse.ArgumentParser(description='Installer le skill Codex GoalPilot, sans dépendance réseau')
+    parser=argparse.ArgumentParser(description='Install the self-contained GoalPilot bundle offline')
     parser.add_argument('--target',type=Path,default=Path.home()/'.agents/skills/goalpilot')
     args=parser.parse_args()
     try:result=install(Path(__file__).resolve().parents[1],args.target)
-    except (OSError,ValueError,KeyError)as exc:parser.exit(1,f'Installation refusée : {exc}\n')
+    except (OSError,ValueError,KeyError)as exc:parser.exit(1,f'Installation refused: {exc}\n')
     print(json.dumps(result,ensure_ascii=False,indent=2))
 
 

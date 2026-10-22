@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "goalpilot"
-version = "0.12.1"
-description = "Persistent, evidence-driven supervision for ambitious coding goals"
+version = "0.13.0"
+description = "A skill for coding agents: local verification, focused repairs, and less repeated work"
 requires-python = ">=3.11"
 dependencies = []
 

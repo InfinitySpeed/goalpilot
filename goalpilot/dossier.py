@@ -38,18 +38,18 @@ def prepare(repo: Path, max_bytes: int = 40000, max_files: int = 64, max_entries
         for name in files:
             path = Path(directory)/name
             if not path.is_symlink() and eligible(path):
-                known = (known_helpers or {}).get(str(path.relative_to(repo)))
+                known = (known_helpers or {}).get(path.relative_to(repo).as_posix())
                 if known and path.is_file():
                     # Only exact supplied bytes can use the API in place of a
                     # source dump. Never hide same-named user/modified code.
                     with path.open('rb') as stream:
                         raw = stream.read(known['bytes'] + 1)
                     if len(raw) == known['bytes'] and hashlib.sha256(raw).hexdigest() == known['sha256']:
-                        verified_helpers.append({'path':str(path.relative_to(repo)), **known})
+                        verified_helpers.append({'path':path.relative_to(repo).as_posix(), **known})
                         continue
                 candidates.append(path)
     candidates.sort(key=lambda p: (0 if p.name == 'AGENTS.md' else 1 if p.name.lower().startswith('readme') else 2 if p.name in CONFIG else 3,
-                                   len(p.relative_to(repo).parts), str(p.relative_to(repo))))
+                                   len(p.relative_to(repo).parts), p.relative_to(repo).as_posix()))
     files = []
     used = 0
     for path in candidates[:max_files]:
@@ -66,7 +66,7 @@ def prepare(repo: Path, max_bytes: int = 40000, max_files: int = 64, max_entries
         if b'\0' in raw:
             continue
         used += len(raw)
-        files.append({'path':str(path.relative_to(repo)), 'text':raw.decode('utf-8',errors='replace'),
+        files.append({'path':path.relative_to(repo).as_posix(), 'text':raw.decode('utf-8',errors='replace'),
                       'sha256':hashlib.sha256(raw).hexdigest(),'complete':not truncated})
     ancestors = []
     ancestor_checks = []
@@ -79,7 +79,7 @@ def prepare(repo: Path, max_bytes: int = 40000, max_files: int = 64, max_entries
             ancestors.append({'path':str(path),'text':raw[:16000].decode('utf-8',errors='replace'),'complete':len(raw)<=16000})
     result = {'repo':str(repo),'files':files,'ancestor_instructions':ancestors,
             'ancestor_checks':ancestor_checks,
-            'candidate_paths':[str(p.relative_to(repo)) for p in candidates[:max_entries]],
+            'candidate_paths':[p.relative_to(repo).as_posix() for p in candidates[:max_entries]],
             'scan_complete':scan_complete, 'all_candidates_included':scan_complete and len(files)==len(candidates) and all(x['complete'] for x in files),
             'source_bytes':used,'duration_seconds':time.monotonic()-start}
     if verified_helpers:
