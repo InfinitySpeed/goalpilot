@@ -12,7 +12,7 @@ python3 tools/check_benchmark.py
 python3 tools/build_skill.py
 ```
 
-The offline suite uses explicit test doubles where model transport is involved. It must not require a Codex account, network access or model calls. Test output is written to `reports/tests.json` and `reports/tests.txt`.
+The offline suite uses explicit test doubles where model transport is involved. It must not require a Codex account, network access or model calls. Test output is written to `reports/tests.json` and `reports/tests.txt`. The runner executes test modules in parallel by default; use `--jobs 1` for serial execution. See [test runner design and measurements](docs/TEST_RUNNER.md).
 
 ## Charts
 
