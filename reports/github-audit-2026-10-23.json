@@ -33,6 +33,6 @@
     "installer_sha256": "3e875f7936a14aafdad8ee363530bf822e52fbe89db521bcc6465835baecc407",
     "license_sha256": "35e838c76b3918e03da505d57fbcc371836b513fbae46dfcf4ae7d511495c23a",
     "backend_image_sha256": "471e7c16812cb41adf9a0fda72020dd0d1ff0603af3c3c80731733620bb05a5c",
-    "chart_script_sha256": "5e44b7dfa1607c68d8a7db3623eeecf53d8f72c67114fdbe4e210803dd475feb"
+    "chart_script_sha256": "f40e3285e69f70a4b0f29c45eacba841dd8a4072d05e652a45d09b54c786bcdf"
   }
 }

@@ -44,6 +44,8 @@ def main():
     fig.subplots_adjust(left=.06,right=.98,top=.77,bottom=.29,wspace=.34)
     target=ROOT/'docs/assets/portable-benchmark'
     for ext in ('png','svg'):fig.savefig(str(target)+'.'+ext,dpi=150,facecolor='white')
+    svg=Path(str(target)+'.svg')
+    svg.write_text('\n'.join(line.rstrip()for line in svg.read_text().splitlines())+'\n')
     plt.close(fig)
     receipt={'archive_sha256':hashlib.sha256((ROOT/'reports/portable-skill-170-2026-10-23.zip').read_bytes()).hexdigest(),
         'audit_promotable':data['promotable'],'rows':dict(zip(('native_historical','old_current','new_current'),rows)),
