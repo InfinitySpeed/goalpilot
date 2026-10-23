@@ -31,7 +31,7 @@ def build(root=ROOT, legacy=False):
         module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
         receipt=module.build(root)
         archive=root/'dist/goalpilot-skill.zip'
-        shutil.copy2(root/('dist/goalpilot-skill-1.8.0.zip'if generalized else'dist/goalpilot-skill-1.7.0.zip'),archive)
+        shutil.copy2(Path(receipt['path']),archive)
         receipt={**receipt,'path':str(archive),'all_hashes_verified':True}
         (archive.parent/'goalpilot-skill-release.json').write_text(json.dumps(receipt,indent=2)+'\n')
         return receipt

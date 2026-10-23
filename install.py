@@ -92,7 +92,7 @@ def prepare_bundle(destination,host,*,python_executable=None,python_version=None
     runtime={'python':interpreter,'python_version':python_version or sys.version.split()[0],'entry_point':entry,'host':host,'engine_version':json.loads((destination/'MANIFEST.json').read_text())['engine']['version'],'adapter_version':'1.1.0'}
     (destination/'RUNTIME.json').write_text(json.dumps(runtime,indent=2)+'\n',encoding='utf-8')
     manifest=json.loads((destination/'MANIFEST.json').read_text(encoding='utf-8'))
-    if UNIVERSAL:manifest.update(skill_version='1.8.0',native_adapter_version='0.1.0')
+    if UNIVERSAL:manifest.update(skill_version='1.9.0',native_adapter_version='0.2.0')
     manifest.update(host_profile=host,adapter_version='1.1.0',entry_point=entry,
         completion_mode='codex-hooks-or-explicit-finish'if host=='codex'and os.name!='nt' else'explicit-session-finish',
         measured_runtime_and_skill_parity=False,post_measurement_metadata_only=[],
@@ -116,7 +116,7 @@ def doctor(installer,plan):
         try:
             installed=installer.validate(target)
             expected=json.loads((SOURCE/'MANIFEST.json').read_text(encoding='utf-8'))
-            expected_version='1.8.0'if UNIVERSAL else expected.get('skill_version')
+            expected_version='1.9.0'if UNIVERSAL else expected.get('skill_version')
             if (installed.get('skill_version'),installed['engine']['version'])!=(expected_version,expected['engine']['version']):
                 raise ValueError('Installed profile differs from the requested profile; reinstall with the selected --profile')
             runtime=json.loads((target/'RUNTIME.json').read_text(encoding='utf-8'))
@@ -150,7 +150,8 @@ def main():
         policy=json.loads(promotion.read_text(encoding='utf-8'))if promotion.is_file()else{}
         if not isinstance(policy,dict):raise ValueError('Promotion metadata must be a JSON object')
         promoted=policy.get('status')=='promoted'
-        UNIVERSAL=args.profile=='universal' or (args.profile=='stable' and policy.get('native_workflow',{}).get('status')=='promoted')
+        workflow=policy.get('active_native_workflow',policy.get('native_workflow',{}))
+        UNIVERSAL=args.profile=='universal' or (args.profile=='stable' and workflow.get('status')=='promoted')
         use_new=args.profile in ('candidate','universal')or(args.profile=='stable'and promoted)
         SOURCE=ROOT/('skills/goalpilot-016'if use_new else'skills/goalpilot')
         if sys.version_info<(3,11):raise ValueError('Use bootstrap.sh or bootstrap.ps1 to prepare Python automatically')
@@ -165,7 +166,7 @@ def main():
             if source_manifest['files']!=policy['measured_files']:
                 raise ValueError('Stable skill differs from the promoted measurement; use --profile candidate for local experiments')
         if args.profile=='stable'and UNIVERSAL:
-            for name,expected in policy['native_workflow']['source_files'].items():
+            for name,expected in workflow['source_files'].items():
                 if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=expected:
                     raise ValueError('Native workflow differs from promoted evidence: '+name)
         if args.doctor:
@@ -173,7 +174,7 @@ def main():
             print(json.dumps(result,ensure_ascii=False,indent=2));return 0 if result['ready']else 1
         for _,target in plan:preflight(target)
         if args.dry_run:
-            result={'selected_host':host,'selected_profile':args.profile,'skill_version':'1.8.0'if UNIVERSAL else source_manifest.get('skill_version'),'engine_version':source_manifest['engine']['version'],'selection_reason':reason,'candidates':candidates,'dry_run':True,'destinations':[{'host':name,'path':str(target)}for name,target in plan],'model_calls':0}
+            result={'selected_host':host,'selected_profile':args.profile,'skill_version':'1.9.0'if UNIVERSAL else source_manifest.get('skill_version'),'engine_version':source_manifest['engine']['version'],'selection_reason':reason,'candidates':candidates,'dry_run':True,'destinations':[{'host':name,'path':str(target)}for name,target in plan],'model_calls':0}
         else:
             rows=[]
             with tempfile.TemporaryDirectory(prefix='goalpilot-install-')as tmp:
@@ -182,7 +183,7 @@ def main():
                     if name not in bundles:bundles[name]=prepare_bundle(Path(tmp)/name,name)
                     rows.append({'host':name,**installer.install(bundles[name],target),'skill_file':str(target/'SKILL.md')})
             verification=doctor(installer,plan)
-            result={'selected_host':host,'selected_profile':args.profile,'skill_version':'1.8.0'if UNIVERSAL else source_manifest.get('skill_version'),'engine_version':source_manifest['engine']['version'],'selection_reason':reason,'installed':rows,'verification':verification,'model_calls':0,'host_settings_changed':False,'next_step':'Reload skills, then ask your agent to use GoalPilot. Generic hosts may need to read the returned skill_file explicitly.'}
+            result={'selected_host':host,'selected_profile':args.profile,'skill_version':'1.9.0'if UNIVERSAL else source_manifest.get('skill_version'),'engine_version':source_manifest['engine']['version'],'selection_reason':reason,'installed':rows,'verification':verification,'model_calls':0,'host_settings_changed':False,'next_step':'Reload skills, then ask your agent to use GoalPilot. Generic hosts may need to read the returned skill_file explicitly.'}
             if not verification['ready']:print(json.dumps(result,ensure_ascii=False,indent=2));return 1
         print(json.dumps(result,ensure_ascii=False,indent=2));return 0
     except(OSError,ValueError,KeyError)as exc:parser.exit(1,f'Installation refused: {exc}\n')

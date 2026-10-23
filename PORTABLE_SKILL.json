@@ -1,6 +1,6 @@
 {
   "status": "promoted",
-  "skill_version": "1.8.0",
+  "skill_version": "1.9.0",
   "engine_version": "0.16.0",
   "bundle": "skills/goalpilot-016",
   "default": "skills/goalpilot-016",
@@ -60,9 +60,9 @@
     "scripts/host.py": "2b5c10aaeccee7589164281f5738e32c60fa794818e75cb235d68a31af234c2f",
     "scripts/install.py": "f16c098daf916b289bc799d39a60b190e9887d4ad3ee3f296e4c6a954651eeb2"
   },
-  "promotion_rule": "8/8 independent business correct, certified and verbatim-preserved; >=10%raw savings, positive uncached+output savings, <=3%time regression vs native. Sequential reused controls, all45caller outcomes retained and independently replayed.",
+  "promotion_rule": "4/4 business+certified+verbatim; raw/unc/time at most3% regression vs1.8 and positive token savings vsnative; meaningful expanded verifier capability must pass independent local counterfactuals; all outcomes retained. Speed gain not required.",
   "user_speed_waiver": {
-    "instruction": "J’accepterai même sans gain significatif de vitesse",
+    "instruction": "J\u2019accepterai m\u00eame sans gain significatif de vitesse",
     "applied_before_outcomes": true,
     "effect": "Preregistered current gate allows at most3%time regression; both token savings and20/20completion remain mandatory."
   },
@@ -70,10 +70,10 @@
     "Revision labels/manifests/documentation added after measurement; all49measured behavior files match the frozen experiment with only SKILL.md changed fromr1.",
     "Installer doctor now compares selected behavior files rather than only version labels. Generated behavior files remain byte-identical to the frozen installer; locally verified without additional model calls."
   ],
-  "release_revision": 2,
-  "release_version": "1.8.0",
-  "release_tag": "skill-v1.8.0",
-  "registered_candidate_id": "generalization-final-003",
+  "release_revision": 3,
+  "release_version": "1.9.0",
+  "release_tag": "skill-v1.9.0",
+  "registered_candidate_id": "1.9.0-final2",
   "previous_promotion": {
     "release_tag": "skill-v1.7.0-r1",
     "benchmark": "reports/portable-skill-170-2026-10-23.json",
@@ -107,5 +107,26 @@
     "explicit_generalized_profile": "universal"
   },
   "base_promotion_rule": "Preregistered20fresh interleaved pairs: candidate20/20 verified, complete provider meters, >=10%raw and uncached+output savings vsSkill1.7.0-r1; no >3%elapsed-time or completion regression. Historical native >=45%both token savings and>=25%time saving. All attempts included, no replacements.",
-  "base_registered_candidate_id": "1.8.0"
+  "base_registered_candidate_id": "1.8.0",
+  "schema_version": 2,
+  "native_workflow_scope": "Immutable schema1 evidence alias for1.8.0. active_native_workflow is the installed default and current proof; never transfer historical metrics.",
+  "active_native_workflow": {
+    "status": "promoted",
+    "version": "1.9.0",
+    "adapter_version": "0.2.0",
+    "source_files": {
+      "install.py": "892e23319b84a17fbe71a5e7d58035d9b33d1ee751e31b48c50d7609640679de",
+      "integrations/native/native.py": "8d694dcb32c1c91e272eb9e092fe2fb3fbb9655f4cd120454fd257b3e43daa44",
+      "integrations/native/routed-SKILL.md": "13ece8cc4838877ee47d07dd01ba66aa3f9be783664cdc94aa455ce34c8537c2",
+      "integrations/native/SKILL.md": "812da0615083f1adf83ef45fa1dfabc21bae56af2c6a4bbf37920b6c4e789ef3"
+    },
+    "benchmark": "reports/skill-190-2026-10-23.json",
+    "benchmark_sha256": "db2d0d5b363fcf4b793462926730b95501c9aeb5b2412999bb58f37ed0619109",
+    "evidence_archive": "reports/skill-190-evidence.zip",
+    "source_bundle": "skills/goalpilot-016",
+    "promotion_rule": "4/4 business+certified+verbatim; raw/unc/time at most3% regression vs1.8 and positive token savings vsnative; meaningful expanded verifier capability must pass independent local counterfactuals; all outcomes retained. Speed gain not required.",
+    "scope": "Four synthetic caller goals, including Go and TypeScript; existing Python/Java controls reused. Local8counterfactual methods, five-host payload parity and eight-runtime compatibility. Codex live only. No8/20historical metric transfer.",
+    "evidence_sha256": "6e8d7d807b7ad4df589468f5a3b6026f40883d3cd3742127e8457c50a120fb05",
+    "evidence_url": "https://github.com/InfinitySpeed/goalpilot/releases/download/skill-v1.9.0/skill-190-evidence.zip"
+  }
 }

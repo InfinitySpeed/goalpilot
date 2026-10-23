@@ -14,6 +14,9 @@ def main():
     import matplotlib.pyplot as plt
     from matplotlib.ticker import MaxNLocator
     policy=json.loads((ROOT/'PORTABLE_SKILL.json').read_text())
+    if policy.get('active_native_workflow',{}).get('status')=='promoted':
+        from plot_skill190 import main as current
+        return current()
     if policy.get('native_workflow',{}).get('status')=='promoted':
         from plot_generalization import main as generalized
         return generalized()

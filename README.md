@@ -2,14 +2,14 @@
 
 **A skill that helps coding agents turn ambitious goals into verified results, with less repeated work.**
 
-GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.8.0 with native verification and the frozen service engine 0.16.0**; it does not start a second coding model.
+GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.9.0 with native verification and the frozen service engine 0.16.0**; it does not start a second coding model.
 
 [![Offline checks](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
-[![Skill 1.8.0](https://img.shields.io/badge/Skill-1.8.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
+[![Skill 1.9.0](https://img.shields.io/badge/Skill-1.9.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
 [![Service engine 0.16.0](https://img.shields.io/badge/Engine-0.16.0-334155)](PORTABLE_SKILL.json)
 
-[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/GENERALIZATION.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
+[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PROMOTION-1.9.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
 
 ![GoalPilot backend: preserve the original goal, define criteria, implement in the current agent, verify locally, and repair within the same budget.](docs/assets/goalpilot-backend.png)
 
@@ -17,36 +17,40 @@ GoalPilot preserves your original request, turns it into explicit criteria, reus
 
 ## Measured results
 
-![Eight-goal, five-stack whole-caller comparison.](docs/assets/portable-benchmark.png)
+![Source-bound four-goal whole-caller comparison.](docs/assets/skill-190-benchmark.png)
 
-| Eight attempts per arm | Native Codex | GoalPilot r2 | GoalPilot 1.8 |
+| Four goals per arm | Native Codex | GoalPilot 1.8 | GoalPilot 1.9 |
 | :--- | ---: | ---: | ---: |
-| Independent business checks | 8/8 | 8/8 | **8/8** |
-| Certified GoalPilot closure | N/A | 2/8 | **8/8** |
-| Raw tokens, including cached input | 965,638 | 761,197 | **472,982** |
-| Uncached input + output | 141,318 | 100,205 | **87,958** |
-| Total caller time, minutes | 14.94 | 11.50 | **8.23** |
+| Independent behavioral checks | 4/4 | 4/4 | 4/4 |
+| Certified GoalPilot closure | N/A | 4/4 | 4/4 |
+| Raw tokens, including cached input | 374,651 | 288,144 | 241,136 |
+| Uncached input + output | 41,723 | 37,648 | 30,704 |
+| Caller seconds | 244.50 | 228.03 | 210.78 |
 
-**51.02% fewer raw tokens, 37.76% fewer uncached-input + output tokens and 44.92% less caller time versus native Codex**, preserving 8/8 independent business checks.
+On this series, **35.64% fewer raw tokens, 26.41% fewer uncached-input + output
+tokens and 13.79% less caller time than native Codex**. Versus GoalPilot 1.8:
+**16.31% fewer raw tokens, 18.44% fewer uncached-input + output tokens and 7.57%
+less caller time**, preserving **4/4 independent behavioral checks and certified closures**.
 
-**Eight synthetic projects across five stacks**, with sequential reused controls. r2's six unsupported closures still produced correct code. Some individual tasks cost more; exact subscription-quota savings are not established. [Definitions, per-case counters, failed candidates and evidence](docs/GENERALIZATION.md).
+**Four known synthetic goals across Python, Java, Go and TypeScript**, one observation
+per arm/case; Python/Java controls reused. Other agents have installation coverage,
+not live performance evidence. Individual regressions remain; exact subscription-quota
+savings are not established. [All outcomes, research cost and limitations](docs/PROMOTION-1.9.md).
 
-[Portability checks and limits](docs/UNIVERSALITY.md) distinguish installed-verifier
-compatibility from actual coding-agent performance. Run the local matrix without
-model calls; unsupported runtimes are reported explicitly.
+### Broader native verification
 
-**Additional four-goal extension:** native Codex, previous GoalPilot r2 and the
-unchanged Skill 1.8 each pass **4/4 independent behavioral checks**. Skill 1.8 uses
-**29.18% fewer raw tokens, 16.02% fewer uncached-input + output tokens and 15.27%
-less caller time than native Codex** on this separate series. There are individual
-regressions, including **30.94% more uncached tokens on the Python task**.
-[All outcomes, limitations and replayable evidence](docs/UNIVERSALITY.md#additional-live-comparison).
+- Run checks in separate subprojects with a relative `cwd`.
+- Freeze custom test files/directories through `test_paths`, plus common Java/.NET test names.
+- Bound context headers and file listings: **1,159,705 → 24,226 bytes** in a 2,500-file synthetic case, retaining every original file in evidence.
+- Stop explicitly on unverifiable criteria; unchanged blocked checks do not consume another verification attempt.
+- **40/40 local runtime/profile combinations** pass; all 55 installed payload files match the measured candidate on five profiles.
 
-The earlier [20-goal Python-service benchmark](docs/SKILL-EFFICIENCY.md) belongs to Skill 1.7.0-r2 and remains historical.
+The [earlier eight-goal 1.8 study](docs/GENERALIZATION.md), [four-goal 1.8 extension](docs/UNIVERSALITY.md)
+and [twenty-service r2 benchmark](docs/SKILL-EFFICIENCY.md) remain separate historical evidence.
 
 ## How to use it
 
-These instructions install **Skill 1.8.0 with the frozen engine 0.16.0** in your current coding-agent session.
+These instructions install **Skill 1.9.0 with the frozen engine 0.16.0** in your current coding-agent session.
 
 ### 1. Send this to your coding agent
 
@@ -130,7 +134,7 @@ Optional helpers suit their documented interfaces. `ReplayService` is intended f
 
 ## Development
 
-The engine uses the Python standard library. The current version has **325 offline tests; no skips on the verified Linux run**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
+The engine uses the Python standard library. The current version has **362 offline tests; no skips on the verified Linux run**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
 
 ```bash
 python3 validate.py

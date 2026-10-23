@@ -1,0 +1,26 @@
+{
+  "report_sha256": "db2d0d5b363fcf4b793462926730b95501c9aeb5b2412999bb58f37ed0619109",
+  "totals": {
+    "native": {
+      "business_passed": 4,
+      "certified": null,
+      "raw_tokens": 374651,
+      "uncached_tokens": 41723,
+      "seconds": 244.49582922099944
+    },
+    "previous": {
+      "business_passed": 4,
+      "certified": 4,
+      "raw_tokens": 288144,
+      "uncached_tokens": 37648,
+      "seconds": 228.03111594299844
+    },
+    "current": {
+      "business_passed": 4,
+      "certified": 4,
+      "raw_tokens": 241136,
+      "uncached_tokens": 30704,
+      "seconds": 210.7756667709982
+    }
+  }
+}

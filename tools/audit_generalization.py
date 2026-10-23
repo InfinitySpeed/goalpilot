@@ -5,6 +5,7 @@ import json
 import math
 from pathlib import Path
 import tarfile
+import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -18,8 +19,16 @@ def analyze(path,evidence=None,*,check_source=True):
     allowed={'install.py','integrations/native/native.py','integrations/native/SKILL.md','integrations/native/routed-SKILL.md'}
     if set(report['source_files'])!=allowed:raise ValueError('Complete measured source identity required')
     if check_source:
+        # Schema 2 keeps the 1.8 evidence alias immutable; the active workflow
+        # has its own source-bound audit. Never transfer 1.8 figures to it.
+        policy=json.loads((ROOT/'PORTABLE_SKILL.json').read_text())
+        historical=bool(policy.get('active_native_workflow'))
         for name,digest in report['source_files'].items():
-            if sha((ROOT/name).read_bytes())!=digest:raise ValueError('Measured source differs: '+name)
+            if historical:
+                with zipfile.ZipFile(ROOT/'reports/portability-extension-2026-10-23.zip')as frozen:
+                    raw=frozen.read('inputs/current/'+name)
+            else:raw=(ROOT/name).read_bytes()
+            if sha(raw)!=digest:raise ValueError('Measured source differs: '+name)
     archive=None
     if evidence:
         raw=Path(evidence).read_bytes()

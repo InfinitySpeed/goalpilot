@@ -1,3 +1,5 @@
+Historical **Skill 1.8** evidence. The current default is [Skill 1.9](PROMOTION-1.9.md); the figures below do not describe the changed release.
+
 # GoalPilot 1.8: native project verification
 
 The default preserves the project's language, interfaces and test framework. One begin command selects unchanged engine 0.16.0/helpers for compatible unimplemented Python JSONL/HTTP scaffolds; other projects use native adapter 0.1.0. Neither route starts a second coding model.

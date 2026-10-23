@@ -1,4 +1,4 @@
-The default is now [generalized Skill 1.8](GENERALIZATION.md), composed from the frozen service bundle below and a native adapter. Its metrics are separate. Use --profile candidate for the exact r2 service control.
+The default is now [generalized Skill 1.9](PROMOTION-1.9.md), composed from the frozen service bundle below and a native adapter. Its metrics are separate. Use --profile candidate for the exact r2 service control.
 
 # Portable skill with engine 0.16.0
 

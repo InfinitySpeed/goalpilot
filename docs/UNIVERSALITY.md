@@ -1,3 +1,5 @@
+Historical **Skill 1.8** evidence. The current default is [Skill 1.9](PROMOTION-1.9.md); the figures below do not describe the changed release.
+
 # Portability and the limits of performance claims
 
 GoalPilot 1.8 uses project-native executable checks. The verification protocol is

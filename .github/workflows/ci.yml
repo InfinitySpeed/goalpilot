@@ -45,6 +45,8 @@ jobs:
         run: python tools/audit_generalization.py reports/native-generalization-2026-10-23.json --require-promotion
       - name: Audit the additional whole-caller outcomes and provider receipts
         run: python tools/audit_portability_extension.py reports/portability-extension-2026-10-23.json --evidence reports/portability-extension-2026-10-23.zip
+      - name: Audit the active 1.9 promotion and matched controls
+        run: python tools/audit_skill190.py reports/skill-190-2026-10-23.json --evidence reports/skill-190-evidence.zip --require-promotion
       - name: Audit the frozen standalone promotion
         run: python tools/audit_promoted_release.py
   portable-install:

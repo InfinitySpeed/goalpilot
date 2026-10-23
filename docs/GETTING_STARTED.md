@@ -1,6 +1,6 @@
 # Getting started
 
-The default is **Skill 1.8: native verification plus service engine 0.16.0**, working inside your coding-agent session. [Whole-skill results and limitations](GENERALIZATION.md). The standalone controller remains an optional separate profile.
+The default is **Skill 1.9: native verification plus service engine 0.16.0**, working inside your coding-agent session. [Whole-skill results and limitations](PROMOTION-1.9.md). The standalone controller remains an optional separate profile.
 
 The simplest route is to ask your coding agent to install GoalPilot from the GitHub URL. Copy the [installation and task prompts](../README.md#how-to-use-it). The agent follows [INSTALL.md](../INSTALL.md), handles dependencies and verifies the installed local command.
 

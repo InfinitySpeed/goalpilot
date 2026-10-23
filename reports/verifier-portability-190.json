@@ -1,0 +1,655 @@
+{
+  "schema_version": 1,
+  "scope": "Installed verifier runtime compatibility; NOT coding-agent performance or automatic discovery",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "live_model_calls": 0,
+  "direct_model_tokens": 0,
+  "parent_conversation_tokens": "UNKNOWN",
+  "seconds": 29.49166056700051,
+  "source_sha256": {
+    "tools/check_portability.py": "879a07f198c84f116a6134d6d719a39ff073ad99dd2671860058c944e15d59c3",
+    "install.py": "892e23319b84a17fbe71a5e7d58035d9b33d1ee751e31b48c50d7609640679de",
+    "PORTABLE_SKILL.json": "333b467edf285caec2ba5063b84fe6f05a337cbc18a6e64bbf64e5f45676639c",
+    "integrations/native/native.py": "8d694dcb32c1c91e272eb9e092fe2fb3fbb9655f4cd120454fd257b3e43daa44"
+  },
+  "capabilities": {
+    "python": {
+      "ready": true,
+      "version": "3.12.14"
+    },
+    "javascript": {
+      "ready": true,
+      "version": "v24.19.0"
+    },
+    "typescript": {
+      "ready": true,
+      "version": "Version 5.9.3"
+    },
+    "bash": {
+      "ready": true,
+      "version": "GNU bash, version 5.2.37(1)-release (x86_64-pc-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law."
+    },
+    "sqlite": {
+      "ready": true,
+      "version": "3.12.14"
+    },
+    "c": {
+      "ready": true,
+      "version": "cc (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+    },
+    "java": {
+      "ready": true,
+      "version": "openjdk 21.0.12.1 2026-08-18\nOpenJDK Runtime Environment (build 21.0.12.1+1-1-deb13u1-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.12.1+1-1-deb13u1-Debian, mixed mode, sharing)"
+    },
+    "go": {
+      "ready": true,
+      "version": "go version go1.27.3 linux/amd64"
+    }
+  },
+  "rows": [
+    {
+      "host_profile": "codex",
+      "stack": "python",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "codex",
+      "stack": "javascript",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "codex",
+      "stack": "typescript",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "codex",
+      "stack": "bash",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "codex",
+      "stack": "sqlite",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "codex",
+      "stack": "c",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "codex",
+      "stack": "java",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "codex",
+      "stack": "go",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "claude-code",
+      "stack": "python",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "claude-code",
+      "stack": "javascript",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "claude-code",
+      "stack": "typescript",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "claude-code",
+      "stack": "bash",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "claude-code",
+      "stack": "sqlite",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "claude-code",
+      "stack": "c",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "claude-code",
+      "stack": "java",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "claude-code",
+      "stack": "go",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "antigravity",
+      "stack": "python",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "antigravity",
+      "stack": "javascript",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "antigravity",
+      "stack": "typescript",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "antigravity",
+      "stack": "bash",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "antigravity",
+      "stack": "sqlite",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "antigravity",
+      "stack": "c",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "antigravity",
+      "stack": "java",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "antigravity",
+      "stack": "go",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "hermes",
+      "stack": "python",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "hermes",
+      "stack": "javascript",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "hermes",
+      "stack": "typescript",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "hermes",
+      "stack": "bash",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "hermes",
+      "stack": "sqlite",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "hermes",
+      "stack": "c",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "hermes",
+      "stack": "java",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "hermes",
+      "stack": "go",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "generic",
+      "stack": "python",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "generic",
+      "stack": "javascript",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "generic",
+      "stack": "typescript",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "generic",
+      "stack": "bash",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "generic",
+      "stack": "sqlite",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "generic",
+      "stack": "c",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "generic",
+      "stack": "java",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    },
+    {
+      "host_profile": "generic",
+      "stack": "go",
+      "status": "passed",
+      "checks": {
+        "wrong_answer_rejected": true,
+        "correct_repair_verified": true,
+        "failure_retained": true,
+        "verbatim_goal": true,
+        "original_test_unchanged": true,
+        "unchanged_finish_reused": true,
+        "changed_source_invalidates": true,
+        "no_engine_model_calls": true
+      }
+    }
+  ],
+  "passed": 40,
+  "failed": 0,
+  "unsupported": 0
+}

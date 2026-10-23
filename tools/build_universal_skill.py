@@ -14,7 +14,8 @@ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 
 def build(root=ROOT,*,candidate=False):
     root=Path(root);policy=json.loads((root/'PORTABLE_SKILL.json').read_text())
-    native=policy.get('native_workflow',{})
+    native=policy.get('active_native_workflow',policy.get('native_workflow',{}))
+    version=native.get('version','1.8.0');adapter=native.get('adapter_version','0.1.0')
     if native.get('status')!='promoted'and not candidate:raise ValueError('Generalized skill has no promotion')
     base=root/'skills/goalpilot-016';manifest=json.loads((base/'MANIFEST.json').read_text())
     if manifest['files']!=policy['measured_files']:raise ValueError('Base control manifest differs')
@@ -29,11 +30,11 @@ def build(root=ROOT,*,candidate=False):
         for name,source in OVERLAYS.items():shutil.copy2(root/source,target/name)
         shutil.copy2(root/'LICENSE',target/'LICENSE')
         files={str(p.relative_to(target)):sha(p)for p in sorted(target.rglob('*'))if p.is_file()and p.name!='MANIFEST.json'}
-        manifest.update(skill_version='1.8.0',native_adapter_version='0.1.0',entry_point='scripts/native.py',
+        manifest.update(skill_version=version,native_adapter_version=adapter,entry_point='scripts/native.py',
                         files=files,measured_runtime_and_skill_parity=False,
                         meter_scope='Native and service routes have separate whole-caller evidence. See docs/GENERALIZATION.md; historical r2 metrics do not describe this changed skill. No cross-host or subscription-quota guarantee.')
         (target/'MANIFEST.json').write_text(json.dumps(manifest,indent=2)+'\n')
-        archive=root/'dist/goalpilot-skill-1.8.0.zip';archive.parent.mkdir(exist_ok=True)
+        archive=root/('dist/goalpilot-skill-'+version+'.zip');archive.parent.mkdir(exist_ok=True)
         with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED)as z:
             for p in sorted(target.rglob('*')):
                 if p.is_file():z.write(p,'goalpilot/'+p.relative_to(target).as_posix())
@@ -41,7 +42,7 @@ def build(root=ROOT,*,candidate=False):
         assert z.testzip()is None
         for name,value in files.items():
             if hashlib.sha256(z.read('goalpilot/'+name)).hexdigest()!=value:raise ValueError('Package differs')
-    return {'path':str(archive),'skill_version':'1.8.0','engine_version':'0.16.0','native_adapter_version':'0.1.0','files_verified':len(files),'all_hashes_verified':True,'bytes':archive.stat().st_size,'sha256':sha(archive),'model_calls':0}
+    return {'path':str(archive),'skill_version':version,'engine_version':'0.16.0','native_adapter_version':adapter,'files_verified':len(files),'all_hashes_verified':True,'bytes':archive.stat().st_size,'sha256':sha(archive),'model_calls':0}
 
 if __name__=='__main__':
     import argparse

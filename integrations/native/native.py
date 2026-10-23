@@ -39,9 +39,14 @@ def inventory(repo):
             rows[rel]=digest(p.read_bytes())
     return rows
 
-def is_test(name):
+def is_test(name,expanded=True):
     p=Path(name);base=p.name.lower()
+    if expanded and p.suffix.lower()in('.java','.cs')and re.search(r'(^Test[A-Z]|Tests?\.|Spec\.)',p.name):return True
+    if expanded and any(x.lower().endswith('.tests')for x in p.parts[:-1]):return True
     return any(x.lower()in('test','tests','__tests__','spec','specs','fixtures','testdata')for x in p.parts[:-1]) or bool(re.search(r'(^test[_.-]|[_.-](test|spec)[_.-]|_test\.|^conftest\.py$)',base))
+
+def test_names(files,paths=(),expanded=True):
+    return {n:sha for n,sha in files.items()if is_test(n,expanded)or any(n==p or n.startswith(p+'/')for p in paths)}
 
 def copy_files(repo,dest,files):
     for name in files:
@@ -82,6 +87,7 @@ def report(run,c,s):
     result['criteria']=[{'id':'c'+str(n),'status':i['status'],**({'quote':i['quote'],'blocker':i.get('blocker','')}if i['status']!='verified'else{})}for n,i in enumerate(latest.get('criteria',[]),1)]
     result['evidence']=str(run)
     result['next_action']='stop'if s.get('goal_complete')and not stale else'implement'if not s['attempts']else'repair_source_or_justify_builder_draft_revision'
+    if latest and not stale and all(row['passed']for row in latest.get('checks',[]))and any(i['status']=='blocked'for i in latest.get('criteria',[])):result['next_action']='stop_blocked'
     failures=[]
     for row in latest.get('checks',[]):
         if row['passed']:continue
@@ -158,10 +164,15 @@ def begin(a):
             raw=(repo/name).read_bytes()
             try:text=raw.decode('utf-8')
             except UnicodeDecodeError:continue
-            limit=min(len(text),6000,18000-used);used+=limit
-            print(f'FILE {name} complete={limit==len(text)}\n'+text[:limit])
-        print('FILES: '+', '.join(files))
+            room=18000-used-len(name)-40
+            if room<=0:break
+            limit=min(len(text),6000,room)
+            fragment=f'FILE {name} complete={limit==len(text)}\n'+text[:limit]
+            used+=len(fragment)+1;print(fragment)
+        listing=', '.join(files)
+        print('FILES: '+listing[:4096]+(' ... [truncated: use rg --files for named missing paths]'if len(listing)>4096 else''))
         print('DELIVERY PROTOCOL: Inventory ALL goal clauses/constraints into 1–8 criteria with exact original-goal quotes. JSON example: '+json.dumps({'checks':[{'id':'tests','argv':['npm','test']}],'criteria':[{'quote':'EXACT GOAL PHRASE','checks':['tests']}]}))
+        print('Checks accept optional relative cwd for subprojects; test_paths accepts explicit relative test files/directories, frozen from the original snapshot. Unverifiable criteria require blocker and stop_blocked means stop without claiming completion.')
         print('Choose the full existing native test command plus behavioral regressions; never filter out original tests or replace their runner. Compilation alone is insufficient. Unverifiable criteria need checks:[] and blocker. In the SAME implementation command save criteria and execute: '+sys.executable+' '+str(Path(__file__).resolve())+' deliver '+str(run)+' --criteria-file CRITERIA')
         print('Deliver freezes criteria/commands and each executed test snapshot. Original tests never change; accepted builder tests freeze after the first all-green verification. No separate preliminary suite. goal_complete:true => END immediately, no finish/status/rerun. Failure => repair source against SAME frozen criteria/commands, then finish. Before first green only, an authored test demonstrably contradicting the specification may be corrected with finish RUN --test-revision SPECIFICATION_BASED_REASON; every draft/failure/rationale remains immutable, no test files may be deleted. Never weaken original tests or accepted tests. Stop at budget. Authored tests are not independent semantic proof; unverified scope must remain blocked.')
     return 0
@@ -169,10 +180,15 @@ def begin(a):
 def acceptance(run,c,data):
     checks=data.get('checks',[]);criteria=data.get('criteria',[])
     if not isinstance(checks,list)or len(checks)>16 or not isinstance(criteria,list)or not 1<=len(criteria)<=8:raise ValueError('Expected 1–8 criteria and <=16 checks')
+    paths=data.get('test_paths',[])
+    if not isinstance(paths,list)or any(not isinstance(p,str)or not p or '\\'in p or Path(p).is_absolute()or '..'in Path(p).parts or p!=Path(p).as_posix()for p in paths):raise ValueError('test_paths must be relative files or directories')
     ids=[]
     for check in checks:
         ident=check.get('id');argv=check.get('argv')
         if not isinstance(ident,str)or not ident.strip()or ident in ids or not isinstance(argv,list)or not argv or any(not isinstance(v,str)or '\0'in v for v in argv):raise ValueError('Unique check IDs and nonempty argv lists required')
+        cwd=check.get('cwd','.')
+        if not isinstance(cwd,str)or not cwd or '\\'in cwd or Path(cwd).is_absolute()or '..'in Path(cwd).parts:raise ValueError('Check cwd must stay inside repository')
+        if not(Path(c['repo'])/cwd).is_dir():raise ValueError('Check cwd must exist')
         ids.append(ident)
     goal=(run/'goal.bin').read_bytes().decode('utf-8')
     for item in criteria:
@@ -180,9 +196,10 @@ def acceptance(run,c,data):
         if not isinstance(quote,str)or not quote.strip()or quote not in goal:raise ValueError('Criterion must quote the original goal')
         if not isinstance(links,list)or any(x not in ids for x in links)or len(set(links))!=len(links)or not isinstance(blocker,str)or not links and not blocker.strip():raise ValueError('Criterion needs valid checks or an explicit blocker')
     if set(ids)!={x for i in criteria for x in i['checks']}:raise ValueError('Every check must support a criterion')
-    repo=Path(c['repo']);files=inventory(repo);tests={n:sha for n,sha in files.items()if is_test(n)}
+    repo=Path(c['repo']);files=inventory(repo);tests=test_names(files,paths)
+    if any(not any(n==p or n.startswith(p+'/')for n in set(files)|set(c['original']))for p in paths):raise ValueError('test_paths must match captured files')
     copy_files(repo,run/'builder-tests',tests)
-    result={'checks':checks,'criteria':criteria,'tests':tests}
+    result={'checks':checks,'criteria':criteria,'tests':tests,'test_paths':paths}
     seal(run,'acceptance.json',result)
     return result
 
@@ -195,10 +212,10 @@ def verify(run,c,s,revision=None):
     accepted=sealed(run,'accepted-tests.json')if(run/'accepted-tests.json').exists()else None
     if accepted and not any(accepted==x for x in snapshots):raise ValueError('Unknown accepted test snapshot')
     active=accepted or snapshots[-1]
-    source=inventory(repo);current={n:sha for n,sha in source.items()if is_test(n)}
+    source=inventory(repo);current=test_names(source,ac.get('test_paths',[]),expanded='test_paths'in ac)
     if accepted and current!=active['files']:raise ValueError('Accepted tests are frozen; restore them before repairing source')
-    if s.get('goal_complete')and s.get('verified_source')==source:
-        print(json.dumps(report(run,c,s),ensure_ascii=False));return 0
+    if s.get('verified_source')==source and (s.get('goal_complete')or s.get('attempts')and all(r['passed']for r in s['attempts'][-1]['checks'])and any(i['status']=='blocked'for i in s['attempts'][-1]['criteria'])):
+        print(json.dumps(report(run,c,s),ensure_ascii=False));return 0 if s.get('goal_complete')else 1
     if elapsed(c)>=c['wall_seconds'] or len(s['attempts'])>=c['max_verifications']:
         s.update(status='budget_exhausted',goal_complete=False);seal(run,'state.json',s);print(json.dumps(report(run,c,s)));return 1
     if current!=active['files']:
@@ -214,7 +231,7 @@ def verify(run,c,s,revision=None):
         s.setdefault('test_revisions',[]).append(active);seal(run,'state.json',s)
     test_files=active['files'];test_folder=run/active['directory']
     rows=[];attempt=run/f'attempt-{len(s["attempts"])+1}';attempt.mkdir()
-    original_tests={n:sha for n,sha in c['original'].items()if is_test(n)}
+    original_tests=test_names(c['original'],ac.get('test_paths',[]),expanded='test_paths'in ac)
     # Builder includes every byte-identical original test: run their union once.
     # Changed/deleted originals still run separately from their frozen copies.
     suites=[('builder',test_files,test_folder)]
@@ -223,7 +240,7 @@ def verify(run,c,s,revision=None):
         with tempfile.TemporaryDirectory(prefix='goalpilot-native-')as tmp:
             work=Path(tmp);copy_files(repo,work,source)
             for name in source:
-                if is_test(name)and name not in test_files:(work/name).unlink()
+                if name in current and name not in test_files:(work/name).unlink()
             copy_files(test_folder,work,test_files)
             copy_files(frozen,work,tests)
             # Reuse installed dependencies without copying or installing them.
@@ -240,7 +257,7 @@ def verify(run,c,s,revision=None):
                     try:
                         # File-backed output avoids unbounded pipe memory; kill whole POSIX group on timeout.
                         with log.open('wb')as stream:
-                            proc=subprocess.Popen(check['argv'],cwd=work,stdout=stream,stderr=subprocess.STDOUT,start_new_session=os.name!='nt')
+                            proc=subprocess.Popen(check['argv'],cwd=work/check.get('cwd','.'),stdout=stream,stderr=subprocess.STDOUT,start_new_session=os.name!='nt')
                             try:code=proc.wait(timeout=remaining)
                             except subprocess.TimeoutExpired:
                                 if os.name!='nt':
