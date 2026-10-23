@@ -21,7 +21,7 @@ class SkillEfficiencyEvidence(unittest.TestCase):
             archive.extractall(cls.folder)
         cls.addClassCleanup(cls.temp.cleanup)
 
-    def test_default_is_the_complete_measured_candidate(self):
+    def test_frozen_service_base_is_the_complete_measured_candidate(self):
         result=audit.analyze(self.folder)
         self.assertTrue(result['promotable'])
         self.assertEqual(result['matched_pairs'],20)

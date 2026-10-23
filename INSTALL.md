@@ -2,7 +2,7 @@
 
 GoalPilot is free for individuals acting on their own behalf; business use requires a separate paid commercial license. Read [licensing terms](docs/LICENSING.md). Installation and doctor checks do not grant business-use rights.
 
-The default is **GoalPilot Skill 1.7.0-r2 / engine 0.16.0**, installed into the current coding agent. Work happens in that calling session; installation and local verification start no coding models. Follow the steps below for normal setup.
+The default is **GoalPilot Skill 1.8.0 / native adapter 0.1.0 + service engine 0.16.0**, installed into the current coding agent. Work happens in that calling session; installation and local verification start no coding models. Follow the steps below for normal setup.
 
 `PORTABLE_SKILL.json` records the promoted default and its complete-caller evidence. `--profile legacy` selects the archived Skill 1.3.1 / engine 0.12.1 when explicitly requested. The separately measured standalone controller is optional; do not substitute it for a skill installation.
 
@@ -59,7 +59,7 @@ Run the same bootstrap with `--doctor` / `-Doctor` for diagnosis. Reload the hos
 
 Tell the user which host is ready and how to invoke GoalPilot. If an objective was supplied, start that objective with GoalPilot in the current session. Preserve its complete original wording; run verification before claiming completion. Do not launch another coding model or a benchmark for onboarding.
 
-Support is a local Python unittest verifier. Other languages may load the skill, but supported verified closure is not yet claimed for their test frameworks. The optional `service_race` helper requires POSIX fork; basic Windows installation and local verification do not depend on that helper.
+Native verification uses project test commands; five stacks were measured on Codex. Compatible Python scaffolds keep the optimized service route. See the generalization study for scope. The optional `service_race` helper requires POSIX fork; basic Windows installation and local verification do not depend on that helper.
 
 ## Optional standalone controller
 

@@ -1,53 +1,35 @@
 {
-  "archive_sha256": "65b22b1c7c692fc26ffc398b81225be6d7faecfb42686fa0987c152b95714804",
-  "audit_promotable": true,
-  "rows": {
-    "native_historical": {
-      "executed": 20,
-      "correct": 19,
-      "verified_goals": 19,
-      "seconds": 3919.0774290760055,
-      "raw": 4716581,
-      "uncached_plus_output": 720421,
-      "uncached_input": 499412,
-      "output": 221009
+  "scores": {
+    "native": {
+      "business_correct": 8,
+      "certified": 0,
+      "goals_preserved": 0,
+      "raw_tokens": 965638,
+      "uncached_plus_output": 141318,
+      "seconds": 896.4685968379999
     },
-    "old_current": {
-      "executed": 20,
-      "correct": 17,
-      "verified_goals": 17,
-      "seconds": 2434.413035723006,
-      "raw": 2298301,
-      "uncached_plus_output": 391869,
-      "uncached_input": 299395,
-      "output": 92474,
-      "independent_business_correct": 19,
-      "cost_per_verified_goal": {
-        "raw": 135194.17647058822,
-        "uncached_plus_output": 23051.117647058825,
-        "seconds": 143.20076680723565
-      }
+    "old": {
+      "business_correct": 8,
+      "certified": 2,
+      "goals_preserved": 8,
+      "raw_tokens": 761197,
+      "uncached_plus_output": 100205,
+      "seconds": 689.7391192230061
     },
-    "new_current": {
-      "executed": 20,
-      "correct": 20,
-      "verified_goals": 20,
-      "seconds": 1625.298999825991,
-      "raw": 1225323,
-      "uncached_plus_output": 306027,
-      "uncached_input": 243981,
-      "output": 62046,
-      "independent_business_correct": 20,
-      "cost_per_verified_goal": {
-        "raw": 61266.15,
-        "uncached_plus_output": 15301.35,
-        "seconds": 81.26494999129955
-      }
+    "new": {
+      "business_correct": 8,
+      "certified": 8,
+      "goals_preserved": 8,
+      "raw_tokens": 472982,
+      "uncached_plus_output": 87958,
+      "seconds": 493.79449905599904
     }
   },
-  "live_model_calls": 0,
-  "figures": [
-    "docs/assets/portable-benchmark.png",
-    "docs/assets/portable-benchmark.svg"
-  ]
+  "savings_vs_native_percent": {
+    "raw_tokens": 51.01870473200102,
+    "uncached_plus_output": 37.75881345617685,
+    "seconds": 44.917814098820884
+  },
+  "promotable": true,
+  "full_evidence_checked": false
 }

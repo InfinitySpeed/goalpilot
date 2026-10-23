@@ -1,8 +1,10 @@
 # Measurements
 
-## Current instruction revision: 1.7.0-r2
+Current: [Skill 1.8, eight goals / five stacks](docs/GENERALIZATION.md). The earlier 20-goal records below are historical service profiles.
 
-The default is the exact measured r2 instructions with unchanged engine 0.16.0. [Latest 20-goal comparison, definitions and full research costs](docs/SKILL-EFFICIENCY.md). Earlier records below are historical.
+## Historical instruction revision: 1.7.0-r2
+
+The r2 control preserves its exact measured instructions and engine 0.16.0. [Latest 20-goal comparison, definitions and full research costs](docs/SKILL-EFFICIENCY.md). Earlier records below are historical.
 
 ## Earlier measurement records
 

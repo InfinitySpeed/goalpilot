@@ -1,3 +1,5 @@
+The default is now [generalized Skill 1.8](GENERALIZATION.md), composed from the frozen service bundle below and a native adapter. Its metrics are separate. Use --profile candidate for the exact r2 service control.
+
 # Portable skill with engine 0.16.0
 
 Skill 1.7.0-r2 (base API/package 1.7.0) embeds the exact frozen engine 0.16.0. It reuses that engine inside the calling coding-agent session; it does not launch the standalone Codex controller or a second coding model. The original Skill 1.3.1 / engine 0.12.1 remains available as an immutable comparison and fallback.
@@ -13,7 +15,7 @@ python3 install.py --host hermes
 
 Choose the host you actually use. T3 Code selects its underlying provider with `--host t3-code --provider codex` (or another supported provider). For other agents, use `--host generic --target <documented-native-skill-directory>/goalpilot`. The bootstrap accepts the same shell flags. Doctor checks do not launch a coding model.
 
-The promoted default is recorded in `PORTABLE_SKILL.json`. `--profile legacy` selects the immutable previous baseline. `--profile candidate` is an explicit alias for the versioned new bundle; it currently matches the promoted default.
+The promoted default is recorded in `PORTABLE_SKILL.json`. `--profile legacy` selects the immutable previous baseline. `--profile candidate` is an explicit alias for the versioned new bundle; it retains the exact r2 service control.
 
 After installation, use `$goalpilot YOUR GOAL` in Codex, `/goalpilot YOUR GOAL` in Claude Code, or ask the current agent to load GoalPilot and achieve the goal. The installed runtime records its interpreter and entry point.
 

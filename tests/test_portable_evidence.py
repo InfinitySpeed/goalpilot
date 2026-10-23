@@ -49,7 +49,7 @@ class PortableEvidence(unittest.TestCase):
             self.assertEqual(result['matched_pairs'],19)
         finally:path.write_bytes(original)
 
-    def test_default_is_identical_to_measured_behavior_files(self):
+    def test_frozen_service_base_is_identical_to_measured_behavior_files(self):
         policy=json.loads((ROOT/'PORTABLE_SKILL.json').read_text())
         self.assertEqual(policy['status'],'promoted')
         self.assertEqual(policy['default'],'skills/goalpilot-016')

@@ -1,6 +1,6 @@
 # Skill 1.7.0-r2: measured instruction efficiency
 
-The default is **Skill 1.7.0-r2 with the unchanged engine 0.16.0**. The API/base package remains 1.7.0; r2 identifies the new instruction revision. The frozen experiment called it candidate 1.8.0. That experimental identifier remains in the original protocol; only the publication label changed.
+This page records historical **Skill 1.7.0-r2 / engine 0.16.0**. The generalized default is now [Skill 1.8](GENERALIZATION.md). The API/base package remains 1.7.0; r2 identifies the new instruction revision. The frozen experiment called it candidate 1.8.0. That experimental identifier remains in the original protocol; only the publication label changed.
 
 ## What changed
 
@@ -56,7 +56,7 @@ The research ledger includes the rejected screen, pilot and all 40 primary calle
 
 ## Installation and rollback
 
-Normal installation selects r2 through `PORTABLE_SKILL.json`. Reinstall and reload the skill to update an existing copy. The doctor now compares selected behavior files, so an older same-version instruction set cannot appear current merely because its version label matches. The original r1 source and proof remain immutable at tag `skill-v1.7.0-r1`; `--profile legacy` still selects the separate historical 1.3.1 baseline.
+Historical r2 was selected through `PORTABLE_SKILL.json`. Normal installation now selects 1.8; use --profile candidate for this exact r2 control. The doctor now compares selected behavior files, so an older same-version instruction set cannot appear current merely because its version label matches. The original r1 source and proof remain immutable at tag `skill-v1.7.0-r1`; `--profile legacy` still selects the separate historical 1.3.1 baseline.
 
 ## Research cost
 

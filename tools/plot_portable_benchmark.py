@@ -14,6 +14,9 @@ def main():
     import matplotlib.pyplot as plt
     from matplotlib.ticker import MaxNLocator
     policy=json.loads((ROOT/'PORTABLE_SKILL.json').read_text())
+    if policy.get('native_workflow',{}).get('status')=='promoted':
+        from plot_generalization import main as generalized
+        return generalized()
     revised=policy.get('release_revision',1)>=2
     archive=ROOT/policy['evidence_archive']
     auditor='audit_skill_efficiency.py'if revised else'audit_portable_invocation.py'

@@ -26,8 +26,8 @@ flowchart TD
 | Component | Responsibility |
 | :--- | :--- |
 | [Host installer](../install.py) and [portable adapter](../skills/goalpilot-016/scripts/host.py) | Auto-select or explicitly configure native/generic skills, prepare a runtime and use explicit verification where native Stop hooks are absent. |
-| [Skill instructions](../skills/goalpilot-016/SKILL.md) | Save the full request, guide implementation and avoid unnecessary repeated reads or verification. |
-| [Session protocol](../goalpilot/session.py) | Preserve the original contract, freeze acceptance, account for verification attempts and invalidate closure after source changes. |
+| [Generalized instructions](../integrations/native/routed-SKILL.md) | Save the full request, guide implementation and avoid unnecessary repeated reads or verification. |
+| [Native protocol](../integrations/native/native.py) and [specialized session](../goalpilot/session.py) | Preserve the original contract, freeze acceptance, account for verification attempts and invalidate closure after source changes. |
 | [Criterion mapper](../goalpilot/criteria.py) | Require an exact-quoted requirement inventory, ensure every requirement and criterion maps, validate check links, and report verified, missing, blocked or pending status. |
 | [Test gates](../goalpilot/gates.py) | Execute retained tests against disposable worktree copies. The strengthened suite supplements the original suite. |
 | [Local hooks](../goalpilot/hooks.py) | Connect Codex command events and Stop to the local protocol. |
@@ -54,8 +54,8 @@ The passive monitor and verification commands run Python and subprocesses, not i
 
 Automatic hook delivery is integrated with Codex on POSIX. Other hosts and Windows use installable adapters with explicit local verification and repair instructions in the calling session. They do not install or depend on Codex hooks. The same engine is bundled for each host; the portable launcher avoids accidentally inheriting a Codex hook binding. See [host adapters](HOSTS.md).
 
-The current [whole-skill benchmark](PORTABLE-ENGINE.md#measured-results) covers Skill 1.7.0 on Codex POSIX with exact native Stop hooks. Other hosts and explicit fallback have local installation/verification coverage, not model-performance evidence. The [older skill benchmark](BENCHMARKS.md) remains a separate archive.
+The current [whole-skill benchmark](GENERALIZATION.md) covers Skill 1.8 on Codex POSIX with explicit verification. Other hosts and explicit fallback have local installation/verification coverage, not model-performance evidence. The [older skill benchmark](BENCHMARKS.md) remains a separate archive.
 
 ## Installation portability
 
-The repository entry point guides agents through INSTALL.md. Shell/PowerShell bootstraps prepare a user-local Python when needed; installed skills record its executable. Native Windows verification uses msvcrt file locks and Windows Job Objects, while POSIX keeps flock and process groups. Snapshot inventory paths use POSIX separators across systems. Optional fork-based race probes remain POSIX-only. The default bundle contains the exact frozen engine 0.16.0 and measured Skill 1.7.0 behavior files. The older Skill 1.3.1/engine 0.12.1 remains a separate immutable reference.
+The repository entry point guides agents through INSTALL.md. Shell/PowerShell bootstraps prepare a user-local Python when needed; installed skills record its executable. The specialized engine uses msvcrt/Windows Job Objects or POSIX flock/process groups. The native adapter runs explicit argv checks in disposable copies and enforces subprocess deadlines. Snapshot inventory paths use POSIX separators across systems. Optional fork-based race probes remain POSIX-only. The default composes the exact frozen r2 service bundle with the separately measured native adapter. Native test drafts can receive explicit pre-green revisions; all snapshots/failures remain, and accepted tests then freeze. The older Skill 1.3.1/engine 0.12.1 remains a separate immutable reference.

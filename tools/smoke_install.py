@@ -14,9 +14,11 @@ from goalpilot.process import run_process
 
 
 def main():
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--profile',choices=('stable','universal'),default='stable');args=parser.parse_args()
     with tempfile.TemporaryDirectory(prefix='goalpilot-onboarding-')as folder:
         root=Path(folder).resolve();target=root/'skill with spaces';repo=root/'project café';repo.mkdir()
-        installed=subprocess.run([sys.executable,'-X','utf8',str(ROOT/'install.py'),'--host','generic','--target',str(target)],capture_output=True,text=True,encoding='utf-8',timeout=30)
+        installed=subprocess.run([sys.executable,'-X','utf8',str(ROOT/'install.py'),'--profile',args.profile,'--host','generic','--target',str(target)],capture_output=True,text=True,encoding='utf-8',timeout=30)
         assert installed.returncode==0,installed.stderr
         assert json.loads(installed.stdout)['verification']['ready']
         (repo/'tests').mkdir();(repo/'tests/__init__.py').write_text('',encoding='utf-8')
@@ -36,6 +38,27 @@ def main():
         state=invoke('deliver',run,'--criteria-file',criteria)
         assert state['closed']and state['status']=='scope_passed'and state['goal_complete'],state
         assert json.loads((run/'session-state.json').read_text(encoding='utf-8'))['engine_model_calls']==0
+        # Exercise the actual generalized entry point as well as its frozen service core.
+        if json.loads((target/'RUNTIME.json').read_text())['entry_point']=='scripts/native.py':
+            native=target/'scripts/native.py';native_run=root/'native run 東京'
+            def native_call(*args,expected=0):
+                r=subprocess.run([sys.executable,'-X','utf8',str(native),*map(str,args)],cwd=repo,capture_output=True,text=True,encoding='utf-8',timeout=30)
+                assert r.returncode==expected,(r.stdout,r.stderr)
+                return json.JSONDecoder().raw_decode(r.stdout.lstrip())[0]
+            native_call('begin','--goal-file',goal,'--repo',repo,'--run-dir',native_run)
+            extra=repo/'tests/test_extra.py'
+            bad=chr(10).join(['import unittest','from app import VALUE','class Extra(unittest.TestCase):',' def test_new(self):self.assertEqual(VALUE,41)',''])
+            extra.write_text(bad,encoding='utf-8')
+            criteria.write_text(json.dumps({'checks':[{'id':'tests','argv':[sys.executable,'-m','unittest','discover','-s','tests']}],'criteria':[{'quote':'Set VALUE to42','checks':['tests']},{'quote':'preserve the original test','checks':['tests']}]}),encoding='utf-8')
+            native_call('deliver',native_run,'--criteria-file',criteria,expected=1)
+            extra.write_text(bad.replace('VALUE,41','VALUE,42'),encoding='utf-8')
+            corrected=native_call('finish',native_run,'--test-revision','New draft expected41 contradicts the original goal42; preserve every old assertion')
+            assert corrected['goal_complete']and corrected['test_revisions']==1
+            assert(native_run/'goal.bin').read_bytes()==goal.read_bytes()
+            assert'VALUE,41'in(native_run/'builder-tests/tests/test_extra.py').read_text()
+            assert native_call('finish',native_run)['attempts']==2
+            (repo/'app.py').write_text('VALUE=0'+chr(10),encoding='utf-8')
+            assert not native_call('status',native_run)['goal_complete']
         # A competing process cannot acquire the same mission lock.
         guard=root/'competing.lock'
         with lock(guard):

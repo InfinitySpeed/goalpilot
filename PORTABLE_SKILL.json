@@ -1,6 +1,6 @@
 {
   "status": "promoted",
-  "skill_version": "1.7.0",
+  "skill_version": "1.8.0",
   "engine_version": "0.16.0",
   "bundle": "skills/goalpilot-016",
   "default": "skills/goalpilot-016",
@@ -60,9 +60,9 @@
     "scripts/host.py": "2b5c10aaeccee7589164281f5738e32c60fa794818e75cb235d68a31af234c2f",
     "scripts/install.py": "f16c098daf916b289bc799d39a60b190e9887d4ad3ee3f296e4c6a954651eeb2"
   },
-  "promotion_rule": "Preregistered20fresh interleaved pairs: candidate20/20 verified, complete provider meters, >=10%raw and uncached+output savings vsSkill1.7.0-r1; no >3%elapsed-time or completion regression. Historical native >=45%both token savings and>=25%time saving. All attempts included, no replacements.",
+  "promotion_rule": "8/8 independent business correct, certified and verbatim-preserved; >=10%raw savings, positive uncached+output savings, <=3%time regression vs native. Sequential reused controls, all45caller outcomes retained and independently replayed.",
   "user_speed_waiver": {
-    "instruction": "J\u2019accepterai m\u00eame sans gain significatif de vitesse",
+    "instruction": "J’accepterai même sans gain significatif de vitesse",
     "applied_before_outcomes": true,
     "effect": "Preregistered current gate allows at most3%time regression; both token savings and20/20completion remain mandatory."
   },
@@ -71,14 +71,41 @@
     "Installer doctor now compares selected behavior files rather than only version labels. Generated behavior files remain byte-identical to the frozen installer; locally verified without additional model calls."
   ],
   "release_revision": 2,
-  "release_version": "1.7.0-r2",
-  "release_tag": "skill-v1.7.0-r2",
-  "registered_candidate_id": "1.8.0",
+  "release_version": "1.8.0",
+  "release_tag": "skill-v1.8.0",
+  "registered_candidate_id": "generalization-final-003",
   "previous_promotion": {
     "release_tag": "skill-v1.7.0-r1",
     "benchmark": "reports/portable-skill-170-2026-10-23.json",
     "evidence_archive": "reports/portable-skill-170-2026-10-23.zip",
     "evidence_sha256": "4d648b4a99e5f413ebe7e188502b7cd92c431995243b754401198a8034e279e6",
     "skill_sha256": "c173deefab6f89a2b10860a222b562728bc57ce4439bd1a9563135ebb1702cd4"
-  }
+  },
+  "base_release": "1.7.0-r2",
+  "base_measurement_scope": "Top-level bundle/measured_files/evidence aliases retain the immutable r2 control. native_workflow governs the installed1.8composition and its evidence. Do not transfer historical20-goal metrics.",
+  "native_workflow": {
+    "status": "promoted",
+    "version": "1.8.0",
+    "adapter_version": "0.1.0",
+    "source_files": {
+      "install.py": "543a4bc78df060335cd37fa5addfb0e66d4efa8ecf76923553a2fe2fbcfe5151",
+      "integrations/native/native.py": "f275964cb37477de9024835c6bf304750954a2258b4e8b5905abfb82810a6c0e",
+      "integrations/native/SKILL.md": "812da0615083f1adf83ef45fa1dfabc21bae56af2c6a4bbf37920b6c4e789ef3",
+      "integrations/native/routed-SKILL.md": "dfd7d131664769bbec690b10a01fb8e9a3bd1dc2c70815c932818675640829f3"
+    },
+    "benchmark": "reports/native-generalization-2026-10-23.json",
+    "benchmark_sha256": "86d2fd8b82177c7b9485376c1511ae155679c5a53323459f1be5efefb0a52801",
+    "evidence": {
+      "url": "https://github.com/InfinitySpeed/goalpilot/releases/download/skill-v1.8.0/goalpilot-generalization-evidence.tar.xz",
+      "sha256": "4fc93681a846f1415b8caf765afe8a8fdff16beb74aec147128a7836d13eb44a",
+      "bytes": 371520
+    },
+    "default_instructions": "integrations/native/routed-SKILL.md",
+    "base_bundle": "skills/goalpilot-016",
+    "promotion_rule": "8/8 independent business correct, certified and verbatim-preserved; >=10%raw savings, positive uncached+output savings, <=3%time regression vs native. Sequential reused controls, all45caller outcomes retained and independently replayed.",
+    "historical_service_profile": "candidate",
+    "explicit_generalized_profile": "universal"
+  },
+  "base_promotion_rule": "Preregistered20fresh interleaved pairs: candidate20/20 verified, complete provider meters, >=10%raw and uncached+output savings vsSkill1.7.0-r1; no >3%elapsed-time or completion regression. Historical native >=45%both token savings and>=25%time saving. All attempts included, no replacements.",
+  "base_registered_candidate_id": "1.8.0"
 }
