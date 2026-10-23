@@ -68,6 +68,29 @@ def audit(report_path: Path = REPORT, root: Path = ROOT) -> dict:
     for arm in ('candidate', 'current', 'previous'):
         if data['aggregate_equal_case_means'][arm]['correct'] != 6 or data['aggregate_equal_case_means'][arm]['closed'] != 6 or data['aggregate_equal_case_means'][arm]['original_goal_preserved'] != 6:
             raise ValueError(f'completion or original-goal regression: {arm}')
+    matched = data['native_matched_all_tasks']
+    for case in ('java-vague', 'typescript-vague', 'flowdesk'):
+        native = means[case]['native']
+        if len(native['trials']) != 2 or not native['usage_complete']:
+            raise ValueError(f'incomplete matched native runs: {case}')
+        if native['correct'] != 2 or any(not r['independent_judge_passed'] or not r['usage_complete'] for r in native['trials']):
+            raise ValueError(f'native judge or usage failure: {case}')
+        if case == 'flowdesk' and native['judge_groups_passed'] != native['judge_groups_total']:
+            raise ValueError('native Flowdesk behavior checks did not all pass')
+    for arm in ('candidate', 'native'):
+        values = [means[c][arm] for c in ('java-vague', 'typescript-vague', 'flowdesk')]
+        aggregate = matched['arms'][arm]
+        for field in ('uncached_input_plus_output_mean', 'seconds_mean'):
+            key = 'uncached_input_plus_output_mean' if field == 'uncached_input_plus_output_mean' else 'seconds_mean'
+            expected = sum(x[field] for x in values) / 3
+            if not math.isclose(aggregate[key], expected, rel_tol=0, abs_tol=1e-8):
+                raise ValueError(f'matched native aggregate mismatch: {arm}/{field}')
+    expected_uncached = 100 * (1 - matched['arms']['candidate']['uncached_input_plus_output_mean'] / matched['arms']['native']['uncached_input_plus_output_mean'])
+    expected_time = 100 * (1 - matched['arms']['candidate']['seconds_mean'] / matched['arms']['native']['seconds_mean'])
+    if not math.isclose(matched['candidate_change_vs_native']['uncached_reduction_pct'], expected_uncached, abs_tol=1e-8):
+        raise ValueError('native uncached-token comparison mismatch')
+    if not math.isclose(matched['candidate_change_vs_native']['elapsed_time_reduction_pct'], expected_time, abs_tol=1e-8):
+        raise ValueError('native elapsed-time comparison mismatch')
     if data['candidate_change_pct_vs_1_9']['seconds'] > 3 or data['candidate_change_pct_vs_1_10']['seconds'] > 3:
         raise ValueError('time regression exceeds the 3% gate')
     if data['quota_savings_claimed'] is not False or not data['gates']['raw_tokens_are_not_used_as_quota_evidence']:

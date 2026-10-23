@@ -606,6 +606,54 @@
             "completion_interpretation": "All hidden behavior groups passed, but the caller exited blocked and did not complete/hand off the goal; counted as artifact pass, not correct goal closure. Previous-day, not contemporaneous."
           }
         ]
+      },
+      "native": {
+        "n": 2,
+        "raw_tokens_mean": 210241.0,
+        "input_tokens_mean": 202616.5,
+        "cached_input_tokens_mean": 188800.0,
+        "uncached_input_plus_output_mean": 21441.0,
+        "output_tokens_mean": 7624.5,
+        "seconds_mean": 148.1856548024989,
+        "correct": 2,
+        "closed": null,
+        "original_goal_preserved": null,
+        "usage_complete": true,
+        "judge_groups_passed": 52,
+        "judge_groups_total": 52,
+        "trials": [
+          {
+            "trial": "native-flowdesk-matched/trials/flowdesk-native-3",
+            "raw_tokens": 210423,
+            "input_tokens": 203014,
+            "cached_input_tokens": 192640,
+            "uncached_input_tokens": 10374,
+            "output_tokens": 7409,
+            "uncached_input_plus_output": 17783,
+            "seconds": 142.3191215390034,
+            "independent_judge_passed": true,
+            "judge_groups": 26,
+            "judge_group_total": 26,
+            "usage_complete": true,
+            "returncode": 0
+          },
+          {
+            "trial": "native-flowdesk-matched/trials/flowdesk-native-4",
+            "raw_tokens": 210059,
+            "input_tokens": 202219,
+            "cached_input_tokens": 184960,
+            "uncached_input_tokens": 17259,
+            "output_tokens": 7840,
+            "uncached_input_plus_output": 25099,
+            "seconds": 154.05218806599441,
+            "independent_judge_passed": true,
+            "judge_groups": 26,
+            "judge_group_total": 26,
+            "usage_complete": true,
+            "returncode": 0
+          }
+        ],
+        "closure_note": "Native has no GoalPilot closure certificate; the independent functional judge passed both trials."
       }
     }
   },
@@ -741,15 +789,50 @@
   "limitations": [
     "Three synthetic task families; the Flowdesk prototype has a detailed README contract despite a vague original goal.",
     "Only two fresh runs per primary arm and case; cache is uncontrolled, and run order was sequential rather than blind.",
-    "The Flowdesk native Codex record is from the prior day and a separate archived protocol; it is contextual, not part of matched aggregate.",
-    "GoalPilot was faster overall than 1.9 under equal case weighting, but Flowdesk alone averaged 23.8% slower than 1.9; this case-level time regression is visible and offset by Java/TypeScript speedups.",
-    "Raw token differences are descriptive; do not convert them into subscription quota claims."
+    "Raw token differences are descriptive; do not convert them into subscription quota claims.",
+    "Only two fresh runs per arm and task family; cache is uncontrolled, and run order was sequential rather than blind.",
+    "Synthetic tasks and small sample; Codex-native results vary with model/service conditions. Native does not emit GoalPilot closure certificates."
   ],
   "quota_savings_claimed": false,
   "evidence_archive": {
     "path": "reports/skill-111-evidence.zip",
-    "sha256": "d8dfa6f619b46942058add967bcc141005c39a6cf372c21642a2647a1d2ac7dd",
-    "bytes": 4372380
+    "sha256": "080576079de83ad9e14007a72162b8fe0c51bf7cec9ecd2fc8c5d5198b30e73b",
+    "bytes": 4567213
   },
-  "benchmark_path": "reports/skill-111-2026-10-23.json"
+  "benchmark_path": "reports/skill-111-2026-10-23.json",
+  "native_matched_all_tasks": {
+    "arms": {
+      "candidate": {
+        "n": 6,
+        "raw_tokens_mean": 63973.666666666664,
+        "uncached_input_plus_output_mean": 10875.0,
+        "seconds_mean": 64.07019732783131,
+        "correct": 6,
+        "closed": 6,
+        "independent_judge_tasks": 6,
+        "independent_judge_runs": 6,
+        "flowdesk_judge_groups_passed": 52,
+        "flowdesk_judge_groups_total": 52
+      },
+      "native": {
+        "n": 6,
+        "raw_tokens_mean": 140813.66666666666,
+        "uncached_input_plus_output_mean": 13027.0,
+        "seconds_mean": 99.24623979749958,
+        "correct": 6,
+        "closed": null,
+        "independent_judge_tasks": 6,
+        "independent_judge_runs": 6,
+        "flowdesk_judge_groups_passed": 52,
+        "flowdesk_judge_groups_total": 52
+      }
+    },
+    "candidate_change_vs_native": {
+      "uncached_reduction_pct": 16.519536347585785,
+      "elapsed_time_reduction_pct": 35.44319919972878
+    },
+    "aggregation": "Six fresh runs per arm: two repeated trials for each identical Java ranges, TypeScript transactional store, and Flowdesk task; equal-weight arithmetic mean of the three task-family means. Same model and effort. Independent judge run after each task. GoalPilot native workflow certificate is only applicable to GoalPilot.",
+    "cache_policy": "Fresh ephemeral Codex app-server threads; provider prefix cache could not be disabled. Uncached input-plus-output is reported separately; raw tokens are descriptive and not interpreted as subscription quota.",
+    "flowdesk_new_repeats": "native-flowdesk-matched/trials/flowdesk-native-3 and -4"
+  }
 }

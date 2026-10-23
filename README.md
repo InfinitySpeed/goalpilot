@@ -17,18 +17,18 @@ GoalPilot preserves your original request, turns it into explicit criteria, reus
 
 ## Measured results
 
-GoalPilot **1.11.0** adds concise guidance for deriving test expectations from the written contract and handling sequential state correctly. On three repeated task families, it lowered uncached input-plus-output tokens **22.5% versus GoalPilot 1.9** and **19.5% versus 1.10**. Correct closure stayed at **6/6** for all three GoalPilot versions. Equal-weight elapsed time was **1.5% higher than 1.9** (within the 3% limit) and **14.1% lower than 1.10**.
+The primary comparison is **GoalPilot 1.11 vs Codex native on the exact same tasks**: a vague Java range-utility repair, a vague TypeScript transactional-store repair, and the ambitious Flowdesk support-platform goal. Each ran twice per arm in fresh Codex app-server sessions, using the same model and effort.
 
-| Mean per caller (6 runs each; equal case weights) | GoalPilot 1.9 | GoalPilot 1.10 | GoalPilot 1.11 |
+| Equal-weight mean across the 3 task families (6 runs per arm) | Codex native | GoalPilot 1.11 | Change with GoalPilot |
 | :--- | ---: | ---: | ---: |
-| Correct, certified closures | 6/6 | 6/6 | **6/6** |
-| Raw tokens, cached input included | 70,792 | 72,939 | **63,974** |
-| Uncached input + output | 14,024 | 13,505 | **10,875** |
-| Elapsed seconds | 63.12 | 74.55 | **64.07** |
+| Independent task checks passed | 6/6 | **6/6** | no decline |
+| Flowdesk behavior groups passed | 52/52 | **52/52** | equal |
+| Uncached input + output tokens per caller | 13,027 | **10,875** | **−16.5%** |
+| Elapsed seconds per caller | 99.25 | **64.07** | **−35.4%** |
 
-![Repeated uncached-token and elapsed-time comparisons across Java, TypeScript, and an ambitious Flowdesk workflow.](docs/assets/skill-111-benchmark.svg)
+![Same-task GoalPilot and Codex-native comparison across Java, TypeScript, and Flowdesk.](docs/assets/skill-111-benchmark.svg)
 
-On the matched Java and TypeScript tasks, native Codex passed **4/4** independent checks; GoalPilot 1.11 used **22.0% fewer uncached input-plus-output tokens** and was **36.5% faster**. A prior-day native Flowdesk run passed all 26 artifact checks but exited blocked; it is reported separately and excluded from the matched aggregate. Cache state could not be disabled, so these are measured uncached-token comparisons, not a precise subscription-quota conversion. Raw tokens are descriptive and are not used to claim quota savings. [Methods, per-case regressions and evidence](docs/PROMOTION-1.11.md).
+Per-task results and trial evidence are in the [full report](docs/PROMOTION-1.11.md) and [evidence archive](reports/skill-111-evidence.zip). Cache could not be disabled, so uncached tokens and elapsed time are reported separately; raw tokens are not treated as subscription-quota savings. These are six synthetic paired trials, not a guarantee for every repository or prompt.
 
 ### Broader native verification
 

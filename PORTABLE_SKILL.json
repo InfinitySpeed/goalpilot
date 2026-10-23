@@ -62,7 +62,7 @@
   },
   "promotion_rule": "4/4 business+certified+verbatim; raw/unc/time at most3% regression vs1.8 and positive token savings vsnative; meaningful expanded verifier capability must pass independent local counterfactuals; all outcomes retained. Speed gain not required.",
   "user_speed_waiver": {
-    "instruction": "J\u2019accepterai m\u00eame sans gain significatif de vitesse",
+    "instruction": "J’accepterai même sans gain significatif de vitesse",
     "applied_before_outcomes": true,
     "effect": "Preregistered current gate allows at most3%time regression; both token savings and20/20completion remain mandatory."
   },
@@ -121,12 +121,12 @@
       "integrations/native/SKILL.md": "812da0615083f1adf83ef45fa1dfabc21bae56af2c6a4bbf37920b6c4e789ef3"
     },
     "benchmark": "reports/skill-111-2026-10-23.json",
-    "benchmark_sha256": "95677f0a670b5670b4f90b58c69dd894be693a5fd42bb56f29fff02f938acc0a",
+    "benchmark_sha256": "3e680ab3c573bb22151ce8615108fe1a01f953721bcfd659a8b7d874bf4d66a7",
     "evidence_archive": "reports/skill-111-evidence.zip",
     "source_bundle": "skills/goalpilot-016",
     "promotion_rule": "Six of six independent goals correctly closed and original-goal preserving per GoalPilot arm; repeated uncached input+output reduction in all three task families versus both 1.9 and 1.10; equal-weight elapsed time no more than 3% slower than 1.9. Raw tokens are descriptive only.",
     "scope": "Three synthetic task families (Java ranges, TypeScript transactions, vague Flowdesk multi-team support), two fresh runs per GoalPilot arm; matched native Codex repeats on Java and TypeScript, plus prior-day exact-task Flowdesk native context. Cache state is recorded but cannot be controlled. No population or subscription-quota claim.",
-    "evidence_sha256": "d8dfa6f619b46942058add967bcc141005c39a6cf372c21642a2647a1d2ac7dd",
+    "evidence_sha256": "080576079de83ad9e14007a72162b8fe0c51bf7cec9ecd2fc8c5d5198b30e73b",
     "evidence_url": "https://github.com/InfinitySpeed/goalpilot/blob/main/reports/skill-111-evidence.zip"
   }
 }
