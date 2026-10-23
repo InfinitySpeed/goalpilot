@@ -2,6 +2,8 @@ param(
     [string]$Source = '',
     [string]$HostName = 'auto',
     [string]$Provider = '',
+    [ValidateSet('stable', 'legacy', 'candidate')]
+    [string]$Profile = 'stable',
     [string]$Target = '',
     [switch]$Doctor,
     [switch]$DryRun,
@@ -47,7 +49,7 @@ try {
         Expand-Archive $archive -DestinationPath (Join-Path $scratch 'source')
         $Source = (Get-ChildItem (Join-Path $scratch 'source') -Directory | Select-Object -First 1).FullName
     }
-    $arguments = @('-X', 'utf8', (Join-Path $Source 'install.py'), '--host', $HostName)
+    $arguments = @('-X', 'utf8', (Join-Path $Source 'install.py'), '--host', $HostName, '--profile', $Profile)
     if ($Provider) { $arguments += @('--provider', $Provider) }
     if ($Target) { $arguments += @('--target', $Target) }
     if ($Doctor) { $arguments += '--doctor' }

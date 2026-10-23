@@ -4,13 +4,20 @@
 
 GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.7.0 with engine 0.16.0**; it does not start a second coding model.
 
+[![Offline checks](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
 [![Skill 1.7.0](https://img.shields.io/badge/Skill-1.7.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
 [![Engine 0.16.0](https://img.shields.io/badge/Engine-0.16.0-334155)](PORTABLE_SKILL.json)
 
-[Install and use](#how-to-use-it) · [Performance and evidence](docs/PORTABLE-ENGINE.md#measured-results) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
+[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PORTABLE-ENGINE.md#measured-results) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
+
+![GoalPilot backend: preserve the original goal, define criteria, implement in the current agent, verify locally, and repair within the same budget.](docs/assets/goalpilot-backend.png)
+
+[Open the full-size backend infographic](docs/assets/goalpilot-backend.png).
 
 ## Measured results
+
+![Current complete-skill results: historical native Codex versus fresh previous and current GoalPilot, showing elapsed time, raw tokens and verified completion.](docs/assets/portable-benchmark.png)
 
 The complete skill was tested on **20 familiar synthetic Python service goals**, with a fresh interleaved previous-GoalPilot control. Native Codex is a frozen historical control on the same goals.
 
@@ -68,7 +75,7 @@ Use the full objective, constraints and important workflows. Codex can use optio
 
 Already have Python 3.11+ and the repository? Run `python install.py`. It defaults to **auto**, chooses the current/discovered host, and verifies the installed command. It does not configure every tool. Use `--host hermes`, `--host claude-code`, etc. to select explicitly, or `--host generic --target <native-skill-directory>/goalpilot` for another tool.
 
-For dependency-free onboarding, the shell and PowerShell bootstraps prepare a user-local Python when needed, download source without Git and run the same installer. See [INSTALL.md](INSTALL.md) and [host adapters](docs/HOSTS.md). `--doctor` checks readiness without model calls; `--dry-run` previews destination paths.
+For automatic runtime setup, the shell and PowerShell bootstraps prepare a user-local Python when needed, download source without Git and run the same installer. See [INSTALL.md](INSTALL.md) and [host adapters](docs/HOSTS.md). `--doctor` checks readiness without model calls; `--dry-run` previews destination paths.
 
 The local verifier supports bounded Python unittest projects on Linux/macOS/Windows. The optional cross-process `service_race` helper still requires POSIX fork. Other test frameworks and arbitrary hosted agents are not automatically supported. Local verification makes no model calls; usage by your coding agent depends on host metering.
 
@@ -113,7 +120,7 @@ Optional helpers suit their documented interfaces. `ReplayService` is intended f
 
 ## Development
 
-The engine uses the Python standard library. The current version has **316 passing offline tests, with no skips**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
+The engine uses the Python standard library. The current version has **321 passing offline tests, with no skips**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
 
 ```bash
 python3 validate.py
@@ -122,3 +129,7 @@ python3 tools/build_skill.py
 ```
 
 `dist/goalpilot-skill.zip` contains the current self-contained Codex bundle. The repository's `install.py` derives the other host bundles locally. These commands run local verification and packaging; they do not launch model benchmarks. See [CONTRIBUTING.md](CONTRIBUTING.md) for chart generation and measurement rules.
+
+## License
+
+Free for individuals acting on their own behalf; business use requires a separate paid commercial license. GoalPilot is source-available under the [GoalPilot Personal and Commercial License 1.0](LICENSE). [Examples and commercial licensing](docs/LICENSING.md).

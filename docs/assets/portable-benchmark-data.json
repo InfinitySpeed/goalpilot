@@ -1,0 +1,41 @@
+{
+  "archive_sha256": "4d648b4a99e5f413ebe7e188502b7cd92c431995243b754401198a8034e279e6",
+  "audit_promotable": true,
+  "rows": {
+    "native_historical": {
+      "executed": 20,
+      "correct": 19,
+      "verified_goals": 19,
+      "seconds": 3919.0774290760055,
+      "raw": 4716581,
+      "uncached_plus_output": 720421,
+      "uncached_input": 499412,
+      "output": 221009
+    },
+    "old_current": {
+      "executed": 20,
+      "correct": 15,
+      "verified_goals": 20,
+      "seconds": 2457.2931458219937,
+      "raw": 2639864,
+      "uncached_plus_output": 429176,
+      "uncached_input": 335304,
+      "output": 93872
+    },
+    "new_current": {
+      "executed": 20,
+      "correct": 20,
+      "verified_goals": 20,
+      "seconds": 2195.8252569010037,
+      "raw": 1417187,
+      "uncached_plus_output": 325091,
+      "uncached_input": 238340,
+      "output": 86751
+    }
+  },
+  "live_model_calls": 0,
+  "figures": [
+    "docs/assets/portable-benchmark.png",
+    "docs/assets/portable-benchmark.svg"
+  ]
+}

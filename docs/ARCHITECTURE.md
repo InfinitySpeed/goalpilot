@@ -2,6 +2,8 @@
 
 GoalPilot combines instructions for the calling agent with a local Python verification engine. The default path has no hosted GoalPilot service, separate reasoning model or background model fleet.
 
+![GoalPilot backend: one calling agent, local verification and a bounded repair loop.](assets/goalpilot-backend.png)
+
 ```mermaid
 flowchart TD
     U[Full user goal] --> S[Coding-agent inventories quoted requirements]
@@ -23,8 +25,8 @@ flowchart TD
 
 | Component | Responsibility |
 | :--- | :--- |
-| [Host installer](../install.py) and [portable adapter](../integrations/portable/SKILL.md) | Auto-select or explicitly configure native/generic skills, prepare a runtime and use explicit verification where native Stop hooks are absent. |
-| [Skill instructions](../skills/goalpilot/SKILL.md) | Save the full request, guide implementation and avoid unnecessary repeated reads or verification. |
+| [Host installer](../install.py) and [portable adapter](../skills/goalpilot-016/scripts/host.py) | Auto-select or explicitly configure native/generic skills, prepare a runtime and use explicit verification where native Stop hooks are absent. |
+| [Skill instructions](../skills/goalpilot-016/SKILL.md) | Save the full request, guide implementation and avoid unnecessary repeated reads or verification. |
 | [Session protocol](../goalpilot/session.py) | Preserve the original contract, freeze acceptance, account for verification attempts and invalidate closure after source changes. |
 | [Criterion mapper](../goalpilot/criteria.py) | Require an exact-quoted requirement inventory, ensure every requirement and criterion maps, validate check links, and report verified, missing, blocked or pending status. |
 | [Test gates](../goalpilot/gates.py) | Execute retained tests against disposable worktree copies. The strengthened suite supplements the original suite. |
@@ -38,7 +40,7 @@ The skill supplies one compact API and discourages redundant helper reads, repea
 
 Optional helpers avoid reimplementing generic infrastructure. Business workflows and meaningful assertions still belong to the project. The measured benefit combines these mechanisms; the experiment does not isolate a causal percentage for each component.
 
-`ReplayService` is an opt-in base for new pure applications with an unspecified compatible storage/backup format. It records accepted transitions and validates restored state by replay. Reducers require explicit request times and controlled entropy; external side effects are unsuitable. Cold replay is linear, and the default configurable event limit is 4,096. `ServiceBase` supports existing formats with a full application validator. See the [helper reference](../skills/goalpilot/references/sdk.md).
+`ReplayService` is an opt-in base for new pure applications with an unspecified compatible storage/backup format. It records accepted transitions and validates restored state by replay. Reducers require explicit request times and controlled entropy; external side effects are unsuitable. Cold replay is linear, and the default configurable event limit is 4,096. `ServiceBase` supports existing formats with a full application validator. See the [helper reference](../skills/goalpilot-016/references/sdk.md).
 
 ## What completion means
 
@@ -52,8 +54,8 @@ The passive monitor and verification commands run Python and subprocesses, not i
 
 Automatic hook delivery is integrated with Codex on POSIX. Other hosts and Windows use installable adapters with explicit local verification and repair instructions in the calling session. They do not install or depend on Codex hooks. The same engine is bundled for each host; the portable launcher avoids accidentally inheriting a Codex hook binding. See [host adapters](HOSTS.md).
 
-No live model benchmark has been run for the new adapters. The [published figures](BENCHMARKS.md) apply to the recorded Codex automatic-hook path only, not all hosts or all installation/verification modes.
+The current [whole-skill benchmark](PORTABLE-ENGINE.md#measured-results) covers Skill 1.7.0 on Codex POSIX with exact native Stop hooks. Other hosts and explicit fallback have local installation/verification coverage, not model-performance evidence. The [older skill benchmark](BENCHMARKS.md) remains a separate archive.
 
 ## Installation portability
 
-The repository entry point guides agents through INSTALL.md. Shell/PowerShell bootstraps prepare a user-local Python when needed; installed skills record its executable. Native Windows verification uses msvcrt file locks and Windows Job Objects, while POSIX keeps flock and process groups. Snapshot inventory paths use POSIX separators across systems. Optional fork-based race probes remain POSIX-only. The current implementation is not the historical measured engine; that reference is archived separately.
+The repository entry point guides agents through INSTALL.md. Shell/PowerShell bootstraps prepare a user-local Python when needed; installed skills record its executable. Native Windows verification uses msvcrt file locks and Windows Job Objects, while POSIX keeps flock and process groups. Snapshot inventory paths use POSIX separators across systems. Optional fork-based race probes remain POSIX-only. The default bundle contains the exact frozen engine 0.16.0 and measured Skill 1.7.0 behavior files. The older Skill 1.3.1/engine 0.12.1 remains a separate immutable reference.

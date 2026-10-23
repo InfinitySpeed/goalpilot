@@ -1,0 +1,38 @@
+{
+  "scope": "Repository audit and maintenance; no new coding-model benchmark, original measured skill files unchanged.",
+  "tests": {
+    "passed": 321,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_seconds": 26.269638931000372,
+    "python": "3.12.14"
+  },
+  "authored_documents": 15,
+  "local_links_checked": 80,
+  "broken_local_links": 0,
+  "original_installed_files_unchanged": 50,
+  "additional_installed_files": [
+    "LICENSE"
+  ],
+  "measured_source_files_verified": 49,
+  "live_coding_model_calls": 0,
+  "licensing": "Custom Personal and Commercial License1.0, free for individuals on their own behalf; business use requires separately agreed paid license. No price/checkout or universal legal-enforceability claim.",
+  "fixes": [
+    "Reject install targets overlapping immutable source directories.",
+    "Reject a self-consistent but changed promoted source in stable mode.",
+    "Reject doctor readiness for another installed profile.",
+    "Clean malformed-JSON diagnostics.",
+    "PowerShell forwards explicit profile selection.",
+    "Correct current vs historical documentation and checker scope.",
+    "Restore discoverable English backend and current benchmark graphics; retain original historical chart.",
+    "Carry and verify LICENSE in installed skills, portable ZIP and wheel."
+  ],
+  "proofs": {
+    "evidence_sha256": "4d648b4a99e5f413ebe7e188502b7cd92c431995243b754401198a8034e279e6",
+    "installer_sha256": "3e875f7936a14aafdad8ee363530bf822e52fbe89db521bcc6465835baecc407",
+    "license_sha256": "35e838c76b3918e03da505d57fbcc371836b513fbae46dfcf4ae7d511495c23a",
+    "backend_image_sha256": "471e7c16812cb41adf9a0fda72020dd0d1ff0603af3c3c80731733620bb05a5c",
+    "chart_script_sha256": "5e44b7dfa1607c68d8a7db3623eeecf53d8f72c67114fdbe4e210803dd475feb"
+  }
+}

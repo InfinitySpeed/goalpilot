@@ -26,7 +26,7 @@ Generic installation defaults to `~/.local/share/goalpilot/skills/goalpilot` on 
 
 ## Direct commands
 
-With an existing Python3.11+ and checkout:
+With an existing Python 3.11+ and checkout:
 
 ```bash
 python install.py                         # auto-select and verify
@@ -41,15 +41,15 @@ python install.py --host hermes --doctor
 
 ## Runtime and Windows
 
-The bootstraps reuse Python3.11+ or prepare a user-local Python through uv. The installed skill records the interpreter in `RUNTIME.json`, so the agent does not rely on a user-managed `python3` command or PATH edits. Missing dependency/source downloads need network access; existing-runtime installations work offline.
+The bootstraps reuse Python 3.11+ or prepare a user-local Python through uv. The installed skill records the interpreter in `RUNTIME.json`, so the agent does not rely on a user-managed `python3` command or PATH edits. Missing dependency/source downloads need network access; existing-runtime installations work offline.
 
-The default Skill1.7.0 embeds engine0.16.0 and maps frozen goal requirements to verified criteria, exact source quotes and executable checks. It uses the current calling session. Local Python unittest verification is available on Linux, macOS and Windows. Optional `service_race` still requires POSIX fork and is not a Windows feature. Restricted runners that cannot create the required process job fail verification rather than silently claiming success.
+The default Skill 1.7.0 embeds engine 0.16.0 and maps frozen goal requirements to verified criteria, exact source quotes and executable checks. It uses the current calling session. Local Python unittest verification is available on Linux, macOS and Windows. Optional `service_race` still requires POSIX fork and is not a Windows feature. Restricted runners that cannot create the required process job fail verification rather than silently claiming success.
 
 Codex on POSIX can use its optional native Stop hooks. Windows and portable adapters call verification explicitly in the current agent session. They do not install Codex hooks or launch a separate model. Other test frameworks and blanket compatibility with every agent remain outside the supported verified scope.
 
 ## Performance scope
 
-The promoted default is Skill1.7.0 / engine0.16.0. Its [complete-caller comparison](PORTABLE-ENGINE.md#measured-results) benchmarks Codex POSIX with native Stop hooks. Other hosts and explicit fallback have offline installation/verification coverage, not model-performance evidence. Archived Skill1.3.1 source and figures remain separately reproducible. Do not transfer percentages across hosts, profiles or workloads.
+The promoted default is Skill 1.7.0 / engine 0.16.0. Its [complete-caller comparison](PORTABLE-ENGINE.md#measured-results) benchmarks Codex POSIX with native Stop hooks. Other hosts and explicit fallback have offline installation/verification coverage, not model-performance evidence. Archived Skill 1.3.1 source and figures remain separately reproducible. Do not transfer percentages across hosts, profiles or workloads.
 
 ## Sources
 

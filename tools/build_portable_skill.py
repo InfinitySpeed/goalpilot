@@ -26,16 +26,24 @@ def build(root=ROOT):
     manifest['files']=files
     manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
     archive=root/'dist/goalpilot-skill-1.7.0.zip';archive.parent.mkdir(exist_ok=True)
+    archive_manifest=dict(manifest)
+    license_path=root/'LICENSE'
+    archive_files=dict(files)
+    if license_path.is_file():
+        archive_files['LICENSE']=hashlib.sha256(license_path.read_bytes()).hexdigest()
+    archive_manifest['files']=archive_files
     with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED)as z:
         for p in sorted(skill.rglob('*')):
             if p.is_file()and'__pycache__'not in p.parts and p.suffix!='.pyc':
-                z.write(p,'goalpilot/'+str(p.relative_to(skill)))
+                if p==manifest_path:z.writestr('goalpilot/MANIFEST.json',json.dumps(archive_manifest,indent=2)+'\n')
+                else:z.write(p,'goalpilot/'+str(p.relative_to(skill)))
+        if license_path.is_file():z.write(license_path,'goalpilot/LICENSE')
     with zipfile.ZipFile(archive)as z:
         if z.testzip()is not None:raise ValueError('Corrupt archive')
-        for p,h in files.items():
+        for p,h in archive_files.items():
             if hashlib.sha256(z.read('goalpilot/'+p)).hexdigest()!=h:raise ValueError('Archive differs')
     return {'skill_version':manifest['skill_version'],'engine_version':manifest['engine']['version'],
-            'files_verified':len(files),'archive_bytes':archive.stat().st_size,
+            'files_verified':len(archive_files),'archive_bytes':archive.stat().st_size,
             'sha256':hashlib.sha256(archive.read_bytes()).hexdigest(),'model_calls':0}
 
 

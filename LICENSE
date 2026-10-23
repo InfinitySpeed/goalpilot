@@ -1,0 +1,80 @@
+GoalPilot Personal and Commercial License 1.0
+
+Copyright (c) 2026 InfinitySpeed
+
+1. Definitions
+
+"Software" means GoalPilot and its accompanying source code, documentation,
+bundled helpers and other materials supplied under this license.
+
+"Individual" means a natural person acting solely on their own behalf, rather
+than as an employee, contractor, agent or representative of a Business.
+
+"Business" means a company, corporation, partnership or other business entity,
+regardless of its size, revenue, ownership or number of employees.
+
+"Business Use" means using, operating, modifying, integrating or redistributing
+the Software by, for, or on behalf of a Business. Using a personal device or
+account does not turn Business Use into Individual use.
+
+2. Free rights for Individuals
+
+Subject to this license, an Individual may use, study, reproduce, modify, create
+derivative works of and redistribute the Software, worldwide and without a
+license fee. This includes private projects, learning, research, public projects
+and independent commercial projects carried out solely on their own behalf.
+An Individual may charge for permitted copies or services for other Individuals.
+These rights do not authorize Business Use or grant Business recipients a free
+commercial license.
+
+3. Paid license for Business Use
+
+Business Use requires a separate, written, paid commercial license from the
+copyright holder before such use begins. This applies to internal use, employee
+and contractor work, hosted services, integration and redistribution for a
+Business, including a one-person company. The price, scope, duration and other
+commercial terms must be agreed separately in writing. This document does not
+set a price, process a payment or itself grant a commercial license.
+
+Any person or entity may download and inspect the source solely to assess the
+Software and its licensing terms. This permission does not authorize running the
+Software for a Business or a free business trial. Non-business entities that are
+not Individuals must obtain separate written permission.
+
+Commercial licensing requests: contact InfinitySpeed through
+https://github.com/InfinitySpeed/goalpilot/issues and request commercial terms.
+
+4. Redistribution and notices
+
+Permitted copies and derivative works must retain this license and the
+copyright notice. Modified versions must identify that they were modified.
+Do not remove or obscure the Business Use restriction or represent this license
+as granting free business rights. Recipients receive only the rights available
+to them under this license or their own separate written agreement.
+
+5. Outputs
+
+You retain your rights in independently created project code, data and other
+outputs. Those outputs do not become subject to this license merely because
+you used GoalPilot to create or verify them. GoalPilot source code or bundled
+helper code copied into an output remains subject to this license unless a
+separate permission applies. A commercial license for the use of GoalPilot does
+not transfer ownership of your independently created outputs to InfinitySpeed.
+
+6. Other rights and termination
+
+No trademark or patent rights are granted. Third-party materials, if any,
+remain subject to their own applicable licenses. Rights not expressly granted
+are reserved. Rights under this license terminate automatically if you breach
+its terms; a separate commercial agreement controls its own termination terms.
+
+7. Disclaimer
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. TO THE MAXIMUM EXTENT PERMITTED
+BY APPLICABLE LAW, THE AUTHORS AND COPYRIGHT HOLDERS SHALL NOT BE LIABLE FOR
+ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+USE OR OTHER DEALINGS IN THE SOFTWARE. NOTHING IN THIS LICENSE EXCLUDES RIGHTS
+OR LIABILITIES THAT CANNOT LAWFULLY BE EXCLUDED.

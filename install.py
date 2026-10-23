@@ -58,7 +58,11 @@ def destinations(host,target=None):
 
 
 def preflight(target):
-    if target.resolve()==SOURCE.resolve():raise ValueError('Cannot replace the source bundle')
+    resolved=target.resolve()
+    for directory in ('skills','benchmarks','goalpilot'):
+        protected=(ROOT/directory).resolve()
+        if resolved==protected or protected in resolved.parents or resolved in protected.parents:
+            raise ValueError('Cannot install over or inside protected repository source: '+str(target))
     if target.is_symlink():raise ValueError('Refusing a symlink destination: '+str(target))
     if target.exists():
         previous=json.loads((target/'MANIFEST.json').read_text(encoding='utf-8'))
@@ -73,6 +77,7 @@ def prepare_bundle(destination,host):
         if SOURCE.name == 'goalpilot':
             shutil.copy2(ROOT/'integrations/portable/SKILL.md',destination/'SKILL.md')
             shutil.copy2(ROOT/'integrations/portable/host.py',destination/'scripts/host.py')
+    if (ROOT/'LICENSE').is_file():shutil.copy2(ROOT/'LICENSE',destination/'LICENSE')
     entry='scripts/host.py' if portable or SOURCE.name=='goalpilot-016' else 'scripts/goalpilot.py'
     skill=destination/'SKILL.md';body=skill.read_text(encoding='utf-8')
     note=('\n## Installed runtime\n\nUse the Python interpreter at `'+sys.executable+'` for EVERY command shown with python3. Do not rely on a system python3. Quote paths containing spaces; in PowerShell prefix a quoted executable with &. RUNTIME.json records the interpreter and entry point. No manual Python setup is needed.\n')
@@ -101,7 +106,10 @@ def doctor(installer,plan):
     for host,target in plan:
         row={'host':host,'path':str(target),'ready':False}
         try:
-            installer.validate(target)
+            installed=installer.validate(target)
+            expected=json.loads((SOURCE/'MANIFEST.json').read_text(encoding='utf-8'))
+            if (installed.get('skill_version'),installed['engine']['version'])!=(expected.get('skill_version'),expected['engine']['version']):
+                raise ValueError('Installed profile differs from the requested profile; reinstall with the selected --profile')
             runtime=json.loads((target/'RUNTIME.json').read_text(encoding='utf-8'))
             p=subprocess.run([runtime['python'],'-X','utf8',str(target/runtime['entry_point']),'session','--help'],capture_output=True,text=True,timeout=20)
             row.update(ready=p.returncode==0,engine_version=runtime['engine_version'],error=None if p.returncode==0 else p.stderr[-1000:])
@@ -120,11 +128,13 @@ def main():
     parser.add_argument('--doctor',action='store_true',help='Check installation/runtime without model calls.')
     args=parser.parse_args()
     global SOURCE
-    promotion = ROOT / 'PORTABLE_SKILL.json'
-    promoted = promotion.is_file() and json.loads(promotion.read_text()).get('status') == 'promoted'
-    use_new = args.profile=='candidate' or (args.profile=='stable' and promoted)
-    SOURCE = ROOT / ('skills/goalpilot-016' if use_new else 'skills/goalpilot')
     try:
+        promotion=ROOT/'PORTABLE_SKILL.json'
+        policy=json.loads(promotion.read_text(encoding='utf-8'))if promotion.is_file()else{}
+        if not isinstance(policy,dict):raise ValueError('Promotion metadata must be a JSON object')
+        promoted=policy.get('status')=='promoted'
+        use_new=args.profile=='candidate'or(args.profile=='stable'and promoted)
+        SOURCE=ROOT/('skills/goalpilot-016'if use_new else'skills/goalpilot')
         if sys.version_info<(3,11):raise ValueError('Use bootstrap.sh or bootstrap.ps1 to prepare Python automatically')
         host=args.host;reason='explicit selection';candidates=[]
         if host=='t3-code':
@@ -132,12 +142,16 @@ def main():
             host=args.provider;reason='T3 Code underlying provider'
         if host=='auto':host,reason,candidates=detect_host()
         plan=destinations(host,args.target);installer=base_installer()
+        source_manifest=installer.validate(SOURCE)
+        if args.profile=='stable'and promoted:
+            if source_manifest['files']!=policy['measured_files']:
+                raise ValueError('Stable skill differs from the promoted measurement; use --profile candidate for local experiments')
         if args.doctor:
-            result=doctor(installer,plan);print(json.dumps(result,ensure_ascii=False,indent=2));return 0 if result['ready']else 1
-        installer.validate(SOURCE)
+            result=doctor(installer,plan);result['selected_profile']=args.profile
+            print(json.dumps(result,ensure_ascii=False,indent=2));return 0 if result['ready']else 1
         for _,target in plan:preflight(target)
         if args.dry_run:
-            result={'selected_host':host,'selection_reason':reason,'candidates':candidates,'dry_run':True,'destinations':[{'host':name,'path':str(target)}for name,target in plan],'model_calls':0}
+            result={'selected_host':host,'selected_profile':args.profile,'skill_version':source_manifest.get('skill_version'),'engine_version':source_manifest['engine']['version'],'selection_reason':reason,'candidates':candidates,'dry_run':True,'destinations':[{'host':name,'path':str(target)}for name,target in plan],'model_calls':0}
         else:
             rows=[]
             with tempfile.TemporaryDirectory(prefix='goalpilot-install-')as tmp:
@@ -146,7 +160,7 @@ def main():
                     if name not in bundles:bundles[name]=prepare_bundle(Path(tmp)/name,name)
                     rows.append({'host':name,**installer.install(bundles[name],target),'skill_file':str(target/'SKILL.md')})
             verification=doctor(installer,plan)
-            result={'selected_host':host,'selection_reason':reason,'installed':rows,'verification':verification,'model_calls':0,'host_settings_changed':False,'next_step':'Reload skills, then ask your agent to use GoalPilot. Generic hosts may need to read the returned skill_file explicitly.'}
+            result={'selected_host':host,'selected_profile':args.profile,'skill_version':source_manifest.get('skill_version'),'engine_version':source_manifest['engine']['version'],'selection_reason':reason,'installed':rows,'verification':verification,'model_calls':0,'host_settings_changed':False,'next_step':'Reload skills, then ask your agent to use GoalPilot. Generic hosts may need to read the returned skill_file explicitly.'}
             if not verification['ready']:print(json.dumps(result,ensure_ascii=False,indent=2));return 1
         print(json.dumps(result,ensure_ascii=False,indent=2));return 0
     except(OSError,ValueError,KeyError)as exc:parser.exit(1,f'Installation refused: {exc}\n')

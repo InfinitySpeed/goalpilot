@@ -20,6 +20,8 @@ Chart generation is optional development tooling and requires Matplotlib, not a 
 
 ```bash
 python3 -m pip install matplotlib
+python3 tools/plot_portable_benchmark.py
+# Optional: rebuild the separately labelled historical chart
 python3 tools/plot_benchmark.py
 ```
 

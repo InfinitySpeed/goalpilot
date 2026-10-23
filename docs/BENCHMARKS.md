@@ -1,10 +1,16 @@
 # Benchmark results and limitations
 
-For the **main release 0.16.0**, see the [promoted engine comparison and frozen evidence](ENGINE-PROMOTION.md). This page retains the historical portable-skill benchmark.
+For the **default Skill 1.7.0 / engine 0.16.0**, see the [current complete-skill comparison](PORTABLE-ENGINE.md#measured-results). This page retains the historical Skill 1.3.1 benchmark. The [standalone engine study](ENGINE-PROMOTION.md) is a distinct profile.
 
 This report covers skill **1.3.1**, engine **0.12.1**, and the complete calling invocation. It distinguishes observed results from general product guarantees.
 
-This is the recorded **Codex automatic-hook benchmark**. The portable Skill now ships the benchmark-matched instructions (1.3.1) and embedded engine (0.12.1). A fresh paired single-goal check also compared that bundle against engine 0.15.0: both artifacts passed the independent 10-group judge, while 0.12.1 used 80,897 raw caller tokens and 110.6 seconds; the 0.15.0 run was interrupted after at least 140,356 tokens and 136.6 seconds, after its GoalPilot session had closed successfully. Treat that one-goal result as diagnostic, not a new aggregate benchmark. The standalone controller source is now 0.16.0, with a separately promoted helper-assisted profile. The new installer and Claude Code / Antigravity adapter are not additional measured treatments; published 20-goal figures do not extend to those hosts or explicit-finish delivery modes.
+This is the recorded **Codex automatic-hook benchmark**. At the time of this historical report, the portable Skill shipped the benchmark-matched instructions (1.3.1) and embedded engine (0.12.1). A fresh paired single-goal check also compared that bundle against engine 0.15.0: both artifacts passed the independent 10-group judge, while 0.12.1 used 80,897 raw caller tokens and 110.6 seconds; the 0.15.0 run was interrupted after at least 140,356 tokens and 136.6 seconds, after its GoalPilot session had closed successfully. Treat that one-goal result as diagnostic, not a new aggregate benchmark. The standalone controller source is now 0.16.0, with a separately promoted helper-assisted profile. The new installer and Claude Code / Antigravity adapter are not additional measured treatments; published 20-goal figures do not extend to those hosts or explicit-finish delivery modes.
+
+## Historical infographic
+
+![Archived Skill1.3.1 benchmark: elapsed time, caller token composition and reviewed completion versus historical native Codex. These are not Skill1.7.0 results.](assets/benchmark.png)
+
+This is the original historical chart for Skill1.3.1. The default Skill1.7.0 has [separate measurements](PORTABLE-ENGINE.md#measured-results).
 
 ## Primary comparison
 
@@ -87,8 +93,8 @@ Across the development experiments, observed research consumption is **at least 
 | [Measured source hashes](../reports/skill-131-summary/measurement.json) | Exact engine and skill-instruction identity, versions and scope. |
 | [Research cost summary](../reports/skill-131-summary/research-cost-summary.json) | Deduplicated aggregate lower bounds and unknowns. |
 
-Run `python3 tools/check_benchmark.py` to reconstruct the native and old-GoalPilot comparisons from the retained rows, verify the archived measured-source identity, and enforce that the shipped Skill still matches that measured treatment. If Skill instructions or embedded engine change, this gate fails until a fresh matched comparison is recorded. Run `python3 validate.py` for offline technical regressions. These commands do not repeat paid model experiments.
+Run `python3 tools/check_benchmark.py` to reconstruct the native and old-GoalPilot comparisons from the retained rows, verify the archived measured-source identity, and verify the immutable archived bundle still matches that treatment. This historical checker reports that the shipped default is now different; current-release identity and efficacy gates are checked separately by `tools/audit_portable_invocation.py` and `PORTABLE_SKILL.json`. Run `python3 validate.py` for offline technical regressions. These commands do not repeat paid model experiments.
 
 The public repository contains analyses and audit receipts, not the full raw model transcripts, external judge worktrees or development-session journals. Historical receipts retain their original local paths. Aggregate arithmetic can be reproduced from this repository; independent re-auditing of the original provider telemetry requires the retained raw journals and cannot be performed from summaries alone. No fresh paid replication has been run for this public documentation release.
 
-The exact measured engine source and skill instructions are retained in benchmarks/codex-1.3.1. Current portability and onboarding changes are a new unbenchmarked version; recorded gains are historical evidence, not a fresh performance claim for this release.
+The exact measured engine source and skill instructions are retained in benchmarks/codex-1.3.1. The default Skill 1.7.0 has its own separately frozen whole-caller evidence. Recorded1.3.1 gains remain historical observations, not performance claims for1.7.0 or other hosts.

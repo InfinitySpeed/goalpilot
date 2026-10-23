@@ -70,6 +70,8 @@
   "post_measurement_changes": [
     "Default installation selection and generic meter-scope metadata; no measured instructions, wrappers, helper or engine changes.",
     "Manifest release labels and packaging aliases added after measurement.",
-    "Portable offline test matrix parallelized without changing its assertions."
+    "Portable offline test matrix parallelized without changing its assertions.",
+    "Repository installer source-collision and selected-profile checks, bootstrap profile forwarding and CLI diagnostics tightened after measurement; prepare_bundle output and measured behavior files remain unchanged.",
+    "Personal/commercial licensing added at repository level; installed and downloadable packages carry an additional LICENSE file. All original measured behavior files remain byte-identical."
   ]
 }

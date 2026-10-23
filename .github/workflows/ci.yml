@@ -63,3 +63,7 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: ./bootstrap.ps1 -Source $PWD.Path -HostName generic -Target "$env:RUNNER_TEMP/goalpilot-bootstrap" -ManagedPython
+      - name: Check PowerShell legacy profile selection
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./bootstrap.ps1 -Source $PWD.Path -HostName generic -Profile legacy -Target "$env:RUNNER_TEMP/goalpilot-legacy-preview" -DryRun

@@ -1,5 +1,7 @@
 # Agent installation instructions
 
+GoalPilot is free for individuals acting on their own behalf; business use requires a separate paid commercial license. Read [licensing terms](docs/LICENSING.md). Installation and doctor checks do not grant business-use rights.
+
 The default is **GoalPilot Skill 1.7.0 / engine 0.16.0**, installed into the current coding agent. Work happens in that calling session; installation and local verification start no coding models. Follow the steps below for normal setup.
 
 `PORTABLE_SKILL.json` records the promoted default and its complete-caller evidence. `--profile legacy` selects the archived Skill 1.3.1 / engine 0.12.1 when explicitly requested. The separately measured standalone controller is optional; do not substitute it for a skill installation.
@@ -43,13 +45,13 @@ Invoke-WebRequest https://raw.githubusercontent.com/InfinitySpeed/goalpilot/main
 & "$env:TEMP\goalpilot-bootstrap.ps1" -HostName claude-code
 ```
 
-Substitute the current host. PowerShell exposes `-Provider`, `-Target`, `-Doctor` and `-DryRun`; shell arguments use `--provider`, `--target`, `--doctor` and `--dry-run`. If execution policy or network rules block setup, report the precise restriction; do not bypass it.
+Substitute the current host. PowerShell exposes `-Provider`, `-Profile`, `-Target`, `-Doctor` and `-DryRun`; shell arguments use `--provider`, `--profile`, `--target`, `--doctor` and `--dry-run`. Both default to the promoted `stable` profile; use `legacy` only when the archived baseline is requested. If execution policy or network rules block setup, report the precise restriction; do not bypass it.
 
 If this repository is already available locally, pass `--source /path/to/checkout` to the shell bootstrap or `-Source C:\path\to\checkout` to PowerShell. With Python3.11+ already available, `python install.py --host <host>` works directly.
 
 ## 3. Confirm readiness
 
-Installation automatically validates the manifest and runs the installed local command's help through its recorded interpreter. Require `verification.ready: true`. The output gives `skill_file`; the installed `RUNTIME.json` gives the exact interpreter and command entry point.
+Installation automatically validates the manifest and runs the installed local command's help through its recorded interpreter. Require `verification.ready: true`. Doctor checks validate the selected profile; if an older valid installation is reported as a mismatch, reinstall with the intended `--profile`. The output gives `skill_file`; the installed `RUNTIME.json` gives the exact interpreter and command entry point.
 
 Run the same bootstrap with `--doctor` / `-Doctor` for diagnosis. Reload the host's skills, or read the installed `SKILL.md` for immediate use in this session. On Codex, optional Stop-hook startup and the zero-model configuration audit are documented in [the portable profile](docs/PORTABLE-ENGINE.md#completion-modes); they preserve global settings and unrelated policies. Without an exact hook beacon, the skill uses explicit verification. Do not claim a local doctor check proves a paid end-to-end agent benchmark.
 
