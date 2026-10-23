@@ -51,6 +51,10 @@ Codex on POSIX can use its optional native Stop hooks. Windows and portable adap
 
 The promoted default is [Skill 1.8](GENERALIZATION.md), measured on Codex POSIX using explicit verification. Other hosts have offline readiness coverage, not model-performance evidence. Archived Skill 1.3.1 source and figures remain separately reproducible. Do not transfer percentages across hosts, profiles or workloads.
 
+The [runtime compatibility matrix](UNIVERSALITY.md) can be executed locally without
+model calls. It tests the installed verifier through host profiles and reports
+missing runtimes explicitly; this is separate from live agent performance.
+
 ## Sources
 
 Host registration choices were checked against official sources on October22,2026:

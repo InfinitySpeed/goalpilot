@@ -43,6 +43,8 @@ jobs:
         run: python tools/audit_portable_invocation.py reports/portable-skill-170-2026-10-23.zip --require-promotion
       - name: Audit the generalized whole-caller comparison
         run: python tools/audit_generalization.py reports/native-generalization-2026-10-23.json --require-promotion
+      - name: Audit the additional whole-caller outcomes and provider receipts
+        run: python tools/audit_portability_extension.py reports/portability-extension-2026-10-23.json --evidence reports/portability-extension-2026-10-23.zip
       - name: Audit the frozen standalone promotion
         run: python tools/audit_promoted_release.py
   portable-install:
@@ -69,3 +71,22 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: ./bootstrap.ps1 -Source $PWD.Path -HostName generic -Profile legacy -Target "$env:RUNNER_TEMP/goalpilot-legacy-preview" -DryRun
+  verifier-portability:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Prepare the pinned TypeScript compiler
+        run: |
+          npm install --prefix "$RUNNER_TEMP/goalpilot-typescript" --ignore-scripts --no-audit --no-fund typescript@5.9.3
+          echo "$RUNNER_TEMP/goalpilot-typescript/node_modules/.bin" >> "$GITHUB_PATH"
+      - name: Verify eight runtimes through five installed host profiles
+        run: python tools/check_portability.py --require-all --output portability.json
+      - name: Retain actual compatibility evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verifier-portability
+          path: portability.json

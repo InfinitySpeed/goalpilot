@@ -31,6 +31,17 @@ GoalPilot preserves your original request, turns it into explicit criteria, reus
 
 **Eight synthetic projects across five stacks**, with sequential reused controls. r2's six unsupported closures still produced correct code. Some individual tasks cost more; exact subscription-quota savings are not established. [Definitions, per-case counters, failed candidates and evidence](docs/GENERALIZATION.md).
 
+[Portability checks and limits](docs/UNIVERSALITY.md) distinguish installed-verifier
+compatibility from actual coding-agent performance. Run the local matrix without
+model calls; unsupported runtimes are reported explicitly.
+
+**Additional four-goal extension:** native Codex, previous GoalPilot r2 and the
+unchanged Skill 1.8 each pass **4/4 independent behavioral checks**. Skill 1.8 uses
+**29.18% fewer raw tokens, 16.02% fewer uncached-input + output tokens and 15.27%
+less caller time than native Codex** on this separate series. There are individual
+regressions, including **30.94% more uncached tokens on the Python task**.
+[All outcomes, limitations and replayable evidence](docs/UNIVERSALITY.md#additional-live-comparison).
+
 The earlier [20-goal Python-service benchmark](docs/SKILL-EFFICIENCY.md) belongs to Skill 1.7.0-r2 and remains historical.
 
 ## How to use it
