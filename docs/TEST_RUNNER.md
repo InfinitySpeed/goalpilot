@@ -35,3 +35,16 @@ sequential gate. On the current 293-test suite, the protected gate passed in
 reduction (22.736 s saved). A separate `validate.py` run passed 293/293 in
 21.199 s. These are local test-runner measurements, not coding-session time,
 model tokens, or task-completion evidence.
+
+## Portable adapter matrix
+
+The new engine's five installation profiles run in isolated temporary directories,
+subprocess environments and ephemeral localhost ports. Those independent profile
+checks now run concurrently inside their test module. The same four test methods
+and host assertions passed in a one-run same-SDK comparison: **8.646 s sequentially
+versus 3.032 s concurrently, 64.93% less module wall time**. Both runs had zero
+failures, errors or skips and made zero model calls. This measures that module,
+not a 64.93% improvement to the full suite or coding sessions. The complete
+312-test suite passed separately in 25.082 s.
+
+[Machine-readable comparison](../reports/portable-test-matrix-speed.json).

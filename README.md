@@ -1,53 +1,35 @@
 # GoalPilot
 
-**Make coding goals verifiable. Spend less effort on repeated work.**
+**A skill that helps coding agents turn ambitious goals into verified results, with less repeated work.**
 
-GoalPilot helps coding agents finish verifiable goals with less repeated work. **The main release is engine 0.16.0**, a frozen helper-assisted Codex controller. It preserves original tests, reuses verified infrastructure and checks the delivered work before reporting completion.
+GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.7.0 with engine 0.16.0**; it does not start a second coding model.
 
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
-[![Main release 0.16.0](https://img.shields.io/badge/Main_release-0.16.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
-[![Portable skill](https://img.shields.io/badge/Portable_skill-1.3.1-334155)](docs/HOSTS.md)
+[![Skill 1.7.0](https://img.shields.io/badge/Skill-1.7.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
+[![Engine 0.16.0](https://img.shields.io/badge/Engine-0.16.0-334155)](PORTABLE_SKILL.json)
 
-[Start with the main release](#start-with-the-main-release) · [Performance and evidence](docs/ENGINE-PROMOTION.md) · [Portable skill installation](INSTALL.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
+[Install and use](#how-to-use-it) · [Performance and evidence](docs/PORTABLE-ENGINE.md#measured-results) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
 
-## Main release: measured results
+## Measured results
 
-On the same **20 synthetic Python service goals**, with historical controls:
+The complete skill was tested on **20 familiar synthetic Python service goals**, with a fresh interleaved previous-GoalPilot control. Native Codex is a frozen historical control on the same goals.
 
-| Metric | Native Codex | Previous GoalPilot Skill | Main release 0.16.0 |
+| Metric — all 20 attempts per arm | Native Codex, historical | Previous skill, rerun | Default Skill 1.7.0 |
 | :--- | ---: | ---: | ---: |
 | Verified goals | 19/20 | 20/20 | **20/20** |
-| Raw input + output tokens, including cached input | 4,716,581 | 2,151,252 | **880,023** |
-| Uncached input + output tokens | 720,421 | 342,356 | **197,655** |
-| Total elapsed time, including independent judging | 65.32 min | 25.69 min | **23.66 min** |
+| Raw tokens, including cached input | 4,716,581 | 2,639,864 | **1,417,187** |
+| Uncached input + output tokens | 720,421 | 429,176 | **325,091** |
+| Total elapsed time, including independent judging | 65.32 min | 40.95 min | **36.60 min** |
 
-Versus previous GoalPilot: **59.09% fewer raw tokens, 42.27% fewer uncached-input-plus-output tokens and 7.92% less time**. Versus native Codex: **81.34%, 72.56% and 63.78%**, respectively.
+Versus the freshly rerun previous skill: **46.32% fewer raw tokens, 24.25% fewer uncached-input-plus-output tokens and 10.64% less time**, with completion preserved. Versus historical native Codex: **69.95%, 54.87% and 43.97%**, respectively.
 
-The measured configuration uses Codex `gpt-6.1-sol`, low effort and explicit `danger-full-access`. Source, protocol, every attempt and provider meters are archived. These are familiar development cases with historical controls, not a production guarantee or an exact subscription-quota conversion. Completion uses the same documented reviewed grading policy across all three arms; original scores remain available. [Full results, configuration, limitations and offline audit](docs/ENGINE-PROMOTION.md).
+The old skill's original historical run took **25.69 minutes**, faster than the new run; the new run uses 34.12% fewer raw tokens and 5.04% fewer uncached-plus-output tokens than that archive. We do not claim a speed improvement over that historical observation. The separate standalone controller is also faster and cheaper in its own archive; its narrower figures are not full-skill figures.
 
-## Start with the main release
-
-Install Python 3.11+ and authenticate the Codex CLI, then download this repository or its [latest release](https://github.com/InfinitySpeed/goalpilot/releases/latest). From the repository root:
-
-```bash
-python3 tools/run_engine_profile.py --goal-file /path/to/goal.txt --repo /path/to/project --run-dir /path/to/evidence
-```
-
-This is the canonical entrypoint for the promoted engine. It defaults to `workspace-write`; add `--sandbox danger-full-access` only when you intend to grant the permissions used in the benchmark. Default limits are 600 seconds, two model calls and a soft 700,000 raw-token budget. It requires a bounded Python unittest project with compatible initial tests and rejects helper filename collisions. Other projects may remain unsupported. `goalpilot go` is a separate legacy workflow; use the entrypoint above for this profile.
-
-Ask your agent to prepare it with:
-
-```text
-Set up the main GoalPilot release from https://github.com/InfinitySpeed/goalpilot.
-Follow INSTALL.md's main-release section. Check the launcher help and offline
-release audit without starting a model. Tell me when it is ready.
-```
-
-The portable skill below remains an alternative for working inside an existing coding-agent session. It uses the previous engine and does not inherit the new controller's benchmark results.
+These are descriptive results on known development cases, not a blind holdout, production guarantee, statistical proof of general superiority or exact subscription-quota savings. The measured host is Codex POSIX with exact native Stop hooks, `gpt-6.1-sol`, low effort and explicit `danger-full-access`. Both contemporary arms use the same process-only duplicate-hook isolation; unrelated policies remain enabled. Other hosts and explicit fallback are locally tested only. [Full controls, completion definition, all research costs and reproducible audit](docs/PORTABLE-ENGINE.md).
 
 ## How to use it
 
-These instructions install the **portable Skill 1.3.1 / engine 0.12.1**, rather than the main standalone controller.
+These instructions install **Skill 1.7.0 with the frozen engine 0.16.0** in your current coding-agent session.
 
 ### 1. Send this to your coding agent
 
@@ -91,26 +73,6 @@ For dependency-free onboarding, the shell and PowerShell bootstraps prepare a us
 The local verifier supports bounded Python unittest projects on Linux/macOS/Windows. The optional cross-process `service_race` helper still requires POSIX fork. Other test frameworks and arbitrary hosted agents are not automatically supported. Local verification makes no model calls; usage by your coding agent depends on host metering.
 
 
-## Recorded benchmark (Codex skill 1.3.1 / engine 0.12.1)
-
-In the recorded **Codex benchmark on 20 selected synthetic Python service missions**, the complete GoalPilot invocation used **54.39% fewer raw tokens** and **60.66% less total time** than native Codex `/goal`. Claude Code and Antigravity adapters have not been benchmarked.
-
-![Measured time, raw token composition, and completion results for GoalPilot and native Codex on twenty synthetic Python service missions.](docs/assets/benchmark.png)
-
-| Metric — all 20 attempts per arm | Native Codex | GoalPilot | Reduction |
-| :--- | ---: | ---: | ---: |
-| Total elapsed time | 65.32 min | 25.69 min | **60.66%** |
-| Uncached input tokens | 499,412 | 256,343 | **48.67%** |
-| Output tokens | 221,009 | 86,013 | **61.08%** |
-| Raw tokens, including cached input | 4,716,581 | 2,151,252 | **54.39%** |
-| Goal completion¹ | **19/20 (95%)** | **20/20 (100%)** | Observed on this benchmark |
-
-¹ A completed goal must finish normally and pass all required external behavioral checks. Counts use the reviewed grader applied to both tools; [original scores and grading changes](docs/BENCHMARKS.md#original-versus-reviewed-scoring) remain documented. This is an observed result on 20 missions, not a guarantee for new tasks.
-
-**What these numbers cover:** the entire calling session, including skill setup and reading, context, coding, repairs and Stop verification, plus independent judging time. Failed attempts remain in the totals. Both arms used `gpt-6.1-sol`, LOW effort and matching execution permissions. Native Codex used its real goal API and automatic continuations.
-
-**What they do not establish:** savings on arbitrary repositories, multi-hour production goals or other agents. These are known development cases in one Python/JSONL/HTTP service family, not a blinded holdout. Provider tokens do not map directly to subscription quota percentages. See the [methodology, uncertainty and research cost](docs/BENCHMARKS.md).
-
 ## How it works
 
 ```mermaid
@@ -145,13 +107,13 @@ Passing tests establishes evidence for listed criteria. The calling agent still 
 | Other coding agents | Generic bundle and custom native directory or explicit-load fallback; discovery depends on the host. |
 | Other test frameworks, oversized snapshots, unsupported environments | Supported closure is not claimed |
 
-The main standalone helper-assisted profile has its own [20-goal promotion](docs/ENGINE-PROMOTION.md). Other controller workflows and host adapters have not been model-benchmarked. The portable Skill retains its separately recorded instructions and engine.
+The standalone helper-assisted controller has a separate [historical 20-goal study](docs/ENGINE-PROMOTION.md). Its figures exclude any outer agent and must not be used as full-skill figures. Other hosts and the explicit-verification fallback have not been model-benchmarked.
 
 Optional helpers suit their documented interfaces. `ReplayService` is intended for new pure applications with a compatible storage format; existing formats and external side effects require a different strategy. See [architecture](docs/ARCHITECTURE.md).
 
 ## Development
 
-The engine uses the Python standard library. The current version has **304 passing offline tests, with no skips**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
+The engine uses the Python standard library. The current version has **316 passing offline tests, with no skips**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
 
 ```bash
 python3 validate.py

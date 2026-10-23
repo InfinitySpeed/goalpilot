@@ -1,0 +1,135 @@
+{
+  "status": "measured_pilot_not_universal_validation",
+  "engine_version": "0.10.0",
+  "skill_version": "1.1.0",
+  "at": 1792613799.4825256,
+  "cohorts": [
+    {
+      "source": "skill-efficiency-live-003",
+      "goals": 6,
+      "input": "prewritten exact goal files",
+      "adaptation": "original8rows plus prospectively registered10 remaining, no failure rerun"
+    },
+    {
+      "source": "skill-efficiency-live-004",
+      "goals": 1,
+      "input": "plain vague French goal, caller writes exact goal file during measured turn",
+      "old_control_infrastructure_interrupted_excluded_from_performance": true
+    }
+  ],
+  "new_and_native": {
+    "new": {
+      "correct_closed": 7,
+      "planned": 7,
+      "seconds": 596.8768441770007,
+      "usage": {
+        "raw_tokens": 887823,
+        "input_tokens": 856476,
+        "output_tokens": 31347,
+        "cached_input_tokens": 772352,
+        "uncached_input_tokens": 84124,
+        "uncached_plus_output": 115471
+      },
+      "usage_complete": true
+    },
+    "native": {
+      "correct_closed": 7,
+      "planned": 7,
+      "seconds": 650.2477561680007,
+      "usage": {
+        "raw_tokens": 1013929,
+        "input_tokens": 977868,
+        "output_tokens": 36061,
+        "cached_input_tokens": 885248,
+        "uncached_input_tokens": 92620,
+        "uncached_plus_output": 128681
+      },
+      "usage_complete": true
+    }
+  },
+  "new_vs_native_savings_percent": {
+    "time_percent": 8.20778103188269,
+    "raw_tokens_percent": 12.437360012387455,
+    "input_tokens_percent": 12.413945440488906,
+    "output_tokens_percent": 13.07229416821497,
+    "cached_input_tokens_percent": 12.753036437246967,
+    "uncached_input_tokens_percent": 9.172964802418482,
+    "uncached_plus_output_percent": 10.265695790365326
+  },
+  "old_primary_comparison": {
+    "complete_and_metered": false,
+    "success_delta": 1,
+    "closure_preserved": true,
+    "time_saving_percent": 30.665846378543215,
+    "control_meter_partial": true,
+    "token_savings_lower_bound_percent": {
+      "raw_tokens": 50.37933597907713,
+      "input_tokens": 51.11035171721219,
+      "output_tokens": 13.389426262090897,
+      "cached_input_tokens": 51.22197721425946,
+      "uncached_input_tokens": 49.953118721257304,
+      "uncached_plus_output": 43.24603512183266
+    },
+    "token_savings_percent": null,
+    "joint_prior_30_time_50_uncached_input_50_output_target": false
+  },
+  "offline_validation": {
+    "passed": 219,
+    "skipped": 0,
+    "seconds": 68.12227210399942
+  },
+  "trace_audits": {
+    "primary": 166,
+    "supplement": 39,
+    "all_passed": true
+  },
+  "research_cost": {
+    "development_raw": 1204322,
+    "development_uncached_plus_output": 93026,
+    "failed_setup_raw_lower_bound": 63448,
+    "failed_setup_uncached_plus_output_lower_bound": 7384,
+    "primary_raw_lower_bound": 3162207,
+    "primary_uncached_plus_output_lower_bound": 362463,
+    "supplement_raw_lower_bound": 385375,
+    "supplement_uncached_plus_output_lower_bound": 58591,
+    "root_development_conversation_measured": false,
+    "unknown_usage_imputed_zero": false,
+    "new_raw_lower_bound": 4815352,
+    "new_uncached_plus_output_lower_bound": 521464,
+    "lifetime_known_raw_lower_bound": 16311833,
+    "known_shared_research_raw": 3611030,
+    "known_shared_cap": 4000000
+  },
+  "quota": {
+    "windows": [
+      {
+        "bucket": "codex",
+        "window": "primary",
+        "before": {
+          "usedPercent": 68,
+          "resetsAt": 1793119394,
+          "windowDurationMins": 10080
+        },
+        "after": {
+          "usedPercent": 71,
+          "resetsAt": 1793119394,
+          "windowDurationMins": 10080
+        },
+        "same_window": true,
+        "reported_percentage_point_delta": 3,
+        "usable_monotonic_observation": true
+      }
+    ],
+    "exact_attributable_quota_known": false,
+    "limitations": "Integer account-wide percentages; unknown rounding and reporting delay, possible concurrent activity. A zero displayed change does not mean zero quota consumed. Window resets cannot be compared. No exact token-to-quota conversion."
+  },
+  "accepted20_long_goal_target_achieved": false,
+  "limits": [
+    "Seven purposively chosen synthetic Python stdlib/unittest projects, one observation per task/arm. Six prepared goal files and one plain vague prompt. Not natural usage frequency or20long vague goals.",
+    "All observed new/native model counters complete. Old workflow partial counters only lower bounds; supplemental old process killed by environment and excluded from comparative advantage.",
+    "Equal host permissions explicitly normalized for old/new/native, no HTTP/credential restrictions in task judges.",
+    "Standalone engine0.10 go cold cost not benchmarked; this is the default in-session skill.",
+    "Exact subscription-quota savings cannot be attributed from integer account-wide percentages. All measured token components decline in combined new/native cohort.",
+    "Default supported closure currently requires compatible bounded Python unittest projects with existing tests. External caller must enforce its token budget."
+  ]
+}

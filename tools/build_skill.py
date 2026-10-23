@@ -20,7 +20,20 @@ def engine_version(source):
     raise ValueError(f'No literal __version__ in {source}')
 
 
-def build(root=ROOT):
+def build(root=ROOT, legacy=False):
+    root=Path(root)
+    policy=root/'PORTABLE_SKILL.json'
+    if not legacy and policy.is_file() and json.loads(policy.read_text()).get('status')=='promoted':
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('promoted_portable_builder',root/'tools/build_portable_skill.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        receipt=module.build(root)
+        archive=root/'dist/goalpilot-skill.zip'
+        shutil.copy2(root/'dist/goalpilot-skill-1.7.0.zip',archive)
+        receipt={**receipt,'path':str(archive),'all_hashes_verified':True}
+        (archive.parent/'goalpilot-skill-release.json').write_text(json.dumps(receipt,indent=2)+'\n')
+        return receipt
+
     root=Path(root);skill=root/'skills/goalpilot';runtime=skill/'runtime/goalpilot'
     previous_manifest=skill/'MANIFEST.json'
     skill_version=json.loads(previous_manifest.read_text()).get('skill_version','1.6.0') if previous_manifest.is_file() else '1.6.0'
@@ -79,4 +92,7 @@ def build(root=ROOT):
     return receipt
 
 
-if __name__=='__main__':print(json.dumps(build(),indent=2))
+if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--legacy',action='store_true')
+    print(json.dumps(build(legacy=parser.parse_args().legacy),indent=2))

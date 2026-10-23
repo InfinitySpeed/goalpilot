@@ -1,8 +1,6 @@
 # Getting started
 
-**Start with the main engine 0.16.0:** follow the [standalone setup and canonical command](../README.md#start-with-the-main-release). This profile uses an authenticated Codex CLI. Its [20-goal results and offline evidence audit](ENGINE-PROMOTION.md) are separate from the portable skill.
-
-The instructions below describe the alternative portable Skill 1.3.1 / engine 0.12.1 for existing coding-agent sessions.
+The default is **Skill 1.7.0 / engine 0.16.0**, working inside your coding-agent session. [Whole-skill results and limitations](PORTABLE-ENGINE.md#measured-results). The standalone controller remains an optional separate profile.
 
 The simplest route is to ask your coding agent to install GoalPilot from the GitHub URL. Copy the [installation and task prompts](../README.md#how-to-use-it). The agent follows [INSTALL.md](../INSTALL.md), handles dependencies and verifies the installed local command.
 
@@ -28,12 +26,6 @@ The agent submits this requirement-to-criterion-to-check map before finishing. A
 
 ## Optional Codex Stop hooks
 
-On a compatible POSIX Codex installation:
+For a new compatible POSIX Codex terminal session, use the installed `scripts/codex_launch.py` helper. Run it with `--audit-only` first to verify effective hook configuration without model calls; then launch with `-- --cd /path/to/project`. It isolates only exact trusted GoalPilot duplicates for that process, preserves unrelated policies and leaves global settings unchanged. See [completion modes and commands](PORTABLE-ENGINE.md#completion-modes).
 
-```bash
-python3 ~/.agents/skills/goalpilot/scripts/goalpilot.py hook-config install
-```
-
-This verifies trust in exact local hook commands and preserves unrelated handlers. It is optional and is not used by the other hosts or the Windows portable path. Tests execute commands with the caller's permissions; review commands in untrusted projects.
-
-Legacy `go`/`continue` controller commands can launch additional model sessions when explicitly used. They are not the default in-session skill path. Historical performance figures apply only to the recorded Codex automatic-hook benchmark, not every installation mode or current host.
+An already running session with no matching hook beacon uses explicit local verification. Other hosts and Windows always use that fallback. Neither mode launches a second coding model. Performance figures apply to the recorded Codex Stop-hook profile.

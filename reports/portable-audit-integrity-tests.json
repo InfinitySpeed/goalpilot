@@ -1,0 +1,8 @@
+{
+  "valid_subset_reconciles": true,
+  "incomplete20_pairs_cannot_promote": true,
+  "one_raw_token_tamper_rejected": true,
+  "rejection": "Raw tokens do not reconcile",
+  "live_model_calls": 0,
+  "auditor_sha256": "31ab1892e6f344a4c8435a6ae3405a973fb5c2e02858dfba0550d2113401ac2e"
+}

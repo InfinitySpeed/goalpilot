@@ -43,13 +43,13 @@ python install.py --host hermes --doctor
 
 The bootstraps reuse Python3.11+ or prepare a user-local Python through uv. The installed skill records the interpreter in `RUNTIME.json`, so the agent does not rely on a user-managed `python3` command or PATH edits. Missing dependency/source downloads need network access; existing-runtime installations work offline.
 
-The standalone controller engine 0.15.0 adds a frozen inventory of goal requirements mapped to verified criteria, alongside exact source quotes and executable-check links. The portable Skill remains on engine 0.12.1 and uses its tested session protocol. Local Python unittest verification is available on Linux, macOS and Windows. Optional `service_race` still requires POSIX fork and is not a Windows feature. Restricted runners that cannot create the required process job fail verification rather than silently claiming success.
+The default Skill1.7.0 embeds engine0.16.0 and maps frozen goal requirements to verified criteria, exact source quotes and executable checks. It uses the current calling session. Local Python unittest verification is available on Linux, macOS and Windows. Optional `service_race` still requires POSIX fork and is not a Windows feature. Restricted runners that cannot create the required process job fail verification rather than silently claiming success.
 
 Codex on POSIX can use its optional native Stop hooks. Windows and portable adapters call verification explicitly in the current agent session. They do not install Codex hooks or launch a separate model. Other test frameworks and blanket compatibility with every agent remain outside the supported verified scope.
 
 ## Performance scope
 
-The portable Skill currently embeds the benchmark-matched engine 0.12.1 with skill instructions 1.3.1. The standalone controller remains 0.15.0; adapters 1.1.0 and other hosts are not covered by the published model benchmark. The exact measured Skill source is retained under [benchmarks/codex-1.3.1](../benchmarks/codex-1.3.1), and the published arithmetic remains reproducible. Do not transfer its percentages to other hosts or workloads.
+The promoted default is Skill1.7.0 / engine0.16.0. Its [complete-caller comparison](PORTABLE-ENGINE.md#measured-results) benchmarks Codex POSIX with native Stop hooks. Other hosts and explicit fallback have offline installation/verification coverage, not model-performance evidence. Archived Skill1.3.1 source and figures remain separately reproducible. Do not transfer percentages across hosts, profiles or workloads.
 
 ## Sources
 

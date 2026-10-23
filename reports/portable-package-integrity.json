@@ -1,0 +1,8 @@
+{
+  "default_codex_install_ready": true,
+  "installed_files_matching_frozen_installer_excluding_release_manifest": 50,
+  "installed_instructions_runtime_and_scripts_identical_to_measured_installation": true,
+  "manifest_only_difference": "Post-measurement release labels, generic profile-specific meter-scope and manifest hashes.",
+  "modified_promoted_bundle_rejected": true,
+  "model_calls": 0
+}

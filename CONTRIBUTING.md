@@ -29,7 +29,7 @@ Charts read the included benchmark rows; do not enter performance numbers by han
 
 Preserve original goals, tests, registered criteria and failed outcomes. Count whole-caller setup, reading, corrections and verification. Report uncached input, cached input and output separately. Zero nested calls must never be described as zero total inference cost.
 
-Do not reuse published savings for changed engine or skill instructions. `tools/build_skill.py` marks current-measurement applicability false when their hashes differ. Archived observations remain observations of the recorded version.
+Do not reuse published savings for changed engine or skill instructions. `tools/build_skill.py` refuses changed promoted bundle files; new performance evidence is required before updating PORTABLE_SKILL.json. Use `--legacy` to rebuild the archived baseline separately. Archived observations remain observations of the recorded version.
 
 New model studies require separate recorded protocols, complete metering, appropriate native controls and independent behavioral judging. A local regression test or scripted wire fixture is not model-performance evidence. Explain unsupported cases, interruptions, unknown usage, scoring amendments and development-case reuse.
 

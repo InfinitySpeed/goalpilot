@@ -1,0 +1,36 @@
+{
+  "caller_returncode": 0,
+  "caller_seconds": 19.181714080001257,
+  "caller_usage": {
+    "input_tokens": 71579,
+    "output_tokens": 461,
+    "cached_input_tokens": 64384
+  },
+  "caller_usage_complete": true,
+  "engine_status": "scope_passed",
+  "engine_calls": 0,
+  "engine_usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cached_input_tokens": 0,
+    "total_tokens": 0,
+    "uncached_tokens": 0,
+    "calls_with_usage": 0,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "typed_skill_selected": true,
+  "launcher_command_observed": true,
+  "backend_attempted": false,
+  "known_combined_usage": {
+    "input_tokens": 71579,
+    "output_tokens": 461,
+    "cached_input_tokens": 64384,
+    "raw_tokens": 72040,
+    "uncached_plus_output": 7656
+  },
+  "whole_skill_free": false,
+  "success": true,
+  "limits": "One real invoking model run on an already delivered known artifact, with host-capable caller. Not a new cold efficacy benchmark, nor a universal overhead or quota conversion. Root development conversation is separate and unmetered."
+}

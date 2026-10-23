@@ -1,0 +1,63 @@
+{
+  "planned_pairs": 8,
+  "executions": 16,
+  "correct_closed": 16,
+  "pairs": [
+    {
+      "id": "flowdesk-initial-1",
+      "both_success": true,
+      "identical_result": true
+    },
+    {
+      "id": "flowdesk-delivered-1",
+      "both_success": true,
+      "identical_result": true
+    },
+    {
+      "id": "flowdesk-delivered-2",
+      "both_success": true,
+      "identical_result": true
+    },
+    {
+      "id": "flowdesk-delivered-3",
+      "both_success": true,
+      "identical_result": true
+    },
+    {
+      "id": "stockroom-initial-1",
+      "both_success": true,
+      "identical_result": true
+    },
+    {
+      "id": "stockroom-delivered-1",
+      "both_success": true,
+      "identical_result": true
+    },
+    {
+      "id": "stockroom-delivered-2",
+      "both_success": true,
+      "identical_result": true
+    },
+    {
+      "id": "stockroom-delivered-3",
+      "both_success": true,
+      "identical_result": true
+    }
+  ],
+  "groups_passed": 416,
+  "groups_planned": 416,
+  "mean_seconds": {
+    "direct": 2.3462110123746243,
+    "skill": 2.3188390921250175
+  },
+  "launcher_overhead_seconds": -0.027371920249606774,
+  "time_tolerance_met": true,
+  "result_parity": true,
+  "backend_attempts": 0,
+  "backend_model_calls": 0,
+  "engine_sources_unchanged": true,
+  "scope": "Real filesystem/HTTP verification using known previously learned artifacts. Launcher parity only; these timings and zero counts EXCLUDE the calling Codex model conversation. No fresh cold efficacy claim. Existing cold percentages stay attached to0.9.0.",
+  "caller_model_cost_included": false,
+  "new_model_inference_budget": 0,
+  "all_preregistered_targets_met": true
+}

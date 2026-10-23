@@ -23,8 +23,16 @@ jobs:
         run: python validate.py > validation.json
       - name: Recompute benchmark aggregates
         run: python tools/check_benchmark.py
-      - name: Build and verify the portable skill
+      - name: Build and verify the archived baseline skill
+        run: python tools/build_skill.py --legacy
+      - name: Build and verify the 0.16.0 portable skill
+        run: python tools/build_portable_skill.py
+      - name: Build the default portable archive
         run: python tools/build_skill.py
+      - name: Audit the full portable-skill comparison
+        run: python tools/audit_portable_invocation.py reports/portable-skill-170-2026-10-23.zip --require-promotion
+      - name: Audit the frozen standalone promotion
+        run: python tools/audit_promoted_release.py
   portable-install:
     runs-on: ${{ matrix.os }}
     strategy:

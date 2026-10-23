@@ -1,0 +1,157 @@
+{
+  "planned_pairs": 20,
+  "recorded_calls": 40,
+  "matched_pairs": 20,
+  "primary": {
+    "old": {
+      "executed": 20,
+      "correct": 15,
+      "verified_goals": 20,
+      "seconds": 2457.2931458219937,
+      "raw": 2639864,
+      "uncached_plus_output": 429176,
+      "uncached_input": 335304,
+      "output": 93872
+    },
+    "new": {
+      "executed": 20,
+      "correct": 20,
+      "verified_goals": 20,
+      "seconds": 2195.8252569010037,
+      "raw": 1417187,
+      "uncached_plus_output": 325091,
+      "uncached_input": 238340,
+      "output": 86751
+    }
+  },
+  "historical_controls": {
+    "new": {
+      "executed": 20,
+      "correct": 20,
+      "verified_goals": 20,
+      "seconds": 1541.6191867690177,
+      "raw": 2151252,
+      "uncached_plus_output": 342356,
+      "uncached_input": 256343,
+      "output": 86013
+    },
+    "native": {
+      "executed": 20,
+      "correct": 19,
+      "verified_goals": 19,
+      "seconds": 3919.0774290760055,
+      "raw": 4716581,
+      "uncached_plus_output": 720421,
+      "uncached_input": 499412,
+      "output": 221009
+    }
+  },
+  "historical_standalone": {
+    "executed": 20,
+    "correct": 20,
+    "verified_goals": 20,
+    "seconds": 1419.5803188399964,
+    "raw": 880023,
+    "uncached_plus_output": 197655,
+    "uncached_input": 146247,
+    "output": 51408
+  },
+  "savings_percent": {
+    "contemporary_old": {
+      "seconds": 10.640484199679234,
+      "raw": 46.31590869832688,
+      "uncached_plus_output": 24.25228810557907,
+      "uncached_input": 28.91823539236037,
+      "output": 7.585861598772792
+    },
+    "historical_old": {
+      "seconds": -42.436295276208604,
+      "raw": 34.122687625624515,
+      "uncached_plus_output": 5.0429961794155815,
+      "uncached_input": 7.023012136083295,
+      "output": -0.8580098357225063
+    },
+    "historical_native": {
+      "seconds": 43.97086312686835,
+      "raw": 69.9530867804454,
+      "uncached_plus_output": 54.87485789559161,
+      "uncached_input": 52.27587643068248,
+      "output": 60.74775235397654
+    },
+    "historical_standalone": {
+      "seconds": -54.681297546820915,
+      "raw": -61.03976827878361,
+      "uncached_plus_output": -64.47395714755508,
+      "uncached_input": -62.970864359610786,
+      "output": -68.75
+    }
+  },
+  "gates": {
+    "all_installed_profiles_verified": true,
+    "complete20_pairs": true,
+    "new20_correct": true,
+    "all_meters_complete": true,
+    "all_new_exact_goals": true,
+    "time_gain_vs_current_old_at_least10": true,
+    "raw_gain_vs_current_old_at_least15": true,
+    "uncached_gain_vs_current_old_at_least15": true,
+    "time_gain_vs_historical_native_at_least25": true,
+    "raw_gain_vs_historical_native_at_least45": true,
+    "uncached_plus_output_gain_vs_historical_native_at_least45": true,
+    "uncached_input_gain_vs_historical_native_at_least45": true,
+    "output_gain_vs_historical_native_at_least45": true
+  },
+  "promotable": true,
+  "ci_passed": 312,
+  "strict_correct": {
+    "old": 18,
+    "new": 18
+  },
+  "completion_definition": "verified_goals = normal closure plus all independent reviewed behavioral checks. strict_receipt_success additionally requires byte-identical original goal; a lone trailing newline is not presented as a business-goal failure.",
+  "completion": {
+    "old": {
+      "executed": 20,
+      "verified_goals": 20,
+      "strict_receipt_success": 15,
+      "exact_goal_files": 15,
+      "not_run": 0
+    },
+    "new": {
+      "executed": 20,
+      "verified_goals": 20,
+      "strict_receipt_success": 20,
+      "exact_goal_files": 20,
+      "not_run": 0
+    }
+  },
+  "scope": "Familiar synthetic Python service goals used during development, not a blind holdout. One outcome per case/arm, descriptive totals not general population claims. Current old is interleaved; native and standalone controls are historical. No cross-host performance or exact subscription quota conversion. Whole calling thread and independent judging timed; fixtures, evidence copying and research meta-conversation excluded. All failed attempts remain.",
+  "candidate_skill_version": "1.7.0",
+  "embedded_engine_version": "0.16.0",
+  "measured_profile": "Installed Codex POSIX native Stop hooks with exact-owned process-only duplicate-hook isolation; gpt-6.1-sol low, danger-full-access; complete caller + independent judging. Portable explicit fallback/other hosts offline-tested, not model-benchmarked.",
+  "evidence_archive": "reports/portable-skill-170-2026-10-23.zip",
+  "evidence_sha256": "4d648b4a99e5f413ebe7e188502b7cd92c431995243b754401198a8034e279e6",
+  "evidence_bytes": 3903941,
+  "protocol_sha256": "2116143b1905c5d84625e1a3037394f54a185c26e40b39617a72d992fc1fab80",
+  "original_protocol_sha256": "0ac6f85f69fea78ddc47e0c2865bc89c745d8a72b185657499f441b59e8afe4b",
+  "skill_sha256": "c173deefab6f89a2b10860a222b562728bc57ce4439bd1a9563135ebb1702cd4",
+  "engine_source_tree": "Exact frozen PROMOTED_ENGINE.json engine files; wrappers and instructions are separately measured.",
+  "research_accounting": {
+    "scope": "This portable-skill adaptation campaign only. Prior frozen native/old/standalone controls were reused, not re-executed in these costs. Meta-conversation usage is UNKNOWN; exact entire R&D tokens/quota are therefore UNKNOWN. No subscription-quota conversion.",
+    "calls_with_complete_meters": 51,
+    "calls_with_incomplete_meters": 0,
+    "known_raw_tokens": 5481429,
+    "known_uncached_plus_output_tokens": 998741,
+    "calls": 51,
+    "administrative_events": [
+      {
+        "cohort": "paired-170-001",
+        "case": "flags-old",
+        "inference_started": false,
+        "known_provider_tokens": 0,
+        "reason": "Worker entrypoint removed to halt the contaminated comparison before additional paid inference; original stderr retained in private research."
+      }
+    ]
+  },
+  "research_ledger_in_archive": "research-costs.json",
+  "retained_development_note": "All prior failed or slower candidates and the duplicate-hook-contaminated cohort remain research costs, never pooled into primary outcomes. No primary outcome retried or replaced."
+}

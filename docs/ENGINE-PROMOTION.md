@@ -1,6 +1,6 @@
 # Frozen engine 0.16.0 promotion
 
-The helper-assisted standalone profile passed every preregistered promotion gate on the same 20 synthetic service goals. Source and benchmark inputs were frozen before the confirmation. No primary outcome was retried or replaced. The portable Skill remains 1.3.1/engine 0.12.1.
+The helper-assisted standalone profile passed every preregistered promotion gate on the same 20 synthetic service goals. Source and benchmark inputs were frozen before the confirmation. No primary outcome was retried or replaced. At the time of this standalone study, the portable Skill was1.3.1/engine0.12.1. It has since been separately adapted and measured as [Skill1.7.0 / engine0.16.0](PORTABLE-ENGINE.md); its complete-caller results are distinct.
 
 | Configuration | Verified goals | Raw tokens | Uncached input + output | Time including judge |
 |---|---:|---:|---:|---:|

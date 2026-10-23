@@ -1,6 +1,6 @@
 # Standalone direct-first diagnostic
 
-Historical development evidence. The current main release is the [promoted 0.16.0 helper-assisted profile](ENGINE-PROMOTION.md), measured on all 20 goals.
+Historical standalone development evidence. The default skill is now [Skill1.7.0 / engine0.16.0](PORTABLE-ENGINE.md), measured separately on all20 goals. The [standalone helper-assisted profile](ENGINE-PROMOTION.md) remains a distinct historical treatment.
 
 On October 22, 2026, a short instruction was added to standalone engine 0.15.0's
 direct-first prompt: inspect only instructions, contracts and source/tests relevant

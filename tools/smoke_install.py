@@ -28,11 +28,13 @@ def main():
             result=subprocess.run([sys.executable,'-X','utf8',str(launcher),'session',*map(str,args)],cwd=repo,capture_output=True,text=True,encoding='utf-8',timeout=30)
             assert result.returncode==0,(result.stdout,result.stderr)
             return json.JSONDecoder().raw_decode(result.stdout.lstrip())[0]
-        state=invoke('start','--goal-file',goal,'--repo',repo,'--run-dir',run,'--helpers','--context')
+        state=invoke('begin','--goal-file',goal,'--repo',repo,'--run-dir',run,'--helpers','--context')
         assert not state['closed']
         (repo/'app.py').write_text('VALUE=42\n',encoding='utf-8')
-        state=invoke('finish',run)
-        assert state['closed']and state['status']=='scope_passed',state
+        criteria=root/'criteria.json'
+        criteria.write_text(json.dumps({'criteria':[{'quote':'Set VALUE to42'},{'quote':'preserve the original test'}]}),encoding='utf-8')
+        state=invoke('deliver',run,'--criteria-file',criteria)
+        assert state['closed']and state['status']=='scope_passed'and state['goal_complete'],state
         assert json.loads((run/'session-state.json').read_text(encoding='utf-8'))['engine_model_calls']==0
         # A competing process cannot acquire the same mission lock.
         guard=root/'competing.lock'

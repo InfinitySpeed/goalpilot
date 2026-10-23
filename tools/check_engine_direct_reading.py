@@ -13,8 +13,9 @@ def load(report, name):
 
 def main():
     report = json.loads(REPORT.read_text())
-    source_hash = hashlib.sha256((ROOT / 'goalpilot/autopilot.py').read_bytes()).hexdigest()
-    assert source_hash == report['candidate_source_sha256'], 'Candidate prompt source changed'
+    reference = ROOT / 'reports/engine-direct-reading-2026-10-22/source/goalpilot/autopilot.py'
+    source_hash = hashlib.sha256(reference.read_bytes()).hexdigest()
+    assert source_hash == report['candidate_source_sha256'], 'Archived candidate prompt source changed'
     arms = {'candidate': [], 'old_goalpilot': [], 'native_codex': []}
     for case in ('flowdesk', 'stockroom'):
         for arm in arms:
@@ -58,7 +59,7 @@ def main():
     assert totals['candidate']['artifact_successes'] == totals['old_goalpilot']['artifact_successes'] == 2
     assert totals['native_codex']['normal_closures'] == 0
     assert totals['native_codex']['artifact_successes'] == 2
-    print('PASS: two candidate tasks, six raw records, source hash, closure and aggregates reconcile.')
+    print('PASS: two candidate tasks, six raw records, archived source hash, closure and aggregates reconcile.')
 
 
 if __name__ == '__main__':

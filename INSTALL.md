@@ -1,30 +1,8 @@
 # Agent installation instructions
 
-The main release is the promoted standalone engine 0.16.0. The portable Skill is a separate compatibility option; do not silently substitute one for the other.
+The default is **GoalPilot Skill 1.7.0 / engine 0.16.0**, installed into the current coding agent. Work happens in that calling session; installation and local verification start no coding models. Follow the steps below for normal setup.
 
-## Main release: standalone controller
-
-When the user requests the main/latest promoted engine, prepare a checkout or extracted source archive of this repository in a persistent user-local directory and ensure Python 3.11+ and the Codex CLI are available. Follow the host’s normal installation policies. Use the existing Codex authentication; if authentication is missing, report that dependency without launching a paid task.
-
-From that checkout, run:
-
-```bash
-python3 tools/run_engine_profile.py --help
-python3 tools/audit_promoted_release.py
-```
-
-Both checks make zero model calls. The canonical task command is:
-
-```bash
-python3 tools/run_engine_profile.py --goal-file /path/to/goal.txt --repo /path/to/project --run-dir /path/to/evidence
-```
-
-Keep evidence outside the target project. Default permissions are `workspace-write`. The benchmark used explicit `--sandbox danger-full-access`; preserve the caller’s permission policy. Running the controller starts a Codex model session, so do not start it as part of installation. It requires compatible bounded initial unittest coverage. See [measured profile and limits](docs/ENGINE-PROMOTION.md).
-
-## Portable skill alternative
-
-The remaining instructions install Skill 1.3.1 / engine 0.12.1 into the current coding agent. This path works inside the calling session and remains separately benchmarked. `install.py` and the bootstraps install this portable skill; they do not install the promoted standalone controller.
-
+`PORTABLE_SKILL.json` records the promoted default and its complete-caller evidence. `--profile legacy` selects the archived Skill 1.3.1 / engine 0.12.1 when explicitly requested. The separately measured standalone controller is optional; do not substitute it for a skill installation.
 
 If your user shared this repository **to install or use GoalPilot**, handle the setup yourself. Do not make the user clone a repository, install Python, choose internal paths or copy commands between tools. Use normal host permissions; do not bypass approval policies.
 
@@ -73,10 +51,29 @@ If this repository is already available locally, pass `--source /path/to/checkou
 
 Installation automatically validates the manifest and runs the installed local command's help through its recorded interpreter. Require `verification.ready: true`. The output gives `skill_file`; the installed `RUNTIME.json` gives the exact interpreter and command entry point.
 
-Run the same bootstrap with `--doctor` / `-Doctor` for diagnosis. Reload the host's skills, or read the installed `SKILL.md` for immediate use in this session. Do not claim a local doctor check proves a paid end-to-end agent benchmark.
+Run the same bootstrap with `--doctor` / `-Doctor` for diagnosis. Reload the host's skills, or read the installed `SKILL.md` for immediate use in this session. On Codex, optional Stop-hook startup and the zero-model configuration audit are documented in [the portable profile](docs/PORTABLE-ENGINE.md#completion-modes); they preserve global settings and unrelated policies. Without an exact hook beacon, the skill uses explicit verification. Do not claim a local doctor check proves a paid end-to-end agent benchmark.
 
 ## 4. Respond briefly, then use it
 
 Tell the user which host is ready and how to invoke GoalPilot. If an objective was supplied, start that objective with GoalPilot in the current session. Preserve its complete original wording; run verification before claiming completion. Do not launch another coding model or a benchmark for onboarding.
 
 Support is a local Python unittest verifier. Other languages may load the skill, but supported verified closure is not yet claimed for their test frameworks. The optional `service_race` helper requires POSIX fork; basic Windows installation and local verification do not depend on that helper.
+
+## Optional standalone controller
+
+When the user explicitly requests the standalone controller, prepare a checkout or extracted source archive of this repository in a persistent user-local directory and ensure Python 3.11+ and the Codex CLI are available. Follow the host’s normal installation policies. Use the existing Codex authentication; if authentication is missing, report that dependency without launching a paid task.
+
+From that checkout, run:
+
+```bash
+python3 tools/run_engine_profile.py --help
+python3 tools/audit_promoted_release.py
+```
+
+Both checks make zero model calls. The canonical task command is:
+
+```bash
+python3 tools/run_engine_profile.py --goal-file /path/to/goal.txt --repo /path/to/project --run-dir /path/to/evidence
+```
+
+Keep evidence outside the target project. Default permissions are `workspace-write`. The benchmark used explicit `--sandbox danger-full-access`; preserve the caller’s permission policy. Running the controller starts a Codex model session, so do not start it as part of installation. It requires compatible bounded initial unittest coverage. See [measured profile and limits](docs/ENGINE-PROMOTION.md).

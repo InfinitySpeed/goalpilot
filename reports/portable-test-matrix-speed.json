@@ -1,0 +1,27 @@
+{
+  "scope": "Same live SDK, interpreter,5 installation profiles and assertions; control loaded from the frozen pre-optimization test file, ROOT/BUNDLE metadata relocated to the live repository. One measured run per arm; no models. Does not measure coding or whole-suite gains.",
+  "arms": [
+    {
+      "arm": "serial_control",
+      "seconds": 8.645638816999053,
+      "tests_run": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "successful": true,
+      "source_sha256": "e7f923dd92afc4c3ef2ce706237489ae9c2c83a1f3ca04aebbe1a1ba63d307ce"
+    },
+    {
+      "arm": "parallel",
+      "seconds": 3.0320731490010076,
+      "tests_run": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "successful": true,
+      "source_sha256": "d0acf851b73aaa4b433e2e3892547815a9f0961ca3fbbccfda9e7f662818e1ca"
+    }
+  ],
+  "local_module_wall_saving_percent": 64.92944924972639,
+  "model_calls": 0
+}

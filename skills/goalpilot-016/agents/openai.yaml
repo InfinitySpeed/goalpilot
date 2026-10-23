@@ -1,0 +1,6 @@
+interface:
+  display_name: "GoalPilot"
+  short_description: "Finish coding goals with reusable helpers and verified checks"
+  default_prompt: "Use $goalpilot to achieve my goal in this session and verify completion."
+policy:
+  allow_implicit_invocation: false

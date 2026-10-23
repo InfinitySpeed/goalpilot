@@ -70,19 +70,20 @@ def prepare_bundle(destination,host):
     shutil.copytree(SOURCE,destination,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
     portable=host!='codex' or os.name=='nt'
     if portable:
-        shutil.copy2(ROOT/'integrations/portable/SKILL.md',destination/'SKILL.md')
-        shutil.copy2(ROOT/'integrations/portable/host.py',destination/'scripts/host.py')
-    entry='scripts/host.py' if portable else 'scripts/goalpilot.py'
+        if SOURCE.name == 'goalpilot':
+            shutil.copy2(ROOT/'integrations/portable/SKILL.md',destination/'SKILL.md')
+            shutil.copy2(ROOT/'integrations/portable/host.py',destination/'scripts/host.py')
+    entry='scripts/host.py' if portable or SOURCE.name=='goalpilot-016' else 'scripts/goalpilot.py'
     skill=destination/'SKILL.md';body=skill.read_text(encoding='utf-8')
     note=('\n## Installed runtime\n\nUse the Python interpreter at `'+sys.executable+'` for EVERY command shown with python3. Do not rely on a system python3. Quote paths containing spaces; in PowerShell prefix a quoted executable with &. RUNTIME.json records the interpreter and entry point. No manual Python setup is needed.\n')
     skill.write_text(body.replace('# GoalPilot\n','# GoalPilot\n'+note,1),encoding='utf-8')
-runtime={'python':sys.executable,'python_version':sys.version.split()[0],'entry_point':entry,'host':host,'engine_version':'0.15.0','adapter_version':'1.1.0'}
+    runtime={'python':sys.executable,'python_version':sys.version.split()[0],'entry_point':entry,'host':host,'engine_version':json.loads((destination/'MANIFEST.json').read_text())['engine']['version'],'adapter_version':'1.1.0'}
     (destination/'RUNTIME.json').write_text(json.dumps(runtime,indent=2)+'\n',encoding='utf-8')
     manifest=json.loads((destination/'MANIFEST.json').read_text(encoding='utf-8'))
     manifest.update(host_profile=host,adapter_version='1.1.0',entry_point=entry,
-        completion_mode='explicit-session-finish'if portable else'codex-hooks-or-explicit-finish',
+        completion_mode='codex-hooks-or-explicit-finish'if host=='codex'and os.name!='nt' else'explicit-session-finish',
         measured_runtime_and_skill_parity=False,post_measurement_metadata_only=[],
-        meter_scope='Historical benchmark: Codex skill1.3.1/engine0.12.1 only. Current engine, installer and adapters have not been model-benchmarked. Local verification launches no models.')
+        meter_scope='Local verification launches no models. Performance evidence is profile-specific: consult PORTABLE_SKILL.json and docs/PORTABLE-ENGINE.md in the source repository. Historical Codex Skill1.3.1/engine0.12.1 is retained separately.')
     for filename in ['measurements.json','baseline.json']:
         path=destination/'references'/filename
         if path.exists():
@@ -112,11 +113,17 @@ def doctor(installer,plan):
 def main():
     parser=argparse.ArgumentParser(description=DESCRIPTION)
     parser.add_argument('--host',choices=(*HOSTS,'auto','all','t3-code'),default='auto')
+    parser.add_argument('--profile', choices=('stable','legacy','candidate'), default='stable', help='Current promoted skill, archived legacy baseline, or explicit 0.16.0 candidate.')
     parser.add_argument('--provider',choices=HOSTS,help='Underlying agent for --host t3-code.')
     parser.add_argument('--target',type=Path,help='Complete native skill directory for one host.')
     parser.add_argument('--dry-run',action='store_true')
     parser.add_argument('--doctor',action='store_true',help='Check installation/runtime without model calls.')
     args=parser.parse_args()
+    global SOURCE
+    promotion = ROOT / 'PORTABLE_SKILL.json'
+    promoted = promotion.is_file() and json.loads(promotion.read_text()).get('status') == 'promoted'
+    use_new = args.profile=='candidate' or (args.profile=='stable' and promoted)
+    SOURCE = ROOT / ('skills/goalpilot-016' if use_new else 'skills/goalpilot')
     try:
         if sys.version_info<(3,11):raise ValueError('Use bootstrap.sh or bootstrap.ps1 to prepare Python automatically')
         host=args.host;reason='explicit selection';candidates=[]

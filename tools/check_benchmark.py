@@ -116,9 +116,12 @@ def load_and_verify():
         manifest['skill_version'] == measurement['skill_version'] and
         manifest['measured_runtime_and_skill_parity'] is True)
     require(bundle_matches,
-            'Shipped Skill differs from the measured treatment; run a matched GoalPilot/old/native benchmark before updating its baseline')
+            'Archived Skill baseline differs from the measured treatment; never overwrite historical evidence')
+    promoted = ROOT / 'PORTABLE_SKILL.json'
+    current_is_new = promoted.is_file() and json.loads(promoted.read_text()).get('status') == 'promoted'
     return {'original': original, 'reviewed': reviewed, 'source_matches_measured': current_matches,
-            'shipped_skill_matches_measured': bundle_matches,
+            'archived_skill_bundle_matches_measured': bundle_matches,
+            'shipped_skill_matches_measured': bundle_matches and not current_is_new,
             'archived_measured_reference_verified': True}
 
 
