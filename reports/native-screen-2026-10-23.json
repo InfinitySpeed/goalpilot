@@ -1,0 +1,182 @@
+{
+  "id": "goalpilot-1.11-native-fast-screen-2026-10-23",
+  "type": "exploratory-selection-screen",
+  "protocol": "protocol.json",
+  "protocol_sha256": "70a80c59e8e1bb7fe24a41ef7828610a3e0bef581b41670e3fd6877ff5176b4a",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "skill": "GoalPilot 1.11.0 via promoted stable profile",
+  "engine": "0.16.0",
+  "treatments": "Direct same-task Codex native vs current GoalPilot; six new fresh trials, one per arm per case. Flowdesk is prior same-task repeated evidence and is kept separate.",
+  "cache": "Provider cache could not be disabled. Raw tokens are not treated as quota savings; uncached input+output and time are reported separately.",
+  "fresh_cases": [
+    {
+      "case": "java-ranges",
+      "task_archetype": "range operations with numeric edge cases",
+      "arms": {
+        "current": {
+          "trial": "trials/java-ranges-current",
+          "seconds": 38.417016282000986,
+          "raw_tokens": 51093,
+          "input_tokens": 48883,
+          "cached_input_tokens": 44800,
+          "output_tokens": 2210,
+          "uncached_input_plus_output": 6293,
+          "usage_complete": true,
+          "independent_judge_passed": true,
+          "goalpilot_certified_closure": true,
+          "original_goal_preserved": true,
+          "returncode": 0,
+          "message": "Implemented normalization, subtraction, and overflow-safe BigInteger length, including input validation and preservation.\n\nAdded native regression tests. Original tests remain unchanged. Both verification checks passed."
+        },
+        "native": {
+          "trial": "trials/java-ranges-native",
+          "seconds": 57.68211326299934,
+          "raw_tokens": 92761,
+          "input_tokens": 89718,
+          "cached_input_tokens": 84352,
+          "output_tokens": 3043,
+          "uncached_input_plus_output": 8409,
+          "usage_complete": true,
+          "independent_judge_passed": true,
+          "goalpilot_certified_closure": null,
+          "original_goal_preserved": null,
+          "returncode": 0,
+          "message": "Implemented normalization, subtraction, and exact `BigInteger` coverage lengths, with validation, input preservation, and fresh output arrays.\n\nOriginal tests remain unchanged. Passed:\n\n- `python3 tests/test_ranges.py`\n- `java RegressionRanges.java` — includes boundary cases and 1,000 randomized checks."
+        }
+      },
+      "goalpilot_uncached_change_pct": -25.163515281246283,
+      "goalpilot_elapsed_change_pct": -33.3987364387291
+    },
+    {
+      "case": "node-pool",
+      "task_archetype": "feature addition with asynchronous concurrency",
+      "arms": {
+        "current": {
+          "trial": "trials/node-pool-current",
+          "seconds": 41.341234721003275,
+          "raw_tokens": 50765,
+          "input_tokens": 48596,
+          "cached_input_tokens": 42624,
+          "output_tokens": 2169,
+          "uncached_input_plus_output": 8141,
+          "usage_complete": true,
+          "independent_judge_passed": true,
+          "goalpilot_certified_closure": true,
+          "original_goal_preserved": true,
+          "returncode": 0,
+          "message": "Implemented the worker pool with bounded concurrency, ordered results, argument validation, and failure/abort handling that waits for started tasks to settle.\n\nAdded deterministic behavioral tests and preserved the original test. `npm test` passed; GoalPilot reported completion."
+        },
+        "native": {
+          "trial": "trials/node-pool-native",
+          "seconds": 63.697764583004755,
+          "raw_tokens": 98297,
+          "input_tokens": 95364,
+          "cached_input_tokens": 91392,
+          "output_tokens": 2933,
+          "uncached_input_plus_output": 6905,
+          "usage_complete": true,
+          "independent_judge_passed": true,
+          "goalpilot_certified_closure": null,
+          "original_goal_preserved": null,
+          "returncode": 0,
+          "message": "Implemented `runPool` with concurrency limits, ordered results, argument validation, and failure/abort handling that drains started tasks and preserves the first error.\n\nAdded deterministic tests without sleeps and preserved the original test.\n\nValidation: `npm test` — all 10 tests pass."
+        }
+      },
+      "goalpilot_uncached_change_pct": 17.900072411296165,
+      "goalpilot_elapsed_change_pct": -35.09782487400891
+    },
+    {
+      "case": "python-repair",
+      "task_archetype": "bug repair in deterministic dependency planning",
+      "arms": {
+        "current": {
+          "trial": "trials/python-repair-current",
+          "seconds": 35.83647632700013,
+          "raw_tokens": 50160,
+          "input_tokens": 48197,
+          "cached_input_tokens": 42496,
+          "output_tokens": 1963,
+          "uncached_input_plus_output": 7664,
+          "usage_complete": true,
+          "independent_judge_passed": true,
+          "goalpilot_certified_closure": true,
+          "original_goal_preserved": true,
+          "returncode": 0,
+          "message": "Implemented deterministic dependency ordering, strict input validation, duplicate handling, and precise cycle reporting without mutating inputs.\n\nAdded focused regressions; preserved existing tests. Native unittest verification passed."
+        },
+        "native": {
+          "trial": "trials/python-repair-native",
+          "seconds": 39.066203639995365,
+          "raw_tokens": 62132,
+          "input_tokens": 60168,
+          "cached_input_tokens": 57216,
+          "output_tokens": 1964,
+          "uncached_input_plus_output": 4916,
+          "usage_complete": true,
+          "independent_judge_passed": true,
+          "goalpilot_certified_closure": null,
+          "original_goal_preserved": null,
+          "returncode": 0,
+          "message": "Implemented deterministic dependency ordering, value-only nodes, duplicate handling, input validation, and precise cycle reporting without mutating input.\n\nAdded focused regressions and preserved existing tests. All 8 tests pass with `python3 -m unittest discover -s tests`."
+        }
+      },
+      "goalpilot_uncached_change_pct": 55.89910496338486,
+      "goalpilot_elapsed_change_pct": -8.26731807051938
+    }
+  ],
+  "fresh_equal_weight_aggregate": {
+    "native": {
+      "mean_uncached_input_plus_output_per_trial": 6743.333333333333,
+      "mean_raw_tokens_per_trial": 84396.66666666667,
+      "mean_seconds_per_trial": 53.48202716199982,
+      "independent_judges_passed": 3,
+      "planned_trials": 3,
+      "goalpilot_closures": null
+    },
+    "current": {
+      "mean_uncached_input_plus_output_per_trial": 7366.0,
+      "mean_raw_tokens_per_trial": 50672.666666666664,
+      "mean_seconds_per_trial": 38.53157577666813,
+      "independent_judges_passed": 3,
+      "planned_trials": 3,
+      "goalpilot_closures": 3
+    },
+    "change_pct": {
+      "uncached_input_plus_output": 9.233811171527439,
+      "elapsed_seconds": -27.954159890099163
+    }
+  },
+  "contextual_prior_flowdesk": {
+    "source": "reports/skill-111-2026-10-23.json; exact task/model, 2 runs per arm, conducted before this screen",
+    "goalpilot": {
+      "uncached_mean": 18867.5,
+      "seconds_mean": 97.20827618900148,
+      "correct": 2,
+      "n": 2
+    },
+    "native": {
+      "uncached_mean": 21441.0,
+      "seconds_mean": 148.1856548024989,
+      "correct": 2,
+      "judge_groups_passed": 52,
+      "judge_groups_total": 52,
+      "n": 2
+    },
+    "goalpilot_uncached_change_pct": -12.002705097709999,
+    "goalpilot_elapsed_change_pct": -34.4010212604181
+  },
+  "decision": "Do not expand to the full benchmark in this iteration. The frozen screen gate required the aggregate uncached-token mean to be lower under GoalPilot. Instead it is 9.2% higher, although all six independent task judges pass, all three GoalPilot sessions close, and GoalPilot is faster on each task.",
+  "screening_gate": "Expand only if all GoalPilot judges and closures pass, usage is complete, aggregate uncached input+output is lower than native, and no task is over 3% slower. This is exploratory screening, not a promotion criterion or statistical proof.",
+  "limitations": [
+    "Only one fresh run per arm for each of three cases; results are noisy and order is counterbalanced but not randomized.",
+    "Cases are synthetic and were used in prior internal benchmark work; the screen is not a novel real-project sample.",
+    "Flowdesk is reused prior evidence, not a fresh trial in this screen.",
+    "The screen includes bug repair, concurrency feature work, and edge-case implementation; it does not include a dedicated refactor task.",
+    "Provider cache could not be disabled.",
+    "No quota-saving claim is made from raw or uncached token totals."
+  ],
+  "evidence_archive": "reports/native-screen-evidence-2026-10-23.zip",
+  "evidence_sha256": "429f4df3f7a2ac5cedd501793dbec84854d4ea60475f4a1b34e48613bd653052",
+  "evidence_bytes": 782584
+}

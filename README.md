@@ -9,7 +9,7 @@ GoalPilot preserves your original request, turns it into explicit criteria, reus
 [![Skill 1.11.0](https://img.shields.io/badge/Skill-1.11.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
 [![Service engine 0.16.0](https://img.shields.io/badge/Engine-0.16.0-334155)](PORTABLE_SKILL.json)
 
-[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PROMOTION-1.11.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
+[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PROMOTION-1.11.md) · [Task-diversity screen](docs/SCREENING-1.11.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
 
 ## Measured results
 
@@ -25,6 +25,8 @@ The primary comparison is **GoalPilot 1.11 vs Codex native on the exact same tas
 | Elapsed seconds per caller | 99.25 | **64.07** | **−35.4%** |
 
 Per-task results and trial evidence are in the [full report](docs/PROMOTION-1.11.md) and [evidence archive](reports/skill-111-evidence.zip). Cache could not be disabled, so uncached tokens and elapsed time are reported separately; raw tokens are not treated as subscription-quota savings. These are six synthetic paired trials, not a guarantee for every repository or prompt.
+
+A quick task-diversity screen also found **28.0% less elapsed time but 9.2% more uncached tokens** for GoalPilot on three matched task cases. All checks passed in both arms, but the token gate failed, so we stopped before a full expansion. [See the screen, graph and retained trials](docs/SCREENING-1.11.md).
 
 ### Broader native verification
 
