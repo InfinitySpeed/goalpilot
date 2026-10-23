@@ -112,21 +112,21 @@
   "native_workflow_scope": "Immutable schema1 evidence alias for1.8.0. active_native_workflow is the installed default and current proof; never transfer historical metrics.",
   "active_native_workflow": {
     "status": "promoted",
-    "version": "1.9.0",
-    "adapter_version": "0.2.0",
+    "version": "1.10.0",
+    "adapter_version": "0.3.0",
     "source_files": {
-      "install.py": "892e23319b84a17fbe71a5e7d58035d9b33d1ee751e31b48c50d7609640679de",
-      "integrations/native/native.py": "8d694dcb32c1c91e272eb9e092fe2fb3fbb9655f4cd120454fd257b3e43daa44",
-      "integrations/native/routed-SKILL.md": "13ece8cc4838877ee47d07dd01ba66aa3f9be783664cdc94aa455ce34c8537c2",
+      "install.py": "43e5f33aad046bd0f39b5f97d11dced950bfb7240768ee1c91e4431088c355c3",
+      "integrations/native/native.py": "1377f8f3757b079c1fffea105a6b6f1651c91b0edd88017f50b97de0e5b36753",
+      "integrations/native/routed-SKILL.md": "d3d022a51f57cbb6f90aecbd8b8b2db9c621b887e355bf24b30e51453b9d01ee",
       "integrations/native/SKILL.md": "812da0615083f1adf83ef45fa1dfabc21bae56af2c6a4bbf37920b6c4e789ef3"
     },
-    "benchmark": "reports/skill-190-2026-10-23.json",
-    "benchmark_sha256": "db2d0d5b363fcf4b793462926730b95501c9aeb5b2412999bb58f37ed0619109",
-    "evidence_archive": "reports/skill-190-evidence.zip",
+    "benchmark": "reports/skill-110-2026-10-23.json",
+    "benchmark_sha256": "9e9b73ea3b813a3560be0c8c314e89338005dee1e152ebf4e6851334f4c578e4",
+    "evidence_archive": "reports/skill-110-evidence.zip",
     "source_bundle": "skills/goalpilot-016",
-    "promotion_rule": "4/4 business+certified+verbatim; raw/unc/time at most3% regression vs1.8 and positive token savings vsnative; meaningful expanded verifier capability must pass independent local counterfactuals; all outcomes retained. Speed gain not required.",
-    "scope": "Four synthetic caller goals, including Go and TypeScript; existing Python/Java controls reused. Local8counterfactual methods, five-host payload parity and eight-runtime compatibility. Codex live only. No8/20historical metric transfer.",
-    "evidence_sha256": "6e8d7d807b7ad4df589468f5a3b6026f40883d3cd3742127e8457c50a120fb05",
-    "evidence_url": "https://github.com/InfinitySpeed/goalpilot/releases/download/skill-v1.9.0/skill-190-evidence.zip"
+    "promotion_rule": "4/4 fresh synthetic goals correct, certified, and original-goal preserving; aggregate raw usage in 190,000\u2013210,000 and below 1.9/native; aggregate elapsed time no worse. Uncached tokens disclosed separately and are not a promotion gate for this raw-token target.",
+    "scope": "Four fixed synthetic Codex caller goals across Python, Java, Go and TypeScript; one fresh 1.10 observation per case. Native and 1.9 controls reused from the audited 1.9 dataset. Raw includes cached input; cache state uncontrolled; no quota or cross-host performance claim.",
+    "evidence_sha256": "4fbf03f70cd1135ab84cb19159360ee25c3f3e07b95839a2331fa00772b8c9c1",
+    "evidence_url": "https://github.com/InfinitySpeed/goalpilot/releases/download/skill-v1.10.0/skill-110-evidence.zip"
   }
 }

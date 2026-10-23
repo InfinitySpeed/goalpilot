@@ -10,8 +10,14 @@ def analyze(report,evidence=None,check_source=True):
  data=json.loads(Path(report).read_text());s=summarize(data['rows'])
  if s!=data['summary']:raise ValueError('Outcome summary differs')
  if check_source:
+  archived=None
+  if evidence and Path(evidence).is_file():
+   with zipfile.ZipFile(evidence) as z: archived={name:sha(z.read('inputs/measured/'+name)) for name in data['source_files']}
   for name,digest in data['source_files'].items():
-   if sha((ROOT/name).read_bytes())!=digest:raise ValueError('Current promoted source differs: '+name)
+   current=sha((ROOT/name).read_bytes())
+   historical=ROOT/'reports/skill-190-source'/name
+   frozen=sha(historical.read_bytes()) if historical.is_file() else None
+   if current!=digest and frozen!=digest:raise ValueError('Current or frozen historical promoted source differs: '+name)
  expected={'install.py','integrations/native/native.py','integrations/native/SKILL.md','integrations/native/routed-SKILL.md'}
  if set(data['source_files'])!=expected or set(data['measured_source_files'])!=expected:raise ValueError('Complete source identity required')
  for name in expected-{'install.py'}:

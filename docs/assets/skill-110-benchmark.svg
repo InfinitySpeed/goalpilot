@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="400" viewBox="0 0 1000 400">
+<rect width="1000" height="400" fill="#fff"/>
+<text x="36" y="42" font-family="Arial" font-size="24" font-weight="700" fill="#0f172a">GoalPilot 1.10 — four-goal caller comparison</text>
+<text x="36" y="82" font-family="Arial" font-size="16" font-weight="700" fill="#334155">Raw tokens</text>
+<text x="36" y="106" font-family="Arial" font-size="12" fill="#475569">Native Codex</text><rect x="160" y="94" width="520" height="15" rx="3" fill="#64748b"/><text x="690" y="106" font-family="Arial" font-size="12">374,651</text>
+<text x="36" y="129" font-family="Arial" font-size="12" fill="#475569">GoalPilot 1.9</text><rect x="160" y="117" width="335" height="15" rx="3" fill="#0f766e"/><text x="505" y="129" font-family="Arial" font-size="12">241,136</text>
+<text x="36" y="152" font-family="Arial" font-size="12" fill="#475569">GoalPilot 1.10</text><rect x="160" y="140" width="290" height="15" rx="3" fill="#2563eb"/><text x="460" y="152" font-family="Arial" font-size="12">209,047</text>
+<text x="36" y="196" font-family="Arial" font-size="16" font-weight="700" fill="#334155">Uncached input + output</text>
+<text x="36" y="220" font-family="Arial" font-size="12" fill="#475569">Native Codex</text><rect x="160" y="208" width="520" height="15" rx="3" fill="#64748b"/><text x="690" y="220" font-family="Arial" font-size="12">41,723</text>
+<text x="36" y="243" font-family="Arial" font-size="12" fill="#475569">GoalPilot 1.9</text><rect x="160" y="231" width="383" height="15" rx="3" fill="#0f766e"/><text x="553" y="243" font-family="Arial" font-size="12">30,704</text>
+<text x="36" y="266" font-family="Arial" font-size="12" fill="#475569">GoalPilot 1.10</text><rect x="160" y="254" width="428" height="15" rx="3" fill="#2563eb"/><text x="598" y="266" font-family="Arial" font-size="12">34,455</text>
+<text x="36" y="310" font-family="Arial" font-size="16" font-weight="700" fill="#334155">Elapsed caller time</text>
+<text x="36" y="334" font-family="Arial" font-size="12" fill="#475569">Native 244.50s · GoalPilot 1.9 210.78s · GoalPilot 1.10 192.91s</text>
+<text x="36" y="375" font-family="Arial" font-size="12" fill="#64748b">Raw is within ±5% of 200k. Uncached + output regressed 12.22% vs 1.9; cache uncontrolled.</text>
+</svg>
