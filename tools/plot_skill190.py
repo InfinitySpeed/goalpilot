@@ -17,6 +17,7 @@ def main():
  fig.suptitle('GoalPilot 1.9 — 4/4 independent behavioral checks in every arm',fontsize=14,fontweight='bold')
  fig.text(.5,.025,'Four known synthetic goals; Java/Python controls reused. Codex live only. One observation per task and arm; no universal or subscription-quota guarantee.',ha='center',fontsize=8,color='#475569')
  fig.tight_layout(rect=[0,.09,1,.91]);target=ROOT/'docs/assets/skill-190-benchmark';fig.savefig(str(target)+'.png',dpi=170);fig.savefig(str(target)+'.svg')
+ svg=Path(str(target)+'.svg');svg.write_text('\n'.join(line.rstrip()for line in svg.read_text().splitlines())+'\n')
  target.with_suffix('.json').write_text(json.dumps({'report_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'totals':scores},indent=2)+'\n')
  print(str(target)+'.png')
 if __name__=='__main__':main()
