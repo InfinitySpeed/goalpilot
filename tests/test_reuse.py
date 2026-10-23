@@ -1,4 +1,6 @@
 import json
+import copy
+import tempfile
 from pathlib import Path
 import shutil
 import unittest
@@ -20,9 +22,36 @@ class Builder:
 
 
 class ReuseTests(unittest.TestCase):
-    setUp=fixtures.FinishTests.setUp
+    @classmethod
+    def setUpClass(cls):
+        # Build the identical cold result once. Preserve its absolute paths:
+        # receipts/cache entries are copied back to the SAME private workspace.
+        seed=cls('test_exact_repeat_rechecks_behavior_without_any_model_call')
+        fixtures.FinishTests.setUp(seed)
+        cls.addClassCleanup(seed.doCleanups)
+        seed._prepare_initial()
+        cls._cold=seed.call(seed.repo,seed.run)
+        if cls._cold['status']!='scope_passed' or not cls._cold['reuse']['published']:
+            raise AssertionError('Cold reuse fixture did not verify and publish')
+        cls._fixture=seed
+        cls._snapshot=tempfile.TemporaryDirectory(prefix='goalpilot-reuse-fixture-')
+        cls.addClassCleanup(cls._snapshot.cleanup)
+        shutil.copytree(seed.root,Path(cls._snapshot.name)/'original')
+
+    def setUp(self):
+        # unittest runs this class sequentially inside its isolated module worker.
+        # Each test gets clean files/cache and a fresh simulated actor instance.
+        seed=type(self)._fixture
+        shutil.rmtree(seed.root)
+        shutil.copytree(Path(type(self)._snapshot.name)/'original',seed.root)
+        self.root,self.repo,self.run=seed.root,seed.repo,seed.run
+        self.clone,self.cache=seed.clone,seed.cache
+        self.builder=Builder();self.builder.calls=seed.builder.calls
 
     def prepare(self):
+        return copy.deepcopy(type(self)._cold)
+
+    def _prepare_initial(self):
         (self.repo/'tests').mkdir();(self.repo/'tests/__init__.py').write_text('')
         (self.repo/'tests/test_original.py').write_text(TEST)
         self.clone=self.root/'clone';shutil.copytree(self.repo,self.clone)
@@ -33,7 +62,7 @@ class ReuseTests(unittest.TestCase):
             adapter=self.builder,auditor=fixtures.Auditor(),audit_policy='on-interruption',review_context='local',compact_delivery=True)
 
     def test_exact_repeat_rechecks_behavior_without_any_model_call(self):
-        self.prepare();cold=self.call(self.repo,self.run)
+        cold=self.prepare()
         self.assertTrue(cold['reuse']['published'])
         warm=self.call(self.clone,self.root/'repeat')
         self.assertEqual(warm['status'],'scope_passed');self.assertTrue(warm['reuse']['hit'])
@@ -46,12 +75,12 @@ class ReuseTests(unittest.TestCase):
         self.assertTrue(summarize(warm)['reuse']['hit'])
 
     def test_changed_goal_requires_fresh_execution(self):
-        self.prepare();self.call(self.repo,self.run)
+        self.prepare()
         warm=self.call(self.clone,self.root/'repeat','Deliver 42 with a changed requirement')
         self.assertFalse(warm['reuse']['hit']);self.assertEqual(self.builder.calls,2)
 
     def test_request_for_independent_review_is_never_bypassed_by_cache(self):
-        self.prepare();self.call(self.repo,self.run)
+        self.prepare()
         class Reviewer:
             calls=0
             def execute(self,*args,**kwargs):
@@ -67,7 +96,7 @@ class ReuseTests(unittest.TestCase):
         self.assertEqual(state['status'],'scope_passed');self.assertEqual(state['contract']['acceptance_origin'],'independent_context')
 
     def test_cached_run_keeps_new_limits_for_future_resume(self):
-        self.prepare();self.call(self.repo,self.run)
+        self.prepare()
         warm=run_cached_finish('Deliver 42',self.clone,self.root/'repeat',cache=self.cache,
             wall_seconds=8,max_calls=3,max_tokens=999,max_uncached_tokens=100,
             adapter=self.builder,auditor=fixtures.Auditor(),audit_policy='on-interruption',review_context='local')
@@ -78,55 +107,55 @@ class ReuseTests(unittest.TestCase):
 
     def test_invalid_budget_is_rejected_even_for_a_cache_hit(self):
         from goalpilot.model import ContractError
-        self.prepare();self.call(self.repo,self.run)
+        self.prepare()
         with self.assertRaises(ContractError):
             run_cached_finish('Deliver 42',self.repo,self.root/'repeat',cache=self.cache,
                 max_tokens=-1,adapter=self.builder,audit_policy='on-interruption',review_context='local')
         self.assertEqual(self.builder.calls,1)
 
     def test_reissuing_goal_on_unchanged_delivered_project_only_revalidates(self):
-        self.prepare();self.call(self.repo,self.run)
+        self.prepare()
         warm=self.call(self.repo,self.root/'repeat')
         self.assertTrue(warm['reuse']['hit']);self.assertEqual(warm['reuse']['kind'],'already_delivered')
         self.assertEqual(warm['usage']['total_tokens'],0);self.assertEqual(self.builder.calls,1)
 
     def test_changed_final_data_requires_fresh_execution(self):
-        self.prepare();self.call(self.repo,self.run)
+        self.prepare()
         (self.repo/'customer.sqlite').write_bytes(b'new data since delivery')
         warm=self.call(self.repo,self.root/'repeat')
         self.assertFalse(warm['reuse']['hit']);self.assertEqual(self.builder.calls,2)
         self.assertEqual((self.repo/'customer.sqlite').read_bytes(),b'new data since delivery')
 
     def test_invalid_final_alias_is_rejected(self):
-        self.prepare();self.call(self.repo,self.run)
+        self.prepare()
         alias=next(self.cache.glob('*.json'));alias.write_text('{"primary_key":"../outside"}')
         warm=self.call(self.repo,self.root/'repeat')
         self.assertFalse(warm['reuse']['hit']);self.assertEqual(self.builder.calls,2)
         self.assertIn('alias',json.loads((self.root/'repeat/reuse-miss.json').read_text())['reason'])
 
     def test_changed_original_data_requires_fresh_execution(self):
-        self.prepare();self.call(self.repo,self.run)
+        self.prepare()
         (self.clone/'customer.sqlite').write_bytes(b'different customer data')
         warm=self.call(self.clone,self.root/'repeat')
         self.assertFalse(warm['reuse']['hit']);self.assertEqual(self.builder.calls,2)
         self.assertEqual((self.clone/'customer.sqlite').read_bytes(),b'different customer data')
 
     def test_corrupt_cached_patch_is_rejected_before_workspace_mutation(self):
-        self.prepare();self.call(self.repo,self.run)
+        self.prepare()
         patch=next(self.cache.glob('*/patch/answer.py'));patch.write_text('corrupt')
         warm=self.call(self.clone,self.root/'repeat')
         self.assertFalse(warm['reuse']['hit']);self.assertEqual(self.builder.calls,2)
         self.assertIn('integrity',json.loads((self.root/'repeat/reuse-miss.json').read_text())['reason'])
 
     def test_changed_frozen_acceptance_requires_fresh_execution(self):
-        self.prepare();self.call(self.repo,self.run)
+        self.prepare()
         (self.run/'delivery-tree/tests/test_delivery.py').write_text('tampered')
         warm=self.call(self.clone,self.root/'repeat')
         self.assertFalse(warm['reuse']['hit']);self.assertEqual(self.builder.calls,2)
 
     def test_failed_staged_verification_never_applies_cached_patch(self):
         from unittest.mock import patch
-        self.prepare();self.call(self.repo,self.run)
+        self.prepare()
         from goalpilot.reuse import replay
         before=inventory(self.clone)
         with patch('goalpilot.reuse.verify',return_value=[{'passed':False}]):

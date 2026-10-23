@@ -120,7 +120,7 @@ Optional helpers suit their documented interfaces. `ReplayService` is intended f
 
 ## Development
 
-The engine uses the Python standard library. The current version has **321 passing offline tests, with no skips**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
+The engine uses the Python standard library. The current version has **320 passing offline tests, with no skips**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
 
 ```bash
 python3 validate.py

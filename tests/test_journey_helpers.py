@@ -94,13 +94,6 @@ class JourneyHelpersTests(JourneyMixin, unittest.TestCase):
             with self.assertRaises(ValueError):
                 service_race(Counter, self.path, requests, timeout=timeout)
 
-    def test_provisioned_helper_is_self_contained(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            provision_runtime(tmp)
-            source = (Path(tmp) / 'goalpilot_support.py').read_text()
-            self.assertIn('class JourneyMixin:', source)
-            self.assertNotIn('from goalpilot.', source)
-
     def test_one_flow_runs_on_three_isolated_real_interfaces(self):
         self.c('cas',expected=0,value=3)
         original=self.path.read_bytes()

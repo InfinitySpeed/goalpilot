@@ -1,0 +1,41 @@
+{
+  "scope": "Five-minute bounded optimization experiment. No production optimization promoted and no coding-model benchmark.",
+  "started_at_utc": "2026-10-23T11:46:13Z",
+  "deadline_utc": "2026-10-23T11:51:13Z",
+  "stopped_at_unix": 1792756270.4320035,
+  "original_goal": "$goalpilot en 5min, trouve le max d'optimisations possibles et chiffre le avant après",
+  "before": {
+    "passed": 321,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "duration_seconds": 24.40436998199948,
+    "jobs": 4
+  },
+  "rejected_candidate": {
+    "passed": 323,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "duration_seconds": 25.85676912800045,
+    "jobs": 5
+  },
+  "elapsed_regression_percent": 5.951389636660376,
+  "discovery_calls_per_module": {
+    "before": 2,
+    "after": 1,
+    "reduction_percent": 50
+  },
+  "earlier_failed_attempt": {
+    "errors": 1,
+    "reason": "Changing the hash-pinned runner broke its frozen-gate recognition; original files restored and candidate isolated."
+  },
+  "limitations": [
+    "One full-suite timing per arm; different test counts321/323. No statistical speed conclusion.",
+    "Cached-shard-first scheduling and5-worker candidate changed together; no separate causal attribution.",
+    "The load-count probe establishes fewer discovery calls, not an end-to-end speedup.",
+    "Caller tokens not metered; no token/quota savings claimed."
+  ],
+  "decision": "Reject as a speed promotion; stable source unchanged. Candidate source and failed outcomes retained outside the product repository.",
+  "goal_complete": false
+}

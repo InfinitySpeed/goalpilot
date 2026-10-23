@@ -1,0 +1,252 @@
+{
+  "scope": "Offline test-fixture optimization; no coding-model performance or subscription-quota claim.",
+  "before_commit": "c90dd477dce983900aef76e81cfa4661f1cf2b00",
+  "baseline_tests": 321,
+  "retained_tests": 320,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "suite_measurements": {
+    "before_seconds": [
+      25.850438649998978,
+      25.706273823998345,
+      24.924209134002012
+    ],
+    "after_seconds": [
+      23.73645043000215,
+      25.46760322999762,
+      23.987279711996962
+    ],
+    "pairs": 3,
+    "workers": 4,
+    "aggregate_saving_percent": 4.301188017664437,
+    "median_wall_saving_percent": 6.687060613182294,
+    "order": [
+      "before-after",
+      "after-before",
+      "before-after"
+    ]
+  },
+  "reuse_module": {
+    "before_seconds": [
+      8.631,
+      9.03457719799917
+    ],
+    "after_seconds": [
+      3.895,
+      4.293893849000597
+    ],
+    "tests_before": 13,
+    "tests_after": 13,
+    "cold_fixtures_before": 12,
+    "cold_fixtures_after": 1,
+    "simulated_builds_before": 19,
+    "simulated_builds_after": 8
+  },
+  "fault_detection": {
+    "mutations": [
+      {
+        "mutation": "skip_budget_validation",
+        "before": {
+          "executed": 13,
+          "caught_by": [
+            "test_invalid_budget_is_rejected_even_for_a_cache_hit"
+          ],
+          "seconds": 8.628896711998095
+        },
+        "after": {
+          "executed": 13,
+          "caught_by": [
+            "test_invalid_budget_is_rejected_even_for_a_cache_hit"
+          ],
+          "seconds": 4.285508851000486
+        },
+        "same_detection": true
+      },
+      {
+        "mutation": "bypass_requested_independent_review",
+        "before": {
+          "executed": 13,
+          "caught_by": [
+            "test_request_for_independent_review_is_never_bypassed_by_cache"
+          ],
+          "seconds": 8.76715007799794
+        },
+        "after": {
+          "executed": 13,
+          "caught_by": [
+            "test_request_for_independent_review_is_never_bypassed_by_cache"
+          ],
+          "seconds": 3.970988622997538
+        },
+        "same_detection": true
+      },
+      {
+        "mutation": "ignore_goal_in_cache_key",
+        "before": {
+          "executed": 13,
+          "caught_by": [
+            "test_changed_goal_requires_fresh_execution"
+          ],
+          "seconds": 8.096412741000677
+        },
+        "after": {
+          "executed": 13,
+          "caught_by": [
+            "test_changed_goal_requires_fresh_execution"
+          ],
+          "seconds": 3.744237647999398
+        },
+        "same_detection": true
+      },
+      {
+        "mutation": "ignore_changed_customer_data",
+        "before": {
+          "executed": 13,
+          "caught_by": [
+            "test_changed_final_data_requires_fresh_execution",
+            "test_changed_original_data_requires_fresh_execution"
+          ],
+          "seconds": 8.222254790998704
+        },
+        "after": {
+          "executed": 13,
+          "caught_by": [
+            "test_changed_final_data_requires_fresh_execution",
+            "test_changed_original_data_requires_fresh_execution"
+          ],
+          "seconds": 3.551611597002193
+        },
+        "same_detection": true
+      },
+      {
+        "mutation": "skip_alias_path_validation",
+        "before": {
+          "executed": 13,
+          "caught_by": [
+            "test_invalid_final_alias_is_rejected"
+          ],
+          "seconds": 8.073729753999942
+        },
+        "after": {
+          "executed": 13,
+          "caught_by": [
+            "test_invalid_final_alias_is_rejected"
+          ],
+          "seconds": 3.706712218001485
+        },
+        "same_detection": true
+      }
+    ],
+    "caught_before": 5,
+    "caught_after": 5,
+    "same_detection_for_every_mutant": true,
+    "live_model_calls": 0
+  },
+  "removed_test": {
+    "id": "tests.test_journey_helpers.JourneyHelpersTests.test_provisioned_helper_is_self_contained",
+    "reason": "Textual class/import matching is redundant with real copied-helper execution and byte-hash provenance. The five-host integration now poisons external GoalPilot imports, preserving the actual portability contract rather than a source-text spelling."
+  },
+  "production_unchanged": {
+    "engine": true,
+    "promoted_skill_files": true,
+    "canonical_validate_py": true,
+    "canonical_worker": true
+  },
+  "earlier_rejected_work": "reports/optimization-5min-2026-10-23.json",
+  "live_coding_model_calls": 0,
+  "limitations": [
+    "Three paired suite measurements on one machine, with321 versus320 tests; not a statistical generalization.",
+    "Before/after reuse-module samples include one separately instrumented counting run.",
+    "Five synthetic mutations preserve exactly the same rejecting tests; not exhaustive mutation coverage.",
+    "Shared immutable cold fixture is restored to the same private paths per test, preserving receipt hashes. Class tests execute sequentially in an isolated module process."
+  ],
+  "source_after": {
+    "tests/test_reuse.py": "38f6790004f41e2c223552ed9e94cc0e9cc08857077d0a46bffa4c0d0c4bdfae",
+    "tests/test_journey_helpers.py": "3095fe0b39b56504748baf4b315ff254e04dbbd3f318a6f2c54ffd51939b8c68",
+    "tests/test_portable_engine.py": "26e8b7f9f9aba5ffa58dac84316ea9b28f0750a38d5838d31d7b0e46162f9347",
+    "validate.py": "a564829f1ee4d6ab8d71a0d74de82c1bc8d13b5cb6f242b832a331295c7853ce",
+    "tools/test_worker.py": "540f7fc22b6ff46fbbc0876f6182c79d94f2306348f3fd694b4c4f6aca116eac"
+  },
+  "post_measurement_strengthening": "After timing, seed.builder.calls replaces literal1 so unexpected cold calls cannot be masked. The observed seed counter was1 in every measured run; final original/builder gates rerun on the strengthened version.",
+  "final_suite": {
+    "passed": 320,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "duration_seconds": 24.71248968299915,
+    "python": "3.12.14"
+  },
+  "final_fault_detection": [
+    {
+      "mutation": "skip_budget_validation",
+      "executed": 13,
+      "caught_by": [
+        "test_invalid_budget_is_rejected_even_for_a_cache_hit"
+      ],
+      "matches_original": true
+    },
+    {
+      "mutation": "bypass_requested_independent_review",
+      "executed": 13,
+      "caught_by": [
+        "test_request_for_independent_review_is_never_bypassed_by_cache"
+      ],
+      "matches_original": true
+    },
+    {
+      "mutation": "ignore_goal_in_cache_key",
+      "executed": 13,
+      "caught_by": [
+        "test_changed_goal_requires_fresh_execution"
+      ],
+      "matches_original": true
+    },
+    {
+      "mutation": "ignore_changed_customer_data",
+      "executed": 13,
+      "caught_by": [
+        "test_changed_final_data_requires_fresh_execution",
+        "test_changed_original_data_requires_fresh_execution"
+      ],
+      "matches_original": true
+    },
+    {
+      "mutation": "skip_alias_path_validation",
+      "executed": 13,
+      "caught_by": [
+        "test_invalid_final_alias_is_rejected"
+      ],
+      "matches_original": true
+    }
+  ],
+  "cold_call_accounting_proof": [
+    {
+      "arm": "original",
+      "extra_cold_call_detected": true,
+      "failures": 1,
+      "errors": 0
+    },
+    {
+      "arm": "preliminary",
+      "extra_cold_call_detected": false,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "arm": "final",
+      "extra_cold_call_detected": true,
+      "failures": 1,
+      "errors": 0
+    }
+  ],
+  "goalpilot_accounting_subtask": {
+    "status": "timed_out",
+    "closed": false,
+    "goal_complete": false,
+    "checks_passed": 1,
+    "checks_total": 2,
+    "elapsed_seconds": 54.216,
+    "explanation": "Final accounting strengthening subtask retained the original overall deadline; second frozen suite timed out. Not restarted or represented as closed. Final320-test suite and fault checks completed independently."
+  }
+}

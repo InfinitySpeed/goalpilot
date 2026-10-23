@@ -43,7 +43,9 @@ class PortableEngineTests(unittest.TestCase):
             (repo/'tests/test_original.py').write_text('import unittest\nclass Original(unittest.TestCase):\n def test_original(self):self.assertTrue(True)\n')
             goal=root/'goal.txt';goal.write_text('Provide a persistent counter. Preserve tests. Café 東京.')
             run=root/'evidence';launcher=target/runtime['entry_point']
-            env={**os.environ,'CODEX_THREAD_ID':'unrelated-host-thread'}
+            fake=root/'foreign/goalpilot';fake.mkdir(parents=True)
+            (fake/'__init__.py').write_text("raise RuntimeError('External GoalPilot import is forbidden')\n")
+            env={**os.environ,'CODEX_THREAD_ID':'unrelated-host-thread','PYTHONPATH':str(fake.parent)}
             def invoke(*args):
                 proc=subprocess.run([sys.executable,str(launcher),'session',*map(str,args)],cwd=repo,env=env,capture_output=True,text=True,timeout=30)
                 self.assertEqual(proc.returncode,0,proc.stderr+proc.stdout)
