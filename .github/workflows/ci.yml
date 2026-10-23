@@ -20,7 +20,17 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Run offline regressions
-        run: python validate.py > validation.json
+        run: |
+          python validate.py > validation.json || { cat reports/tests.txt; exit 1; }
+      - name: Retain offline validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: offline-validation-${{ matrix.python-version }}
+          path: |
+            validation.json
+            reports/tests.json
+            reports/tests.txt
       - name: Recompute benchmark aggregates
         run: python tools/check_benchmark.py
       - name: Build and verify the archived baseline skill
