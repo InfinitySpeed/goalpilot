@@ -178,5 +178,67 @@
   ],
   "evidence_archive": "reports/native-screen-evidence-2026-10-23.zip",
   "evidence_sha256": "429f4df3f7a2ac5cedd501793dbec84854d4ea60475f4a1b34e48613bd653052",
-  "evidence_bytes": 782584
+  "evidence_bytes": 782584,
+  "supplemental_refactor": {
+    "id": "goalpilot-1.11-refactor-supplement-2026-10-23",
+    "protocol": "protocol.json",
+    "protocol_sha256": "35261b015d55d409d54d9c3315d4124c07c2ef165072c70481a879b58033e841",
+    "task": "Behavior-preserving refactor of duplicated JSON-lines parsing into a shared helper.",
+    "model": "gpt-6.1-sol",
+    "effort": "low",
+    "arms": {
+      "native": {
+        "seconds": 32.64538740900025,
+        "raw_tokens": 61780,
+        "input_tokens": 60199,
+        "cached_input_tokens": 54912,
+        "output_tokens": 1581,
+        "uncached_input_plus_output": 6868,
+        "usage_complete": true,
+        "first_judge_v1_passed": false,
+        "first_judge_v1_outcome": "failed due to judge expectation error",
+        "corrected_judge_v2_passed": true,
+        "suite_v2_passed": true,
+        "suite_tests": 5,
+        "goalpilot_certified_closure": null,
+        "original_goal_preserved": null,
+        "seconds_reported_by_caller": 32.64538740900025,
+        "trial_path": "trials/jsonl-refactor-native"
+      },
+      "current": {
+        "seconds": 21.745559930997842,
+        "raw_tokens": 49870,
+        "input_tokens": 48299,
+        "cached_input_tokens": 44160,
+        "output_tokens": 1571,
+        "uncached_input_plus_output": 5710,
+        "usage_complete": true,
+        "first_judge_v1_passed": false,
+        "first_judge_v1_outcome": "failed due to judge expectation error",
+        "corrected_judge_v2_passed": true,
+        "suite_v2_passed": true,
+        "suite_tests": 7,
+        "goalpilot_certified_closure": true,
+        "original_goal_preserved": true,
+        "seconds_reported_by_caller": 21.745559930997842,
+        "trial_path": "trials/jsonl-refactor-current"
+      }
+    },
+    "candidate_change_pct": {
+      "uncached_input_plus_output": -16.860803727431563,
+      "elapsed_seconds": -33.388568318835
+    },
+    "judge_correction": {
+      "reason": "V1 incorrectly expected a line-2 non-object error for count_by_type input whose first event lacked a required string type. The implementation correctly raised the line-1 type error before reading line 2. V2 separated per-function precedence cases; both arms passed.",
+      "v1_failure_retained": true,
+      "model_runs_repeated": false,
+      "judge_v2_sha256": "8bd30eaba97d47eb5e19dfaabaed61f0ecf6dd77f704ecfc605c8304752e9f55"
+    },
+    "interpretation": "Supplemental single-pair refactor evidence only; excluded from the frozen three-case task-diversity screen aggregate and stop/expand decision. A single pair cannot establish a general token advantage.",
+    "evidence_archive": {
+      "path": "reports/native-screen-refactor-evidence-2026-10-23.zip",
+      "sha256": "ba8e22674b69aafd844af7323134e197b8b962ed9937648814f7fe8f7122f85c",
+      "bytes": 266724
+    }
+  }
 }

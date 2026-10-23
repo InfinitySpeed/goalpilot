@@ -28,6 +28,8 @@ Per-task results and trial evidence are in the [full report](docs/PROMOTION-1.11
 
 A quick task-diversity screen also found **28.0% less elapsed time but 9.2% more uncached tokens** for GoalPilot on three matched task cases. All checks passed in both arms, but the token gate failed, so we stopped before a full expansion. [See the screen, graph and retained trials](docs/SCREENING-1.11.md).
 
+A separate one-pair refactoring check passed after correcting an evaluator error: GoalPilot used **16.9% fewer uncached tokens** and was **33.4% faster**. That single pair is supplemental evidence, not a reason to override the screen result or claim a general gain.
+
 ### Broader native verification
 
 - Run checks in separate subprojects with a relative `cwd`.
