@@ -15,14 +15,14 @@ GoalPilot preserves your original request, turns it into explicit criteria, reus
 
 The primary comparison is **GoalPilot 1.11 vs Codex native on the exact same tasks**: a vague Java range-utility repair, a vague TypeScript transactional-store repair, and the ambitious Flowdesk support-platform goal. Each ran twice per arm in fresh Codex app-server sessions, using the same model and effort.
 
+![Same-task GoalPilot and Codex-native comparison across Java, TypeScript, and Flowdesk.](docs/assets/skill-111-benchmark.svg)
+
 | Equal-weight mean across the 3 task families (6 runs per arm) | Codex native | GoalPilot 1.11 | Change with GoalPilot |
 | :--- | ---: | ---: | ---: |
 | Independent task checks passed | 6/6 | **6/6** | no decline |
 | Flowdesk behavior groups passed | 52/52 | **52/52** | equal |
 | Uncached input + output tokens per caller | 13,027 | **10,875** | **−16.5%** |
 | Elapsed seconds per caller | 99.25 | **64.07** | **−35.4%** |
-
-![Same-task GoalPilot and Codex-native comparison across Java, TypeScript, and Flowdesk.](docs/assets/skill-111-benchmark.svg)
 
 Per-task results and trial evidence are in the [full report](docs/PROMOTION-1.11.md) and [evidence archive](reports/skill-111-evidence.zip). Cache could not be disabled, so uncached tokens and elapsed time are reported separately; raw tokens are not treated as subscription-quota savings. These are six synthetic paired trials, not a guarantee for every repository or prompt.
 
