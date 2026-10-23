@@ -1,6 +1,6 @@
 # Benchmark results and limitations
 
-For the **default Skill 1.8**, see the [current complete-skill comparison](GENERALIZATION.md). This page retains the historical Skill 1.3.1 benchmark. The [standalone engine study](ENGINE-PROMOTION.md) is a distinct profile.
+For the **default Skill 1.11**, see the [current complete-skill comparison](PROMOTION-1.11.md). This page retains the historical Skill 1.3.1 benchmark. The [standalone engine study](ENGINE-PROMOTION.md) is a distinct profile.
 
 This report covers skill **1.3.1**, engine **0.12.1**, and the complete calling invocation. It distinguishes observed results from general product guarantees.
 
@@ -10,7 +10,7 @@ This is the recorded **Codex automatic-hook benchmark**. At the time of this his
 
 ![Archived Skill1.3.1 benchmark: elapsed time, caller token composition and reviewed completion versus historical native Codex. These are not Skill1.7.0 results.](assets/benchmark.png)
 
-This is the original historical chart for Skill1.3.1. The default Skill 1.8 has [separate measurements](PORTABLE-ENGINE.md#measured-results).
+This is the original historical chart for Skill1.3.1. The default Skill 1.11 has [separate measurements](PORTABLE-ENGINE.md#measured-results).
 
 ## Primary comparison
 
@@ -97,4 +97,4 @@ Run `python3 tools/check_benchmark.py` to reconstruct the native and old-GoalPil
 
 The public repository contains analyses and audit receipts, not the full raw model transcripts, external judge worktrees or development-session journals. Historical receipts retain their original local paths. Aggregate arithmetic can be reproduced from this repository; independent re-auditing of the original provider telemetry requires the retained raw journals and cannot be performed from summaries alone. No fresh paid replication has been run for this public documentation release.
 
-The exact measured engine source and skill instructions are retained in benchmarks/codex-1.3.1. The default Skill 1.8 has its own separately frozen whole-caller evidence. Recorded1.3.1 gains remain historical observations, not performance claims for1.7.0 or other hosts.
+The exact measured engine source and skill instructions are retained in benchmarks/codex-1.3.1. The default Skill 1.11 has its own separately frozen whole-caller evidence. Recorded1.3.1 gains remain historical observations, not performance claims for1.7.0 or other hosts.

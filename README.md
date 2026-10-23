@@ -2,14 +2,14 @@
 
 **A skill that helps coding agents turn ambitious goals into verified results, with less repeated work.**
 
-GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.10.0 with native verification and the frozen service engine 0.16.0**; it does not start a second coding model.
+GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.11.0 with native verification and the frozen service engine 0.16.0**; it does not start a second coding model.
 
 [![Offline checks](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
-[![Skill 1.10.0](https://img.shields.io/badge/Skill-1.10.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
+[![Skill 1.11.0](https://img.shields.io/badge/Skill-1.11.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
 [![Service engine 0.16.0](https://img.shields.io/badge/Engine-0.16.0-334155)](PORTABLE_SKILL.json)
 
-[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PROMOTION-1.10.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
+[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PROMOTION-1.11.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
 
 ![GoalPilot backend: preserve the original goal, define criteria, implement in the current agent, verify locally, and repair within the same budget.](docs/assets/goalpilot-backend.png)
 
@@ -17,25 +17,18 @@ GoalPilot preserves your original request, turns it into explicit criteria, reus
 
 ## Measured results
 
-The current raw-token-target promotion is **GoalPilot 1.10.0**. Across the same four synthetic goals, it used **209,047 raw tokens** (within ±5% of 200k), finished in **192.91 seconds**, and passed **4/4** checks and certified closures. Compared with 1.9, raw tokens fell 13.31% and time fell 8.48%; uncached input + output rose 12.22%. Cached input is included in raw totals and cache state was uncontrolled, so this is not proof of lower subscription quota. [Full 1.10 evidence and limits](docs/PROMOTION-1.10.md).
+GoalPilot **1.11.0** adds concise guidance for deriving test expectations from the written contract and handling sequential state correctly. On three repeated task families, it lowered uncached input-plus-output tokens **22.5% versus GoalPilot 1.9** and **19.5% versus 1.10**. Correct closure stayed at **6/6** for all three GoalPilot versions. Equal-weight elapsed time was **1.5% higher than 1.9** (within the 3% limit) and **14.1% lower than 1.10**.
 
-
-![Source-bound four-goal whole-caller comparison.](docs/assets/skill-110-benchmark.svg)
-
-| Four goals per arm | Native Codex | GoalPilot 1.9 | GoalPilot 1.10 |
+| Mean per caller (6 runs each; equal case weights) | GoalPilot 1.9 | GoalPilot 1.10 | GoalPilot 1.11 |
 | :--- | ---: | ---: | ---: |
-| Independent behavioral checks | 4/4 | 4/4 | 4/4 |
-| Certified GoalPilot closure | N/A | 4/4 | 4/4 |
-| Raw tokens, including cached input | 374,651 | 241,136 | **209,047** |
-| Uncached input + output | 41,723 | 30,704 | **34,455** |
-| Caller seconds | 244.50 | 210.78 | **192.91** |
+| Correct, certified closures | 6/6 | 6/6 | **6/6** |
+| Raw tokens, cached input included | 70,792 | 72,939 | **63,974** |
+| Uncached input + output | 14,024 | 13,505 | **10,875** |
+| Elapsed seconds | 63.12 | 74.55 | **64.07** |
 
-On this series, **44.20% fewer raw tokens, 17.42% fewer uncached-input + output tokens and 21.10% less caller time than native Codex**. Versus GoalPilot 1.9: **13.31% fewer raw tokens and 8.48% less caller time**, while uncached-input + output rose **12.22%**.
+![Repeated uncached-token and elapsed-time comparisons across Java, TypeScript, and an ambitious Flowdesk workflow.](docs/assets/skill-111-benchmark.svg)
 
-**Four known synthetic goals across Python, Java, Go and TypeScript**, one observation
-per arm/case; Python/Java controls reused. Other agents have installation coverage,
-not live performance evidence. Individual regressions remain; exact subscription-quota
-savings are not established. [All 1.10 outcomes and limitations](docs/PROMOTION-1.10.md).
+On the matched Java and TypeScript tasks, native Codex passed **4/4** independent checks; GoalPilot 1.11 used **22.0% fewer uncached input-plus-output tokens** and was **36.5% faster**. A prior-day native Flowdesk run passed all 26 artifact checks but exited blocked; it is reported separately and excluded from the matched aggregate. Cache state could not be disabled, so these are measured uncached-token comparisons, not a precise subscription-quota conversion. Raw tokens are descriptive and are not used to claim quota savings. [Methods, per-case regressions and evidence](docs/PROMOTION-1.11.md).
 
 ### Broader native verification
 
@@ -50,7 +43,7 @@ and [twenty-service r2 benchmark](docs/SKILL-EFFICIENCY.md) remain separate hist
 
 ## How to use it
 
-These instructions install **Skill 1.10.0 with the frozen engine 0.16.0** in your current coding-agent session.
+These instructions install **Skill 1.11.0 with the frozen engine 0.16.0** in your current coding-agent session.
 
 ### 1. Send this to your coding agent
 

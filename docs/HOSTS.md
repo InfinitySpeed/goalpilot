@@ -43,13 +43,13 @@ python install.py --host hermes --doctor
 
 The bootstraps reuse Python 3.11+ or prepare a user-local Python through uv. The installed skill records the interpreter in `RUNTIME.json`, so the agent does not rely on a user-managed `python3` command or PATH edits. Missing dependency/source downloads need network access; existing-runtime installations work offline.
 
-The default Skill 1.9 composes native verification and service engine 0.16.0 and maps frozen goal requirements to verified criteria, exact source quotes and executable checks. It uses the current calling session. Project-native commands and the compatible Python service route run locally; see [the study](PROMOTION-1.9.md) for measured scope. Optional `service_race` still requires POSIX fork and is not a Windows feature. Restricted runners that cannot create the required process job fail verification rather than silently claiming success.
+The default Skill 1.11 composes native verification and service engine 0.16.0 and maps frozen goal requirements to verified criteria, exact source quotes and executable checks. It uses the current calling session. Project-native commands and the compatible Python service route run locally; see [the study](PROMOTION-1.11.md) for measured scope. Optional `service_race` still requires POSIX fork and is not a Windows feature. Restricted runners that cannot create the required process job fail verification rather than silently claiming success.
 
 Codex on POSIX can use its optional native Stop hooks. Windows and portable adapters call verification explicitly in the current agent session. They do not install Codex hooks or launch a separate model. Project commands are framework-independent; blanket native discovery in every agent is not claimed.
 
 ## Performance scope
 
-The promoted default is [Skill 1.9](PROMOTION-1.9.md), measured on Codex POSIX using explicit verification. Other hosts have offline readiness coverage, not model-performance evidence. Archived Skill 1.3.1 source and figures remain separately reproducible. Do not transfer percentages across hosts, profiles or workloads.
+The promoted default is [Skill 1.11](PROMOTION-1.11.md), measured on Codex POSIX using explicit verification. Other hosts have offline readiness coverage, not model-performance evidence. Archived Skill 1.3.1 source and figures remain separately reproducible. Do not transfer percentages across hosts, profiles or workloads.
 
 The [runtime compatibility matrix](UNIVERSALITY.md) can be executed locally without
 model calls. It tests the installed verifier through host profiles and reports

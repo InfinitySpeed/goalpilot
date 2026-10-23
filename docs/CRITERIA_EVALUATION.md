@@ -1,6 +1,6 @@
 # Goal criteria evaluation
 
-This page retains historical 0.14/0.15 development measurements. The current default is [Skill 1.8](GENERALIZATION.md), which submits an explicit requirement inventory and criterion map.
+This page retains historical 0.14/0.15 development measurements. The current default is [Skill 1.11](PROMOTION-1.11.md), which submits an explicit requirement inventory and criterion map.
 
 The standalone controller engine 0.15.0 implements a frozen inventory of atomic goal requirements mapped to criteria, exact source quotes, check links, and per-requirement plus per-criterion verified/missing/blocked status. Supplied requirement maps with missing or orphaned links are rejected. Handoffs without the new field retain compatibility through a clearly labeled one-to-one criterion projection; that fallback does not claim inventory completeness. At the time of this evaluation, the portable Skill had been restored to instructions1.3.1 / engine 0.12.1 and did not submit that newer inventory schema. An explicit external blocker or failed/unavailable check keeps `goal_complete` false in the standalone controller. The checks run locally and make no model calls.
 

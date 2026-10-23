@@ -1,4 +1,4 @@
-The default is now [generalized Skill 1.9](PROMOTION-1.9.md), composed from the frozen service bundle below and a native adapter. Its metrics are separate. Use --profile candidate for the exact r2 service control.
+The default is now [generalized Skill 1.11](PROMOTION-1.11.md), composed from the frozen service bundle below and a native adapter. Its metrics are separate. Use --profile candidate for the exact r2 service control.
 
 # Portable skill with engine 0.16.0
 
@@ -49,7 +49,7 @@ Known synthetic service goals used during development are not evidence for arbit
 
 ## Measured results
 
-The current instruction revision is **Skill 1.7.0-r2**, with the unchanged engine 0.16.0. It changes only SKILL.md among49 behavior files and completes 20/20 certified goals. Fresh-r1 savings: 46.69% raw, 21.91% uncached+output and 33.24% time. See the [current full comparison and reproducible audit](SKILL-EFFICIENCY.md). The original r1 figures below remain historical evidence.
+The historical instruction revision **Skill 1.7.0-r2**, with the unchanged engine 0.16.0. It changes only SKILL.md among49 behavior files and completes 20/20 certified goals. Fresh-r1 savings: 46.69% raw, 21.91% uncached+output and 33.24% time. See the [historical full comparison and reproducible audit](SKILL-EFFICIENCY.md). The original r1 figures below remain historical evidence.
 
 ## Previous revision: Skill 1.7.0-r1
 

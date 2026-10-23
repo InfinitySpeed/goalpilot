@@ -1,0 +1,755 @@
+{
+  "schema": 1,
+  "status": "promoted",
+  "version": "1.11.0",
+  "promoted_at_utc": "2026-10-23",
+  "purpose": "A small, source-bound full-skill confirmation of the added contract-first, intermediate-state test guidance.",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "candidate_changes": [
+    "Derive added test expectations from the written contract, including intermediate state in sequential operations.",
+    "Keep rejection tests single-cause.",
+    "Use the explicit pre-green test-revision pathway instead of spending turns querying CLI help."
+  ],
+  "candidate_source_sha256": "1670d59124c5d1183a01f8f6135cff77ae2c8333218055cbb4300207b7f14d98",
+  "source_files": {
+    "install.py": "43e5f33aad046bd0f39b5f97d11dced950bfb7240768ee1c91e4431088c355c3",
+    "integrations/native/native.py": "1377f8f3757b079c1fffea105a6b6f1651c91b0edd88017f50b97de0e5b36753",
+    "integrations/native/SKILL.md": "812da0615083f1adf83ef45fa1dfabc21bae56af2c6a4bbf37920b6c4e789ef3",
+    "integrations/native/routed-SKILL.md": "1670d59124c5d1183a01f8f6135cff77ae2c8333218055cbb4300207b7f14d98"
+  },
+  "controls": {
+    "current": "GoalPilot 1.10.0, public commit d7eafc26bed375a80309fa8f4db1ace506df3f5c",
+    "previous": "GoalPilot 1.9.0, pinned commit cb49cbf1480fba73af2f7396097ed17fe99c1df7",
+    "native": "Codex direct, same model/effort; fresh matched Java/TypeScript trials. Flowdesk native is a same-goal prior-day contextual record and excluded from aggregate."
+  },
+  "protocols": [
+    {
+      "path": "benchmark-phase1/protocol.json",
+      "sha256": "82c08c6df525b3854cf92fa5ee8dc843fe61b39a13b58bef9f885c4403d51093"
+    },
+    {
+      "path": "continuation-screen3/protocol.json",
+      "sha256": "e7ee7d0ba7754aeeeb28c2ca8f9b058a6699fcc11817f3c91f1f846ed0d6c6b5"
+    },
+    {
+      "path": "continuation-screen4/protocol.json",
+      "sha256": "69cc634d6d1da7527bd648c4851906e0903bc403cca9141b281d4f0e067414d1"
+    },
+    {
+      "path": "continuation-screen5/protocol.json",
+      "sha256": "01b328f743bd1cdec94e3baa5225ef1d0909c07cd7e9e3ec7fedb200c1bfad2e"
+    },
+    {
+      "path": "continuation-confirmation1/protocol.json",
+      "sha256": "87aacfb3aeb11865e585b1afd913581c3715a53bcb4566532cc0ebc247871957"
+    },
+    {
+      "path": "ambitious-screen/protocol.json",
+      "sha256": "dad1c0089a3fda77e0c16c0dda65deec7a76b8217462ff799a4d60cc25d06fbb"
+    },
+    {
+      "path": "ambitious-confirmation/protocol.json",
+      "sha256": "d47efda26bf955b3e3602d93a7f20a9c883ad004d2d3f3c7e1bd2e68609ce738"
+    }
+  ],
+  "cache_policy": "Every live call used a new ephemeral app-server thread. The provider prefix cache could not be disabled. Raw, input, cached input, uncached input, output, uncached input+output, and elapsed time are kept separately for each trial. Cache-state distribution remains a limitation; no subscription quota amount is claimed.",
+  "aggregation": "For the primary candidate/current/1.9 comparison, arithmetic mean within each task, then equal-weight mean across the 3 task families. Each family has two fresh runs per arm. Native comparison is matched and repeated on the two small tasks; Flowdesk native is reported separately.",
+  "per_case": {
+    "java-vague": {
+      "candidate": {
+        "n": 2,
+        "raw_tokens_mean": 51549.5,
+        "input_tokens_mean": 48887.5,
+        "cached_input_tokens_mean": 45056,
+        "uncached_input_plus_output_mean": 6493.5,
+        "output_tokens_mean": 2662,
+        "seconds_mean": 48.717905059995246,
+        "correct": 2,
+        "closed": 2,
+        "goal_preserved": 2,
+        "usage_complete": true,
+        "trials": [
+          {
+            "trial": "continuation-screen5/trials/java-vague-candidate-1",
+            "raw_tokens": 51272,
+            "input_tokens": 48741,
+            "cached_input_tokens": 44928,
+            "uncached_input_tokens": 3813,
+            "output_tokens": 2531,
+            "uncached_input_plus_output": 6344,
+            "seconds": 43.543,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          },
+          {
+            "trial": "continuation-confirmation1/trials/java-vague-candidate-2",
+            "raw_tokens": 51827,
+            "input_tokens": 49034,
+            "cached_input_tokens": 45184,
+            "uncached_input_tokens": 3850,
+            "output_tokens": 2793,
+            "uncached_input_plus_output": 6643,
+            "seconds": 53.893,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          }
+        ]
+      },
+      "current": {
+        "n": 2,
+        "raw_tokens_mean": 60911,
+        "input_tokens_mean": 58208,
+        "cached_input_tokens_mean": 51456,
+        "uncached_input_plus_output_mean": 9455,
+        "output_tokens_mean": 2703,
+        "seconds_mean": 51.00223614150309,
+        "correct": 2,
+        "closed": 2,
+        "goal_preserved": 2,
+        "usage_complete": true,
+        "trials": [
+          {
+            "trial": "benchmark-phase1/trials/java-vague-current-1",
+            "raw_tokens": 51186,
+            "input_tokens": 48713,
+            "cached_input_tokens": 39296,
+            "uncached_input_tokens": 9417,
+            "output_tokens": 2473,
+            "uncached_input_plus_output": 11890,
+            "seconds": 40.156,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          },
+          {
+            "trial": "benchmark-phase1/trials/java-vague-current-2",
+            "raw_tokens": 70636,
+            "input_tokens": 67703,
+            "cached_input_tokens": 63616,
+            "uncached_input_tokens": 4087,
+            "output_tokens": 2933,
+            "uncached_input_plus_output": 7020,
+            "seconds": 61.848,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          }
+        ]
+      },
+      "previous": {
+        "n": 2,
+        "raw_tokens_mean": 76319,
+        "input_tokens_mean": 73250.5,
+        "cached_input_tokens_mean": 67328,
+        "uncached_input_plus_output_mean": 8991,
+        "output_tokens_mean": 3068.5,
+        "seconds_mean": 64.86313165400134,
+        "correct": 2,
+        "closed": 2,
+        "goal_preserved": 2,
+        "usage_complete": true,
+        "trials": [
+          {
+            "trial": "benchmark-phase1/trials/java-vague-previous-1",
+            "raw_tokens": 80488,
+            "input_tokens": 77411,
+            "cached_input_tokens": 70400,
+            "uncached_input_tokens": 7011,
+            "output_tokens": 3077,
+            "uncached_input_plus_output": 10088,
+            "seconds": 67.047,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          },
+          {
+            "trial": "benchmark-phase1/trials/java-vague-previous-2",
+            "raw_tokens": 72150,
+            "input_tokens": 69090,
+            "cached_input_tokens": 64256,
+            "uncached_input_tokens": 4834,
+            "output_tokens": 3060,
+            "uncached_input_plus_output": 7894,
+            "seconds": 62.68,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          }
+        ]
+      },
+      "native": {
+        "n": 2,
+        "raw_tokens_mean": 112848.5,
+        "input_tokens_mean": 109115,
+        "cached_input_tokens_mean": 103424,
+        "uncached_input_plus_output_mean": 9424.5,
+        "output_tokens_mean": 3733.5,
+        "seconds_mean": 83.9011599430014,
+        "correct": 2,
+        "closed": 0,
+        "goal_preserved": 0,
+        "usage_complete": true,
+        "trials": [
+          {
+            "trial": "benchmark-phase1/trials/java-vague-native-1",
+            "raw_tokens": 100642,
+            "input_tokens": 96903,
+            "cached_input_tokens": 92800,
+            "uncached_input_tokens": 4103,
+            "output_tokens": 3739,
+            "uncached_input_plus_output": 7842,
+            "seconds": 83.139,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": null,
+            "original_goal_preserved": null,
+            "usage_complete": true
+          },
+          {
+            "trial": "benchmark-phase1/trials/java-vague-native-2",
+            "raw_tokens": 125055,
+            "input_tokens": 121327,
+            "cached_input_tokens": 114048,
+            "uncached_input_tokens": 7279,
+            "output_tokens": 3728,
+            "uncached_input_plus_output": 11007,
+            "seconds": 84.663,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": null,
+            "original_goal_preserved": null,
+            "usage_complete": true
+          }
+        ]
+      }
+    },
+    "typescript-vague": {
+      "candidate": {
+        "n": 2,
+        "raw_tokens_mean": 50848,
+        "input_tokens_mean": 48612,
+        "cached_input_tokens_mean": 43584,
+        "uncached_input_plus_output_mean": 7264,
+        "output_tokens_mean": 2236,
+        "seconds_mean": 46.284410734497214,
+        "correct": 2,
+        "closed": 2,
+        "goal_preserved": 2,
+        "usage_complete": true,
+        "trials": [
+          {
+            "trial": "continuation-screen3/trials/typescript-vague-candidate-1",
+            "raw_tokens": 50739,
+            "input_tokens": 48558,
+            "cached_input_tokens": 44672,
+            "uncached_input_tokens": 3886,
+            "output_tokens": 2181,
+            "uncached_input_plus_output": 6067,
+            "seconds": 45.87,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          },
+          {
+            "trial": "continuation-screen4/trials/typescript-vague-candidate-2",
+            "raw_tokens": 50957,
+            "input_tokens": 48666,
+            "cached_input_tokens": 42496,
+            "uncached_input_tokens": 6170,
+            "output_tokens": 2291,
+            "uncached_input_plus_output": 8461,
+            "seconds": 46.699,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          }
+        ]
+      },
+      "current": {
+        "n": 2,
+        "raw_tokens_mean": 71113.5,
+        "input_tokens_mean": 68666.5,
+        "cached_input_tokens_mean": 60352,
+        "uncached_input_plus_output_mean": 10761.5,
+        "output_tokens_mean": 2447,
+        "seconds_mean": 52.87076864300252,
+        "correct": 2,
+        "closed": 2,
+        "goal_preserved": 2,
+        "usage_complete": true,
+        "trials": [
+          {
+            "trial": "benchmark-phase1/trials/typescript-vague-current-1",
+            "raw_tokens": 91086,
+            "input_tokens": 88539,
+            "cached_input_tokens": 78208,
+            "uncached_input_tokens": 10331,
+            "output_tokens": 2547,
+            "uncached_input_plus_output": 12878,
+            "seconds": 55.742,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          },
+          {
+            "trial": "continuation-confirmation1/trials/typescript-vague-current-2",
+            "raw_tokens": 51141,
+            "input_tokens": 48794,
+            "cached_input_tokens": 42496,
+            "uncached_input_tokens": 6298,
+            "output_tokens": 2347,
+            "uncached_input_plus_output": 8645,
+            "seconds": 49.999,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          }
+        ]
+      },
+      "previous": {
+        "n": 2,
+        "raw_tokens_mean": 50881,
+        "input_tokens_mean": 48749.5,
+        "cached_input_tokens_mean": 41920,
+        "uncached_input_plus_output_mean": 8961,
+        "output_tokens_mean": 2131.5,
+        "seconds_mean": 45.989538023499335,
+        "correct": 2,
+        "closed": 2,
+        "goal_preserved": 2,
+        "usage_complete": true,
+        "trials": [
+          {
+            "trial": "benchmark-phase1/trials/typescript-vague-previous-1",
+            "raw_tokens": 50972,
+            "input_tokens": 48797,
+            "cached_input_tokens": 44800,
+            "uncached_input_tokens": 3997,
+            "output_tokens": 2175,
+            "uncached_input_plus_output": 6172,
+            "seconds": 47.508,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          },
+          {
+            "trial": "benchmark-phase1/trials/typescript-vague-previous-2",
+            "raw_tokens": 50790,
+            "input_tokens": 48702,
+            "cached_input_tokens": 39040,
+            "uncached_input_tokens": 9662,
+            "output_tokens": 2088,
+            "uncached_input_plus_output": 11750,
+            "seconds": 44.471,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          }
+        ]
+      },
+      "native": {
+        "n": 2,
+        "raw_tokens_mean": 99351.5,
+        "input_tokens_mean": 96183.5,
+        "cached_input_tokens_mean": 91136,
+        "uncached_input_plus_output_mean": 8215.5,
+        "output_tokens_mean": 3168,
+        "seconds_mean": 65.65190464699845,
+        "correct": 2,
+        "closed": 0,
+        "goal_preserved": 0,
+        "usage_complete": true,
+        "trials": [
+          {
+            "trial": "benchmark-phase1/trials/typescript-vague-native-1",
+            "raw_tokens": 98231,
+            "input_tokens": 95382,
+            "cached_input_tokens": 88960,
+            "uncached_input_tokens": 6422,
+            "output_tokens": 2849,
+            "uncached_input_plus_output": 9271,
+            "seconds": 54.635,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": null,
+            "original_goal_preserved": null,
+            "usage_complete": true
+          },
+          {
+            "trial": "continuation-confirmation1/trials/typescript-vague-native-2",
+            "raw_tokens": 100472,
+            "input_tokens": 96985,
+            "cached_input_tokens": 93312,
+            "uncached_input_tokens": 3673,
+            "output_tokens": 3487,
+            "uncached_input_plus_output": 7160,
+            "seconds": 76.669,
+            "independent_judge_passed": true,
+            "judge_groups": null,
+            "judge_group_total": null,
+            "certified_closure": null,
+            "original_goal_preserved": null,
+            "usage_complete": true
+          }
+        ]
+      }
+    },
+    "flowdesk": {
+      "candidate": {
+        "n": 2,
+        "raw_tokens_mean": 89523.5,
+        "input_tokens_mean": 83859.5,
+        "cached_input_tokens_mean": 70656,
+        "uncached_input_plus_output_mean": 18867.5,
+        "output_tokens_mean": 5664,
+        "seconds_mean": 97.20827618900148,
+        "correct": 2,
+        "closed": 2,
+        "goal_preserved": 2,
+        "usage_complete": true,
+        "trials": [
+          {
+            "trial": "ambitious-screen/trials/flowdesk-candidate-1",
+            "raw_tokens": 97628,
+            "input_tokens": 90822,
+            "cached_input_tokens": 76928,
+            "uncached_input_tokens": 13894,
+            "output_tokens": 6806,
+            "uncached_input_plus_output": 20700,
+            "seconds": 128.149,
+            "independent_judge_passed": true,
+            "judge_groups": 26,
+            "judge_group_total": 26,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          },
+          {
+            "trial": "ambitious-confirmation/trials/flowdesk-candidate-2",
+            "raw_tokens": 81419,
+            "input_tokens": 76897,
+            "cached_input_tokens": 64384,
+            "uncached_input_tokens": 12513,
+            "output_tokens": 4522,
+            "uncached_input_plus_output": 17035,
+            "seconds": 66.268,
+            "independent_judge_passed": true,
+            "judge_groups": 26,
+            "judge_group_total": 26,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          }
+        ]
+      },
+      "current": {
+        "n": 2,
+        "raw_tokens_mean": 86793,
+        "input_tokens_mean": 79794.5,
+        "cached_input_tokens_mean": 66496,
+        "uncached_input_plus_output_mean": 20297,
+        "output_tokens_mean": 6998.5,
+        "seconds_mean": 119.77602167499572,
+        "correct": 2,
+        "closed": 2,
+        "goal_preserved": 2,
+        "usage_complete": true,
+        "trials": [
+          {
+            "trial": "ambitious-confirmation/trials/flowdesk-current-1",
+            "raw_tokens": 84383,
+            "input_tokens": 78401,
+            "cached_input_tokens": 70400,
+            "uncached_input_tokens": 8001,
+            "output_tokens": 5982,
+            "uncached_input_plus_output": 13983,
+            "seconds": 109.75,
+            "independent_judge_passed": true,
+            "judge_groups": 26,
+            "judge_group_total": 26,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          },
+          {
+            "trial": "ambitious-confirmation/trials/flowdesk-current-2",
+            "raw_tokens": 89203,
+            "input_tokens": 81188,
+            "cached_input_tokens": 62592,
+            "uncached_input_tokens": 18596,
+            "output_tokens": 8015,
+            "uncached_input_plus_output": 26611,
+            "seconds": 129.802,
+            "independent_judge_passed": true,
+            "judge_groups": 26,
+            "judge_group_total": 26,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          }
+        ]
+      },
+      "previous": {
+        "n": 2,
+        "raw_tokens_mean": 85176,
+        "input_tokens_mean": 78967.5,
+        "cached_input_tokens_mean": 61056,
+        "uncached_input_plus_output_mean": 24120,
+        "output_tokens_mean": 6208.5,
+        "seconds_mean": 78.5126410039993,
+        "correct": 2,
+        "closed": 2,
+        "goal_preserved": 2,
+        "usage_complete": true,
+        "trials": [
+          {
+            "trial": "ambitious-confirmation/trials/flowdesk-previous-1",
+            "raw_tokens": 85103,
+            "input_tokens": 78927,
+            "cached_input_tokens": 64640,
+            "uncached_input_tokens": 14287,
+            "output_tokens": 6176,
+            "uncached_input_plus_output": 20463,
+            "seconds": 88.125,
+            "independent_judge_passed": true,
+            "judge_groups": 26,
+            "judge_group_total": 26,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          },
+          {
+            "trial": "ambitious-confirmation/trials/flowdesk-previous-2",
+            "raw_tokens": 85249,
+            "input_tokens": 79008,
+            "cached_input_tokens": 57472,
+            "uncached_input_tokens": 21536,
+            "output_tokens": 6241,
+            "uncached_input_plus_output": 27777,
+            "seconds": 68.9,
+            "independent_judge_passed": true,
+            "judge_groups": 26,
+            "judge_group_total": 26,
+            "certified_closure": true,
+            "original_goal_preserved": true,
+            "usage_complete": true
+          }
+        ]
+      },
+      "native_historical": {
+        "n": 1,
+        "raw_tokens_mean": 673953,
+        "uncached_input_plus_output_mean": 57249,
+        "seconds_mean": 314.5819306220001,
+        "correct": 26,
+        "closed": 0,
+        "goal_preserved": null,
+        "usage_complete": true,
+        "trials": [
+          {
+            "source": "/workspace/goalpilot-research/promotion-190/candidate/reports/engine-direct-reading-2026-10-22/records/flowdesk-native-codex.json",
+            "model": "gpt-6.1-sol",
+            "exact_case": "flowdesk",
+            "seconds": 314.5819306220001,
+            "raw_tokens": 673953,
+            "input_tokens": 660993,
+            "cached_input_tokens": 616704,
+            "uncached_input_plus_output": 57249,
+            "usage_complete": true,
+            "judge_passes": 26,
+            "judge_total": 26,
+            "artifact_success": true,
+            "normal_exit": false,
+            "status": "blocked",
+            "completion_interpretation": "All hidden behavior groups passed, but the caller exited blocked and did not complete/hand off the goal; counted as artifact pass, not correct goal closure. Previous-day, not contemporaneous."
+          }
+        ]
+      }
+    }
+  },
+  "aggregate_equal_case_means": {
+    "candidate": {
+      "raw_tokens_mean": 63973.666666666664,
+      "uncached_input_plus_output_mean": 10875.0,
+      "seconds_mean": 64.07019732783131,
+      "case_means_sum": {
+        "raw_tokens_mean": 191921.0,
+        "uncached_input_plus_output_mean": 32625.0,
+        "seconds_mean": 192.21059198349394
+      },
+      "correct": 6,
+      "closed": 6,
+      "original_goal_preserved": 6
+    },
+    "current": {
+      "raw_tokens_mean": 72939.16666666667,
+      "uncached_input_plus_output_mean": 13504.5,
+      "seconds_mean": 74.54967548650045,
+      "case_means_sum": {
+        "raw_tokens_mean": 218817.5,
+        "uncached_input_plus_output_mean": 40513.5,
+        "seconds_mean": 223.64902645950133
+      },
+      "correct": 6,
+      "closed": 6,
+      "original_goal_preserved": 6
+    },
+    "previous": {
+      "raw_tokens_mean": 70792.0,
+      "uncached_input_plus_output_mean": 14024.0,
+      "seconds_mean": 63.12177022716666,
+      "case_means_sum": {
+        "raw_tokens_mean": 212376,
+        "uncached_input_plus_output_mean": 42072,
+        "seconds_mean": 189.36531068149998
+      },
+      "correct": 6,
+      "closed": 6,
+      "original_goal_preserved": 6
+    }
+  },
+  "candidate_change_pct_vs_1_9": {
+    "uncached_input_plus_output": -22.45436394751854,
+    "seconds": 1.5025356501431997,
+    "raw_tokens_descriptive_only": -9.631502617998267
+  },
+  "candidate_change_pct_vs_1_10": {
+    "uncached_input_plus_output": -19.47128734866156,
+    "seconds": -14.05704061121873,
+    "raw_tokens_descriptive_only": -12.291749974293653
+  },
+  "uncached_change_by_case_pct_vs_1_9": {
+    "java-vague": -27.77777777777778,
+    "typescript-vague": -18.937618569356097,
+    "flowdesk": -21.776533996683245
+  },
+  "uncached_change_by_case_pct_vs_1_10": {
+    "java-vague": -31.32205182443152,
+    "typescript-vague": -32.50011615481113,
+    "flowdesk": -7.042912745725971
+  },
+  "native_matched_small_tasks": {
+    "candidate_uncached_sum": 13757.5,
+    "native_uncached_sum": 17640.0,
+    "uncached_change_pct": -22.009637188208618,
+    "candidate_seconds_sum": 95.00231579449246,
+    "native_seconds_sum": 149.55306458999985,
+    "time_change_pct": -36.47584818476199,
+    "native_correct": "4/4 independent behavioral judges; no GoalPilot receipt applies"
+  },
+  "native_flowdesk_historical": {
+    "source": "/workspace/goalpilot-research/promotion-190/candidate/reports/engine-direct-reading-2026-10-22/records/flowdesk-native-codex.json",
+    "model": "gpt-6.1-sol",
+    "exact_case": "flowdesk",
+    "seconds": 314.5819306220001,
+    "raw_tokens": 673953,
+    "input_tokens": 660993,
+    "cached_input_tokens": 616704,
+    "uncached_input_plus_output": 57249,
+    "usage_complete": true,
+    "judge_passes": 26,
+    "judge_total": 26,
+    "artifact_success": true,
+    "normal_exit": false,
+    "status": "blocked",
+    "completion_interpretation": "All hidden behavior groups passed, but the caller exited blocked and did not complete/hand off the goal; counted as artifact pass, not correct goal closure. Previous-day, not contemporaneous."
+  },
+  "rejected_candidate_screen": [
+    {
+      "trial": "continuation-screen1/trials/typescript-vague-candidate-1",
+      "raw_tokens": 50602,
+      "uncached_input_plus_output": 8234,
+      "seconds": 48.13772425699426,
+      "correct": true,
+      "certified": true,
+      "decision": "Rejected candidate-v1; two-run mean uncached 9,633 and time 55.48s, worse than 1.9 references (8,961 and 45.99s)."
+    },
+    {
+      "trial": "continuation-screen2/trials/typescript-vague-candidate-2",
+      "raw_tokens": 128408,
+      "uncached_input_plus_output": 11032,
+      "seconds": 62.81379326100432,
+      "correct": true,
+      "certified": true,
+      "decision": "Rejected candidate-v1; two-run mean uncached 9,633 and time 55.48s, worse than 1.9 references (8,961 and 45.99s)."
+    }
+  ],
+  "retained_setup_failures": [
+    {
+      "path": "benchmark-phase1/setup_failures/import-path.json",
+      "model_calls": 0,
+      "reason": "Harness initially imported the legacy cases module; corrected before trials."
+    }
+  ],
+  "gates": {
+    "candidate_correct_and_certified": "6/6",
+    "current_correct_and_certified": "6/6",
+    "previous_correct_and_certified": "6/6",
+    "goal_preserved": "6/6 in each GoalPilot arm",
+    "repeated_uncached_reduction_vs_current": true,
+    "repeated_uncached_reduction_vs_1_9": true,
+    "per_case_uncached_reduction_vs_current": true,
+    "per_case_uncached_reduction_vs_1_9": true,
+    "aggregate_time_not_more_than_3pct_slower_vs_1_9": true,
+    "aggregate_time_not_more_than_3pct_slower_vs_current": true,
+    "ambitious_flowdesk_two_runs_pass_26_groups_each": true,
+    "raw_tokens_are_not_used_as_quota_evidence": true
+  },
+  "promotable": true,
+  "limitations": [
+    "Three synthetic task families; the Flowdesk prototype has a detailed README contract despite a vague original goal.",
+    "Only two fresh runs per primary arm and case; cache is uncontrolled, and run order was sequential rather than blind.",
+    "The Flowdesk native Codex record is from the prior day and a separate archived protocol; it is contextual, not part of matched aggregate.",
+    "GoalPilot was faster overall than 1.9 under equal case weighting, but Flowdesk alone averaged 23.8% slower than 1.9; this case-level time regression is visible and offset by Java/TypeScript speedups.",
+    "Raw token differences are descriptive; do not convert them into subscription quota claims."
+  ],
+  "quota_savings_claimed": false,
+  "evidence_archive": {
+    "path": "reports/skill-111-evidence.zip",
+    "sha256": "d8dfa6f619b46942058add967bcc141005c39a6cf372c21642a2647a1d2ac7dd",
+    "bytes": 4372380
+  },
+  "benchmark_path": "reports/skill-111-2026-10-23.json"
+}

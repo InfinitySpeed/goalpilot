@@ -54,7 +54,7 @@ The passive monitor and verification commands run Python and subprocesses, not i
 
 Automatic hook delivery is integrated with Codex on POSIX. Other hosts and Windows use installable adapters with explicit local verification and repair instructions in the calling session. They do not install or depend on Codex hooks. The same engine is bundled for each host; the portable launcher avoids accidentally inheriting a Codex hook binding. See [host adapters](HOSTS.md).
 
-The current [whole-skill benchmark](GENERALIZATION.md) covers Skill 1.8 on Codex POSIX with explicit verification. Other hosts and explicit fallback have local installation/verification coverage, not model-performance evidence. The [older skill benchmark](BENCHMARKS.md) remains a separate archive.
+The current [whole-skill benchmark](PROMOTION-1.11.md) covers Skill 1.11 on Codex POSIX with explicit verification. Other hosts and explicit fallback have local installation/verification coverage, not model-performance evidence. The [older skill benchmark](BENCHMARKS.md) remains a separate archive.
 
 ## Installation portability
 

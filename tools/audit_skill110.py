@@ -12,8 +12,16 @@ def audit(report,evidence,check_source=True):
     summary=summarize(d['rows'])
     if summary!=d['summary']: raise ValueError('Recomputed summary differs')
     if check_source:
-        for name,digest in d['source_files'].items():
-            if sha((ROOT/name).read_bytes())!=digest: raise ValueError('Promoted source differs: '+name)
+        # A later active skill may legitimately replace the routed instructions.
+        # Validate a historical promotion against its frozen evidence snapshot.
+        with zipfile.ZipFile(evidence) as source_archive:
+            for name,digest in d['source_files'].items():
+                current=ROOT/name
+                archived='inputs/current/'+name
+                if current.exists() and sha(current.read_bytes())==digest:
+                    continue
+                if archived not in source_archive.namelist() or sha(source_archive.read(archived))!=digest:
+                    raise ValueError('Promoted source differs: '+name)
     if set(d['source_files'])!={'install.py','integrations/native/native.py','integrations/native/routed-SKILL.md','integrations/native/SKILL.md'}: raise ValueError('Incomplete source identity')
     if d['measured_source_files']['integrations/native/native.py']!=d['source_files']['integrations/native/native.py'] or d['measured_source_files']['integrations/native/routed-SKILL.md']!=d['source_files']['integrations/native/routed-SKILL.md'] or d['measured_source_files']['integrations/native/SKILL.md']!=d['source_files']['integrations/native/SKILL.md']: raise ValueError('Measured runtime source changed')
     current=summary['totals']['current']; previous=summary['totals']['previous']; native=summary['totals']['native']

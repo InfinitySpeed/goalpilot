@@ -1,6 +1,6 @@
 # Skill 1.7.0-r2: measured instruction efficiency
 
-This page records historical **Skill 1.7.0-r2 / engine 0.16.0**. The generalized default is now [Skill 1.8](GENERALIZATION.md). The API/base package remains 1.7.0; r2 identifies the new instruction revision. The frozen experiment called it candidate 1.8.0. That experimental identifier remains in the original protocol; only the publication label changed.
+This page records historical **Skill 1.7.0-r2 / engine 0.16.0**. The generalized default is now [Skill 1.11](PROMOTION-1.11.md). The API/base package remains 1.7.0; r2 identifies the new instruction revision. The frozen experiment called it candidate 1.8.0. That experimental identifier remains in the original protocol; only the publication label changed.
 
 ## What changed
 
