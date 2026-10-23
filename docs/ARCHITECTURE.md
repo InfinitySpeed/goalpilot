@@ -2,8 +2,6 @@
 
 GoalPilot combines instructions for the calling agent with a local Python verification engine. The default path has no hosted GoalPilot service, separate reasoning model or background model fleet.
 
-![GoalPilot backend: one calling agent, local verification and a bounded repair loop.](assets/goalpilot-backend.png)
-
 ```mermaid
 flowchart TD
     U[Full user goal] --> S[Coding-agent inventories quoted requirements]

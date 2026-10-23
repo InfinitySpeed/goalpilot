@@ -11,10 +11,6 @@ GoalPilot preserves your original request, turns it into explicit criteria, reus
 
 [Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PROMOTION-1.11.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
 
-![GoalPilot backend: preserve the original goal, define criteria, implement in the current agent, verify locally, and repair within the same budget.](docs/assets/goalpilot-backend.png)
-
-[Open the full-size backend infographic](docs/assets/goalpilot-backend.png).
-
 ## Measured results
 
 The primary comparison is **GoalPilot 1.11 vs Codex native on the exact same tasks**: a vague Java range-utility repair, a vague TypeScript transactional-store repair, and the ambitious Flowdesk support-platform goal. Each ran twice per arm in fresh Codex app-server sessions, using the same model and effort.
