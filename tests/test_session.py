@@ -277,7 +277,9 @@ class SessionTests(unittest.TestCase):
                 ('mutation', [sys.executable, '-c', "from pathlib import Path;Path('app.py').write_text('changed')"], 'integrity_failed')):
             run = self.root / kind
             gp.start(self.goal, self.repo, run, wall_seconds=30)
-            self.checks[0].update(command=command, timeout_seconds=.1)
+            # Only the deliberate timeout case needs a tiny deadline. Other
+            # scenarios must reach their intended failure, even on a busy runner.
+            self.checks[0].update(command=command, timeout_seconds=.1 if kind=='timeout' else 3)
             self.write_handoff();gp.submit(run, self.handoff)
             if kind == 'mutation':
                 with self.assertRaises(ContractError):gp.verify_session(run)

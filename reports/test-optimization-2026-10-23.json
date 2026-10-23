@@ -166,7 +166,8 @@
     "tests/test_journey_helpers.py": "3095fe0b39b56504748baf4b315ff254e04dbbd3f318a6f2c54ffd51939b8c68",
     "tests/test_portable_engine.py": "26e8b7f9f9aba5ffa58dac84316ea9b28f0750a38d5838d31d7b0e46162f9347",
     "validate.py": "a564829f1ee4d6ab8d71a0d74de82c1bc8d13b5cb6f242b832a331295c7853ce",
-    "tools/test_worker.py": "540f7fc22b6ff46fbbc0876f6182c79d94f2306348f3fd694b4c4f6aca116eac"
+    "tools/test_worker.py": "540f7fc22b6ff46fbbc0876f6182c79d94f2306348f3fd694b4c4f6aca116eac",
+    "tests/test_session.py": "4d4bd621222a1e356c25937b693471bab988937cdf4729534a98c1e9ebda0183"
   },
   "post_measurement_strengthening": "After timing, seed.builder.calls replaces literal1 so unexpected cold calls cannot be masked. The observed seed counter was1 in every measured run; final original/builder gates rerun on the strengthened version.",
   "final_suite": {
@@ -248,5 +249,33 @@
     "checks_total": 2,
     "elapsed_seconds": 54.216,
     "explanation": "Final accounting strengthening subtask retained the original overall deadline; second frozen suite timed out. Not restarted or represented as closed. Final320-test suite and fault checks completed independently."
+  },
+  "ci_flake_fix": {
+    "failed_runs": [
+      39946278365,
+      39951260019
+    ],
+    "cause": "The mutation scenario shared a100ms timeout with the deliberate timeout scenario. Under slow startup the process was killed before modifying source, so no ContractError was expected from the engine.",
+    "change": "Retain100ms only for the intentional timeout; allow3seconds for missing-verifier and source-mutation scenarios. All behavioral assertions unchanged.",
+    "delayed_startup_reproduction": [
+      {
+        "arm": "before",
+        "simulated_startup_delay_seconds": 0.2,
+        "passed": false,
+        "failures": 1,
+        "errors": 0,
+        "output": "F\n======================================================================\nFAIL: test_timeout_missing_verifier_and_mutating_checks_remain_open (delayed_startup_before.SessionTests.test_timeout_missing_verifier_and_mutating_checks_remain_open)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/goalpilot-research/test_session_before_timeout_fix.py\", line 283, in test_timeout_missing_verifier_and_mutating_checks_remain_open\n    with self.assertRaises(ContractError):gp.verify_session(run)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ContractError not raised\n\n----------------------------------------------------------------------\nRan 1 test in 0.936s\n\nFAILED (failures=1)\n"
+      },
+      {
+        "arm": "after",
+        "simulated_startup_delay_seconds": 0.2,
+        "passed": true,
+        "failures": 0,
+        "errors": 0,
+        "output": ".\n----------------------------------------------------------------------\nRan 1 test in 1.031s\n\nOK\n"
+      }
+    ],
+    "source_sha256": "4d4bd621222a1e356c25937b693471bab988937cdf4729534a98c1e9ebda0183",
+    "performance_scope": "This timeout-fixture correction follows timing; the three-pair speed observation applies to the earlier fixture-reuse change, not a separately measured speed gain from changing timeout allowance."
   }
 }
