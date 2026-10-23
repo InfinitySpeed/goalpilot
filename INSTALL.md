@@ -2,7 +2,7 @@
 
 GoalPilot is free for individuals acting on their own behalf; business use requires a separate paid commercial license. Read [licensing terms](docs/LICENSING.md). Installation and doctor checks do not grant business-use rights.
 
-The default is **GoalPilot Skill 1.7.0 / engine 0.16.0**, installed into the current coding agent. Work happens in that calling session; installation and local verification start no coding models. Follow the steps below for normal setup.
+The default is **GoalPilot Skill 1.7.0-r2 / engine 0.16.0**, installed into the current coding agent. Work happens in that calling session; installation and local verification start no coding models. Follow the steps below for normal setup.
 
 `PORTABLE_SKILL.json` records the promoted default and its complete-caller evidence. `--profile legacy` selects the archived Skill 1.3.1 / engine 0.12.1 when explicitly requested. The separately measured standalone controller is optional; do not substitute it for a skill installation.
 

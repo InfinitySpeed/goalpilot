@@ -2,14 +2,14 @@
 
 **A skill that helps coding agents turn ambitious goals into verified results, with less repeated work.**
 
-GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.7.0 with engine 0.16.0**; it does not start a second coding model.
+GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.7.0-r2 with engine 0.16.0**; it does not start a second coding model.
 
 [![Offline checks](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
-[![Skill 1.7.0](https://img.shields.io/badge/Skill-1.7.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
+[![Skill 1.7.0-r2](https://img.shields.io/badge/Skill-1.7.0--r2-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
 [![Engine 0.16.0](https://img.shields.io/badge/Engine-0.16.0-334155)](PORTABLE_SKILL.json)
 
-[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PORTABLE-ENGINE.md#measured-results) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
+[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/SKILL-EFFICIENCY.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
 
 ![GoalPilot backend: preserve the original goal, define criteria, implement in the current agent, verify locally, and repair within the same budget.](docs/assets/goalpilot-backend.png)
 
@@ -17,26 +17,27 @@ GoalPilot preserves your original request, turns it into explicit criteria, reus
 
 ## Measured results
 
-![Current complete-skill results: historical native Codex versus fresh previous and current GoalPilot, showing elapsed time, raw tokens and verified completion.](docs/assets/portable-benchmark.png)
+![Full-skill results: historical native Codex and fresh interleaved GoalPilot revisions.](docs/assets/portable-benchmark.png)
 
-The complete skill was tested on **20 familiar synthetic Python service goals**, with a fresh interleaved previous-GoalPilot control. Native Codex is a frozen historical control on the same goals.
+**20 familiar synthetic Python service goals**, with a fresh interleaved Skill 1.7.0-r1 control. Native Codex is a frozen historical reference on the same goals.
 
-| Metric — all 20 attempts per arm | Native Codex, historical | Previous skill, rerun | Default Skill 1.7.0 |
+| All 20 attempts per arm | Native Codex, historical | Previous revision, fresh | Default 1.7.0-r2 |
 | :--- | ---: | ---: | ---: |
-| Verified goals | 19/20 | 20/20 | **20/20** |
-| Raw tokens, including cached input | 4,716,581 | 2,639,864 | **1,417,187** |
-| Uncached input + output tokens | 720,421 | 429,176 | **325,091** |
-| Total elapsed time, including independent judging | 65.32 min | 40.95 min | **36.60 min** |
+| Verified goals | 19/20 | 17/20 | **20/20** |
+| Independent business validation | 19/20 | 19/20 | **20/20** |
+| Raw tokens, including cached input | 4,716,581 | 2,298,301 | **1,225,323** |
+| Uncached input + output | 720,421 | 391,869 | **306,027** |
+| Total elapsed time | 65.32 min | 40.57 min | **27.09 min** |
 
-Versus the freshly rerun previous skill: **46.32% fewer raw tokens, 24.25% fewer uncached-input-plus-output tokens and 10.64% less time**, with completion preserved. Versus historical native Codex: **69.95%, 54.87% and 43.97%**, respectively.
+Versus the freshly rerun previous revision: **46.69% fewer raw tokens, 21.91% fewer uncached+output tokens and 33.24% less time**. Only the skill instructions changed; the engine, helpers and adapters are identical. Every attempt, including control failures, is included.
 
-The old skill's original historical run took **25.69 minutes**, faster than the new run; the new run uses 34.12% fewer raw tokens and 5.04% fewer uncached-plus-output tokens than that archive. We do not claim a speed improvement over that historical observation. The separate standalone controller is also faster and cheaper in its own archive; its narrower figures are not full-skill figures.
+Verified closure includes GoalPilot's frozen checks; business correctness is independently scored. Two control artifacts were business-correct but blocked by their own frozen tests; one failed independent business review. [Definitions, individual cases and full controls](docs/SKILL-EFFICIENCY.md).
 
-These are descriptive results on known development cases, not a blind holdout, production guarantee, statistical proof of general superiority or exact subscription-quota savings. The measured host is Codex POSIX with exact native Stop hooks, `gpt-6.1-sol`, low effort and explicit `danger-full-access`. Both contemporary arms use the same process-only duplicate-hook isolation; unrelated policies remain enabled. Other hosts and explicit fallback are locally tested only. [Full controls, completion definition, all research costs and reproducible audit](docs/PORTABLE-ENGINE.md).
+These are known development cases, not a blind holdout, production guarantee, proof of universal superiority or exact subscription-quota savings. Codex POSIX, exact native Stop hooks, `gpt-6.1-sol`, low effort and matched permissions were measured. Other hosts are locally tested only. Historical older GoalPilot and standalone observations remain visible in the [complete comparison](docs/SKILL-EFFICIENCY.md#results).
 
 ## How to use it
 
-These instructions install **Skill 1.7.0 with the frozen engine 0.16.0** in your current coding-agent session.
+These instructions install **Skill 1.7.0-r2 with the frozen engine 0.16.0** in your current coding-agent session.
 
 ### 1. Send this to your coding agent
 
@@ -120,7 +121,7 @@ Optional helpers suit their documented interfaces. `ReplayService` is intended f
 
 ## Development
 
-The engine uses the Python standard library. The current version has **320 passing offline tests, with no skips**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
+The engine uses the Python standard library. The current version has **325 offline tests; no skips on the verified Linux run**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
 
 ```bash
 python3 validate.py

@@ -1,0 +1,565 @@
+{
+  "recorded_calls": 40,
+  "matched_pairs": 20,
+  "primary": {
+    "old": {
+      "executed": 20,
+      "correct": 17,
+      "verified_goals": 17,
+      "seconds": 2434.413035723006,
+      "raw": 2298301,
+      "uncached_plus_output": 391869,
+      "uncached_input": 299395,
+      "output": 92474,
+      "independent_business_correct": 19,
+      "cost_per_verified_goal": {
+        "raw": 135194.17647058822,
+        "uncached_plus_output": 23051.117647058825,
+        "seconds": 143.20076680723565
+      }
+    },
+    "new": {
+      "executed": 20,
+      "correct": 20,
+      "verified_goals": 20,
+      "seconds": 1625.298999825991,
+      "raw": 1225323,
+      "uncached_plus_output": 306027,
+      "uncached_input": 243981,
+      "output": 62046,
+      "independent_business_correct": 20,
+      "cost_per_verified_goal": {
+        "raw": 61266.15,
+        "uncached_plus_output": 15301.35,
+        "seconds": 81.26494999129955
+      }
+    }
+  },
+  "historical_same_cases": {
+    "legacy_1_3_1": {
+      "executed": 20,
+      "correct": 20,
+      "verified_goals": 20,
+      "seconds": 1541.6191867690177,
+      "raw": 2151252,
+      "uncached_plus_output": 342356,
+      "uncached_input": 256343,
+      "output": 86013
+    },
+    "native": {
+      "executed": 20,
+      "correct": 19,
+      "verified_goals": 19,
+      "seconds": 3919.0774290760055,
+      "raw": 4716581,
+      "uncached_plus_output": 720421,
+      "uncached_input": 499412,
+      "output": 221009
+    }
+  },
+  "historical_current_20": {
+    "executed": 20,
+    "correct": 20,
+    "verified_goals": 20,
+    "seconds": 2195.8252569010037,
+    "raw": 1417187,
+    "uncached_plus_output": 325091,
+    "uncached_input": 238340,
+    "output": 86751
+  },
+  "savings_percent": {
+    "fresh_current": {
+      "seconds": 33.236514265407436,
+      "raw": 46.68570391780711,
+      "uncached_plus_output": 21.905789945109213,
+      "uncached_input": 18.508659129243977,
+      "output": 32.90438393494388
+    },
+    "historical_legacy": {
+      "seconds": -5.428046937606723,
+      "raw": 43.04140100741336,
+      "uncached_plus_output": 10.611468763509324,
+      "uncached_input": 4.822444927304437,
+      "output": 27.86439259181751
+    },
+    "historical_native": {
+      "seconds": 58.5285305218074,
+      "raw": 74.020948649032,
+      "uncached_plus_output": 57.52108836360961,
+      "uncached_input": 51.14634810537192,
+      "output": 71.92603016166763
+    }
+  },
+  "gates": {
+    "complete20pairs": true,
+    "candidate20correct": true,
+    "all_meters_complete": true,
+    "all_installed_profiles_verified": true,
+    "no_completion_regression": true,
+    "raw_saving_at_least10": true,
+    "uncached_plus_output_saving_at_least10": true,
+    "time_regression_at_most3": true,
+    "native_raw_saving_at_least45": true,
+    "native_uncached_saving_at_least45": true,
+    "native_time_saving_at_least25": true
+  },
+  "promotable": true,
+  "strict_correct": {
+    "old": 17,
+    "new": 18
+  },
+  "provider_meter_updates": {
+    "old": 100,
+    "new": 63
+  },
+  "per_case": [
+    {
+      "case": "accounting",
+      "arm": "new",
+      "success": true,
+      "raw": 58025,
+      "uncached_plus_output": 15657,
+      "seconds": 70.8051920120015,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "accounting",
+      "arm": "old",
+      "success": true,
+      "raw": 59468,
+      "uncached_plus_output": 14412,
+      "seconds": 82.42364132600414,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "annotations",
+      "arm": "new",
+      "success": true,
+      "raw": 58067,
+      "uncached_plus_output": 18003,
+      "seconds": 88.71434842099552,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "annotations",
+      "arm": "old",
+      "success": true,
+      "raw": 234704,
+      "uncached_plus_output": 30416,
+      "seconds": 111.68483687900152,
+      "provider_meter_updates": 10
+    },
+    {
+      "case": "clinic",
+      "arm": "new",
+      "success": true,
+      "raw": 58019,
+      "uncached_plus_output": 9507,
+      "seconds": 85.03968867799995,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "clinic",
+      "arm": "old",
+      "success": true,
+      "raw": 59178,
+      "uncached_plus_output": 19498,
+      "seconds": 96.52662120300374,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "documents",
+      "arm": "new",
+      "success": true,
+      "raw": 58720,
+      "uncached_plus_output": 13408,
+      "seconds": 87.2260891750011,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "documents",
+      "arm": "old",
+      "success": true,
+      "raw": 59695,
+      "uncached_plus_output": 10671,
+      "seconds": 114.38305046000096,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "etl",
+      "arm": "new",
+      "success": true,
+      "raw": 59872,
+      "uncached_plus_output": 14560,
+      "seconds": 104.38528420299917,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "etl",
+      "arm": "old",
+      "success": true,
+      "raw": 79168,
+      "uncached_plus_output": 21824,
+      "seconds": 118.86857687599695,
+      "provider_meter_updates": 4
+    },
+    {
+      "case": "flags",
+      "arm": "new",
+      "success": true,
+      "raw": 57672,
+      "uncached_plus_output": 20808,
+      "seconds": 85.0397931410007,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "flags",
+      "arm": "old",
+      "success": true,
+      "raw": 59334,
+      "uncached_plus_output": 14278,
+      "seconds": 68.08049956299874,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "incidents",
+      "arm": "new",
+      "success": true,
+      "raw": 57717,
+      "uncached_plus_output": 17653,
+      "seconds": 82.4745458169964,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "incidents",
+      "arm": "old",
+      "success": true,
+      "raw": 57960,
+      "uncached_plus_output": 18152,
+      "seconds": 96.21203448100277,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "invoices",
+      "arm": "new",
+      "success": true,
+      "raw": 56669,
+      "uncached_plus_output": 8925,
+      "seconds": 69.6287646660021,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "invoices",
+      "arm": "old",
+      "success": true,
+      "raw": 101514,
+      "uncached_plus_output": 13706,
+      "seconds": 139.40826062600172,
+      "provider_meter_updates": 5
+    },
+    {
+      "case": "learning",
+      "arm": "new",
+      "success": true,
+      "raw": 58117,
+      "uncached_plus_output": 12805,
+      "seconds": 88.37883064999914,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "learning",
+      "arm": "old",
+      "success": true,
+      "raw": 58095,
+      "uncached_plus_output": 13167,
+      "seconds": 98.07856197900037,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "loyalty",
+      "arm": "new",
+      "success": true,
+      "raw": 58067,
+      "uncached_plus_output": 18259,
+      "seconds": 61.26704580599835,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "loyalty",
+      "arm": "old",
+      "success": true,
+      "raw": 58689,
+      "uncached_plus_output": 16449,
+      "seconds": 85.7139551850014,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "manufacturing",
+      "arm": "new",
+      "success": true,
+      "raw": 104774,
+      "uncached_plus_output": 28870,
+      "seconds": 88.17018231399925,
+      "provider_meter_updates": 5
+    },
+    {
+      "case": "manufacturing",
+      "arm": "old",
+      "success": true,
+      "raw": 108979,
+      "uncached_plus_output": 13107,
+      "seconds": 126.79332329499812,
+      "provider_meter_updates": 5
+    },
+    {
+      "case": "outbox",
+      "arm": "new",
+      "success": true,
+      "raw": 56814,
+      "uncached_plus_output": 8942,
+      "seconds": 71.12926743899516,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "outbox",
+      "arm": "old",
+      "success": false,
+      "raw": 375651,
+      "uncached_plus_output": 47075,
+      "seconds": 228.37033956499727,
+      "provider_meter_updates": 13
+    },
+    {
+      "case": "procurement",
+      "arm": "new",
+      "success": true,
+      "raw": 58606,
+      "uncached_plus_output": 18542,
+      "seconds": 86.81106183900192,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "procurement",
+      "arm": "old",
+      "success": true,
+      "raw": 133948,
+      "uncached_plus_output": 25404,
+      "seconds": 132.969289648001,
+      "provider_meter_updates": 6
+    },
+    {
+      "case": "rental",
+      "arm": "new",
+      "success": true,
+      "raw": 56687,
+      "uncached_plus_output": 12015,
+      "seconds": 74.37005281399979,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "rental",
+      "arm": "old",
+      "success": true,
+      "raw": 58955,
+      "uncached_plus_output": 10187,
+      "seconds": 100.58783496400429,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "subscriptions",
+      "arm": "new",
+      "success": true,
+      "raw": 56888,
+      "uncached_plus_output": 8888,
+      "seconds": 72.08837145099824,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "subscriptions",
+      "arm": "old",
+      "success": true,
+      "raw": 59810,
+      "uncached_plus_output": 14754,
+      "seconds": 108.09448597499795,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "tickets",
+      "arm": "new",
+      "success": true,
+      "raw": 56616,
+      "uncached_plus_output": 16808,
+      "seconds": 61.03956382400065,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "tickets",
+      "arm": "old",
+      "success": false,
+      "raw": 187038,
+      "uncached_plus_output": 29342,
+      "seconds": 145.48775341299915,
+      "provider_meter_updates": 8
+    },
+    {
+      "case": "timesheets",
+      "arm": "new",
+      "success": true,
+      "raw": 58206,
+      "uncached_plus_output": 12766,
+      "seconds": 88.43616549999933,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "timesheets",
+      "arm": "old",
+      "success": true,
+      "raw": 60002,
+      "uncached_plus_output": 14946,
+      "seconds": 91.48354887700043,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "vault",
+      "arm": "new",
+      "success": true,
+      "raw": 58067,
+      "uncached_plus_output": 9555,
+      "seconds": 92.03707964000205,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "vault",
+      "arm": "old",
+      "success": false,
+      "raw": 346615,
+      "uncached_plus_output": 32119,
+      "seconds": 254.19208909400186,
+      "provider_meter_updates": 12
+    },
+    {
+      "case": "voting",
+      "arm": "new",
+      "success": true,
+      "raw": 58134,
+      "uncached_plus_output": 18070,
+      "seconds": 87.96048506499938,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "voting",
+      "arm": "old",
+      "success": true,
+      "raw": 60760,
+      "uncached_plus_output": 10968,
+      "seconds": 118.87086052999439,
+      "provider_meter_updates": 3
+    },
+    {
+      "case": "warehouse",
+      "arm": "new",
+      "success": true,
+      "raw": 79586,
+      "uncached_plus_output": 21986,
+      "seconds": 80.2971873710012,
+      "provider_meter_updates": 4
+    },
+    {
+      "case": "warehouse",
+      "arm": "old",
+      "success": true,
+      "raw": 78738,
+      "uncached_plus_output": 21394,
+      "seconds": 116.18347178399927,
+      "provider_meter_updates": 4
+    }
+  ],
+  "independent_replay": {
+    "model_calls": 0,
+    "elapsed_seconds": 16.659733022999717,
+    "recorded_replays": 40,
+    "all_consistent": true,
+    "correct_by_arm": {
+      "old": 19,
+      "new": 20
+    }
+  },
+  "completion_definition": "Certified closure requires normal caller exit, frozen GoalPilot checks and goal_complete true, exact original goal bytes and all independent reviewed business groups. Business correctness is reported separately; a frozen authored-test defect can block certification of an otherwise correct artifact.",
+  "limitations": "Single observation per familiar case/arm; no statistical guarantee, no blind holdout, no cross-host/model/quota transfer. Full current callers metered incl preparation/implementation/repairs/closure. Fixtures/export/meta-conversation excluded. Native and legacy controls historical, not rerun.",
+  "candidate_skill_version": "1.7.0",
+  "release_version": "1.7.0-r2",
+  "registered_candidate_id": "1.8.0",
+  "embedded_engine_version": "0.16.0",
+  "evidence_archive": "reports/portable-skill-170-r2-2026-10-23.zip",
+  "evidence_sha256": "65b22b1c7c692fc26ffc398b81225be6d7faecfb42686fa0987c152b95714804",
+  "evidence_bytes": 3867635,
+  "protocol_sha256": "4303c47360d7230ce5f407048fb8c8d0773ecdcf62fb256e82942e86d7dc546b",
+  "skill_sha256": "a30c73507a07c0433a24f00bf5d605110ba9c5f6538504d4ff4b00aa2a5a754e",
+  "measured_profile": "Codex POSIX exact-engine native Stop hooks, gpt-6.1-sol low, danger-full-access; whole caller plus independent grading. No nested model calls.",
+  "research_accounting": {
+    "calls": 46,
+    "known_raw": 3967160,
+    "known_uncached_plus_output": 782264,
+    "meta_conversation_usage": "UNKNOWN",
+    "scope": "Includes earlier rejected short-instruction screen, disciplined pilot and every primary outcome. Historical controls reused, not rebilled. No exact subscription quota conversion."
+  },
+  "promotion_status": "eligible",
+  "post_measurement_metadata_changes": [
+    "Registered experimental candidate ID1.8.0 is published as instruction-only revision1.7.0-r2 of the unchanged1.7.0 API/package and exact engine0.16.0. Only release labels change; candidate SKILL bytes and all efficacy thresholds remain exact.",
+    "Installer doctor checks selected behavior parity;52generated files byte-identical in5local before/after pairs. No new inference; local overhead observations are not a new model-speed claim."
+  ],
+  "public_export": {
+    "original_full_capture_sha256": "7ba136361dafbc997ab8346f95a67d04f8010d13ceb3dd6f9a4a08a496095c40",
+    "all_provider_meters_and_primary_outcomes_retained": true,
+    "passive_raw_command_journals_excluded": true,
+    "prior_research_provider_archive": {
+      "archive": "reports/skill-yield-screen-2026-10-23.tar.xz",
+      "sha256": "8782a207b3b36aeb42aa0a8e9d563aac3c0303f15344af0d3e845bc23f8cb626",
+      "location": "https://github.com/InfinitySpeed/goalpilot/blob/main/reports/skill-yield-screen-2026-10-23.tar.xz",
+      "reason": "All previous public research file bytes are preserved in a separately distributed solid-compressed TAR.XZ; original ZIP retained privately."
+    }
+  },
+  "installer_readiness_validation": {
+    "parity": {
+      "model_calls": 0,
+      "generated_files_byte_identical_all5pairs": true,
+      "generated_file_count": 52,
+      "doctor_seconds": {
+        "before": [
+          0.12217899100141949,
+          0.1604341740021482,
+          0.11925695699756034,
+          0.17786015699675772,
+          0.13534746799996356
+        ],
+        "after": [
+          0.1298193149996223,
+          0.12435285799801932,
+          0.14661898299891618,
+          0.134421602000657,
+          0.14327318199866568
+        ]
+      },
+      "mean_doctor_seconds": {
+        "before": 0.14301554939956987,
+        "after": 0.1356971879991761
+      },
+      "scope": "Installer readiness only; no new model performance measurement. Measured engine/helper/wrapper/instruction behavior output preserved exactly; revision metadata supplied equally to both renderers.",
+      "mean_added_seconds": -0.007318361400393769
+    },
+    "wrong_same_version_reproduction": {
+      "before": {
+        "returncode": 0,
+        "ready": true,
+        "model_calls": 0,
+        "error": null
+      },
+      "after": {
+        "returncode": 1,
+        "ready": false,
+        "model_calls": 0,
+        "error": "Installed behavior differs from the requested profile; reinstall with the selected --profile"
+      }
+    }
+  }
+}

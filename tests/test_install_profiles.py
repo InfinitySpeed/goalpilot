@@ -70,6 +70,30 @@ class InstallProfiles(unittest.TestCase):
             self.assertIn('Installation refused',result.stderr)
             self.assertNotIn('Traceback',result.stderr)
 
+    def test_doctor_rejects_changed_instructions_with_the_same_version(self):
+        with tempfile.TemporaryDirectory()as tmp:
+            target=Path(tmp)/'skill'
+            installed=self.invoke('--host','codex','--target',target)
+            self.assertEqual(installed.returncode,0,installed.stderr)
+            manifest_path=target/'MANIFEST.json';original_manifest=manifest_path.read_bytes()
+            instructions=target/'SKILL.md';original=instructions.read_bytes()
+            instructions.write_bytes(original+b'\nDifferent execution instructions\n')
+            manifest=json.loads(original_manifest)
+            manifest['files']['SKILL.md']=hashlib.sha256(instructions.read_bytes()).hexdigest()
+            manifest_path.write_text(json.dumps(manifest))
+            report=self.invoke('--host','codex','--target',target,'--doctor')
+            self.assertNotEqual(report.returncode,0)
+            self.assertIn('Installed behavior differs',json.loads(report.stdout)['checks'][0]['error'])
+            # A recorded interpreter-version string may predate an in-place Python update.
+            instructions.write_bytes(original);manifest=json.loads(original_manifest)
+            runtime_path=target/'RUNTIME.json';runtime=json.loads(runtime_path.read_text())
+            runtime['python_version']='3.11.0'
+            runtime_path.write_text(json.dumps(runtime,indent=2)+'\n')
+            manifest['files']['RUNTIME.json']=hashlib.sha256(runtime_path.read_bytes()).hexdigest()
+            manifest_path.write_text(json.dumps(manifest))
+            report=self.invoke('--host','codex','--target',target,'--doctor')
+            self.assertEqual(report.returncode,0,report.stderr+report.stdout)
+
     def test_downloadable_package_carries_a_verified_license(self):
         with tempfile.TemporaryDirectory()as tmp:
             root=Path(tmp)

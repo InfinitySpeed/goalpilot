@@ -1,5 +1,11 @@
 # Measurements
 
+## Current instruction revision: 1.7.0-r2
+
+The default is the exact measured r2 instructions with unchanged engine 0.16.0. [Latest 20-goal comparison, definitions and full research costs](docs/SKILL-EFFICIENCY.md). Earlier records below are historical.
+
+## Earlier measurement records
+
 The current complete-skill report is [Skill 1.7.0 / engine 0.16.0](docs/PORTABLE-ENGINE.md#measured-results). It includes the fresh20-goal old/new comparison, historical native/old/standalone controls, provider counters, completion definitions, research costs and limitations.
 
 Recompute all current promotion gates without model calls:

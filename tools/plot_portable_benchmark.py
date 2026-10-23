@@ -13,11 +13,16 @@ def main():
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     from matplotlib.ticker import MaxNLocator
-    audited=subprocess.run([sys.executable,str(ROOT/'tools/audit_portable_invocation.py'),
-        str(ROOT/'reports/portable-skill-170-2026-10-23.zip'),'--require-promotion'],check=True,capture_output=True,text=True)
+    policy=json.loads((ROOT/'PORTABLE_SKILL.json').read_text())
+    revised=policy.get('release_revision',1)>=2
+    archive=ROOT/policy['evidence_archive']
+    auditor='audit_skill_efficiency.py'if revised else'audit_portable_invocation.py'
+    audited=subprocess.run([sys.executable,str(ROOT/'tools'/auditor),
+        str(archive),'--require-promotion'],check=True,capture_output=True,text=True)
     data=json.loads(audited.stdout)
-    names=['Native Codex\n(historical)','Previous skill\n(fresh rerun)','GoalPilot 1.7\n(current)']
-    rows=[data['historical_controls']['native'],data['primary']['old'],data['primary']['new']]
+    names=['Native Codex\n(historical)','Skill 1.7-r1\n(fresh control)','Skill 1.7-r2\n(current)']if revised else['Native Codex\n(historical)','Previous skill\n(fresh rerun)','GoalPilot 1.7\n(current)']
+    controls=data['historical_same_cases'if revised else'historical_controls']
+    rows=[controls['native'],data['primary']['old'],data['primary']['new']]
     colors=['#94a3b8','#334155','#0f9f88']
     plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'svg.fonttype':'none',
         'axes.spines.top':False,'axes.spines.right':False,'axes.spines.left':False,
@@ -35,19 +40,21 @@ def main():
             ax.set_yticks([0,5,10,15,20]);ax.set_ylim(0,24)
         for bar,value in zip(bars,values):
             ax.text(bar.get_x()+bar.get_width()/2,value+max(values)*.025,fmt(value),ha='center',fontweight='bold')
-    gain=data['savings_percent']['contemporary_old']
+    gain=data['savings_percent']['fresh_current'if revised else'contemporary_old']
     fig.text(.06,.94,'GoalPilot | Complete-skill benchmark',fontsize=21,fontweight='bold')
     fig.text(.06,.885,'20 familiar synthetic Python service goals · full caller + independent judging · gpt-6.1-sol / LOW',color='#64748b')
     fig.text(.06,.155,f"Vs fresh old skill: {gain['raw']:.2f}% fewer raw tokens · {gain['uncached_plus_output']:.2f}% fewer uncached + output · {gain['seconds']:.2f}% less time",fontweight='bold')
-    fig.text(.06,.10,'Previous/current skill runs are interleaved; native is historical. The historical old skill was faster than the new run.',fontsize=9,color='#475569')
-    fig.text(.06,.06,'Known development cases, not a blind holdout or exact subscription-quota conversion. Full controls and grading: docs/PORTABLE-ENGINE.md',fontsize=9,color='#64748b')
+    note=('Previous/current revisions are interleaved; native is historical. Business correctness and certified closure are reported separately.'if revised else'Previous/current skill runs are interleaved; native is historical. The historical old skill was faster than the new run.')
+    fig.text(.06,.10,note,fontsize=9,color='#475569')
+    details='docs/SKILL-EFFICIENCY.md'if revised else'docs/PORTABLE-ENGINE.md'
+    fig.text(.06,.06,'Known development cases, not a blind holdout or exact subscription-quota conversion. Full controls and grading: '+details,fontsize=9,color='#64748b')
     fig.subplots_adjust(left=.06,right=.98,top=.77,bottom=.29,wspace=.34)
     target=ROOT/'docs/assets/portable-benchmark'
     for ext in ('png','svg'):fig.savefig(str(target)+'.'+ext,dpi=150,facecolor='white')
     svg=Path(str(target)+'.svg')
     svg.write_text('\n'.join(line.rstrip()for line in svg.read_text().splitlines())+'\n')
     plt.close(fig)
-    receipt={'archive_sha256':hashlib.sha256((ROOT/'reports/portable-skill-170-2026-10-23.zip').read_bytes()).hexdigest(),
+    receipt={'archive_sha256':hashlib.sha256(archive.read_bytes()).hexdigest(),
         'audit_promotable':data['promotable'],'rows':dict(zip(('native_historical','old_current','new_current'),rows)),
         'live_model_calls':0,'figures':['docs/assets/portable-benchmark.png','docs/assets/portable-benchmark.svg']}
     (target.parent/'portable-benchmark-data.json').write_text(json.dumps(receipt,indent=2)+'\n')

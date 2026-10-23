@@ -1,5 +1,5 @@
 {
-  "archive_sha256": "4d648b4a99e5f413ebe7e188502b7cd92c431995243b754401198a8034e279e6",
+  "archive_sha256": "65b22b1c7c692fc26ffc398b81225be6d7faecfb42686fa0987c152b95714804",
   "audit_promotable": true,
   "rows": {
     "native_historical": {
@@ -14,23 +14,35 @@
     },
     "old_current": {
       "executed": 20,
-      "correct": 15,
-      "verified_goals": 20,
-      "seconds": 2457.2931458219937,
-      "raw": 2639864,
-      "uncached_plus_output": 429176,
-      "uncached_input": 335304,
-      "output": 93872
+      "correct": 17,
+      "verified_goals": 17,
+      "seconds": 2434.413035723006,
+      "raw": 2298301,
+      "uncached_plus_output": 391869,
+      "uncached_input": 299395,
+      "output": 92474,
+      "independent_business_correct": 19,
+      "cost_per_verified_goal": {
+        "raw": 135194.17647058822,
+        "uncached_plus_output": 23051.117647058825,
+        "seconds": 143.20076680723565
+      }
     },
     "new_current": {
       "executed": 20,
       "correct": 20,
       "verified_goals": 20,
-      "seconds": 2195.8252569010037,
-      "raw": 1417187,
-      "uncached_plus_output": 325091,
-      "uncached_input": 238340,
-      "output": 86751
+      "seconds": 1625.298999825991,
+      "raw": 1225323,
+      "uncached_plus_output": 306027,
+      "uncached_input": 243981,
+      "output": 62046,
+      "independent_business_correct": 20,
+      "cost_per_verified_goal": {
+        "raw": 61266.15,
+        "uncached_plus_output": 15301.35,
+        "seconds": 81.26494999129955
+      }
     }
   },
   "live_model_calls": 0,

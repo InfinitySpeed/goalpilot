@@ -1,6 +1,6 @@
 # Portable skill with engine 0.16.0
 
-Skill 1.7.0 embeds the exact frozen engine 0.16.0. It reuses that engine inside the calling coding-agent session; it does not launch the standalone Codex controller or a second coding model. The original Skill 1.3.1 / engine 0.12.1 remains available as an immutable comparison and fallback.
+Skill 1.7.0-r2 (base API/package 1.7.0) embeds the exact frozen engine 0.16.0. It reuses that engine inside the calling coding-agent session; it does not launch the standalone Codex controller or a second coding model. The original Skill 1.3.1 / engine 0.12.1 remains available as an immutable comparison and fallback.
 
 ## Install the default skill
 
@@ -47,6 +47,10 @@ Known synthetic service goals used during development are not evidence for arbit
 
 ## Measured results
 
+The current instruction revision is **Skill 1.7.0-r2**, with the unchanged engine 0.16.0. It changes only SKILL.md among49 behavior files and completes 20/20 certified goals. Fresh-r1 savings: 46.69% raw, 21.91% uncached+output and 33.24% time. See the [current full comparison and reproducible audit](SKILL-EFFICIENCY.md). The original r1 figures below remain historical evidence.
+
+## Previous revision: Skill 1.7.0-r1
+
 The primary comparison has **20 goals × two arms = 40 recorded caller invocations**, alternating old/new order per case. Every planned outcome is included once; none was retried or replaced. Both arms use the same model, low effort, execution permissions, budget and exact-owned duplicate-hook isolation. No nested engine model is launched. Time includes the calling thread and independent judging, excluding fixture setup, archive copying and the research meta-conversation.
 
 | Profile | Verified goals | Raw tokens | Uncached input | Output | Uncached + output | Seconds |
@@ -65,7 +69,7 @@ A verified goal means normal session closure plus all independent reviewed behav
 
 The historical annotations/subscriptions grading interpretations are retained unchanged for every arm, with original strict scores available: **18/20** pass the original strict business grader in each contemporary arm; **20/20** pass the documented reviewed grader. No grader was changed for this candidate.
 
-All original promotion gates passed:20/20 new outcomes with exact goals, complete provider meters and installed-source identity; at least 10% time and15% raw and uncached-plus-output gains against contemporary old; at least 25% time and45% on each token metric against historical native. The user waived a significant speed gain after 19 pairs, but the original10% target ultimately passed; that waiver was not needed or applied to the audit.
+All original promotion gates passed: 20/20 new outcomes with exact goals, complete provider meters and installed-source identity; at least 10% time and 15% raw and uncached-plus-output gains against contemporary old; at least 25% time and 45% on each token metric against historical native. The user waived a significant speed gain after 19 pairs, but the original10% target ultimately passed; that waiver was not needed or applied to the audit.
 
 ### Reproduce without spending model quota
 
@@ -81,6 +85,6 @@ The [derived report](../reports/portable-skill-170-2026-10-23.json), [frozen evi
 
 ### Research cost and limitations
 
-The entire adaptation campaign includes **51 metered caller invocations**, including failed/slower prototypes and the discarded duplicate-hook-contaminated cohort: **5,481,429 known raw tokens** and **998,741 known uncached-plus-output tokens**. No provider meter is missing for those calls. This includes the 40 primary calls and11 earlier development/control calls. Reused historical controls were not rerun in those costs. The research meta-conversation has no complete meter, so entire R&D usage and exact subscription quota remain **UNKNOWN**. The internal resource estimate was amended from 5M/800k to 6M/1.2M raw/uncached-plus-output tokens; only resource caps changed, with both protocol hashes retained. Efficacy gates, sources, graders, order and outcomes were unchanged.
+The entire adaptation campaign includes **51 metered caller invocations**, including failed/slower prototypes and the discarded duplicate-hook-contaminated cohort: **5,481,429 known raw tokens** and **998,741 known uncached-plus-output tokens**. No provider meter is missing for those calls. This includes the 40 primary calls and 11 earlier development/control calls. Reused historical controls were not rerun in those costs. The research meta-conversation has no complete meter, so entire R&D usage and exact subscription quota remain **UNKNOWN**. The internal resource estimate was amended from 5M/800k to 6M/1.2M raw/uncached-plus-output tokens; only resource caps changed, with both protocol hashes retained. Efficacy gates, sources, graders, order and outcomes were unchanged.
 
 Known synthetic Python service tasks were used during development, not a blind holdout. Each case/arm was observed once. The result does not establish broad production performance, true rates on arbitrary goals, other providers, other host integrations or a subscription-quota percentage. Criteria links improve traceability but do not prove that every implicit user intent was captured.

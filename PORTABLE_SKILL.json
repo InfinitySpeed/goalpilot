@@ -5,12 +5,12 @@
   "bundle": "skills/goalpilot-016",
   "default": "skills/goalpilot-016",
   "legacy_bundle": "skills/goalpilot",
-  "benchmark": "reports/portable-skill-170-2026-10-23.json",
-  "evidence_archive": "reports/portable-skill-170-2026-10-23.zip",
-  "evidence_sha256": "4d648b4a99e5f413ebe7e188502b7cd92c431995243b754401198a8034e279e6",
-  "skill_sha256": "c173deefab6f89a2b10860a222b562728bc57ce4439bd1a9563135ebb1702cd4",
+  "benchmark": "reports/portable-skill-170-r2-2026-10-23.json",
+  "evidence_archive": "reports/portable-skill-170-r2-2026-10-23.zip",
+  "evidence_sha256": "65b22b1c7c692fc26ffc398b81225be6d7faecfb42686fa0987c152b95714804",
+  "skill_sha256": "a30c73507a07c0433a24f00bf5d605110ba9c5f6538504d4ff4b00aa2a5a754e",
   "measured_files": {
-    "SKILL.md": "c173deefab6f89a2b10860a222b562728bc57ce4439bd1a9563135ebb1702cd4",
+    "SKILL.md": "a30c73507a07c0433a24f00bf5d605110ba9c5f6538504d4ff4b00aa2a5a754e",
     "agents/openai.yaml": "c50de757d235715e766a353edbae96b77ca288079d0577d2aa05552ddff0327f",
     "references/baseline.json": "3a30ca06d53f2cac57984e045198fc4b41643bb0a74d0fe87c1e90e5d611ed6b",
     "references/caller-invocation.json": "2de295b7576f86fa0681f1e50b7b87acbf58a4e3f26b1c3d94d4d77ce58db727",
@@ -60,18 +60,25 @@
     "scripts/host.py": "2b5c10aaeccee7589164281f5738e32c60fa794818e75cb235d68a31af234c2f",
     "scripts/install.py": "f16c098daf916b289bc799d39a60b190e9887d4ad3ee3f296e4c6a954651eeb2"
   },
-  "promotion_rule": "All original registered efficacy gates passed:20/20 verified new goals, >=10% current-old time gain, >=15% raw and uncached+output gain; >=25% historical-native time and >=45% each historical-native token metric; installed identity and complete provider meters.",
+  "promotion_rule": "Preregistered20fresh interleaved pairs: candidate20/20 verified, complete provider meters, >=10%raw and uncached+output savings vsSkill1.7.0-r1; no >3%elapsed-time or completion regression. Historical native >=45%both token savings and>=25%time saving. All attempts included, no replacements.",
   "user_speed_waiver": {
-    "instruction": "J'accepterai m\u00eame sans gain significatif de vitesse",
-    "completed_pairs_when_received": 19,
-    "needed_to_promote": false,
-    "original_speed_target_passed": true
+    "instruction": "J\u2019accepterai m\u00eame sans gain significatif de vitesse",
+    "applied_before_outcomes": true,
+    "effect": "Preregistered current gate allows at most3%time regression; both token savings and20/20completion remain mandatory."
   },
   "post_measurement_changes": [
-    "Default installation selection and generic meter-scope metadata; no measured instructions, wrappers, helper or engine changes.",
-    "Manifest release labels and packaging aliases added after measurement.",
-    "Portable offline test matrix parallelized without changing its assertions.",
-    "Repository installer source-collision and selected-profile checks, bootstrap profile forwarding and CLI diagnostics tightened after measurement; prepare_bundle output and measured behavior files remain unchanged.",
-    "Personal/commercial licensing added at repository level; installed and downloadable packages carry an additional LICENSE file. All original measured behavior files remain byte-identical."
-  ]
+    "Revision labels/manifests/documentation added after measurement; all49measured behavior files match the frozen experiment with only SKILL.md changed fromr1.",
+    "Installer doctor now compares selected behavior files rather than only version labels. Generated behavior files remain byte-identical to the frozen installer; locally verified without additional model calls."
+  ],
+  "release_revision": 2,
+  "release_version": "1.7.0-r2",
+  "release_tag": "skill-v1.7.0-r2",
+  "registered_candidate_id": "1.8.0",
+  "previous_promotion": {
+    "release_tag": "skill-v1.7.0-r1",
+    "benchmark": "reports/portable-skill-170-2026-10-23.json",
+    "evidence_archive": "reports/portable-skill-170-2026-10-23.zip",
+    "evidence_sha256": "4d648b4a99e5f413ebe7e188502b7cd92c431995243b754401198a8034e279e6",
+    "skill_sha256": "c173deefab6f89a2b10860a222b562728bc57ce4439bd1a9563135ebb1702cd4"
+  }
 }

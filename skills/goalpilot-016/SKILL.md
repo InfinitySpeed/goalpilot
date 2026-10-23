@@ -12,6 +12,10 @@ GP = `scripts/host.py` beside this file. Build HERE; no nested agent/model/contr
    Or use --goal-file for a supplied UTF-8 file. Begin saves the goal and prepares paths;
    do not mkdir RUN or write a separate goal file. RUN outside REPO; forward requested budgets.
    Resume existing evidence with status/finish, never reset. Helper collision: same begin without --helpers.
+
+Execution discipline: after begin supplies complete context, the NEXT command should write the implementation, tests and criteria and invoke deliver. Read an extra file only to resolve a named missing requirement/API detail; never reread this skill or supplied helper signatures. Avoid exploratory search when the provided contract suffices.
+Write only the necessary implementation, one comprehensive business-journey test plus specific risk tests, and criteria. Leave existing documentation unchanged unless the goal requests documentation. Aim for <=1800 implementation+test tokens using compact idiomatic code and shared/table-driven logic; cover every workflow and guard, correctness first. Do not add one-use abstractions, duplicate tests per transport, or repeated descriptive comments. No progress narration between begin and delivery; final response <=30 words, factual evidence only.
+
 2. Start supplies source/tests/instructions and COMPLETE helper API. Use it directly;
    read only missing/truncated/changed files or a concrete missing API detail.
    No duplicate SDK/helper reads when supplied signatures suffice.

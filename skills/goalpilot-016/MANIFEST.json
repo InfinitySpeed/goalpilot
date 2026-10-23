@@ -41,7 +41,7 @@
     "unchanged_source": true
   },
   "files": {
-    "SKILL.md": "c173deefab6f89a2b10860a222b562728bc57ce4439bd1a9563135ebb1702cd4",
+    "SKILL.md": "a30c73507a07c0433a24f00bf5d605110ba9c5f6538504d4ff4b00aa2a5a754e",
     "agents/openai.yaml": "c50de757d235715e766a353edbae96b77ca288079d0577d2aa05552ddff0327f",
     "references/baseline.json": "3a30ca06d53f2cac57984e045198fc4b41643bb0a74d0fe87c1e90e5d611ed6b",
     "references/caller-invocation.json": "2de295b7576f86fa0681f1e50b7b87acbf58a4e3f26b1c3d94d4d77ce58db727",
@@ -92,10 +92,11 @@
     "scripts/install.py": "f16c098daf916b289bc799d39a60b190e9887d4ad3ee3f296e4c6a954651eeb2"
   },
   "measured_runtime_and_skill_parity": true,
-  "meter_scope": "Full calling thread metered on20 familiar synthetic Python service goals with Codex POSIX exact native Stop hooks, gpt-6.1-sol low. See PORTABLE_SKILL.json and reports/portable-skill-170-2026-10-23.json in the repository. Other hosts and explicit fallback are offline-tested only. Subscription quota and entire research meta-conversation usage remain UNKNOWN.",
+  "meter_scope": "Revision1.7.0-r2: complete calling thread plus independent judging on20 familiar Python service goals. Codex POSIX exact native Stop hooks, gpt-6.1-sol low. See PORTABLE_SKILL.json and reports/portable-skill-170-r2-2026-10-23.json. Other hosts locally tested only; no exact subscription-quota conversion.",
   "post_measurement_metadata_only": [
-    "Default installation selection and generic meter-scope metadata; no measured instructions, wrappers, helper or engine changes.",
-    "Manifest release labels and packaging aliases added after measurement.",
-    "Portable offline test matrix parallelized without changing its assertions."
-  ]
+    "Registered experimental candidate ID1.8.0 published as instruction-only revision1.7.0-r2; API/base package version remains1.7.0. Exact measured SKILL and48other behavior files retained.",
+    "Release labels only; no engine/helper/wrapper changes."
+  ],
+  "release_revision": 2,
+  "release_version": "1.7.0-r2"
 }

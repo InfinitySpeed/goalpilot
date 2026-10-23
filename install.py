@@ -70,7 +70,8 @@ def preflight(target):
             raise ValueError('Destination belongs to another skill: '+str(target))
 
 
-def prepare_bundle(destination,host):
+def prepare_bundle(destination,host,*,python_executable=None,python_version=None):
+    interpreter=python_executable or sys.executable
     shutil.copytree(SOURCE,destination,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
     portable=host!='codex' or os.name=='nt'
     if portable:
@@ -80,9 +81,9 @@ def prepare_bundle(destination,host):
     if (ROOT/'LICENSE').is_file():shutil.copy2(ROOT/'LICENSE',destination/'LICENSE')
     entry='scripts/host.py' if portable or SOURCE.name=='goalpilot-016' else 'scripts/goalpilot.py'
     skill=destination/'SKILL.md';body=skill.read_text(encoding='utf-8')
-    note=('\n## Installed runtime\n\nUse the Python interpreter at `'+sys.executable+'` for EVERY command shown with python3. Do not rely on a system python3. Quote paths containing spaces; in PowerShell prefix a quoted executable with &. RUNTIME.json records the interpreter and entry point. No manual Python setup is needed.\n')
+    note=('\n## Installed runtime\n\nUse the Python interpreter at `'+interpreter+'` for EVERY command shown with python3. Do not rely on a system python3. Quote paths containing spaces; in PowerShell prefix a quoted executable with &. RUNTIME.json records the interpreter and entry point. No manual Python setup is needed.\n')
     skill.write_text(body.replace('# GoalPilot\n','# GoalPilot\n'+note,1),encoding='utf-8')
-    runtime={'python':sys.executable,'python_version':sys.version.split()[0],'entry_point':entry,'host':host,'engine_version':json.loads((destination/'MANIFEST.json').read_text())['engine']['version'],'adapter_version':'1.1.0'}
+    runtime={'python':interpreter,'python_version':python_version or sys.version.split()[0],'entry_point':entry,'host':host,'engine_version':json.loads((destination/'MANIFEST.json').read_text())['engine']['version'],'adapter_version':'1.1.0'}
     (destination/'RUNTIME.json').write_text(json.dumps(runtime,indent=2)+'\n',encoding='utf-8')
     manifest=json.loads((destination/'MANIFEST.json').read_text(encoding='utf-8'))
     manifest.update(host_profile=host,adapter_version='1.1.0',entry_point=entry,
@@ -111,6 +112,12 @@ def doctor(installer,plan):
             if (installed.get('skill_version'),installed['engine']['version'])!=(expected.get('skill_version'),expected['engine']['version']):
                 raise ValueError('Installed profile differs from the requested profile; reinstall with the selected --profile')
             runtime=json.loads((target/'RUNTIME.json').read_text(encoding='utf-8'))
+            with tempfile.TemporaryDirectory(prefix='goalpilot-doctor-')as tmp:
+                prepared=prepare_bundle(Path(tmp)/'expected',host,
+                    python_executable=runtime['python'],python_version=runtime['python_version'])
+                expected_files=json.loads((prepared/'MANIFEST.json').read_text())['files']
+            if installed['files']!=expected_files:
+                raise ValueError('Installed behavior differs from the requested profile; reinstall with the selected --profile')
             p=subprocess.run([runtime['python'],'-X','utf8',str(target/runtime['entry_point']),'session','--help'],capture_output=True,text=True,timeout=20)
             row.update(ready=p.returncode==0,engine_version=runtime['engine_version'],error=None if p.returncode==0 else p.stderr[-1000:])
         except(OSError,ValueError,KeyError,subprocess.TimeoutExpired)as exc:row['error']=str(exc)
