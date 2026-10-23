@@ -1,0 +1,79 @@
+{
+  "case": "procurement",
+  "goal": "Achève cet outil d’achats : budgets, demandes, approbations séparées, engagements et remboursements. Préserve les comptes et tous les contrôles métier.",
+  "cohort": "rc4-confirmation",
+  "status": "scope_passed",
+  "normal_closure": true,
+  "strict_correct": true,
+  "reviewed_correct": true,
+  "success": true,
+  "caller_seconds": 74.11920264899982,
+  "judge_seconds": 0.47425341100006335,
+  "seconds": 74.59345605999988,
+  "usage": {
+    "input_tokens": 36372,
+    "output_tokens": 2531,
+    "cached_input_tokens": 31488,
+    "total_tokens": 38903,
+    "uncached_tokens": 7415,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "strict_judge": {
+    "correct": true,
+    "returncode": 0,
+    "timed_out": false,
+    "seconds": 0.47425341100006335,
+    "groups_passed": [
+      "separation_and_commitment",
+      "budget_atomicity_spend_replay",
+      "refund_and_release",
+      "batch_strict_types_and_budget",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ]
+  },
+  "reviewed_judge": {
+    "correct": true,
+    "returncode": 0,
+    "timed_out": false,
+    "seconds": 0.47425341100006335,
+    "groups_passed": [
+      "separation_and_commitment",
+      "budget_atomicity_spend_replay",
+      "refund_and_release",
+      "batch_strict_types_and_budget",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ]
+  },
+  "calls": 1,
+  "model": {
+    "model": "gpt-6.1-sol",
+    "modelProvider": "openai",
+    "serviceTier": null,
+    "reasoningEffort": "low"
+  },
+  "error": null,
+  "sources_unchanged": true,
+  "artifact_hashes": {
+    "README.md": "19c3f1ad82f2528e06b8760a2aa3ed4255dcc2c4f5d3fdfd9f469347d97ed489",
+    "USER_NOTES.txt": "6fcb52b89d6708f203c151c000759144d8f61fa282557fe2940c6473dbf9e73b",
+    "app.py": "36c261dafafb270d85f3f2ac5865691ddb3951692eb0c632c02eadbd15d6cbaa",
+    "goalpilot_runtime.py": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b",
+    "goalpilot_support.py": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_legacy.py": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0",
+    "tests/test_procurement.py": "f1bcc1818cdb1386d7c50e42b5525d31b22d40e3fb7797e9d8161e690bbe1aeb"
+  }
+}

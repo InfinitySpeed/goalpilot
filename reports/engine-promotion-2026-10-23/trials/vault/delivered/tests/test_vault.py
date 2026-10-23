@@ -1,0 +1,58 @@
+import unittest
+from app import Service
+from goalpilot_support import JourneyMixin, rejects
+
+
+class Vault(JourneyMixin,unittest.TestCase):
+ def setUp(self):self.open_service(Service)
+ def test_journey(self):
+  def flow(c):
+   c('workspace.create',id='w',owner='a',quota=8)
+   c('workspace.create',id='other',owner='z',quota=99)
+   def q(op,**kw):return c(op,workspace='w',actor='a',**kw)
+   def user(op,actor,**kw):return c(op,workspace='w',actor=actor,**kw)
+   for u,r in [('e','editor'),('v','viewer')]:q('member.put',user=u,role=r)
+   rejects(lambda:q('member.remove',user='a'))
+   rejects(lambda:user('quota.get','z'))
+   rejects(lambda:user('document.put','v',id='d',content='',expected_revision=0))
+   one={'id':'d','revision':1,'content':'é','deleted':False,'size':2}
+   self.assertEqual(q('document.put',id='d',content='é',expected_revision=0),one)
+   self.assertEqual(user('document.get','v',id='d'),one)
+   rejects(lambda:q('document.put',id='d',content='x',expected_revision=True))
+   rejects(lambda:q('document.put',id='d',content='x',expected_revision=0))
+   user('document.put','e',id='d',content='abc',expected_revision=1)
+   self.assertEqual(q('quota.get'),{'quota':8,'used':5,'available':3})
+   self.assertEqual(q('document.get',id='d',revision=1),one)
+   rejects(lambda:q('quota.set',quota=4))
+   rejects(lambda:q('document.import',documents=[{'id':'x','content':'a'},{'id':'y','content':'abcd'}]))
+   self.assertEqual(q('document.list'),[dict(one,revision=2,content='abc',size=3)])
+   user('document.delete','e',id='d',expected_revision=2)
+   rejects(lambda:user('document.get','e',id='d',revision=1))
+   rejects(lambda:user('document.list','v',include_deleted=True))
+   rejects(lambda:q('document.put',id='d',content='',expected_revision=2))
+   rejects(lambda:q('document.delete',id='d',expected_revision=2))
+   self.assertEqual(q('document.get',id='d',revision=1),dict(one,deleted=True))
+   self.assertEqual(q('document.list'),[])
+   self.assertEqual(len(q('document.list',include_deleted=True)),1)
+   rejects(lambda:user('document.restore','e',id='d'))
+   q('document.restore',id='d')
+   snapshot=c('backup')
+   q('document.delete',id='d',expected_revision=2); q('document.purge',id='d')
+   self.assertEqual(q('quota.get')['used'],0)
+   c('restore',state=snapshot)
+   self.assertEqual(q('quota.get')['used'],5)
+   self.assertEqual(q('document.import',documents=[{'id':'x','content':'猫'}]),{'imported':1})
+   rejects(lambda:q('document.put',id='x',content='a',expected_revision=1))
+   q('quota.set',quota=10)
+   q('member.put',user='e',role='admin'); q('member.remove',user='a')
+   rejects(lambda:q('quota.get'))
+   self.assertEqual(user('quota.get','e')['used'],8)
+  self.assertJourney(flow)
+ def test_restore_and_race(self):
+  self.c('workspace.create',id='w',owner='a',quota=10)
+  args=dict(workspace='w',actor='a',id='d',content='x',expected_revision=0)
+  results=self.race(*[('document.put',args)]*2)
+  self.assertEqual(sum(ok for ok,result in results),1)
+  self.restart()
+  self.assertEqual(self.c('quota.get',workspace='w',actor='a')['used'],1)
+  self.assertCorruptions(lambda b:b['state']['workspaces']['w'].update(quota=0),lambda b:b['state']['workspaces']['w']['members'].update(a='viewer'),lambda b:b['state']['workspaces']['w']['documents']['d']['versions'][0].update(size=9))

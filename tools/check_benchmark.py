@@ -106,7 +106,19 @@ def load_and_verify():
     reference_files = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in (reference/'goalpilot').glob('*.py')}
     require(reference_files == measurement['engine_files'], 'Archived measured engine differs')
     require(hashlib.sha256((reference/'SKILL.md').read_bytes()).hexdigest() == measurement['skill_sha256'], 'Archived measured instructions differ')
+    bundle = ROOT / 'skills/goalpilot'
+    bundled_files = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+                     for p in (bundle/'runtime/goalpilot').glob('*.py')}
+    manifest = json.loads((bundle/'MANIFEST.json').read_text())
+    bundle_matches = (bundled_files == measurement['engine_files'] and
+        hashlib.sha256((bundle/'SKILL.md').read_bytes()).hexdigest() == measurement['skill_sha256'] and
+        manifest['engine']['version'] == measurement['engine_version'] and
+        manifest['skill_version'] == measurement['skill_version'] and
+        manifest['measured_runtime_and_skill_parity'] is True)
+    require(bundle_matches,
+            'Shipped Skill differs from the measured treatment; run a matched GoalPilot/old/native benchmark before updating its baseline')
     return {'original': original, 'reviewed': reviewed, 'source_matches_measured': current_matches,
+            'shipped_skill_matches_measured': bundle_matches,
             'archived_measured_reference_verified': True}
 
 

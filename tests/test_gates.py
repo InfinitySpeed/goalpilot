@@ -60,6 +60,23 @@ class ExistingGateTests(unittest.TestCase):
         run=self.root/'run';snapshot=capture(self.repo,run/'original-tree')
         self.assertIsNotNone(make_gate(self.repo,run,snapshot))
 
+    def test_exactly_measured_parallel_runner_is_frozen_for_goalpilot_suite(self):
+        from goalpilot.gates import make_gate
+        from goalpilot.originals import capture
+        repo=Path(__file__).resolve().parents[1]
+        run=self.root/'goalpilot-run'
+        snapshot=capture(repo,run/'original-tree',max_files=2000,max_bytes=64000000,max_entries=12000)
+        gate=make_gate(repo,run,snapshot)
+        self.assertIsNotNone(gate)
+        data=json.loads((run/'original-tests/gate.json').read_text())
+        selected=data['parallel_runner']
+        self.assertEqual(selected['jobs'],4)
+        self.assertIn('validate.py',selected['files'])
+        self.assertIn('tools/test_worker.py',selected['files'])
+        self.assertTrue(any(x['path']==selected['files']['validate.py']['path'] and
+                            x['sha256']==selected['files']['validate.py']['sha256']
+                            for x in gate['artifacts']))
+
     def test_original_tests_never_mutate_original_user_data(self):
         (self.repo/'USER.txt').write_text('keep')
         (self.repo/'tests/test_answer.py').write_text('import unittest\nfrom pathlib import Path\nclass Tests(unittest.TestCase):\n def test_sandbox(self):\n  Path("USER.txt").write_text("changed in clone")\n  self.assertTrue(True)\n')

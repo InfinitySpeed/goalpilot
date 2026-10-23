@@ -1,0 +1,47 @@
+import unittest
+from app import Service
+from goalpilot_support import JourneyMixin, rejects
+
+class Workflows(JourneyMixin,unittest.TestCase):
+ def setUp(self): self.open_service(Service)
+ def test_journey(self):
+  def flow(c):
+   self.assertEqual(c('member.create',id='café'),{'id':'café'})
+   a=dict(member='café',id='a',points=5,expires=10,key='a')
+   earned=c('earn',**a)
+   self.assertEqual(earned,dict(id='a',member='café',points=5,remaining=5,expires=10))
+   self.assertEqual(c('earn',**a),earned)
+   rejects(lambda:c('earn',**{**a,'points':True}))
+   rejects(lambda:c('refund',id='x',points=1,now=0,key='a'))
+   c('earn.import',earnings=[dict(member='café',id='b',points=7,expires=20,key='b')])
+   h=c('hold',member='café',id='h',points=8,now=1,ttl=12)
+   self.assertEqual(h,dict(id='h',member='café',points=8,status='held',expires=13,allocations=[{'lot':'a','points':5},{'lot':'b','points':3}]))
+   self.assertEqual(c('balance',member='café',now=10),dict(available=4,held=8,expired=0))
+   rejects(lambda:c('hold',member='café',id='bad',points=5,now=10,ttl=1))
+   r=c('redeem',id='h',now=10,key='r')
+   self.assertEqual(r,dict(id='h',member='café',points=8,status='redeemed',refunded=0))
+   self.assertEqual(c('refund',id='h',points=4,now=11,key='f'),{**r,'refunded':4})
+   self.assertEqual([l['remaining'] for l in c('lot.list',member='café')],[1,7])
+   self.assertEqual(c('redeem',id='h',now=10,key='r'),r)
+   rejects(lambda:c('refund',id='h',points=5,now=11,key='over'))
+   self.assertEqual(c('balance',member='café',now=11),dict(available=7,held=0,expired=1))
+   c('hold',member='café',id='e',points=2,now=11,ttl=1)
+   self.assertEqual(c('hold.get',id='e',now=12)['status'],'expired')
+   c('hold',member='café',id='s',points=2,now=12,ttl=3)
+   released=c('release',id='s',now=12)
+   self.assertEqual(c('release',id='s',now=12),released)
+   self.assertEqual(c('history',member='café'),[dict(kind=k,id=i,points=p) for k,i,p in [('earn','a',5),('earn','b',7),('redeem','h',8),('refund','h',4)]])
+   backup=c('backup')
+   c('restore',state=backup)
+   self.assertEqual(c('backup'),backup)
+  self.assertJourney(flow)
+ def test_atomic_restore_and_race(self):
+  self.c('member.create',id='m')
+  self.c('earn',member='m',id='l',points=5,expires=20,key='k')
+  self.assertRejects('earn.import',earnings=[dict(member='m',id='new',points=1,expires=30,key='new'),dict(member='missing',id='bad',points=1,expires=30,key='bad')])
+  self.assertEqual(len(self.c('lot.list',member='m')),1)
+  self.assertCorruptions(lambda b:b['state']['lots']['l'].__setitem__('remaining',99))
+  results=self.race(*[('hold',dict(member='m',id=i,points=4,now=1,ttl=4)) for i in ('x','y')])
+  self.assertEqual(sum(ok for ok,_ in results),1)
+  self.restart()
+  self.assertEqual(self.c('balance',member='m',now=1),dict(available=1,held=4,expired=0))

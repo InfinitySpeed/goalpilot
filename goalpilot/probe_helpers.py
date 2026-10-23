@@ -8,6 +8,7 @@ from pathlib import Path
 import selectors
 import signal
 import subprocess
+import sys
 import time
 import urllib.error
 import urllib.request
@@ -141,6 +142,29 @@ class JourneyMixin:
                             [(op, {**self._journey_defaults, **data}) for op, data in requests],
                             timeout=timeout)
 
+    def assertJourney(self, flow, argv=None):
+        """Run the same authored flow directly and through both real transports.
+
+        Each gets an independent copy of the fixture, including random-ID and
+        rejection workflows. The original fixture remains unchanged.
+        """
+        argv = list(argv or [sys.executable, 'app.py', '--file', str(self.path)])
+        index = _datastore_index(argv)
+        if Path(argv[index]).resolve() != self.path.resolve():
+            raise ValueError('Journey argv must use this fixture datastore')
+        if self.path.is_symlink() or self.path.exists() and (not self.path.is_file() or self.path.stat().st_size > 4000000):
+            raise ValueError('Expected bounded regular fixture datastore')
+        with tempfile.TemporaryDirectory(prefix='goalpilot-journey-all-') as tmp:
+            fixture = Path(tmp) / 'fixture.json'
+            if self.path.exists():
+                fixture.write_bytes(self.path.read_bytes())
+            direct = Path(tmp) / 'direct.json'
+            if fixture.exists():
+                direct.write_bytes(fixture.read_bytes())
+            flow(dispatch(self._journey_factory(direct).call, **self._journey_defaults))
+            argv[index] = str(fixture)
+            transport_flow(argv, lambda c: flow(dispatch(lambda op, data: c(op, **data), **self._journey_defaults)))
+
 API='''Optional trusted frozen module probe_helpers is available beside every probe.
 Use it instead of recreating subprocess/network/default-field helpers:
 from probe_helpers import dispatch, rejects, jsonl, json_http
@@ -254,8 +278,9 @@ def json_http(argv,*,cwd=None,timeout=7):
             with response:
                 raw=response.read(4*1024*1024+1)
                 if len(raw)>4*1024*1024:raise AssertionError('HTTP probe response too large')
-                if response.status!=status:raise AssertionError(f'HTTP expected {status}, got {response.status}: {raw[:1000]!r}')
-                return json.loads(raw)
+                if status is not None and response.status!=status:raise AssertionError(f'HTTP expected {status}, got {response.status}: {raw[:1000]!r}')
+                decoded = json.loads(raw)
+                return (response.status, decoded) if status is None else decoded
         yield request
     finally:_stop(process)
 
@@ -308,3 +333,65 @@ def transport_journey(argv, packets, *, cwd=None, isolate=True):
                 if request('POST','/api',{'operation':op,'data':data})!={'ok':True,'result':expected}:raise AssertionError('HTTP domain response mismatch')
             if request('POST','/api',[],status=400).get('ok')is not False:raise AssertionError('HTTP accepted malformed request')
             if request('GET','/missing',status=404).get('ok')is not False:raise AssertionError('HTTP accepted unknown path')
+
+
+def _datastore_index(argv):
+    indices = [i for i, value in enumerate(argv) if value == '--file']
+    if len(indices) != 1 or indices[0] + 1 >= len(argv):
+        raise ValueError('Journey needs exactly one --file PATH and no subcommand')
+    return indices[0] + 1
+
+
+def _unwrap_response(response):
+    if not isinstance(response, dict) or type(response.get('ok')) is not bool:
+        raise AssertionError('Invalid transport envelope')
+    if response['ok']:
+        if set(response) != {'ok', 'result'}:
+            raise AssertionError('Invalid success envelope')
+        return response['result']
+    if set(response) != {'ok', 'error'} or not isinstance(response['error'], str) or not response['error']:
+        raise AssertionError('Invalid rejection envelope')
+    raise ValueError(response['error'])
+
+
+def transport_flow(argv, flow, *, cwd=None):
+    """Run flow(c) through JSONL and HTTP on separate initial datastore copies.
+
+    c(operation, **data) returns decoded results and maps domain rejection to
+    ValueError. JSONL uses a fresh bounded process per step, testing restart too.
+    """
+    argv = list(argv)
+    index = _datastore_index(argv)
+    source = Path(argv[index])
+    source = source if source.is_absolute() else Path(cwd or Path.cwd()) / source
+    if source.is_symlink() or source.exists() and (not source.is_file() or source.stat().st_size > 4000000):
+        raise ValueError('Expected bounded regular fixture datastore')
+    snapshot = source.read_bytes() if source.exists() else None
+    with tempfile.TemporaryDirectory(prefix='goalpilot-flow-') as tmp:
+        commands = []
+        for name in ('jsonl', 'http'):
+            target = Path(tmp) / (name + '.json')
+            if snapshot is not None:
+                target.write_bytes(snapshot)
+            command = list(argv)
+            command[index] = str(target)
+            commands.append(command)
+        def line_call(op, **data):
+            rows = jsonl_lines([*commands[0], 'jsonl'], ['bad-json', '[]', json.dumps({'operation': op, 'data': data}, ensure_ascii=False)], cwd=cwd)
+            if len(rows) != 3:
+                raise AssertionError('JSONL response count mismatch')
+            for row in rows[:2]:
+                rejects(lambda: _unwrap_response(row))
+            return _unwrap_response(rows[2])
+        flow(line_call)
+        with json_http([*commands[1], 'serve', '--port', '0'], cwd=cwd) as request:
+            if request('GET', '/health') != {'ok': True}:
+                raise AssertionError('HTTP health failed')
+            rejects(lambda: _unwrap_response(request('POST', '/api', [], status=400)))
+            rejects(lambda: _unwrap_response(request('GET', '/missing', status=404)))
+            def http_call(op, **data):
+                status, row = request('POST', '/api', {'operation': op, 'data': data}, status=None)
+                if not isinstance(row, dict) or status != (200 if row.get('ok') is True else 400):
+                    raise AssertionError('HTTP domain status/envelope mismatch')
+                return _unwrap_response(row)
+            flow(http_call)

@@ -1,0 +1,189 @@
+{
+  "case": "stockroom",
+  "seconds": 204.00734500100225,
+  "status": "scope_passed",
+  "success": true,
+  "error": null,
+  "usage": {
+    "input_tokens": 173844,
+    "output_tokens": 9883,
+    "cached_input_tokens": 164224,
+    "total_tokens": 183727,
+    "uncached_tokens": 19503,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "groups_passed": 26,
+  "groups_total": 26,
+  "judgments": [
+    {
+      "id": "public",
+      "passed": true,
+      "judge_seconds": 0.10932198099908419,
+      "judge_timed_out": false
+    },
+    {
+      "id": "journey",
+      "passed": true,
+      "judge_seconds": 0.09715637900080765,
+      "judge_timed_out": false
+    },
+    {
+      "id": "atomicity",
+      "passed": true,
+      "judge_seconds": 0.0985286030008865,
+      "judge_timed_out": false
+    },
+    {
+      "id": "idempotency",
+      "passed": true,
+      "judge_seconds": 0.11046544100099709,
+      "judge_timed_out": false
+    },
+    {
+      "id": "isolation_or_revision",
+      "passed": true,
+      "judge_seconds": 0.10025494999717921,
+      "judge_timed_out": false
+    },
+    {
+      "id": "pagination_or_schedule",
+      "passed": true,
+      "judge_seconds": 0.09141761099817813,
+      "judge_timed_out": false
+    },
+    {
+      "id": "history_or_artifacts",
+      "passed": true,
+      "judge_seconds": 0.09357771900249645,
+      "judge_timed_out": false
+    },
+    {
+      "id": "recovery_or_returns",
+      "passed": true,
+      "judge_seconds": 0.11738788799993927,
+      "judge_timed_out": false
+    },
+    {
+      "id": "validation",
+      "passed": true,
+      "judge_seconds": 0.11998896300065098,
+      "judge_timed_out": false
+    },
+    {
+      "id": "backup",
+      "passed": true,
+      "judge_seconds": 0.09085271400181227,
+      "judge_timed_out": false
+    },
+    {
+      "id": "concurrency",
+      "passed": true,
+      "judge_seconds": 0.1568909599991457,
+      "judge_timed_out": false
+    },
+    {
+      "id": "transport",
+      "passed": true,
+      "judge_seconds": 0.21049329499874148,
+      "judge_timed_out": false
+    },
+    {
+      "id": "userdata",
+      "passed": true,
+      "judge_seconds": 0.08377602700056741,
+      "judge_timed_out": false
+    },
+    {
+      "id": "public",
+      "passed": true,
+      "judge_seconds": 0.09116465100305504,
+      "judge_timed_out": false
+    },
+    {
+      "id": "journey",
+      "passed": true,
+      "judge_seconds": 0.08620140900166007,
+      "judge_timed_out": false
+    },
+    {
+      "id": "atomicity",
+      "passed": true,
+      "judge_seconds": 0.09830677499849116,
+      "judge_timed_out": false
+    },
+    {
+      "id": "idempotency",
+      "passed": true,
+      "judge_seconds": 0.09113252400129568,
+      "judge_timed_out": false
+    },
+    {
+      "id": "isolation_or_revision",
+      "passed": true,
+      "judge_seconds": 0.08811312099714996,
+      "judge_timed_out": false
+    },
+    {
+      "id": "pagination_or_schedule",
+      "passed": true,
+      "judge_seconds": 0.08831893999740714,
+      "judge_timed_out": false
+    },
+    {
+      "id": "history_or_artifacts",
+      "passed": true,
+      "judge_seconds": 0.10032685500118532,
+      "judge_timed_out": false
+    },
+    {
+      "id": "recovery_or_returns",
+      "passed": true,
+      "judge_seconds": 0.10229675500158919,
+      "judge_timed_out": false
+    },
+    {
+      "id": "validation",
+      "passed": true,
+      "judge_seconds": 0.11330217399881803,
+      "judge_timed_out": false
+    },
+    {
+      "id": "backup",
+      "passed": true,
+      "judge_seconds": 0.10721664299853728,
+      "judge_timed_out": false
+    },
+    {
+      "id": "concurrency",
+      "passed": true,
+      "judge_seconds": 0.1601744969993888,
+      "judge_timed_out": false
+    },
+    {
+      "id": "transport",
+      "passed": true,
+      "judge_seconds": 0.24200141599794733,
+      "judge_timed_out": false
+    },
+    {
+      "id": "userdata",
+      "passed": true,
+      "judge_seconds": 0.09007123899937142,
+      "judge_timed_out": false
+    }
+  ],
+  "calls": [
+    {
+      "strategy": "implement",
+      "usage": {
+        "input_tokens": 173844,
+        "output_tokens": 9883,
+        "cached_input_tokens": 164224
+      },
+      "status": "completed"
+    }
+  ]
+}

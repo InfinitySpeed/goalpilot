@@ -1,0 +1,50 @@
+import unittest
+from app import Service
+from goalpilot_support import JourneyMixin, rejects
+
+class Workflow(JourneyMixin,unittest.TestCase):
+ def setUp(self):self.open_service(Service)
+ def test_journey(self):
+  def flow(c):
+   c('project.put',id='p',budget=60,rate=3)
+   for wid,role in [('w','worker'),('m','manager'),('v','worker')]:c('worker.put',id=wid,role=role)
+   row=dict(id='a',worker='w',project='p',start=0,end=40,note='café')
+   self.assertEqual(c('entry.create',**row),dict(row,status='draft',revision=1,rate=3))
+   rejects(lambda:c('entry.create',**dict(row,id='bad',start=39,end=50)))
+   rejects(lambda:c('entry.import',entries=[dict(row,id='b',start=40,end=50),dict(row,id='c',start=49,end=60)]))
+   self.assertEqual(len(c('entry.list')),1)
+   c('project.put',id='p',budget=60,rate=9)
+   c('entry.submit',id='a',expected_revision=1)
+   rejects(lambda:c('entry.review',id='a',actor='w',approve=True,expected_revision=2))
+   c('entry.review',id='a',actor='m',approve=False,expected_revision=2)
+   c('entry.edit',id='a',start=0,end=40,note='révisé',expected_revision=3)
+   rejects(lambda:c('entry.submit',id='a',expected_revision=3))
+   c('entry.submit',id='a',expected_revision=4)
+   c('entry.review',id='a',actor='m',approve=True,expected_revision=5)
+   c('entry.create',**dict(row,id='b',worker='v',start=0,end=30))
+   c('entry.submit',id='b',expected_revision=1)
+   rejects(lambda:c('entry.review',id='b',actor='m',approve=True,expected_revision=2))
+   self.assertEqual(c('entry.get',id='b')['revision'],2)
+   rejects(lambda:c('project.put',id='p',budget=39,rate=1))
+   rejects(lambda:c('period.lock',id='l',start=0,end=40))
+   c('entry.review',id='b',actor='m',approve=False,expected_revision=2)
+   self.assertEqual(c('entry.delete',id='b',expected_revision=3),{'deleted':'b'})
+   rejects(lambda:c('period.lock',id='l',start=1,end=40))
+   c('period.lock',id='l',start=0,end=40)
+   rejects(lambda:c('entry.create',**dict(row,id='locked')))
+   self.assertEqual(c('invoice.export',lock='l'),{'items':[{'entry':'a','worker':'w','project':'p','minutes':40,'amount':120}],'total':120})
+   self.assertEqual(c('project.report',id='p'),{'approved':40,'remaining':20,'amount':120})
+   saved=c('backup'); c('entry.create',**dict(row,id='next',start=40,end=50)); c('restore',state=saved)
+   self.assertEqual([e['id'] for e in c('entry.list')],['a'])
+   rejects(lambda:c('entry.create',**dict(row,id='bool',start=True)))
+  self.assertJourney(flow)
+ def test_restore_and_race(self):
+  self.c('project.put',id='p',budget=10,rate=2)
+  self.c('worker.put',id='m',role='manager')
+  for wid in ['a','b']:
+   self.c('worker.put',id=wid,role='worker'); self.c('entry.create',id=wid,worker=wid,project='p',start=0,end=10,note='x'); self.c('entry.submit',id=wid,expected_revision=1)
+  results=self.race(*[('entry.review',dict(id=wid,actor='m',approve=True,expected_revision=2)) for wid in ['a','b']])
+  self.assertEqual(sum(ok for ok,_ in results),1)
+  self.assertEqual(self.c('project.report',id='p')['remaining'],0)
+  self.restart(); self.assertEqual(len(self.c('entry.list')),2)
+  self.assertCorruptions(lambda b:b['state']['entries']['a'].__setitem__('rate',-1),lambda b:b['state']['projects']['p'].__setitem__('budget',0))

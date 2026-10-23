@@ -1,0 +1,47 @@
+import unittest
+from app import Service
+from goalpilot_support import JourneyMixin, rejects
+
+class Clinic(JourneyMixin,unittest.TestCase):
+ def setUp(self):self.open_service(Service)
+ def test_journey(self):
+  def flow(c):
+   self.assertEqual(c('practitioner.put',id='d',skills=['care','care']),dict(id='d',skills=['care']))
+   for p in ['p','q']:self.assertEqual(c('patient.put',id=p,consent=True),dict(id=p,consent=True))
+   a=dict(id='a',patient='p',practitioner='d',start=10,end=20,skill='care',fee=101,key='k')
+   original=dict((k,v) for k,v in a.items() if k!='key');original.update(status='confirmed',revision=1,charged=0)
+   self.assertEqual(c('appointment.create',**a),original)
+   rejects(lambda:c('appointment.create',**dict(a,id='b',key='b')))
+   rejects(lambda:c('appointment.create',**dict(a,fee=True)))
+   rejects(lambda:c('practitioner.put',id='d',skills=[]))
+   rejects(lambda:c('appointment.import',appointments=[dict(a,id='b',key='b',start=20,end=30),dict(a,id='c',key='c',start=25,end=35)]))
+   self.assertEqual(c('appointment.list'),[original])
+   moved=c('appointment.move',id='a',start=20,end=30,expected_revision=1)
+   self.assertEqual(moved,dict(original,start=20,end=30,revision=2))
+   rejects(lambda:c('appointment.cancel',id='a',expected_revision=1))
+   self.assertEqual(c('appointment.create',**a),original)
+   self.assertEqual(c('appointment.finish',id='a',expected_revision=2,attended=False),dict(moved,status='missed',charged=50,revision=3))
+   self.assertEqual(c('invoice',patient='p'),dict(charged=50,attended=0,missed=1))
+   rejects(lambda:c('appointment.create',**dict(a,id='b',key='b',start=20,end=30)))
+   b=dict(a,id='b',key='b',start=30,end=40)
+   self.assertEqual(c('appointment.import',appointments=[b]),dict(imported=1))
+   self.assertEqual(c('appointment.cancel',id='b',expected_revision=1)['status'],'cancelled')
+   for i,p in [('w','p'),('x','q')]:c('wait.add',id=i,patient=p,skill='care')
+   self.assertEqual(c('wait.list',skill='care'),[dict(id='w',patient='p',skill='care'),dict(id='x',patient='q',skill='care')])
+   rejects(lambda:c('wait.add',id='y',patient='p',skill='care'))
+   c('wait.remove',id='w');c('patient.put',id='p',consent=False)
+   rejects(lambda:c('appointment.create',**dict(a,id='z',key='z',start=50,end=60)))
+   snapshot=c('backup');c('wait.remove',id='x');c('restore',state=snapshot)
+   self.assertEqual(c('backup'),snapshot)
+  self.assertJourney(flow)
+ def test_restore_and_races(self):
+  self.c('practitioner.put',id='d',skills=['s'])
+  self.c('patient.put',id='p',consent=True)
+  a=dict(id='a',patient='p',practitioner='d',start=0,end=2,skill='s',fee=2,key='a')
+  results=self.race(*[('appointment.create',a)]*2)
+  self.assertTrue(all(ok for ok,result in results))
+  self.assertEqual(len(self.c('appointment.list')),1)
+  results=self.race(('appointment.move',dict(id='a',start=3,end=5,expected_revision=1)),('appointment.cancel',dict(id='a',expected_revision=1)))
+  self.assertEqual(sum(ok for ok,r in results),1)
+  self.assertCorruptions(lambda b:b['state']['appointments']['a'].update(charged=999),lambda b:b['state']['patients']['p'].update(consent='yes'))
+  self.restart();self.assertEqual(len(self.c('appointment.list')),1)

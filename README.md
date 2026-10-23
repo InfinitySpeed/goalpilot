@@ -2,16 +2,52 @@
 
 **Make coding goals verifiable. Spend less effort on repeated work.**
 
-GoalPilot is a skill for coding agents that runs a bounded local work session, protects the original tests, and reports which checks passed or remain blocked. The portable Skill uses the last fully benchmarked engine, 0.12.1; the standalone controller source remains 0.15.0 while its newer goal-inventory protocol is evaluated separately.
+GoalPilot helps coding agents finish verifiable goals with less repeated work. **The main release is engine 0.16.0**, a frozen helper-assisted Codex controller. It preserves original tests, reuses verified infrastructure and checks the delivered work before reporting completion.
 
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
-[![Agent skill](https://img.shields.io/badge/Agent_skill-portable-0F766E)](docs/HOSTS.md)
-[![Skill engine 0.12.1](https://img.shields.io/badge/Skill_engine-0.12.1-334155)](skills/goalpilot/MANIFEST.json)
-[![Standalone engine 0.15.0](https://img.shields.io/badge/Standalone-0.15.0-475569)](goalpilot/__init__.py)
+[![Main release 0.16.0](https://img.shields.io/badge/Main_release-0.16.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
+[![Portable skill](https://img.shields.io/badge/Portable_skill-1.3.1-334155)](docs/HOSTS.md)
 
-[Install with your agent](INSTALL.md) · [Get started](docs/GETTING_STARTED.md) · [Supported hosts](docs/HOSTS.md) · [How it works](docs/ARCHITECTURE.md) · [Benchmark methodology](docs/BENCHMARKS.md) · [Contributing](CONTRIBUTING.md)
+[Start with the main release](#start-with-the-main-release) · [Performance and evidence](docs/ENGINE-PROMOTION.md) · [Portable skill installation](INSTALL.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
+
+## Main release: measured results
+
+On the same **20 synthetic Python service goals**, with historical controls:
+
+| Metric | Native Codex | Previous GoalPilot Skill | Main release 0.16.0 |
+| :--- | ---: | ---: | ---: |
+| Verified goals | 19/20 | 20/20 | **20/20** |
+| Raw input + output tokens, including cached input | 4,716,581 | 2,151,252 | **880,023** |
+| Uncached input + output tokens | 720,421 | 342,356 | **197,655** |
+| Total elapsed time, including independent judging | 65.32 min | 25.69 min | **23.66 min** |
+
+Versus previous GoalPilot: **59.09% fewer raw tokens, 42.27% fewer uncached-input-plus-output tokens and 7.92% less time**. Versus native Codex: **81.34%, 72.56% and 63.78%**, respectively.
+
+The measured configuration uses Codex `gpt-6.1-sol`, low effort and explicit `danger-full-access`. Source, protocol, every attempt and provider meters are archived. These are familiar development cases with historical controls, not a production guarantee or an exact subscription-quota conversion. Completion uses the same documented reviewed grading policy across all three arms; original scores remain available. [Full results, configuration, limitations and offline audit](docs/ENGINE-PROMOTION.md).
+
+## Start with the main release
+
+Install Python 3.11+ and authenticate the Codex CLI, then download this repository or its [latest release](https://github.com/InfinitySpeed/goalpilot/releases/latest). From the repository root:
+
+```bash
+python3 tools/run_engine_profile.py --goal-file /path/to/goal.txt --repo /path/to/project --run-dir /path/to/evidence
+```
+
+This is the canonical entrypoint for the promoted engine. It defaults to `workspace-write`; add `--sandbox danger-full-access` only when you intend to grant the permissions used in the benchmark. Default limits are 600 seconds, two model calls and a soft 700,000 raw-token budget. It requires a bounded Python unittest project with compatible initial tests and rejects helper filename collisions. Other projects may remain unsupported. `goalpilot go` is a separate legacy workflow; use the entrypoint above for this profile.
+
+Ask your agent to prepare it with:
+
+```text
+Set up the main GoalPilot release from https://github.com/InfinitySpeed/goalpilot.
+Follow INSTALL.md's main-release section. Check the launcher help and offline
+release audit without starting a model. Tell me when it is ready.
+```
+
+The portable skill below remains an alternative for working inside an existing coding-agent session. It uses the previous engine and does not inherit the new controller's benchmark results.
 
 ## How to use it
+
+These instructions install the **portable Skill 1.3.1 / engine 0.12.1**, rather than the main standalone controller.
 
 ### 1. Send this to your coding agent
 
@@ -109,13 +145,13 @@ Passing tests establishes evidence for listed criteria. The calling agent still 
 | Other coding agents | Generic bundle and custom native directory or explicit-load fallback; discovery depends on the host. |
 | Other test frameworks, oversized snapshots, unsupported environments | Supported closure is not claimed |
 
-The standalone controller at 0.15.0 and the host adapters have not been model-benchmarked. The portable Skill has been restored to the recorded Codex engine and instruction versions; its new one-goal retest is diagnostic, not a replacement for the published benchmark.
+The main standalone helper-assisted profile has its own [20-goal promotion](docs/ENGINE-PROMOTION.md). Other controller workflows and host adapters have not been model-benchmarked. The portable Skill retains its separately recorded instructions and engine.
 
 Optional helpers suit their documented interfaces. `ReplayService` is intended for new pure applications with a compatible storage format; existing formats and external side effects require a different strategy. See [architecture](docs/ARCHITECTURE.md).
 
 ## Development
 
-The engine uses the Python standard library. The current version has **291 passing offline tests, with no skips**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
+The engine uses the Python standard library. The current version has **304 passing offline tests, with no skips**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
 
 ```bash
 python3 validate.py

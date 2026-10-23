@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "id": "92045284b1ce",
+  "contract": {
+    "goal": "Achève la gestion d’incidents : responsables, SLA, pauses, escalades, résolution et réouverture. Les délais et l’historique doivent rester fiables après reprise.",
+    "repo": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/incidents/repo",
+    "scope": "inferred",
+    "checks": [
+      {
+        "id": "gp-original-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      },
+      {
+        "id": "gp-delivered-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/delivered-gate/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/delivered-gate/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      }
+    ],
+    "assumptions": [
+      "La réouverture exige que le responsable conservé appartienne toujours à l’équipe."
+    ],
+    "limitations": [],
+    "milestones": [],
+    "budget": {
+      "max_calls": 2,
+      "wall_seconds": 600,
+      "attempt_seconds": 600,
+      "max_tokens": 700000
+    },
+    "creation_mode": "direct-first",
+    "model": "gpt-6.1-sol",
+    "artifacts": [
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/original-tests/gate.json",
+        "sha256": "c6ec21c10143ba5a1ff346090d5846eb26d077c57e6436eb803a7c940e7655c9"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/originals/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/originals/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/delivered-gate/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/delivered-gate/original-tests/gate.json",
+        "sha256": "0e38391bd7645fbec0783ee8bcd4298eafd5bff699e64c6d369c5645988864ce"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/delivered-tests/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/delivered-tests/tests/test_incidents.py",
+        "sha256": "fcbb4a002939622a6885c338cc5112551ce076797c37d5928074f6278a91ee63"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/delivered-tests/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/incidents/repo/goalpilot_runtime.py",
+        "sha256": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/incidents/repo/goalpilot_support.py",
+        "sha256": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab"
+      }
+    ],
+    "helper_assisted": true
+  },
+  "contract_hash": "fd4e302d9695aa9d951ae551fbc7d90c6c66cd96467bcda26f6552821297f120",
+  "mode": "supervised",
+  "status": "scope_passed",
+  "created_at": 1792741969.5839658,
+  "active_seconds": 68.64841016599894,
+  "calls": [
+    {
+      "strategy": "implement",
+      "result": {
+        "returncode": 0,
+        "message": "{\"summary\":\"Gestion des incidents implémentée avec responsables, SLA, pauses, escalades, résolution, réouverture et persistance validée par rejeu ; les 3 tests passent, incluant JSONL, HTTP, restauration et concurrence.\",\"assumptions\":[\"La réouverture exige que le responsable conservé appartienne toujours à l’équipe.\"],\"limitations\":[]}",
+        "duration_seconds": 64.20385909999914,
+        "usage": {
+          "input_tokens": 36499,
+          "output_tokens": 2538,
+          "cached_input_tokens": 31488
+        },
+        "timed_out": false,
+        "fatal": false,
+        "simulated": false,
+        "usage_complete": true,
+        "thread_id": "01a167be-947c-7ac1-aa42-49bf02316ab4",
+        "turn_id": "01a167be-94bd-7e02-b31f-eba0dc9fa0b9",
+        "telemetry": {
+          "backend": "app-server",
+          "usage_updates": 2,
+          "command_count": 1,
+          "model": {
+            "model": "gpt-6.1-sol",
+            "modelProvider": "openai",
+            "serviceTier": null,
+            "reasoningEffort": "low"
+          },
+          "context_prepared": true,
+          "context_seconds": 0.0009523030003038002,
+          "prompt_characters": 13372,
+          "turn_status": "completed",
+          "requested_effort": "low"
+        }
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "checks": [
+        {
+          "id": "gp-original-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_journey (tests.test_incidents.Incidents.test_journey) ... ok\ntest_restore_and_race (tests.test_incidents.Incidents.test_restore_and_race) ... ok\ntest_banner (tests.test_legacy.Legacy.test_banner) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 2.102s\n\nOK\n",
+          "duration_seconds": 2.271016767999754,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/evidence/verification-1/check-1.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        },
+        {
+          "id": "gp-delivered-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_journey (tests.test_incidents.Incidents.test_journey) ... ok\ntest_restore_and_race (tests.test_incidents.Incidents.test_restore_and_race) ... ok\ntest_banner (tests.test_legacy.Legacy.test_banner) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 2.006s\n\nOK\n",
+          "duration_seconds": 2.1691008269999656,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/incidents/engine/evidence/verification-1/check-2.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        }
+      ],
+      "strategy": null,
+      "at": 1792741974.02668
+    }
+  ],
+  "pending": null,
+  "no_progress": 0,
+  "best_passed": 2,
+  "inactive_calls": 0,
+  "simulated": false,
+  "adapter": {
+    "class": "MatchedAdapter",
+    "model": "gpt-6.1-sol"
+  },
+  "usage": {
+    "input_tokens": 36499,
+    "output_tokens": 2538,
+    "cached_input_tokens": 31488,
+    "total_tokens": 39037,
+    "uncached_tokens": 7549,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  }
+}

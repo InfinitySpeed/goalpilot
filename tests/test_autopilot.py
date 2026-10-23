@@ -79,5 +79,53 @@ class AutopilotTests(unittest.TestCase):
             run_autopilot('Make an answer',self.repo,self.root/'run',adapter=actor,wall_seconds=10)
         self.assertEqual(actor.calls,1)
 
+    def original_suite(self):
+        (self.repo/'tests').mkdir()
+        (self.repo/'tests/__init__.py').write_text('')
+        (self.repo/'tests/test_answer.py').write_text("import unittest\nfrom pathlib import Path\nclass Answer(unittest.TestCase):\n def test_answer(self):self.assertEqual(Path('answer').read_text(),'42')\n")
+
+    def test_helpers_freeze_original_and_delivered_behavior(self):
+        self.original_suite()
+        actor=Actor()
+        state=run_autopilot('Make an answer',self.repo,self.root/'run',adapter=actor,wall_seconds=10,helpers=True)
+        self.assertEqual(state['status'],'scope_passed')
+        self.assertTrue(state['contract']['helper_assisted'])
+        self.assertEqual(len(state['contract']['checks']),2)
+        self.assertTrue((self.repo/'goalpilot_runtime.py').is_file())
+        self.assertEqual(set(actor.known_helpers),{'goalpilot_runtime.py','goalpilot_support.py'})
+
+    def test_helpers_reject_collision_before_call_or_project_mutation(self):
+        self.original_suite()
+        original=b'# user module\n'
+        (self.repo/'goalpilot_runtime.py').write_bytes(original)
+        actor=Actor()
+        with self.assertRaises(ContractError):
+            run_autopilot('Make an answer',self.repo,self.root/'run',adapter=actor,helpers=True)
+        self.assertEqual(actor.calls,0)
+        self.assertEqual((self.repo/'goalpilot_runtime.py').read_bytes(),original)
+        self.assertFalse((self.repo/'goalpilot_support.py').exists())
+
+    def test_weakened_original_tests_do_not_produce_a_pass(self):
+        self.original_suite()
+        class Weakener(Actor):
+            def execute(inner,*args,**kwargs):
+                result=super().execute(*args,**kwargs)
+                (self.repo/'tests/test_answer.py').write_text("import unittest\nclass Answer(unittest.TestCase):\n def test_answer(self):self.assertTrue(True)\n")
+                return result
+        state=run_autopilot('Make an answer',self.repo,self.root/'run',adapter=Weakener('wrong'),helpers=True,max_calls=1,wall_seconds=10)
+        self.assertEqual(state['status'],'budget_exhausted')
+        self.assertFalse(state['verifications'][0]['checks'][0]['passed'])
+
+    def test_helpers_tampering_is_rejected_and_usage_retained(self):
+        self.original_suite()
+        class Tamperer(Actor):
+            def execute(inner,*args,**kwargs):
+                result=super().execute(*args,**kwargs)
+                (self.repo/'goalpilot_runtime.py').write_text('# changed')
+                return result
+        with self.assertRaises(ContractError):
+            run_autopilot('Make an answer',self.repo,self.root/'run',adapter=Tamperer(),helpers=True,wall_seconds=10)
+        self.assertTrue((self.root/'run/bootstrap-result.json').is_file())
+
 
 if __name__=='__main__':unittest.main()

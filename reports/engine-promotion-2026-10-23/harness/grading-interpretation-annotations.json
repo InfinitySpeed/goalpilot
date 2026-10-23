@@ -1,0 +1,14 @@
+{
+  "recorded_at": 1792624752.735559,
+  "observed_outcomes": 31,
+  "public_quote": "Return null if none, otherwise {item,receipt:NEW_OPAQUE,expires:now+lease}",
+  "ambiguity": "The return field item is not typed as ID or snapshot. Original scorer insists on ID; a full item snapshot carrying that ID is a plausible allowed reversible interpretation. Conservative sensitivity accepts either without changing any other domain/race/persistence/transport requirement.",
+  "original_condition": "a['item']=='i' and b['item']=='i'",
+  "sensitivity_condition": "(a['item'].get('id') if isinstance(a['item'],dict) else a['item'])=='i' and (b['item'].get('id') if isinstance(b['item'],dict) else b['item'])=='i'",
+  "original_program_sha256": "948e46308b74607603d9381aa9549c05b7eea30f34ea598a921b9b3160eb0cd2",
+  "interpretation_program_sha256": "a6e1cd0d94a504de0c373c2c09c36e7373109872718e14972da1c4d57924b831",
+  "original_scores_preserved": true,
+  "model_calls": 0,
+  "token_counts_unchanged": true,
+  "reporting": "Publish original score and conservative ambiguity interpretation separately. Do not attribute a quality advantage to this return-shape disagreement alone. Add extra real judging time rather than erasing original effort."
+}

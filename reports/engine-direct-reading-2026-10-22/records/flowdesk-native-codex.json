@@ -1,0 +1,270 @@
+{
+  "case": "flowdesk",
+  "mode": "native_goal",
+  "id": "flowdesk-native_goal",
+  "seconds": 314.5819306220001,
+  "calls": [
+    {
+      "strategy": "native_goal",
+      "result": {
+        "returncode": 1,
+        "message": "Implemented all README workflows, restore validation, transactional persistence, and usage instructions. Preserved the original database and USER_NOTES.txt.\n\nValidation: 9 tests passed, covering permissions, ticket lifecycle, CSV, backups, outbox retries, process races, JSONL and HTTP handlers.\n\nGoal remains active: live HTTP verification is incomplete because this environment prohibits local sockets. The live test is skipped; in-memory HTTP handler tests pass.\nStrengthened restore validation to reject audit histories that contradict tickets, comments or revisions. Fixed negative HTTP body lengths and added end-to-end JSONL restart and concurrent initialization tests.\n\nValidation: 10 tests passed; 1 live HTTP test skipped because local sockets remain prohibited. HTTP handler tests pass.\n\nOriginal data remains untouched. Goal stays active pending live HTTP verification.\nImplemented the README workflows and documented local usage. Original notes and unrelated SQLite data remain intact.\n\nLatest verification: 10 tests passed; 1 live HTTP test skipped. HTTP handler tests pass.\n\nGoal marked **blocked**: this environment still rejects local sockets with `PermissionError`, preventing live HTTP verification. Re-run `python -m unittest -v` in an environment that permits loopback sockets to finish that check.",
+        "duration_seconds": 314.549568209,
+        "usage": {
+          "input_tokens": 660993,
+          "output_tokens": 12960,
+          "cached_input_tokens": 616704
+        },
+        "timed_out": false,
+        "fatal": false,
+        "simulated": false,
+        "usage_complete": true,
+        "thread_id": "01a15f3f-757c-7ab0-a164-f38241ff3285",
+        "turn_id": "01a15f44-0e46-7e50-90be-319ea6bda242",
+        "telemetry": {
+          "backend": "app-server-native-goal",
+          "model": {
+            "model": "gpt-6.1-sol",
+            "modelProvider": "openai",
+            "serviceTier": null,
+            "reasoningEffort": null
+          },
+          "native_goal_at_stop": {
+            "threadId": "01a15f3f-757c-7ab0-a164-f38241ff3285",
+            "objective": "Turn this prototype into a complete local multi-team support platform that a small company can actually use end to end. Finish every original workflow, preserve existing data, and make it reliable without asking me to steer the work.\nFollow all original README contracts, finish every workflow, preserve data, resolve reversible ambiguities autonomously. Test meaningful public behavior. No human steering, external services, deployment or credentials. Work only in this repository; do not read benchmark/evaluation sources, references, sibling trials or protocol. Do not launch other agents/model sessions or nested Codex commands. Give a factual handoff.",
+            "status": "blocked",
+            "tokenBudget": null,
+            "tokensUsed": 56184,
+            "timeUsedSeconds": 310,
+            "createdAt": 1792599357,
+            "updatedAt": 1792599667
+          },
+          "cleanup_goal": null,
+          "raw_soft_token_budget_hit": false,
+          "native_turns": [
+            {
+              "id": "01a15f3f-76bb-72d3-be1a-f15b33794fb8",
+              "status": "completed",
+              "error": null
+            },
+            {
+              "id": "01a15f42-6136-7191-a1e2-8109d2d91ac8",
+              "status": "completed",
+              "error": null
+            },
+            {
+              "id": "01a15f44-0e46-7e50-90be-319ea6bda242",
+              "status": "completed",
+              "error": null
+            }
+          ],
+          "usage_updates": 21,
+          "command_count": 17,
+          "context_prepared": false,
+          "context_seconds": 0,
+          "turn_status": "blocked",
+          "error": null
+        }
+      }
+    }
+  ],
+  "error": null,
+  "status": "blocked",
+  "judgments": [
+    {
+      "id": "public",
+      "passed": true,
+      "judge_seconds": 0.11433150099992417,
+      "judge_timed_out": false
+    },
+    {
+      "id": "journey",
+      "passed": true,
+      "judge_seconds": 0.11417617199992947,
+      "judge_timed_out": false
+    },
+    {
+      "id": "atomicity",
+      "passed": true,
+      "judge_seconds": 0.11419392799996331,
+      "judge_timed_out": false
+    },
+    {
+      "id": "idempotency",
+      "passed": true,
+      "judge_seconds": 0.11436615199988864,
+      "judge_timed_out": false
+    },
+    {
+      "id": "isolation_or_revision",
+      "passed": true,
+      "judge_seconds": 0.11494508399994174,
+      "judge_timed_out": false
+    },
+    {
+      "id": "pagination_or_schedule",
+      "passed": true,
+      "judge_seconds": 0.1142984969999361,
+      "judge_timed_out": false
+    },
+    {
+      "id": "history_or_artifacts",
+      "passed": true,
+      "judge_seconds": 0.11444255899994005,
+      "judge_timed_out": false
+    },
+    {
+      "id": "recovery_or_returns",
+      "passed": true,
+      "judge_seconds": 0.1144649320000326,
+      "judge_timed_out": false
+    },
+    {
+      "id": "validation",
+      "passed": true,
+      "judge_seconds": 0.11416289700002835,
+      "judge_timed_out": false
+    },
+    {
+      "id": "backup",
+      "passed": true,
+      "judge_seconds": 0.11445011500006785,
+      "judge_timed_out": false
+    },
+    {
+      "id": "concurrency",
+      "passed": true,
+      "judge_seconds": 0.2683212279999907,
+      "judge_timed_out": false
+    },
+    {
+      "id": "transport",
+      "passed": true,
+      "judge_seconds": 0.2645781670000815,
+      "judge_timed_out": false
+    },
+    {
+      "id": "userdata",
+      "passed": true,
+      "judge_seconds": 0.16464649899990036,
+      "judge_timed_out": false
+    },
+    {
+      "id": "public",
+      "passed": true,
+      "judge_seconds": 0.11482713700002023,
+      "judge_timed_out": false
+    },
+    {
+      "id": "journey",
+      "passed": true,
+      "judge_seconds": 0.16493774200000644,
+      "judge_timed_out": false
+    },
+    {
+      "id": "atomicity",
+      "passed": true,
+      "judge_seconds": 0.16455112699998153,
+      "judge_timed_out": false
+    },
+    {
+      "id": "idempotency",
+      "passed": true,
+      "judge_seconds": 0.1646546600001102,
+      "judge_timed_out": false
+    },
+    {
+      "id": "isolation_or_revision",
+      "passed": true,
+      "judge_seconds": 0.1646045709999271,
+      "judge_timed_out": false
+    },
+    {
+      "id": "pagination_or_schedule",
+      "passed": true,
+      "judge_seconds": 0.16477702500003488,
+      "judge_timed_out": false
+    },
+    {
+      "id": "history_or_artifacts",
+      "passed": true,
+      "judge_seconds": 0.11438247699993553,
+      "judge_timed_out": false
+    },
+    {
+      "id": "recovery_or_returns",
+      "passed": true,
+      "judge_seconds": 0.1644279419999748,
+      "judge_timed_out": false
+    },
+    {
+      "id": "validation",
+      "passed": true,
+      "judge_seconds": 0.11446643099998255,
+      "judge_timed_out": false
+    },
+    {
+      "id": "backup",
+      "passed": true,
+      "judge_seconds": 0.11434129700000994,
+      "judge_timed_out": false
+    },
+    {
+      "id": "concurrency",
+      "passed": true,
+      "judge_seconds": 0.21600755900010427,
+      "judge_timed_out": false
+    },
+    {
+      "id": "transport",
+      "passed": true,
+      "judge_seconds": 0.26447630699999536,
+      "judge_timed_out": false
+    },
+    {
+      "id": "userdata",
+      "passed": true,
+      "judge_seconds": 0.11701258799996594,
+      "judge_timed_out": false
+    }
+  ],
+  "normal_exit": false,
+  "artifact_success": true,
+  "success": false,
+  "usage": {
+    "input_tokens": 660993,
+    "output_tokens": 12960,
+    "cached_input_tokens": 616704,
+    "total_tokens": 673953,
+    "uncached_tokens": 57249,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "human_inputs": 0,
+  "quota_observation": {
+    "windows": [
+      {
+        "bucket": "codex",
+        "window": "primary",
+        "before": {
+          "usedPercent": 58,
+          "resetsAt": 1793119394,
+          "windowDurationMins": 10080
+        },
+        "after": {
+          "usedPercent": 59,
+          "resetsAt": 1793119394,
+          "windowDurationMins": 10080
+        },
+        "same_window": true,
+        "reported_percentage_point_delta": 1,
+        "usable_monotonic_observation": true
+      }
+    ],
+    "exact_attributable_quota_known": false,
+    "limitations": "Integer account-wide percentages; unknown rounding and reporting delay, possible concurrent activity. A zero displayed change does not mean zero quota consumed. Window resets cannot be compared. No exact token-to-quota conversion."
+  },
+  "fatal": false
+}

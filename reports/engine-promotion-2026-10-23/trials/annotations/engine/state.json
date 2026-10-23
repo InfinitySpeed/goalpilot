@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "id": "b9ac064a9a66",
+  "contract": {
+    "goal": "Achève l’annotation de données : jeux, affectations sous bail, votes indépendants, consensus et réouverture. Les contributions et les droits doivent survivre à la reprise.",
+    "repo": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/annotations/repo",
+    "scope": "inferred",
+    "checks": [
+      {
+        "id": "gp-original-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      },
+      {
+        "id": "gp-delivered-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/delivered-gate/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/delivered-gate/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      }
+    ],
+    "assumptions": [
+      "Les créations et mutations renvoient les objets concernés lorsque le README ne précise pas leur retour."
+    ],
+    "limitations": [],
+    "milestones": [],
+    "budget": {
+      "max_calls": 2,
+      "wall_seconds": 600,
+      "attempt_seconds": 600,
+      "max_tokens": 700000
+    },
+    "creation_mode": "direct-first",
+    "model": "gpt-6.1-sol",
+    "artifacts": [
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/original-tests/gate.json",
+        "sha256": "86c2f1c24ac2cf8f475a99bd5b0d48daca90fd480b36340674f8fc7f62cb0387"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/originals/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/originals/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/delivered-gate/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/delivered-gate/original-tests/gate.json",
+        "sha256": "d3c6b77b6ddb50ae352379d3ee11e93b221e0339445893b25d8f81ba4b729ea1"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/delivered-tests/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/delivered-tests/tests/test_annotation.py",
+        "sha256": "7e7155a1f9486e1bfcab599bddc5b0224f7a121a19285c58752163001da334e3"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/delivered-tests/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/annotations/repo/goalpilot_runtime.py",
+        "sha256": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/annotations/repo/goalpilot_support.py",
+        "sha256": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab"
+      }
+    ],
+    "helper_assisted": true
+  },
+  "contract_hash": "fd3621f1ab3f11e5cb64c7f14cd2371921f2bb025d2e2356dc12cff105bc30f1",
+  "mode": "supervised",
+  "status": "scope_passed",
+  "created_at": 1792741563.9701996,
+  "active_seconds": 49.40401241000018,
+  "calls": [
+    {
+      "strategy": "implement",
+      "result": {
+        "returncode": 0,
+        "message": "{\"summary\":\"Annotation implémentée avec baux, votes indépendants, consensus, réouverture et historique persistant ; les 3 tests passent, incluant JSONL, HTTP, restauration et concurrence.\",\"assumptions\":[\"Les créations et mutations renvoient les objets concernés lorsque le README ne précise pas leur retour.\"],\"limitations\":[]}",
+        "duration_seconds": 45.90027172600003,
+        "usage": {
+          "input_tokens": 36507,
+          "output_tokens": 2599,
+          "cached_input_tokens": 29056
+        },
+        "timed_out": false,
+        "fatal": false,
+        "simulated": false,
+        "usage_complete": true,
+        "thread_id": "01a167b8-abcf-76b3-bf3b-3cce41e317d1",
+        "turn_id": "01a167b8-ac35-7640-87f6-09c9a64bd2d6",
+        "telemetry": {
+          "backend": "app-server",
+          "usage_updates": 2,
+          "command_count": 1,
+          "model": {
+            "model": "gpt-6.1-sol",
+            "modelProvider": "openai",
+            "serviceTier": null,
+            "reasoningEffort": "low"
+          },
+          "context_prepared": true,
+          "context_seconds": 0.0011165450000589772,
+          "prompt_characters": 13222,
+          "turn_status": "completed",
+          "requested_effort": "low"
+        }
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "checks": [
+        {
+          "id": "gp-original-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_journey (tests.test_annotation.Annotation.test_journey) ... ok\ntest_race_restore (tests.test_annotation.Annotation.test_race_restore) ... ok\ntest_banner (tests.test_legacy.Legacy.test_banner) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 1.617s\n\nOK\n",
+          "duration_seconds": 1.7704740350000066,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/evidence/verification-1/check-1.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        },
+        {
+          "id": "gp-delivered-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_journey (tests.test_annotation.Annotation.test_journey) ... ok\ntest_race_restore (tests.test_annotation.Annotation.test_race_restore) ... ok\ntest_banner (tests.test_legacy.Legacy.test_banner) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 1.589s\n\nOK\n",
+          "duration_seconds": 1.7290630960005728,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/engine/evidence/verification-1/check-2.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        }
+      ],
+      "strategy": null,
+      "at": 1792741567.472526
+    }
+  ],
+  "pending": null,
+  "no_progress": 0,
+  "best_passed": 2,
+  "inactive_calls": 0,
+  "simulated": false,
+  "adapter": {
+    "class": "MatchedAdapter",
+    "model": "gpt-6.1-sol"
+  },
+  "usage": {
+    "input_tokens": 36507,
+    "output_tokens": 2599,
+    "cached_input_tokens": 29056,
+    "total_tokens": 39106,
+    "uncached_tokens": 10050,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  }
+}

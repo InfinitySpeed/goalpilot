@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "id": "47fde870b95c",
+  "contract": {
+    "goal": "Termine cette plateforme de cours : prérequis, inscriptions, listes d’attente, validation et remboursements. Chaque parcours doit fonctionner de bout en bout.",
+    "repo": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/learning/repo",
+    "scope": "inferred",
+    "checks": [
+      {
+        "id": "gp-original-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      },
+      {
+        "id": "gp-delivered-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/delivered-gate/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/delivered-gate/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      }
+    ],
+    "assumptions": [
+      "Une inscription terminée, même échouée, interdit une nouvelle inscription au même cours, conformément au README."
+    ],
+    "limitations": [],
+    "milestones": [],
+    "budget": {
+      "max_calls": 2,
+      "wall_seconds": 600,
+      "attempt_seconds": 600,
+      "max_tokens": 700000
+    },
+    "creation_mode": "direct-first",
+    "model": "gpt-6.1-sol",
+    "artifacts": [
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/original-tests/gate.json",
+        "sha256": "cb91a8e433012fcd410bd25d780702cfb51681ddb85053871261f2b31b36d798"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/originals/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/originals/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/delivered-gate/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/delivered-gate/original-tests/gate.json",
+        "sha256": "d1b66e11fd2c39a4c8edd59442e34ff3a4c78066810a03be47a631f2db3955e4"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/delivered-tests/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/delivered-tests/tests/test_learning.py",
+        "sha256": "f3ac9f8d3d02d71c47e90da73eddc7b543729de85dc60479828bdab5698eaa94"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/delivered-tests/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/learning/repo/goalpilot_runtime.py",
+        "sha256": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/learning/repo/goalpilot_support.py",
+        "sha256": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab"
+      }
+    ],
+    "helper_assisted": true
+  },
+  "contract_hash": "5c00089b15d3311d18e1d1e8d66e650ae449620afe3c9fd2318a5ceacdab5bc1",
+  "mode": "supervised",
+  "status": "scope_passed",
+  "created_at": 1792741286.6450763,
+  "active_seconds": 63.58404901299991,
+  "calls": [
+    {
+      "strategy": "implement",
+      "result": {
+        "returncode": 0,
+        "message": "{\"summary\":\"Plateforme implémentée : prérequis, inscriptions idempotentes, listes d’attente, validations, remboursements, imports atomiques, sauvegarde/restauration et transports JSONL/HTTP ; les trois tests locaux passent.\",\"assumptions\":[\"Une inscription terminée, même échouée, interdit une nouvelle inscription au même cours, conformément au README.\"],\"limitations\":[]}",
+        "duration_seconds": 59.33336100899987,
+        "usage": {
+          "input_tokens": 36183,
+          "output_tokens": 2399,
+          "cached_input_tokens": 24576
+        },
+        "timed_out": false,
+        "fatal": false,
+        "simulated": false,
+        "usage_complete": true,
+        "thread_id": "01a167b4-3bdf-7453-b788-48abcef00d43",
+        "turn_id": "01a167b4-3c3b-7ff3-9f83-eaa707c74a39",
+        "telemetry": {
+          "backend": "app-server",
+          "usage_updates": 2,
+          "command_count": 1,
+          "model": {
+            "model": "gpt-6.1-sol",
+            "modelProvider": "openai",
+            "serviceTier": null,
+            "reasoningEffort": "low"
+          },
+          "context_prepared": true,
+          "context_seconds": 0.0008230380003624305,
+          "prompt_characters": 13158,
+          "turn_status": "completed",
+          "requested_effort": "low"
+        }
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "checks": [
+        {
+          "id": "gp-original-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_journey (tests.test_learning.Learning.test_journey) ... ok\ntest_restore_and_race (tests.test_learning.Learning.test_restore_and_race) ... ok\ntest_banner (tests.test_legacy.Legacy.test_banner) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 1.934s\n\nOK\n",
+          "duration_seconds": 2.0878821670003163,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/evidence/verification-1/check-1.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        },
+        {
+          "id": "gp-delivered-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_journey (tests.test_learning.Learning.test_journey) ... ok\ntest_restore_and_race (tests.test_learning.Learning.test_restore_and_race) ... ok\ntest_banner (tests.test_legacy.Legacy.test_banner) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 2.008s\n\nOK\n",
+          "duration_seconds": 2.1581638160000693,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/learning/engine/evidence/verification-1/check-2.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        }
+      ],
+      "strategy": null,
+      "at": 1792741290.894122
+    }
+  ],
+  "pending": null,
+  "no_progress": 0,
+  "best_passed": 2,
+  "inactive_calls": 0,
+  "simulated": false,
+  "adapter": {
+    "class": "MatchedAdapter",
+    "model": "gpt-6.1-sol"
+  },
+  "usage": {
+    "input_tokens": 36183,
+    "output_tokens": 2399,
+    "cached_input_tokens": 24576,
+    "total_tokens": 38582,
+    "uncached_tokens": 14006,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "case": "outbox",
+  "goal": "Termine cette messagerie locale durable : publication, déduplication, livraison par baux, nouvelles tentatives et file d’échecs. Rien ne doit disparaître au redémarrage.",
+  "cohort": "rc4-confirmation",
+  "status": "scope_passed",
+  "normal_closure": true,
+  "strict_correct": true,
+  "reviewed_correct": true,
+  "success": true,
+  "caller_seconds": 64.07016267600011,
+  "judge_seconds": 0.4446997189998001,
+  "seconds": 64.51486239499991,
+  "usage": {
+    "input_tokens": 36547,
+    "output_tokens": 2618,
+    "cached_input_tokens": 31616,
+    "total_tokens": 39165,
+    "uncached_tokens": 7549,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "strict_judge": {
+    "correct": true,
+    "returncode": 0,
+    "timed_out": false,
+    "seconds": 0.4446997189998001,
+    "groups_passed": [
+      "priority_idempotency_delayed_retry",
+      "lease_expiry_dead_letter_redrive",
+      "completion_cancellation_restart",
+      "batch_and_types",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ]
+  },
+  "reviewed_judge": {
+    "correct": true,
+    "returncode": 0,
+    "timed_out": false,
+    "seconds": 0.4446997189998001,
+    "groups_passed": [
+      "priority_idempotency_delayed_retry",
+      "lease_expiry_dead_letter_redrive",
+      "completion_cancellation_restart",
+      "batch_and_types",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ]
+  },
+  "calls": 1,
+  "model": {
+    "model": "gpt-6.1-sol",
+    "modelProvider": "openai",
+    "serviceTier": null,
+    "reasoningEffort": "low"
+  },
+  "error": null,
+  "sources_unchanged": true,
+  "artifact_hashes": {
+    "README.md": "cfda73698581cf90fed965c052b430ac4c385941901c54833e9616fe0dae3ccf",
+    "USER_NOTES.txt": "6fcb52b89d6708f203c151c000759144d8f61fa282557fe2940c6473dbf9e73b",
+    "app.py": "963ec32c19ae8c17b1624bf7c0d85b944b3d84d04f2f065752bc887daeada0e6",
+    "goalpilot_runtime.py": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b",
+    "goalpilot_support.py": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_legacy.py": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0",
+    "tests/test_queue.py": "1cde0ee49faedb0a9cc60781f1b1e2dcca867826255aa61e65209175385b913b"
+  }
+}

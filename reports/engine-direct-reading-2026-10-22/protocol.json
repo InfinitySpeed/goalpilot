@@ -1,0 +1,16 @@
+{
+  "candidate": "GoalPilot 0.15.0 direct-first plus bounded repository-reading instruction",
+  "model": "gpt-6.1-sol",
+  "cases": [
+    "flowdesk"
+  ],
+  "max_calls_per_goal": 2,
+  "wall_seconds_per_goal": 900,
+  "soft_raw_tokens_per_goal": 180000,
+  "soft_uncached_plus_output_per_goal": 60000,
+  "aggregate_new_raw_soft_stop": 250000,
+  "stop": "Never rerun. Stop at first failed/partial meter goal or raw cap before starting the next case; caps checked between calls and can be exceeded by one call.",
+  "success": "scope_passed, all 26 groups pass, total raw <=238575, and wall <=285.948s. Stop if any threshold fails; no second case.",
+  "controls": "Same exact task families have archived two-case GoalPilot 0.7.0 and Codex native controls in /workspace/goalpilot/reports/quota-native-live-007, plus the 20-goal measured GoalPilot 1.3.1/native benchmark in this repo. Contextual, not a fresh three-arm paired sample.",
+  "limitations": "Two familiar synthetic tasks, at most one realization each; no population claim, subscription quota conversion or guarantee."
+}

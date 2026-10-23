@@ -1,0 +1,79 @@
+{
+  "case": "warehouse",
+  "goal": "Termine la logistique par lots : réceptions, péremption, allocations FEFO, expéditions partielles et retours. Vérifie les parcours et la cohérence des stocks.",
+  "cohort": "rc4-confirmation",
+  "status": "scope_passed",
+  "normal_closure": true,
+  "strict_correct": true,
+  "reviewed_correct": true,
+  "success": true,
+  "caller_seconds": 70.00285946599979,
+  "judge_seconds": 0.6143156899997848,
+  "seconds": 70.61717515599958,
+  "usage": {
+    "input_tokens": 36931,
+    "output_tokens": 2960,
+    "cached_input_tokens": 29056,
+    "total_tokens": 39891,
+    "uncached_tokens": 10835,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "strict_judge": {
+    "correct": true,
+    "returncode": 0,
+    "timed_out": false,
+    "seconds": 0.6143156899997848,
+    "groups_passed": [
+      "fefo_allocation",
+      "partial_cancel_return_expiry",
+      "bounded_returns_no_expired_allocations",
+      "batch_and_strict_quantity",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ]
+  },
+  "reviewed_judge": {
+    "correct": true,
+    "returncode": 0,
+    "timed_out": false,
+    "seconds": 0.6143156899997848,
+    "groups_passed": [
+      "fefo_allocation",
+      "partial_cancel_return_expiry",
+      "bounded_returns_no_expired_allocations",
+      "batch_and_strict_quantity",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ]
+  },
+  "calls": 1,
+  "model": {
+    "model": "gpt-6.1-sol",
+    "modelProvider": "openai",
+    "serviceTier": null,
+    "reasoningEffort": "low"
+  },
+  "error": null,
+  "sources_unchanged": true,
+  "artifact_hashes": {
+    "README.md": "f24d8aecf9799a5f8cc5cafe9db369db530f1c08f9fea9de6f66f2009bb55a52",
+    "USER_NOTES.txt": "6fcb52b89d6708f203c151c000759144d8f61fa282557fe2940c6473dbf9e73b",
+    "app.py": "75a631c9382ef5acc9d32ee629fb2f944267e157860ecf4b0fe9767abe399588",
+    "goalpilot_runtime.py": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b",
+    "goalpilot_support.py": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_legacy.py": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0",
+    "tests/test_workflows.py": "fbfe9a5dd9cd1ebe71fd7629604bc13615767a01b791ff7edfbfd95d96014b35"
+  }
+}

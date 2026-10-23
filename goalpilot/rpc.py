@@ -50,6 +50,7 @@ class AppServerAdapter:
         self.writer = None
         self.active = False
         self.metadata = {}
+        self.known_helpers = None
 
     def _log(self, direction, packet):
         if self.writer and not str(packet.get('method','')).startswith('account/'):
@@ -140,6 +141,8 @@ class AppServerAdapter:
             params={'cwd':str(repo),'approvalPolicy':'never','sandbox':'read-only' if planning else 'workspace-write','ephemeral':True}
             if self.model:
                 params['model']=self.model
+            if self.effort is not None:
+                params['config'] = {'model_reasoning_effort': self.effort}
             result=self._request('thread/start',params,deadline)
             self.thread_id=result['thread']['id']
             self.repo=str(repo)
@@ -168,7 +171,7 @@ class AppServerAdapter:
             prompt+='\n\nRequired final output schema. Return ONLY its JSON object, without Markdown fences or explanatory text:\n'+Path(schema).read_text()
         if self.prepared and (self.thread_id is None or self.repo != str(repo)):
             from .dossier import prepare,render
-            dossier=prepare(repo)
+            dossier=prepare(repo, known_helpers=self.known_helpers)
             prompt += '\n\n'+render(dossier)
             (log_dir/'context.json').write_text(json.dumps(dossier,ensure_ascii=False,indent=2))
         baseline=None

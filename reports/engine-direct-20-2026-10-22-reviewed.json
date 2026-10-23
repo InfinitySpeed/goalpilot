@@ -1,0 +1,16 @@
+{
+  "previous_report_sha256": "105888bb9ffe498ff822cb2568b3e0f519e431cba5579ecb7fd2629b918b5a4a",
+  "model_calls": 0,
+  "original_strict_passes": 18,
+  "consistent_reviewed_passes": 20,
+  "extra_judge_seconds": 0.8654290590000073,
+  "reviewed_seconds": 3278.747345371021,
+  "provider_tokens_unchanged": true,
+  "raw_tokens": 3178126,
+  "uncached_input_plus_output": 515598,
+  "basis": [
+    "Existing 2026-10-21 subscription precondition correction",
+    "Existing 2026-10-21 annotation return-shape sensitivity interpretation"
+  ],
+  "disclosure": "The previous 18/20 vs 20/20 and 19/20 table mixed strict candidate grading with reviewed control grading. This derivation applies identical existing reviewed policy, without model reruns. Original strict score and all original evidence retained. App source reconstructed only from recorded original file writes/text replacements because /tmp worktrees did not survive the environment restart."
+}

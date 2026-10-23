@@ -1,0 +1,163 @@
+{
+  "date": "2026-10-22",
+  "model": "gpt-6.1-sol",
+  "candidate_engine": "0.15.0 direct-first",
+  "candidate_change": "Added instruction in initial_prompt to inspect only goal-relevant instructions/contracts/source/tests and avoid broad sweeps, generated, vendor, benchmark and unrelated files.",
+  "case_count": 2,
+  "runs_per_arm_per_case": 1,
+  "goals": "Same Flowdesk and Stockroom tasks as archived 0.7.0/native trials; fresh candidate repositories; same independent judge and fixed seeds 90173 and 470117.",
+  "metrics_definition": {
+    "raw_tokens": "input_tokens + output_tokens, including cached input",
+    "uncached_plus_output_tokens": "input_tokens - cached_input_tokens + output_tokens",
+    "seconds": "complete model session through normal delivery; independent judging excluded"
+  },
+  "cases": {
+    "flowdesk": {
+      "candidate": {
+        "raw_tokens": 146107,
+        "uncached_plus_output_tokens": 33979,
+        "seconds": 159.67091519800306,
+        "normal_closure": true,
+        "artifact_success": true,
+        "judge_groups_passed": 26,
+        "judge_groups_total": 26,
+        "usage_complete": true,
+        "model": "gpt-6.1-sol",
+        "treatment": "0.15.0 direct-first + relevant-file reading instruction"
+      },
+      "old_goalpilot": {
+        "raw_tokens": 238575,
+        "uncached_plus_output_tokens": 38127,
+        "seconds": 285.9483753049999,
+        "normal_closure": true,
+        "artifact_success": true,
+        "judge_groups_passed": 26,
+        "judge_groups_total": 26,
+        "usage_complete": true,
+        "model": "gpt-6.1-sol",
+        "version": "0.7.0"
+      },
+      "native_codex": {
+        "raw_tokens": 673953,
+        "uncached_plus_output_tokens": 57249,
+        "seconds": 314.5819306220001,
+        "normal_closure": false,
+        "artifact_success": true,
+        "judge_groups_passed": 26,
+        "judge_groups_total": 26,
+        "usage_complete": true,
+        "model": "gpt-6.1-sol"
+      }
+    },
+    "stockroom": {
+      "candidate": {
+        "raw_tokens": 183727,
+        "uncached_plus_output_tokens": 19503,
+        "seconds": 204.00734500100225,
+        "normal_closure": true,
+        "artifact_success": true,
+        "judge_groups_passed": 26,
+        "judge_groups_total": 26,
+        "usage_complete": true,
+        "model": "gpt-6.1-sol",
+        "treatment": "0.15.0 direct-first + relevant-file reading instruction"
+      },
+      "old_goalpilot": {
+        "raw_tokens": 216047,
+        "uncached_plus_output_tokens": 40303,
+        "seconds": 290.73480845500035,
+        "normal_closure": true,
+        "artifact_success": true,
+        "judge_groups_passed": 26,
+        "judge_groups_total": 26,
+        "usage_complete": true,
+        "model": "gpt-6.1-sol",
+        "version": "0.7.0"
+      },
+      "native_codex": {
+        "raw_tokens": 806549,
+        "uncached_plus_output_tokens": 49429,
+        "seconds": 360.49670064199995,
+        "normal_closure": false,
+        "artifact_success": true,
+        "judge_groups_passed": 26,
+        "judge_groups_total": 26,
+        "usage_complete": true,
+        "model": "gpt-6.1-sol"
+      }
+    }
+  },
+  "totals": {
+    "candidate": {
+      "raw_tokens": 329834,
+      "uncached_plus_output_tokens": 53482,
+      "seconds": 363.6782601990053,
+      "judge_groups_passed": 52,
+      "judge_groups_total": 52,
+      "normal_closures": 2,
+      "artifact_successes": 2
+    },
+    "old_goalpilot": {
+      "raw_tokens": 454622,
+      "uncached_plus_output_tokens": 78430,
+      "seconds": 576.6831837600002,
+      "judge_groups_passed": 52,
+      "judge_groups_total": 52,
+      "normal_closures": 2,
+      "artifact_successes": 2
+    },
+    "native_codex": {
+      "raw_tokens": 1480502,
+      "uncached_plus_output_tokens": 106678,
+      "seconds": 675.078631264,
+      "judge_groups_passed": 52,
+      "judge_groups_total": 52,
+      "normal_closures": 0,
+      "artifact_successes": 2
+    }
+  },
+  "savings_percent": {
+    "candidate_vs_old_goalpilot": {
+      "raw_tokens": 27.45,
+      "uncached_plus_output_tokens": 31.81,
+      "seconds": 36.94
+    },
+    "candidate_vs_native_codex": {
+      "raw_tokens": 77.72,
+      "uncached_plus_output_tokens": 49.87,
+      "seconds": 46.13
+    }
+  },
+  "within_engine_flowdesk_control": {
+    "baseline": "0.15.0 direct-first before reading-scope instruction, one Flowdesk run",
+    "baseline_raw_tokens": 296689,
+    "baseline_uncached_plus_output_tokens": 24049,
+    "baseline_seconds": 312.16508968799826,
+    "baseline_groups_passed": 26,
+    "candidate_raw_tokens": 146107,
+    "candidate_uncached_plus_output_tokens": 33979,
+    "candidate_seconds": 159.67091519800306,
+    "candidate_groups_passed": 26,
+    "note": "Raw-token and wall-time improvements vs this one-run earlier direct-first diagnostic; uncached+output increased 41.2%. The candidate retains a meaningful benefit on raw and elapsed time but does not improve every token accounting."
+  },
+  "limitations": [
+    "One candidate execution per familiar case; no blinded holdout or statistical confidence interval.",
+    "Historical controls are same task families from GoalPilot 0.7.0 and native Codex, not rerun contemporaneously.",
+    "Results do not generalize to the portable Skill 1.3.1, other hosts or arbitrary projects.",
+    "Provider token counters are not an exact subscription-quota conversion.",
+    "An earlier candidate attempt was terminated by a 60-second harness timeout before usage was returned; partial usage is unknown and that attempt is excluded from comparisons."
+  ],
+  "candidate_raw_tokens_known": 329834,
+  "failed_attempt_raw_tokens_unknown": true,
+  "evidence_paths": {
+    "flowdesk_candidate": "reports/engine-direct-reading-2026-10-22/records/flowdesk-candidate.json",
+    "stockroom_candidate": "reports/engine-direct-reading-2026-10-22/records/stockroom-candidate.json",
+    "flowdesk_old_goalpilot": "reports/engine-direct-reading-2026-10-22/records/flowdesk-old-goalpilot.json",
+    "flowdesk_native_codex": "reports/engine-direct-reading-2026-10-22/records/flowdesk-native-codex.json",
+    "stockroom_old_goalpilot": "reports/engine-direct-reading-2026-10-22/records/stockroom-old-goalpilot.json",
+    "stockroom_native_codex": "reports/engine-direct-reading-2026-10-22/records/stockroom-native-codex.json",
+    "flowdesk_protocol": "reports/engine-direct-reading-2026-10-22/protocol.json",
+    "stockroom_protocol": "reports/engine-direct-reading-2026-10-22/protocol-stockroom.json"
+  },
+  "candidate_source_sha256": "4b7e2dc5e34a10822a6a32427c65fda62f606e8b90892f4d48130c4ea8dfe661"
+}

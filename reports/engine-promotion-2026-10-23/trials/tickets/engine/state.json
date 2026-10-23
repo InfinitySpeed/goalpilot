@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "id": "28789f4ae1f2",
+  "contract": {
+    "goal": "Finalise la billetterie locale : sièges, réservations temporaires, expiration, achat, remboursement et contrôle d’entrée. Aucun siège vendu deux fois.",
+    "repo": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/tickets/repo",
+    "scope": "inferred",
+    "checks": [
+      {
+        "id": "gp-original-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      },
+      {
+        "id": "gp-delivered-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/delivered-gate/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/delivered-gate/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      }
+    ],
+    "assumptions": [
+      "L’expiration dépend des heures logiques fournies dans les requêtes."
+    ],
+    "limitations": [],
+    "milestones": [],
+    "budget": {
+      "max_calls": 2,
+      "wall_seconds": 600,
+      "attempt_seconds": 600,
+      "max_tokens": 700000
+    },
+    "creation_mode": "direct-first",
+    "model": "gpt-6.1-sol",
+    "artifacts": [
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/original-tests/gate.json",
+        "sha256": "3e16a7a5a245ecb9a2ec84bcf1277f9221c27ad68a7f0d810411f734460349aa"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/originals/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/originals/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/delivered-gate/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/delivered-gate/original-tests/gate.json",
+        "sha256": "7064386666446974d9ee11bd6991c8e2f696d71aaa3fd4266e8de1d8f97d9fb5"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/delivered-tests/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/delivered-tests/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/delivered-tests/tests/test_tickets.py",
+        "sha256": "c908126a8f2175fce05cdbad54bfe06002acd3eaf5e923885d71a2322335067c"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/tickets/repo/goalpilot_runtime.py",
+        "sha256": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/tickets/repo/goalpilot_support.py",
+        "sha256": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab"
+      }
+    ],
+    "helper_assisted": true
+  },
+  "contract_hash": "d241ead1554f0f536a4b5dcd6063b7e3d1bde19cfacf477f6f5116d52a2c02c1",
+  "mode": "supervised",
+  "status": "scope_passed",
+  "created_at": 1792742032.0351255,
+  "active_seconds": 61.322319128000345,
+  "calls": [
+    {
+      "strategy": "implement",
+      "result": {
+        "returncode": 0,
+        "message": "{\"summary\":\"Billetterie implémentée : sièges, réservations temporaires, expiration, achats idempotents, remboursements, contrôle d’entrée, rapports et restauration validée ; trois tests réussis couvrant aussi JSONL, HTTP et la concurrence sans double vente.\",\"assumptions\":[\"L’expiration dépend des heures logiques fournies dans les requêtes.\"],\"limitations\":[]}",
+        "duration_seconds": 57.423976048999975,
+        "usage": {
+          "input_tokens": 36217,
+          "output_tokens": 2402,
+          "cached_input_tokens": 31360
+        },
+        "timed_out": false,
+        "fatal": false,
+        "simulated": false,
+        "usage_complete": true,
+        "thread_id": "01a167bf-a2fb-7531-b50e-4ee41ed3d38c",
+        "turn_id": "01a167bf-a357-74c3-b96d-ce9906a3cee4",
+        "telemetry": {
+          "backend": "app-server",
+          "usage_updates": 2,
+          "command_count": 1,
+          "model": {
+            "model": "gpt-6.1-sol",
+            "modelProvider": "openai",
+            "serviceTier": null,
+            "reasoningEffort": "low"
+          },
+          "context_prepared": true,
+          "context_seconds": 0.001405824999892502,
+          "prompt_characters": 12905,
+          "turn_status": "completed",
+          "requested_effort": "low"
+        }
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "checks": [
+        {
+          "id": "gp-original-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_banner (tests.test_legacy.Legacy.test_banner) ... ok\ntest_atomic_restore_and_race (tests.test_tickets.Tickets.test_atomic_restore_and_race) ... ok\ntest_journey (tests.test_tickets.Tickets.test_journey) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 1.807s\n\nOK\n",
+          "duration_seconds": 1.99302907099991,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/evidence/verification-1/check-1.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        },
+        {
+          "id": "gp-delivered-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_banner (tests.test_legacy.Legacy.test_banner) ... ok\ntest_atomic_restore_and_race (tests.test_tickets.Tickets.test_atomic_restore_and_race) ... ok\ntest_journey (tests.test_tickets.Tickets.test_journey) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 1.746s\n\nOK\n",
+          "duration_seconds": 1.9007222730006106,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/tickets/engine/evidence/verification-1/check-2.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        }
+      ],
+      "strategy": null,
+      "at": 1792742035.9319909
+    }
+  ],
+  "pending": null,
+  "no_progress": 0,
+  "best_passed": 2,
+  "inactive_calls": 0,
+  "simulated": false,
+  "adapter": {
+    "class": "MatchedAdapter",
+    "model": "gpt-6.1-sol"
+  },
+  "usage": {
+    "input_tokens": 36217,
+    "output_tokens": 2402,
+    "cached_input_tokens": 31360,
+    "total_tokens": 38619,
+    "uncached_tokens": 7259,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  }
+}

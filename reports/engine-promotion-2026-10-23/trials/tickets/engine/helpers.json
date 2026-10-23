@@ -1,0 +1,10 @@
+[
+  {
+    "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/tickets/repo/goalpilot_runtime.py",
+    "sha256": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b"
+  },
+  {
+    "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/tickets/repo/goalpilot_support.py",
+    "sha256": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab"
+  }
+]

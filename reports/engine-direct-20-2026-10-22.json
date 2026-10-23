@@ -1,0 +1,749 @@
+{
+  "title": "GoalPilot direct-first 0.15.0 on the frozen 20-goal benchmark",
+  "run_date_utc": "2026-10-22",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "low",
+  "engine": "GoalPilot 0.15.0 direct-first",
+  "trial_policy": "One fresh run per goal; no retries, no judge feedback to the model; one independent fixed judge run per artifact.",
+  "cases_in_historical_order": [
+    "learning",
+    "flags",
+    "timesheets",
+    "procurement",
+    "annotations",
+    "vault",
+    "invoices",
+    "voting",
+    "outbox",
+    "clinic",
+    "incidents",
+    "tickets",
+    "warehouse",
+    "subscriptions",
+    "accounting",
+    "etl",
+    "manufacturing",
+    "rental",
+    "documents",
+    "loyalty"
+  ],
+  "candidate": {
+    "input": 3024973,
+    "cached_input": 2662528,
+    "uncached_input": 362445,
+    "output": 153153,
+    "raw_input_plus_output": 3178126,
+    "uncached_input_plus_output": 515598,
+    "cases": 20,
+    "independent_correct": 18,
+    "normal_closures": 20,
+    "meter_complete": true,
+    "caller_seconds": 3270.2998795710046,
+    "judge_seconds": 7.582036741016054,
+    "elapsed_seconds_including_judge": 3277.8819163120206
+  },
+  "frozen_controls": {
+    "new": {
+      "name": "GoalPilot Skill 1.3.1",
+      "cases": 20,
+      "independent_correct": 20,
+      "normal_closures": 20,
+      "tokens": {
+        "input": 2065239,
+        "cached_input": 1808896,
+        "uncached_input": 256343,
+        "output": 86013,
+        "raw_input_plus_output": 2151252,
+        "uncached_input_plus_output": 342356
+      },
+      "elapsed_seconds_including_judge": 1541.6191867690177,
+      "meter_complete": true,
+      "source": "Frozen historical 20-goal control; not rerun for this campaign."
+    },
+    "native": {
+      "name": "Codex native",
+      "cases": 20,
+      "independent_correct": 19,
+      "normal_closures": 20,
+      "tokens": {
+        "input": 4495572,
+        "cached_input": 3996160,
+        "uncached_input": 499412,
+        "output": 221009,
+        "raw_input_plus_output": 4716581,
+        "uncached_input_plus_output": 720421
+      },
+      "elapsed_seconds_including_judge": 3919.0774290760055,
+      "meter_complete": true,
+      "source": "Frozen historical 20-goal control; not rerun for this campaign."
+    }
+  },
+  "candidate_vs_skill_1_3_1": {
+    "time_saving_percent": -112.63,
+    "raw_token_saving_percent": -47.73,
+    "uncached_input_plus_output_saving_percent": -50.6,
+    "uncached_input_saving_percent": -41.39,
+    "output_token_saving_percent": -78.06,
+    "correct_goal_delta": -2
+  },
+  "candidate_vs_codex_native": {
+    "time_saving_percent": 16.36,
+    "raw_token_saving_percent": 32.62,
+    "uncached_input_plus_output_saving_percent": 28.43,
+    "uncached_input_saving_percent": 27.43,
+    "output_token_saving_percent": 30.7,
+    "correct_goal_delta": -1
+  },
+  "targets": {
+    "time_saving_at_least_percent": 25,
+    "raw_and_uncached_plus_output_token_saving_at_least_percent": 45,
+    "independent_completion_not_below_either_control": true
+  },
+  "target_result": {
+    "time_threshold_vs_codex_native_met": false,
+    "raw_token_threshold_vs_codex_native_met": false,
+    "uncached_input_plus_output_threshold_vs_codex_native_met": false,
+    "completion_not_regressed_vs_skill": false,
+    "completion_not_regressed_vs_native": false,
+    "overall": "NOT MET"
+  },
+  "limits": {
+    "campaign_raw_token_cap": 8000000,
+    "campaign_uncached_input_plus_output_cap": 900000,
+    "actual_raw_tokens": 3178126,
+    "actual_uncached_input_plus_output_tokens": 515598,
+    "all_meters_complete": true
+  },
+  "failure_cases": [
+    "annotations",
+    "subscriptions"
+  ],
+  "per_case": [
+    {
+      "case": "learning",
+      "goal": "Termine cette plateforme de cours : prérequis, inscriptions, listes d’attente, validation et remboursements. Chaque parcours doit fonctionner de bout en bout.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "prerequisites_capacity_idempotency",
+        "complete_promotion_snapshot",
+        "refund_waitlist_report",
+        "atomic_import_types_cycles",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.4266231109977525,
+      "caller_seconds": 178.50689555699864,
+      "elapsed_seconds_including_judge": 178.9335186679964,
+      "tokens": {
+        "input": 147585,
+        "cached_input": 130304,
+        "uncached_input": 17281,
+        "output": 7763,
+        "raw_input_plus_output": 155348,
+        "uncached_input_plus_output": 25044,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "flags",
+      "goal": "Finalise la gestion de fonctionnalités : ciblage, déploiement progressif déterministe, publication, retour arrière et audit. Vérifie les règles et l’isolation des environnements.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "draft_publish_determinism",
+        "snapshot_membership_rollback",
+        "audit_and_environment_isolation",
+        "atomic_import_strict_boolean_cas",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.42132294900147826,
+      "caller_seconds": 179.7685769430027,
+      "elapsed_seconds_including_judge": 180.18989989200418,
+      "tokens": {
+        "input": 149505,
+        "cached_input": 135552,
+        "uncached_input": 13953,
+        "output": 8348,
+        "raw_input_plus_output": 157853,
+        "uncached_input_plus_output": 22301,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "timesheets",
+      "goal": "Achève les feuilles de temps : chevauchements, budgets, validation séparée, verrouillage et export de facturation. Vérifie le parcours complet et les corrections.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "overlap_submission_separation",
+        "budget_rejection_and_repair",
+        "immutable_lock_snapshot_billing",
+        "batch_and_types",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.38275163900107145,
+      "caller_seconds": 164.54312309300076,
+      "elapsed_seconds_including_judge": 164.92587473200183,
+      "tokens": {
+        "input": 194029,
+        "cached_input": 175232,
+        "uncached_input": 18797,
+        "output": 7368,
+        "raw_input_plus_output": 201397,
+        "uncached_input_plus_output": 26165,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "procurement",
+      "goal": "Achève cet outil d’achats : budgets, demandes, approbations séparées, engagements et remboursements. Préserve les comptes et tous les contrôles métier.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "separation_and_commitment",
+        "budget_atomicity_spend_replay",
+        "refund_and_release",
+        "batch_strict_types_and_budget",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.37618602700240444,
+      "caller_seconds": 142.68250758900103,
+      "elapsed_seconds_including_judge": 143.05869361600344,
+      "tokens": {
+        "input": 142058,
+        "cached_input": 119424,
+        "uncached_input": 22634,
+        "output": 6350,
+        "raw_input_plus_output": 148408,
+        "uncached_input_plus_output": 28984,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "annotations",
+      "goal": "Achève l’annotation de données : jeux, affectations sous bail, votes indépendants, consensus et réouverture. Les contributions et les droits doivent survivre à la reprise.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": false,
+      "judge_groups_passed": [],
+      "judge_seconds": 0.0738295820010535,
+      "caller_seconds": 183.00437897399752,
+      "elapsed_seconds_including_judge": 183.07820855599857,
+      "tokens": {
+        "input": 174555,
+        "cached_input": 155136,
+        "uncached_input": 19419,
+        "output": 8215,
+        "raw_input_plus_output": 182770,
+        "uncached_input_plus_output": 27634,
+        "meter_complete": true
+      },
+      "failure_signature": "Independent judge rejected concurrent claims: two same-item claims did not both succeed with distinct receipts."
+    },
+    {
+      "case": "vault",
+      "goal": "Termine ce coffre documentaire local : espaces, rôles, versions, quotas, suppression et restauration. Les droits doivent s’appliquer à tous les parcours et rester cohérents.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "roles_utf8_version_quota",
+        "immutable_history_soft_delete",
+        "purge_last_admin_isolation",
+        "quota_atomic_batch_types",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.4469219589991553,
+      "caller_seconds": 103.4619445449971,
+      "elapsed_seconds_including_judge": 103.90886650399625,
+      "tokens": {
+        "input": 97821,
+        "cached_input": 76032,
+        "uncached_input": 21789,
+        "output": 6456,
+        "raw_input_plus_output": 104277,
+        "uncached_input_plus_output": 28245,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "invoices",
+      "goal": "Achève cette facturation locale : lignes exactes en centimes, paiements, avoirs et rapprochement, avec les parcours complets et la reprise après redémarrage.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "rounding_issue_payment",
+        "credit_idempotency_statement",
+        "void_lifecycle",
+        "batch_and_types",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.43167714700030047,
+      "caller_seconds": 122.69474787000217,
+      "elapsed_seconds_including_judge": 123.12642501700248,
+      "tokens": {
+        "input": 144535,
+        "cached_input": 110464,
+        "uncached_input": 34071,
+        "output": 7312,
+        "raw_input_plus_output": 151847,
+        "uncached_input_plus_output": 41383,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "voting",
+      "goal": "Termine cet outil de décisions d’association : membres, scrutins, délégations, bulletins classés, quorum et dépouillement vérifiable. Préserve l’intégrité de chaque tour.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "eligibility_delegation_and_votes",
+        "weighted_irv_lexical_tie",
+        "quorum_separate_polls",
+        "batch_and_types",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.39807011900120415,
+      "caller_seconds": 169.217286168001,
+      "elapsed_seconds_including_judge": 169.61535628700221,
+      "tokens": {
+        "input": 170743,
+        "cached_input": 153344,
+        "uncached_input": 17399,
+        "output": 7365,
+        "raw_input_plus_output": 178108,
+        "uncached_input_plus_output": 24764,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "outbox",
+      "goal": "Termine cette messagerie locale durable : publication, déduplication, livraison par baux, nouvelles tentatives et file d’échecs. Rien ne doit disparaître au redémarrage.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "priority_idempotency_delayed_retry",
+        "lease_expiry_dead_letter_redrive",
+        "completion_cancellation_restart",
+        "batch_and_types",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.41844928700083983,
+      "caller_seconds": 199.2674460039998,
+      "elapsed_seconds_including_judge": 199.68589529100063,
+      "tokens": {
+        "input": 176915,
+        "cached_input": 158080,
+        "uncached_input": 18835,
+        "output": 8949,
+        "raw_input_plus_output": 185864,
+        "uncached_input_plus_output": 27784,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "clinic",
+      "goal": "Termine la prise de rendez-vous d’un cabinet : disponibilités, consentements, reports, listes d’attente et facturation des absences, sans conflit ni perte d’historique.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "consent_conflicts_adjacency",
+        "move_revision_no_show",
+        "consent_waitlist_cancel",
+        "batch_preservation_and_types",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.36992853000265313,
+      "caller_seconds": 173.78447435999988,
+      "elapsed_seconds_including_judge": 174.15440289000253,
+      "tokens": {
+        "input": 149612,
+        "cached_input": 131072,
+        "uncached_input": 18540,
+        "output": 7937,
+        "raw_input_plus_output": 157549,
+        "uncached_input_plus_output": 26477,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "incidents",
+      "goal": "Achève la gestion d’incidents : responsables, SLA, pauses, escalades, résolution et réouverture. Les délais et l’historique doivent rester fiables après reprise.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "policy_snapshot_paused_clock",
+        "escalation_ack_snapshot",
+        "resolution_reopen_owner",
+        "batch_time_and_types",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.35577883700170787,
+      "caller_seconds": 185.8804710910008,
+      "elapsed_seconds_including_judge": 186.2362499280025,
+      "tokens": {
+        "input": 173632,
+        "cached_input": 167040,
+        "uncached_input": 6592,
+        "output": 8043,
+        "raw_input_plus_output": 181675,
+        "uncached_input_plus_output": 14635,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "tickets",
+      "goal": "Finalise la billetterie locale : sièges, réservations temporaires, expiration, achat, remboursement et contrôle d’entrée. Aucun siège vendu deux fois.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "seat_atomicity_expiry",
+        "purchase_idempotency_restart",
+        "checkin_no_refund_after_use",
+        "refund_batch_types",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.36092941999959294,
+      "caller_seconds": 177.53092169500087,
+      "elapsed_seconds_including_judge": 177.89185111500046,
+      "tokens": {
+        "input": 123912,
+        "cached_input": 105856,
+        "uncached_input": 18056,
+        "output": 7895,
+        "raw_input_plus_output": 131807,
+        "uncached_input_plus_output": 25951,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "warehouse",
+      "goal": "Termine la logistique par lots : réceptions, péremption, allocations FEFO, expéditions partielles et retours. Vérifie les parcours et la cohérence des stocks.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "fefo_allocation",
+        "partial_cancel_return_expiry",
+        "bounded_returns_no_expired_allocations",
+        "batch_and_strict_quantity",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.41676567700051237,
+      "caller_seconds": 160.47750622400054,
+      "elapsed_seconds_including_judge": 160.89427190100105,
+      "tokens": {
+        "input": 150622,
+        "cached_input": 132352,
+        "uncached_input": 18270,
+        "output": 8469,
+        "raw_input_plus_output": 159091,
+        "uncached_input_plus_output": 26739,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "subscriptions",
+      "goal": "Termine la gestion d’abonnements : plans, périodes, factures, changement d’offre, impayés et résiliation. Les montants et les renouvellements doivent rester exacts.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": false,
+      "judge_groups_passed": [
+        "catchup_no_double_billing",
+        "payment_and_exact_proration",
+        "cancellation_and_reporting",
+        "payment_batch_types"
+      ],
+      "judge_seconds": 0.12994424900170998,
+      "caller_seconds": 186.24830097800077,
+      "elapsed_seconds_including_judge": 186.37824522700248,
+      "tokens": {
+        "input": 127770,
+        "cached_input": 117760,
+        "uncached_input": 10010,
+        "output": 8688,
+        "raw_input_plus_output": 136458,
+        "uncached_input_plus_output": 18698,
+        "meter_complete": true
+      },
+      "failure_signature": "Independent judge rejected idempotent overdue billing replay: the second run returned “Billing not due” instead of the existing invoice."
+    },
+    {
+      "case": "accounting",
+      "goal": "Finalise le grand livre comptable local : écritures équilibrées, périodes clôturées, annulations et balance, avec des montants exacts et une piste d’audit durable.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "balanced_post_exact_money",
+        "balance_atomicity_closed_periods",
+        "reversal_history_and_replay",
+        "batch_types_trial_balance",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.4245201720004843,
+      "caller_seconds": 133.1515362579994,
+      "elapsed_seconds_including_judge": 133.57605642999988,
+      "tokens": {
+        "input": 168700,
+        "cached_input": 155392,
+        "uncached_input": 13308,
+        "output": 7271,
+        "raw_input_plus_output": 175971,
+        "uncached_input_plus_output": 20579,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "etl",
+      "goal": "Achève ce pipeline d’import de données : schémas, CSV, normalisation exacte, rejets, déduplication et publication atomique. Vérifie les étapes et la traçabilité.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "normalization_exact_money_dedup",
+        "schema_snapshot_publication_export",
+        "retry_independent_receipts",
+        "atomic_header_batch_types",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.45865728100034175,
+      "caller_seconds": 187.38564270200004,
+      "elapsed_seconds_including_judge": 187.84429998300038,
+      "tokens": {
+        "input": 173539,
+        "cached_input": 155904,
+        "uncached_input": 17635,
+        "output": 8686,
+        "raw_input_plus_output": 182225,
+        "uncached_input_plus_output": 26321,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "manufacturing",
+      "goal": "Achève la production locale : nomenclatures, composants, réservations, fabrication partielle, rebuts et annulations. Vérifie la conservation des quantités et des coûts.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "bom_reservation",
+        "partial_scrap_snapshot_cost",
+        "cancellation_and_cycles",
+        "batch_types",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.46332938500199816,
+      "caller_seconds": 162.9652706500019,
+      "elapsed_seconds_including_judge": 163.4286000350039,
+      "tokens": {
+        "input": 145185,
+        "cached_input": 121472,
+        "uncached_input": 23713,
+        "output": 7269,
+        "raw_input_plus_output": 152454,
+        "uncached_input_plus_output": 30982,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "rental",
+      "goal": "Termine la gestion de location de matériel de bout en bout : disponibilités, réservations, retraits, retours et frais, sans doubles réservations ni perte de données.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "capacity_and_idempotency",
+        "snapshot_fee_and_return",
+        "cancel_revision_filters",
+        "atomic_batch_and_types",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.404625737999595,
+      "caller_seconds": 148.52461804999984,
+      "elapsed_seconds_including_judge": 148.92924378799944,
+      "tokens": {
+        "input": 98275,
+        "cached_input": 81792,
+        "uncached_input": 16483,
+        "output": 6688,
+        "raw_input_plus_output": 104963,
+        "uncached_input_plus_output": 23171,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "documents",
+      "goal": "Finalise l’édition collaborative locale : versions, branches, fusion de champs, revues et publication. Les conflits ne doivent jamais écraser le travail existant.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "three_way_nonconflicting_merge",
+        "conflict_and_separate_approvals",
+        "immutable_publication_and_cas",
+        "atomic_import_and_closed_branch",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.41381845499927294,
+      "caller_seconds": 174.75912224700005,
+      "elapsed_seconds_including_judge": 175.17294070199932,
+      "tokens": {
+        "input": 194171,
+        "cached_input": 175360,
+        "uncached_input": 18811,
+        "output": 7345,
+        "raw_input_plus_output": 201516,
+        "uncached_input_plus_output": 26156,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    },
+    {
+      "case": "loyalty",
+      "goal": "Termine ce programme de fidélité : crédits expirables, consommation prioritaire, réservations, remboursements et ajustements. Aucun solde négatif ni crédit perdu.",
+      "engine_status": "scope_passed",
+      "engine_normal_closure": true,
+      "independent_judge_passed": true,
+      "judge_groups_passed": [
+        "expiry_order_holds",
+        "bounded_refund_original_expiry",
+        "hold_expiry_history",
+        "batch_and_strict_points",
+        "three_real_cross_process_conflict_races",
+        "detached_snapshots_and_restart",
+        "restore_rejects_invalid_without_data_loss",
+        "real_jsonl_errors_and_recovery",
+        "real_http_domain_errors_health",
+        "original_behavior_and_customer_data"
+      ],
+      "judge_seconds": 0.4079071770029259,
+      "caller_seconds": 136.44510857299974,
+      "elapsed_seconds_including_judge": 136.85301575000267,
+      "tokens": {
+        "input": 121809,
+        "cached_input": 104960,
+        "uncached_input": 16849,
+        "output": 6736,
+        "raw_input_plus_output": 128545,
+        "uncached_input_plus_output": 23585,
+        "meter_complete": true
+      },
+      "failure_signature": null
+    }
+  ],
+  "frozen_control_source": "/workspace/goalpilot-research/thin-skill-002/analysis-reviewed.json",
+  "frozen_control_sha256": "f086afd011de9644a78ae6464f5415bfeb7884ceecc0923bdde3e8eb04e33d96",
+  "evidence_directory": "/workspace/goalpilot-research/engine20-direct-001"
+}

@@ -58,6 +58,14 @@ class SkillTests(unittest.TestCase):
         self.assertEqual(source,embedded);self.assertEqual(source,manifest['engine']['files'])
         self.assertEqual(manifest['engine']['version'],'0.12.1')
 
+    def test_skill_instructions_remain_the_measured_no_regression_baseline(self):
+        measurement=json.loads((ROOT/'reports/skill-131-summary/measurement.json').read_text())
+        manifest=json.loads((SKILL/'MANIFEST.json').read_text())
+        self.assertEqual(hashlib.sha256((SKILL/'SKILL.md').read_bytes()).hexdigest(),measurement['skill_sha256'])
+        self.assertEqual(manifest['skill_version'],measurement['skill_version'])
+        self.assertEqual(manifest['engine']['version'],measurement['engine_version'])
+        self.assertTrue(manifest['measured_runtime_and_skill_parity'])
+
     def test_bundle_install_is_self_contained_and_runs_outside_project(self):
         installer=load(SKILL/'scripts/install.py','gp_install_test')
         target=self.root/'installed/goalpilot';result=installer.install(SKILL,target)

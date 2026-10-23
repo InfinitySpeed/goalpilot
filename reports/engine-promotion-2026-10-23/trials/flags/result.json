@@ -1,0 +1,79 @@
+{
+  "case": "flags",
+  "goal": "Finalise la gestion de fonctionnalités : ciblage, déploiement progressif déterministe, publication, retour arrière et audit. Vérifie les règles et l’isolation des environnements.",
+  "cohort": "rc4-confirmation",
+  "status": "scope_passed",
+  "normal_closure": true,
+  "strict_correct": true,
+  "reviewed_correct": true,
+  "success": true,
+  "caller_seconds": 77.87831400599998,
+  "judge_seconds": 0.45188263799991546,
+  "seconds": 78.3301966439999,
+  "usage": {
+    "input_tokens": 55865,
+    "output_tokens": 2497,
+    "cached_input_tokens": 50688,
+    "total_tokens": 58362,
+    "uncached_tokens": 7674,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "strict_judge": {
+    "correct": true,
+    "returncode": 0,
+    "timed_out": false,
+    "seconds": 0.45188263799991546,
+    "groups_passed": [
+      "draft_publish_determinism",
+      "snapshot_membership_rollback",
+      "audit_and_environment_isolation",
+      "atomic_import_strict_boolean_cas",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ]
+  },
+  "reviewed_judge": {
+    "correct": true,
+    "returncode": 0,
+    "timed_out": false,
+    "seconds": 0.45188263799991546,
+    "groups_passed": [
+      "draft_publish_determinism",
+      "snapshot_membership_rollback",
+      "audit_and_environment_isolation",
+      "atomic_import_strict_boolean_cas",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ]
+  },
+  "calls": 1,
+  "model": {
+    "model": "gpt-6.1-sol",
+    "modelProvider": "openai",
+    "serviceTier": null,
+    "reasoningEffort": "low"
+  },
+  "error": null,
+  "sources_unchanged": true,
+  "artifact_hashes": {
+    "README.md": "8675ca1a18b8987d0ab87a4d0e0f2aa90f7654688e6c73205823a0283afc539e",
+    "USER_NOTES.txt": "6fcb52b89d6708f203c151c000759144d8f61fa282557fe2940c6473dbf9e73b",
+    "app.py": "35fcd7bb8cf0dc1ad130f611e9fb6bfc3699a8c15b8555ff10887a42e3628b9e",
+    "goalpilot_runtime.py": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b",
+    "goalpilot_support.py": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_flags.py": "a443e10057717d68e21fc95d6820888c4e1f00b878beaa9ecc47ee1e3565d623",
+    "tests/test_legacy.py": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "id": "c335014dff92",
+  "contract": {
+    "goal": "Termine cette messagerie locale durable : publication, déduplication, livraison par baux, nouvelles tentatives et file d’échecs. Rien ne doit disparaître au redémarrage.",
+    "repo": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/outbox/repo",
+    "scope": "inferred",
+    "checks": [
+      {
+        "id": "gp-original-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      },
+      {
+        "id": "gp-delivered-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/delivered-gate/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/delivered-gate/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      }
+    ],
+    "assumptions": [
+      "Les opérations sans forme de retour précisée renvoient l’enregistrement concerné."
+    ],
+    "limitations": [],
+    "milestones": [],
+    "budget": {
+      "max_calls": 2,
+      "wall_seconds": 600,
+      "attempt_seconds": 600,
+      "max_tokens": 700000
+    },
+    "creation_mode": "direct-first",
+    "model": "gpt-6.1-sol",
+    "artifacts": [
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/original-tests/gate.json",
+        "sha256": "5dda8aa0fbb9694178efbff390300ae656d1bf54cbb4da1275174177dbe22a6c"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/originals/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/originals/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/delivered-gate/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/delivered-gate/original-tests/gate.json",
+        "sha256": "b9be2f631f0130b34e32d0dec9566014a56ffc5356ba1794d81e7aa52f0e14bf"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/delivered-tests/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/delivered-tests/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/delivered-tests/tests/test_queue.py",
+        "sha256": "1cde0ee49faedb0a9cc60781f1b1e2dcca867826255aa61e65209175385b913b"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/outbox/repo/goalpilot_runtime.py",
+        "sha256": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/outbox/repo/goalpilot_support.py",
+        "sha256": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab"
+      }
+    ],
+    "helper_assisted": true
+  },
+  "contract_hash": "159df20bdfb461b8de8c33fab1c7d638e6af202f281ce0dfd7f20f7a5aa7e53f",
+  "mode": "supervised",
+  "status": "scope_passed",
+  "created_at": 1792741834.664264,
+  "active_seconds": 64.03519246000087,
+  "calls": [
+    {
+      "strategy": "implement",
+      "result": {
+        "returncode": 0,
+        "message": "{\"summary\":\"Messagerie durable implémentée : déduplication, baux, nouvelles tentatives, file d’échecs, restauration et transports JSONL/HTTP ; les 3 tests passent, concurrence et persistance comprises.\",\"assumptions\":[\"Les opérations sans forme de retour précisée renvoient l’enregistrement concerné.\"],\"limitations\":[]}",
+        "duration_seconds": 60.28192186400065,
+        "usage": {
+          "input_tokens": 36547,
+          "output_tokens": 2618,
+          "cached_input_tokens": 31616
+        },
+        "timed_out": false,
+        "fatal": false,
+        "simulated": false,
+        "usage_complete": true,
+        "thread_id": "01a167bc-94c8-7f11-9ebe-357061047616",
+        "turn_id": "01a167bc-9511-75c2-89b4-a91d530b09dc",
+        "telemetry": {
+          "backend": "app-server",
+          "usage_updates": 2,
+          "command_count": 1,
+          "model": {
+            "model": "gpt-6.1-sol",
+            "modelProvider": "openai",
+            "serviceTier": null,
+            "reasoningEffort": "low"
+          },
+          "context_prepared": true,
+          "context_seconds": 0.0008806759997241898,
+          "prompt_characters": 13272,
+          "turn_status": "completed",
+          "requested_effort": "low"
+        }
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "checks": [
+        {
+          "id": "gp-original-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_banner (tests.test_legacy.Legacy.test_banner) ... ok\ntest_journey (tests.test_queue.QueueTests.test_journey) ... ok\ntest_restore_and_race (tests.test_queue.QueueTests.test_restore_and_race) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 1.736s\n\nOK\n",
+          "duration_seconds": 1.9015967289997207,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/evidence/verification-1/check-1.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        },
+        {
+          "id": "gp-delivered-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_banner (tests.test_legacy.Legacy.test_banner) ... ok\ntest_journey (tests.test_queue.QueueTests.test_journey) ... ok\ntest_restore_and_race (tests.test_queue.QueueTests.test_restore_and_race) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 1.680s\n\nOK\n",
+          "duration_seconds": 1.8469807299998138,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/outbox/engine/evidence/verification-1/check-2.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        }
+      ],
+      "strategy": null,
+      "at": 1792741838.416059
+    }
+  ],
+  "pending": null,
+  "no_progress": 0,
+  "best_passed": 2,
+  "inactive_calls": 0,
+  "simulated": false,
+  "adapter": {
+    "class": "MatchedAdapter",
+    "model": "gpt-6.1-sol"
+  },
+  "usage": {
+    "input_tokens": 36547,
+    "output_tokens": 2618,
+    "cached_input_tokens": 31616,
+    "total_tokens": 39165,
+    "uncached_tokens": 7549,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  }
+}

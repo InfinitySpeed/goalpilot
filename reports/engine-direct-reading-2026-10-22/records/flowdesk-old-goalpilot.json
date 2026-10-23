@@ -1,0 +1,243 @@
+{
+  "case": "flowdesk",
+  "mode": "goalpilot",
+  "id": "flowdesk-goalpilot",
+  "seconds": 285.9483753049999,
+  "calls": [
+    {
+      "strategy": "build",
+      "result": {
+        "returncode": 0,
+        "message": "{\n  \"summary\": \"Implemented all documented workflows: team permissions, tickets, private comments, pagination, CSV import/export, immutable audit history, leased outbox delivery, validated backups and restore. Preserved unrelated data and added prototype-state migration, concurrency protection, regression journeys and usage instructions. All executed non-HTTP tests passed.\",\n  \"assumptions\": [\n    \"The prototype’s empty persisted object represents an uninitialized workspace store.\"\n  ],\n  \"limitations\": [\n    \"Real HTTP verification was blocked by the sandbox’s socket PermissionError. A bounded HTTP regression journey is included for the socket-enabled host.\"\n  ],\n  \"checks\": [\n    {\n      \"id\": \"local-workflows\",\n      \"description\": \"Exercises original assertions, domain journeys, rejection rollback, persistence, backup validation, process races and JSONL behavior using temporary data.\",\n      \"command\": [\n        \"python\",\n        \"-m\",\n        \"unittest\",\n        \"-v\",\n        \"tests.test_public\",\n        \"tests.test_workflows.Workflows\",\n        \"tests.test_workflows.Transports.test_jsonl_persistence_and_errors\"\n      ],\n      \"timeout_seconds\": 40\n    },\n    {\n      \"id\": \"real-http\",\n      \"description\": \"Exercises localhost HTTP workflows, permissions, revision conflicts, CSV transfer, outbox retry and backup restoration.\",\n      \"command\": [\n        \"python\",\n        \"-m\",\n        \"unittest\",\n        \"-v\",\n        \"tests.test_workflows.Transports.test_real_http_journey\"\n      ],\n      \"timeout_seconds\": 30\n    }\n  ]\n}",
+        "duration_seconds": 283.6124737480004,
+        "usage": {
+          "input_tokens": 225245,
+          "output_tokens": 13330,
+          "cached_input_tokens": 200448
+        },
+        "timed_out": false,
+        "fatal": false,
+        "simulated": false,
+        "usage_complete": true,
+        "thread_id": "01a15f98-fa06-72a1-ba63-c16c4c871a90",
+        "turn_id": "01a15f98-fa61-7bd2-91c2-a6c2d2ddff68",
+        "telemetry": {
+          "backend": "app-server",
+          "usage_updates": 8,
+          "command_count": 6,
+          "model": {
+            "model": "gpt-6.1-sol",
+            "modelProvider": "openai",
+            "serviceTier": null,
+            "reasoningEffort": null
+          },
+          "context_prepared": true,
+          "context_seconds": 0.0015887680001469562,
+          "prompt_characters": 29637,
+          "turn_status": "completed",
+          "requested_effort": "low"
+        },
+        "provider_duration_seconds": 283.4517462500007
+      }
+    }
+  ],
+  "error": null,
+  "status": "scope_passed",
+  "judgments": [
+    {
+      "id": "public",
+      "passed": true,
+      "judge_seconds": 0.11436849899928347,
+      "judge_timed_out": false
+    },
+    {
+      "id": "journey",
+      "passed": true,
+      "judge_seconds": 0.11453871899993828,
+      "judge_timed_out": false
+    },
+    {
+      "id": "atomicity",
+      "passed": true,
+      "judge_seconds": 0.1142773589999706,
+      "judge_timed_out": false
+    },
+    {
+      "id": "idempotency",
+      "passed": true,
+      "judge_seconds": 0.11439746699943498,
+      "judge_timed_out": false
+    },
+    {
+      "id": "isolation_or_revision",
+      "passed": true,
+      "judge_seconds": 0.16478127899972606,
+      "judge_timed_out": false
+    },
+    {
+      "id": "pagination_or_schedule",
+      "passed": true,
+      "judge_seconds": 0.1647190319999936,
+      "judge_timed_out": false
+    },
+    {
+      "id": "history_or_artifacts",
+      "passed": true,
+      "judge_seconds": 0.11430390899931808,
+      "judge_timed_out": false
+    },
+    {
+      "id": "recovery_or_returns",
+      "passed": true,
+      "judge_seconds": 0.11437221599953773,
+      "judge_timed_out": false
+    },
+    {
+      "id": "validation",
+      "passed": true,
+      "judge_seconds": 0.16450397500011604,
+      "judge_timed_out": false
+    },
+    {
+      "id": "backup",
+      "passed": true,
+      "judge_seconds": 0.1647724559998096,
+      "judge_timed_out": false
+    },
+    {
+      "id": "concurrency",
+      "passed": true,
+      "judge_seconds": 0.2679120550001244,
+      "judge_timed_out": false
+    },
+    {
+      "id": "transport",
+      "passed": true,
+      "judge_seconds": 0.2648227689996929,
+      "judge_timed_out": false
+    },
+    {
+      "id": "userdata",
+      "passed": true,
+      "judge_seconds": 0.114236329999585,
+      "judge_timed_out": false
+    },
+    {
+      "id": "public",
+      "passed": true,
+      "judge_seconds": 0.16447332099960477,
+      "judge_timed_out": false
+    },
+    {
+      "id": "journey",
+      "passed": true,
+      "judge_seconds": 0.16447076199983712,
+      "judge_timed_out": false
+    },
+    {
+      "id": "atomicity",
+      "passed": true,
+      "judge_seconds": 0.11445536400060519,
+      "judge_timed_out": false
+    },
+    {
+      "id": "idempotency",
+      "passed": true,
+      "judge_seconds": 0.11470432500027528,
+      "judge_timed_out": false
+    },
+    {
+      "id": "isolation_or_revision",
+      "passed": true,
+      "judge_seconds": 0.11424036599964893,
+      "judge_timed_out": false
+    },
+    {
+      "id": "pagination_or_schedule",
+      "passed": true,
+      "judge_seconds": 0.16437813399988954,
+      "judge_timed_out": false
+    },
+    {
+      "id": "history_or_artifacts",
+      "passed": true,
+      "judge_seconds": 0.16572529199947894,
+      "judge_timed_out": false
+    },
+    {
+      "id": "recovery_or_returns",
+      "passed": true,
+      "judge_seconds": 0.16505002699977922,
+      "judge_timed_out": false
+    },
+    {
+      "id": "validation",
+      "passed": true,
+      "judge_seconds": 0.16450701400026446,
+      "judge_timed_out": false
+    },
+    {
+      "id": "backup",
+      "passed": true,
+      "judge_seconds": 0.16490422700007912,
+      "judge_timed_out": false
+    },
+    {
+      "id": "concurrency",
+      "passed": true,
+      "judge_seconds": 0.27514751399939996,
+      "judge_timed_out": false
+    },
+    {
+      "id": "transport",
+      "passed": true,
+      "judge_seconds": 0.2668631890001052,
+      "judge_timed_out": false
+    },
+    {
+      "id": "userdata",
+      "passed": true,
+      "judge_seconds": 0.2150132120004855,
+      "judge_timed_out": false
+    }
+  ],
+  "normal_exit": true,
+  "artifact_success": true,
+  "success": true,
+  "usage": {
+    "input_tokens": 225245,
+    "output_tokens": 13330,
+    "cached_input_tokens": 200448,
+    "total_tokens": 238575,
+    "uncached_tokens": 38127,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "human_inputs": 0,
+  "quota_observation": {
+    "windows": [
+      {
+        "bucket": "codex",
+        "window": "primary",
+        "before": {
+          "usedPercent": 64,
+          "resetsAt": 1793119394,
+          "windowDurationMins": 10080
+        },
+        "after": {
+          "usedPercent": 65,
+          "resetsAt": 1793119394,
+          "windowDurationMins": 10080
+        },
+        "same_window": true,
+        "reported_percentage_point_delta": 1,
+        "usable_monotonic_observation": true
+      }
+    ],
+    "exact_attributable_quota_known": false,
+    "limitations": "Integer account-wide percentages; unknown rounding and reporting delay, possible concurrent activity. A zero displayed change does not mean zero quota consumed. Window resets cannot be compared. No exact token-to-quota conversion."
+  },
+  "fatal": false
+}

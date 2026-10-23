@@ -1,0 +1,79 @@
+{
+  "case": "tickets",
+  "goal": "Finalise la billetterie locale : sièges, réservations temporaires, expiration, achat, remboursement et contrôle d’entrée. Aucun siège vendu deux fois.",
+  "cohort": "rc4-confirmation",
+  "status": "scope_passed",
+  "normal_closure": true,
+  "strict_correct": true,
+  "reviewed_correct": true,
+  "success": true,
+  "caller_seconds": 61.35646094099957,
+  "judge_seconds": 0.3907716060002713,
+  "seconds": 61.74723254699984,
+  "usage": {
+    "input_tokens": 36217,
+    "output_tokens": 2402,
+    "cached_input_tokens": 31360,
+    "total_tokens": 38619,
+    "uncached_tokens": 7259,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "strict_judge": {
+    "correct": true,
+    "returncode": 0,
+    "timed_out": false,
+    "seconds": 0.3907716060002713,
+    "groups_passed": [
+      "seat_atomicity_expiry",
+      "purchase_idempotency_restart",
+      "checkin_no_refund_after_use",
+      "refund_batch_types",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ]
+  },
+  "reviewed_judge": {
+    "correct": true,
+    "returncode": 0,
+    "timed_out": false,
+    "seconds": 0.3907716060002713,
+    "groups_passed": [
+      "seat_atomicity_expiry",
+      "purchase_idempotency_restart",
+      "checkin_no_refund_after_use",
+      "refund_batch_types",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ]
+  },
+  "calls": 1,
+  "model": {
+    "model": "gpt-6.1-sol",
+    "modelProvider": "openai",
+    "serviceTier": null,
+    "reasoningEffort": "low"
+  },
+  "error": null,
+  "sources_unchanged": true,
+  "artifact_hashes": {
+    "README.md": "a6912c280004fdc84bc8c8ed7ec044a0533f159e843c29a0d68d0bdf5caadebc",
+    "USER_NOTES.txt": "6fcb52b89d6708f203c151c000759144d8f61fa282557fe2940c6473dbf9e73b",
+    "app.py": "e0d8dca287a53b8549c9711346be0f254e4d31b5c5e45e380c6a3ac2b9bcdf91",
+    "goalpilot_runtime.py": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b",
+    "goalpilot_support.py": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_legacy.py": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0",
+    "tests/test_tickets.py": "c908126a8f2175fce05cdbad54bfe06002acd3eaf5e923885d71a2322335067c"
+  }
+}

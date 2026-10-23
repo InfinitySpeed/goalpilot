@@ -1,0 +1,68 @@
+{
+  "case": "annotations",
+  "goal": "Achève l’annotation de données : jeux, affectations sous bail, votes indépendants, consensus et réouverture. Les contributions et les droits doivent survivre à la reprise.",
+  "cohort": "rc4-confirmation",
+  "status": "scope_passed",
+  "normal_closure": true,
+  "strict_correct": false,
+  "reviewed_correct": true,
+  "success": true,
+  "caller_seconds": 49.43679433200032,
+  "judge_seconds": 0.47437321599954885,
+  "seconds": 49.91116754799987,
+  "usage": {
+    "input_tokens": 36507,
+    "output_tokens": 2599,
+    "cached_input_tokens": 29056,
+    "total_tokens": 39106,
+    "uncached_tokens": 10050,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "strict_judge": {
+    "correct": false,
+    "returncode": 1,
+    "timed_out": false,
+    "seconds": 0.060715029999300896,
+    "groups_passed": []
+  },
+  "reviewed_judge": {
+    "correct": true,
+    "seconds": 0.41365818600024795,
+    "groups_passed": [
+      "bounded_independent_claims",
+      "expiry_stale_receipt_disagreement",
+      "reopen_history_and_deactivation",
+      "batch_and_types",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ],
+    "returncode": 0,
+    "timed_out": false
+  },
+  "calls": 1,
+  "model": {
+    "model": "gpt-6.1-sol",
+    "modelProvider": "openai",
+    "serviceTier": null,
+    "reasoningEffort": "low"
+  },
+  "error": null,
+  "sources_unchanged": true,
+  "artifact_hashes": {
+    "README.md": "50e061330cd8becc3683ec4168263deb97f2f12e297658e0efa2d55e897d6691",
+    "USER_NOTES.txt": "6fcb52b89d6708f203c151c000759144d8f61fa282557fe2940c6473dbf9e73b",
+    "app.py": "09c95c798475bb7b56ec04f0f41ac7c3674860e4e2a0e0acebcd964fb4b24893",
+    "goalpilot_runtime.py": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b",
+    "goalpilot_support.py": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_annotation.py": "7e7155a1f9486e1bfcab599bddc5b0224f7a121a19285c58752163001da334e3",
+    "tests/test_legacy.py": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+  }
+}

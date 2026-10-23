@@ -15,6 +15,41 @@ import sys
 import tempfile
 
 IGNORE={'.git','.codex','.aws','.agents','.venv','venv','node_modules','__pycache__','dist','build','.pytest_cache','.mypy_cache','.next','coverage'}
+BENCHMARKED_RUNNER_REPORT_SHA256='1d84448820f33ec6656d5451a3f680b73bfdf40c9ee13904d9d77050230fed6d'
+
+
+def _parallel_runner(repo, snapshot, folder):
+    """Freeze the already measured parallel runner for GoalPilot's own suite only."""
+    root=Path(__file__).resolve().parents[1]
+    if Path(repo).resolve()!=root:
+        return None
+    originals=Path(snapshot['directory'])
+    report=next((x for x in snapshot['files'] if x['path']=='reports/test-runner-benchmark.json'),None)
+    if not report or report['sha256']!=BENCHMARKED_RUNNER_REPORT_SHA256:
+        return None
+    try:
+        evidence=json.loads((originals/report['path']).read_text())
+        expected=evidence['candidate']['runner_fingerprint']
+        if (not evidence['candidate']['passed_each_run'] or evidence['candidate']['failures_each_run'] or
+            evidence['candidate']['errors_each_run'] or evidence['candidate']['skipped_each_run'] or
+            evidence['wall_time_reduction_percent']<20):
+            return None
+        files={}
+        for relative,sha256 in expected.items():
+            item=next((x for x in snapshot['files'] if x['path']==relative),None)
+            if not item or item['sha256']!=sha256:
+                return None
+            source=originals/relative
+            target=folder/'parallel-runner'/relative
+            target.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copy2(source,target)
+            files[relative]={'path':str(target),'sha256':sha256}
+        report_target=folder/'parallel-benchmark.json'
+        shutil.copy2(originals/report['path'],report_target)
+        files[report['path']]={'path':str(report_target),'sha256':report['sha256']}
+        return {'entrypoint':'validate.py','jobs':4,'files':files}
+    except (OSError,ValueError,KeyError,TypeError):
+        return None
 
 
 def assertion_count(snapshot):
@@ -64,10 +99,14 @@ def make_gate(repo, run_dir, snapshot):
     folder=Path(run_dir)/'original-tests';folder.mkdir(exist_ok=True)
     runner=folder/'runner.py';runner.write_bytes(Path(__file__).read_bytes())
     manifest=folder/'gate.json'
-    payload={'originals':str(originals),'files':entries,'max_bytes':64000000,'max_entries':4000}
+    parallel_runner=_parallel_runner(repo,snapshot,folder)
+    payload={'originals':str(originals),'files':entries,'max_bytes':64000000,'max_entries':4000,
+             'parallel_runner':parallel_runner}
     manifest.write_text(json.dumps(payload,indent=2)+'\n')
     artifacts=[{'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in (runner,manifest)]
     artifacts.extend({'path':str(originals/x['path']),'sha256':x['sha256']} for x in entries)
+    if parallel_runner:
+        artifacts.extend({'path':x['path'],'sha256':x['sha256']} for x in parallel_runner['files'].values())
     return {'check':{'id':'original-tests','description':'Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened',
             'command':[sys.executable,str(runner),str(manifest)],'timeout_seconds':60,'infrastructure_codes':[86]},
             'artifacts':artifacts,'original_test_files':len(supported)}
@@ -94,6 +133,15 @@ def run_gate(manifest):
             if source.is_symlink() or hashlib.sha256(source.read_bytes()).hexdigest()!=item['sha256']:
                 raise RuntimeError('Frozen original test changed')
             target=clone/item['path'];target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source,target)
+        parallel=data.get('parallel_runner')
+        if parallel:
+            for relative,item in parallel['files'].items():
+                source=Path(item['path'])
+                if source.is_symlink() or hashlib.sha256(source.read_bytes()).hexdigest()!=item['sha256']:
+                    raise RuntimeError('Frozen benchmarked runner changed')
+                target=clone/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source,target)
+            return subprocess.call([sys.executable,str(clone/parallel['entrypoint']),
+                                    '--jobs',str(parallel['jobs'])],cwd=clone)
         code="""import pathlib,sys,unittest
 suite=unittest.defaultTestLoader.discover('tests',top_level_dir='.' if pathlib.Path('tests/__init__.py').exists() else None)
 if suite.countTestCases()==0:

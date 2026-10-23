@@ -25,3 +25,34 @@ The budget-reporting change was also measured against a same-source control copy
 - The historical benchmark checker passed against its archived source reference; its performance results do not apply to this release.
 
 These are deterministic local protocol tests, not evidence that an agent always extracts every intended requirement from an ambiguous request. The calling agent still supplies the inventory; exact quotes and complete links cannot prove it did not omit an intent. The host does not expose a comparable subscription-quota measurement here, so total caller tokens and real-world task completion impact remain unmeasured. Exact tokenizer counts are host-specific.
+
+## Current protected-gate optimization
+
+The frozen GoalPilot original-test gate can use the already-measured four-worker
+runner only for this repository and only when its report and source fingerprints
+match. It passed the current 293-test suite in 21.217 s, compared with 43.953 s
+for a same-scope sequential run: 51.7% less local wall time. The independent
+`validate.py` and archived benchmark checks also passed; the archived benchmark
+still verifies GoalPilot Skill 1.3.1 / engine 0.12.1 at 20/20, 2,151,252 raw
+tokens and 1,541.62 s against native Codex at 19/20, 4,716,581 raw tokens and
+3,919.08 s. Those archived results do not measure standalone engine 0.15.0.
+
+One live Flowdesk diagnostic for the newer standalone engine did not meet the
+no-regression target: direct-first used 296,689 raw tokens and 312.17 s for
+26/26 checks, versus the measured old GoalPilot's 238,575 tokens and 285.95 s;
+native Codex used 673,953 tokens and 314.58 s on that same mission. The
+review/build variant used 344,913 tokens and 363.44 s. This single-mission
+sample is not a broad completion benchmark; neither newer variant is promoted
+as a model-usage improvement. The protected local test-runner change makes no
+model calls and leaves task execution behavior unchanged.
+
+After that diagnostic, a single relevant-file reading instruction was tested in
+the direct-first prompt on Flowdesk and Stockroom. Both completed with 26/26
+independent assertions. The two-case aggregate used 329,834 raw tokens and
+363.68 s, versus 454,622 and 576.68 s for the historical 0.7.0 controls
+(-27.45% tokens, -36.91% time); native Codex used 1,480,502 tokens and 675.08 s,
+with both artifacts correct but neither goal normally closed. The candidate
+closed both. Each arm has one run per case, so the result is a promising measured
+gain on these two familiar tasks, not a statistical or general-purpose claim.
+The standalone finish flow and portable Skill were not changed by this prompt
+experiment. See [the protocol and per-case table](ENGINE-BENCHMARKS.md).

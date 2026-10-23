@@ -117,5 +117,13 @@ class V2Tests(unittest.TestCase):
         self.assertTrue(result.fatal)
         self.assertIsNone(result.usage)
 
+    def test_effort_is_set_in_thread_configuration(self):
+        with AppServerAdapter(executable=str(self.shim),effort='low') as adapter:
+            result=adapter.execute('Complete task',self.repo,2,self.root/'effort')
+        self.assertEqual(result.returncode,0)
+        packets=[json.loads(line)['packet'] for line in (self.root/'effort/events.jsonl').read_text().splitlines()]
+        thread=next(x for x in packets if x.get('method')=='thread/start')
+        self.assertEqual(thread['params']['config']['model_reasoning_effort'],'low')
+
 
 if __name__=='__main__':unittest.main()

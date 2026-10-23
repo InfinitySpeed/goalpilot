@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/annotations/strict-judge/judge.py", line 28, in <module>
+    assert a['item']=='i' and b['item']=='i' and a['receipt']!=b['receipt']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

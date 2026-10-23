@@ -1,8 +1,10 @@
 # Benchmark results and limitations
 
+For the **main release 0.16.0**, see the [promoted engine comparison and frozen evidence](ENGINE-PROMOTION.md). This page retains the historical portable-skill benchmark.
+
 This report covers skill **1.3.1**, engine **0.12.1**, and the complete calling invocation. It distinguishes observed results from general product guarantees.
 
-This is the recorded **Codex automatic-hook benchmark**. The portable Skill now ships the benchmark-matched instructions (1.3.1) and embedded engine (0.12.1). A fresh paired single-goal check also compared that bundle against engine 0.15.0: both artifacts passed the independent 10-group judge, while 0.12.1 used 80,897 raw caller tokens and 110.6 seconds; the 0.15.0 run was interrupted after at least 140,356 tokens and 136.6 seconds, after its GoalPilot session had closed successfully. Treat that one-goal result as diagnostic, not a new aggregate benchmark. The standalone controller source remains 0.15.0. The new installer and Claude Code / Antigravity adapter are not additional measured treatments; published 20-goal figures do not extend to those hosts or explicit-finish delivery modes.
+This is the recorded **Codex automatic-hook benchmark**. The portable Skill now ships the benchmark-matched instructions (1.3.1) and embedded engine (0.12.1). A fresh paired single-goal check also compared that bundle against engine 0.15.0: both artifacts passed the independent 10-group judge, while 0.12.1 used 80,897 raw caller tokens and 110.6 seconds; the 0.15.0 run was interrupted after at least 140,356 tokens and 136.6 seconds, after its GoalPilot session had closed successfully. Treat that one-goal result as diagnostic, not a new aggregate benchmark. The standalone controller source is now 0.16.0, with a separately promoted helper-assisted profile. The new installer and Claude Code / Antigravity adapter are not additional measured treatments; published 20-goal figures do not extend to those hosts or explicit-finish delivery modes.
 
 ## Primary comparison
 
@@ -85,7 +87,7 @@ Across the development experiments, observed research consumption is **at least 
 | [Measured source hashes](../reports/skill-131-summary/measurement.json) | Exact engine and skill-instruction identity, versions and scope. |
 | [Research cost summary](../reports/skill-131-summary/research-cost-summary.json) | Deduplicated aggregate lower bounds and unknowns. |
 
-Run `python3 tools/check_benchmark.py` to reconstruct published aggregates from the included rows and verify the archived measured-source identity and report whether current source matches. Run `python3 validate.py` for offline technical regressions. These commands do not repeat paid model experiments.
+Run `python3 tools/check_benchmark.py` to reconstruct the native and old-GoalPilot comparisons from the retained rows, verify the archived measured-source identity, and enforce that the shipped Skill still matches that measured treatment. If Skill instructions or embedded engine change, this gate fails until a fresh matched comparison is recorded. Run `python3 validate.py` for offline technical regressions. These commands do not repeat paid model experiments.
 
 The public repository contains analyses and audit receipts, not the full raw model transcripts, external judge worktrees or development-session journals. Historical receipts retain their original local paths. Aggregate arithmetic can be reproduced from this repository; independent re-auditing of the original provider telemetry requires the retained raw journals and cannot be performed from summaries alone. No fresh paid replication has been run for this public documentation release.
 

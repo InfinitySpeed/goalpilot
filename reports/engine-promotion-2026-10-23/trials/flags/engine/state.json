@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "id": "762eaece093d",
+  "contract": {
+    "goal": "Finalise la gestion de fonctionnalités : ciblage, déploiement progressif déterministe, publication, retour arrière et audit. Vérifie les règles et l’isolation des environnements.",
+    "repo": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/flags/repo",
+    "scope": "inferred",
+    "checks": [
+      {
+        "id": "gp-original-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      },
+      {
+        "id": "gp-delivered-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/delivered-gate/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/delivered-gate/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      }
+    ],
+    "assumptions": [
+      "Les opérations dont le retour n’est pas spécifié renvoient un objet décrivant le résultat."
+    ],
+    "limitations": [],
+    "milestones": [],
+    "budget": {
+      "max_calls": 2,
+      "wall_seconds": 600,
+      "attempt_seconds": 600,
+      "max_tokens": 700000
+    },
+    "creation_mode": "direct-first",
+    "model": "gpt-6.1-sol",
+    "artifacts": [
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/original-tests/gate.json",
+        "sha256": "975c39379a3f61f905f70687628237cde5c5cb31a2499ae32e301db2f1479036"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/originals/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/originals/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/delivered-gate/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/delivered-gate/original-tests/gate.json",
+        "sha256": "fb53bf3081af1eb34da275c2c50f4aa7e23bc4c19a7a481e913eac916f728fb8"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/delivered-tests/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/delivered-tests/tests/test_flags.py",
+        "sha256": "a443e10057717d68e21fc95d6820888c4e1f00b878beaa9ecc47ee1e3565d623"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/delivered-tests/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/flags/repo/goalpilot_runtime.py",
+        "sha256": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/flags/repo/goalpilot_support.py",
+        "sha256": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab"
+      }
+    ],
+    "helper_assisted": true
+  },
+  "contract_hash": "1b7ba77540c78ee7ab8a9f965fb7704eaab0e79eae717ed3e94515d82178a5ad",
+  "mode": "supervised",
+  "status": "scope_passed",
+  "created_at": 1792741364.0930934,
+  "active_seconds": 77.84485686500011,
+  "calls": [
+    {
+      "strategy": "implement",
+      "result": {
+        "returncode": 0,
+        "message": "{\"summary\":\"Gestion des fonctionnalités implémentée : ciblage déterministe, publication, retour arrière, audit, isolation des environnements et persistance atomique ; les trois tests passent, avec parcours JSONL/HTTP, restauration et concurrence.\",\"assumptions\":[\"Les opérations dont le retour n’est pas spécifié renvoient un objet décrivant le résultat.\"],\"limitations\":[]}",
+        "duration_seconds": 72.62281490499981,
+        "usage": {
+          "input_tokens": 55865,
+          "output_tokens": 2497,
+          "cached_input_tokens": 50688
+        },
+        "timed_out": false,
+        "fatal": false,
+        "simulated": false,
+        "usage_complete": true,
+        "thread_id": "01a167b5-3688-7e10-a0ba-71f8e82a41a8",
+        "turn_id": "01a167b5-36e2-7fe2-863a-8af00b73c520",
+        "telemetry": {
+          "backend": "app-server",
+          "usage_updates": 3,
+          "command_count": 1,
+          "model": {
+            "model": "gpt-6.1-sol",
+            "modelProvider": "openai",
+            "serviceTier": null,
+            "reasoningEffort": "low"
+          },
+          "context_prepared": true,
+          "context_seconds": 0.0008782210002209467,
+          "prompt_characters": 13402,
+          "turn_status": "completed",
+          "requested_effort": "low"
+        }
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "checks": [
+        {
+          "id": "gp-original-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_journey (tests.test_flags.Flags.test_journey) ... ok\ntest_restore_and_race (tests.test_flags.Flags.test_restore_and_race) ... ok\ntest_banner (tests.test_legacy.Legacy.test_banner) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 2.425s\n\nOK\n",
+          "duration_seconds": 2.600141490000169,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/evidence/verification-1/check-1.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        },
+        {
+          "id": "gp-delivered-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_journey (tests.test_flags.Flags.test_journey) ... ok\ntest_restore_and_race (tests.test_flags.Flags.test_restore_and_race) ... ok\ntest_banner (tests.test_legacy.Legacy.test_banner) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 2.440s\n\nOK\n",
+          "duration_seconds": 2.616789913000048,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/flags/engine/evidence/verification-1/check-2.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        }
+      ],
+      "strategy": null,
+      "at": 1792741369.3132098
+    }
+  ],
+  "pending": null,
+  "no_progress": 0,
+  "best_passed": 2,
+  "inactive_calls": 0,
+  "simulated": false,
+  "adapter": {
+    "class": "MatchedAdapter",
+    "model": "gpt-6.1-sol"
+  },
+  "usage": {
+    "input_tokens": 55865,
+    "output_tokens": 2497,
+    "cached_input_tokens": 50688,
+    "total_tokens": 58362,
+    "uncached_tokens": 7674,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  }
+}

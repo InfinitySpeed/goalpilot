@@ -1,0 +1,79 @@
+{
+  "case": "loyalty",
+  "goal": "Termine ce programme de fidélité : crédits expirables, consommation prioritaire, réservations, remboursements et ajustements. Aucun solde négatif ni crédit perdu.",
+  "cohort": "rc4-confirmation",
+  "status": "scope_passed",
+  "normal_closure": true,
+  "strict_correct": true,
+  "reviewed_correct": true,
+  "success": true,
+  "caller_seconds": 126.22956761899968,
+  "judge_seconds": 0.411601120999876,
+  "seconds": 126.64116873999956,
+  "usage": {
+    "input_tokens": 56389,
+    "output_tokens": 2728,
+    "cached_input_tokens": 51200,
+    "total_tokens": 59117,
+    "uncached_tokens": 7917,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "strict_judge": {
+    "correct": true,
+    "returncode": 0,
+    "timed_out": false,
+    "seconds": 0.411601120999876,
+    "groups_passed": [
+      "expiry_order_holds",
+      "bounded_refund_original_expiry",
+      "hold_expiry_history",
+      "batch_and_strict_points",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ]
+  },
+  "reviewed_judge": {
+    "correct": true,
+    "returncode": 0,
+    "timed_out": false,
+    "seconds": 0.411601120999876,
+    "groups_passed": [
+      "expiry_order_holds",
+      "bounded_refund_original_expiry",
+      "hold_expiry_history",
+      "batch_and_strict_points",
+      "three_real_cross_process_conflict_races",
+      "detached_snapshots_and_restart",
+      "restore_rejects_invalid_without_data_loss",
+      "real_jsonl_errors_and_recovery",
+      "real_http_domain_errors_health",
+      "original_behavior_and_customer_data"
+    ]
+  },
+  "calls": 1,
+  "model": {
+    "model": "gpt-6.1-sol",
+    "modelProvider": "openai",
+    "serviceTier": null,
+    "reasoningEffort": "low"
+  },
+  "error": null,
+  "sources_unchanged": true,
+  "artifact_hashes": {
+    "README.md": "20bb7aa68fd26d182e9bb5a945771edcbebe7661f9569427eb3215a6f05337de",
+    "USER_NOTES.txt": "6fcb52b89d6708f203c151c000759144d8f61fa282557fe2940c6473dbf9e73b",
+    "app.py": "74565f4971315b03a3ea8137bb74e9c271b0b8d7cfa9b873483943eb03d5d00a",
+    "goalpilot_runtime.py": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b",
+    "goalpilot_support.py": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_legacy.py": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0",
+    "tests/test_workflows.py": "942acaeb282396293ee1643550e90b4309f1b91c267d0830b97be9802ca28679"
+  }
+}

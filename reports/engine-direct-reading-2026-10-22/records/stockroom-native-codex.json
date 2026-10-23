@@ -1,0 +1,270 @@
+{
+  "case": "stockroom",
+  "mode": "native_goal",
+  "id": "stockroom-native_goal",
+  "seconds": 360.49670064199995,
+  "calls": [
+    {
+      "strategy": "native_goal",
+      "result": {
+        "returncode": 1,
+        "message": "Implemented all documented workflows, durable idempotency, restore validation, and usage instructions.\n\nValidation: 11 tests passed, covering complete workflows, rollback, process concurrency, backups, and data preservation. Original database and notes remain unchanged.\n\nLive HTTP verification remains incomplete because this environment prohibits sockets. In-memory HTTP and JSONL subprocess tests pass. Goal remains active pending that check.\nStrengthened restore validation to reject impossible replay snapshots. Added complete workflow tests through JSONL and the HTTP handler, including restart persistence.\n\nValidation: 13 tests passed; compilation passed. Live HTTP verification remains blocked by the environment’s socket restriction, so that test is skipped and the goal remains active.\nGoal marked **blocked** on live HTTP verification: this environment prohibits socket creation.\n\nImplemented the documented workflows, persistence, backup validation, and usage instructions. Current checks: **13 tests passed, 1 skipped**, including process concurrency, restart durability, JSONL workflows, and in-memory HTTP workflows. Original data remains intact.\n\nRemaining check: run the live HTTP test where loopback sockets are permitted.",
+        "duration_seconds": 360.4649901869998,
+        "usage": {
+          "input_tokens": 790812,
+          "output_tokens": 15737,
+          "cached_input_tokens": 757120
+        },
+        "timed_out": false,
+        "fatal": false,
+        "simulated": false,
+        "usage_complete": true,
+        "thread_id": "01a15f4e-a6bd-7bd0-8ca6-ae1091df347a",
+        "turn_id": "01a15f53-eb8f-7823-8855-5f11697fdddd",
+        "telemetry": {
+          "backend": "app-server-native-goal",
+          "model": {
+            "model": "gpt-6.1-sol",
+            "modelProvider": "openai",
+            "serviceTier": null,
+            "reasoningEffort": null
+          },
+          "native_goal_at_stop": {
+            "threadId": "01a15f4e-a6bd-7bd0-8ca6-ae1091df347a",
+            "objective": "Finish this whole inventory and order-fulfilment platform so a small distributor can run daily operations from purchase receipt through sale, shipment, cancellation and returns. Make all documented workflows work together and preserve the data autonomously.\nFollow all original README contracts, finish every workflow, preserve data, resolve reversible ambiguities autonomously. Test meaningful public behavior. No human steering, external services, deployment or credentials. Work only in this repository; do not read benchmark/evaluation sources, references, sibling trials or protocol. Do not launch other agents/model sessions or nested Codex commands. Give a factual handoff.",
+            "status": "blocked",
+            "tokenBudget": null,
+            "tokensUsed": 44824,
+            "timeUsedSeconds": 356,
+            "createdAt": 1792600352,
+            "updatedAt": 1792600709
+          },
+          "cleanup_goal": null,
+          "raw_soft_token_budget_hit": false,
+          "native_turns": [
+            {
+              "id": "01a15f4e-a7e2-7523-8e65-917b46e38f3d",
+              "status": "completed",
+              "error": null
+            },
+            {
+              "id": "01a15f52-e5a4-73d0-bb5d-14a45d2e3903",
+              "status": "completed",
+              "error": null
+            },
+            {
+              "id": "01a15f53-eb8f-7823-8855-5f11697fdddd",
+              "status": "completed",
+              "error": null
+            }
+          ],
+          "usage_updates": 22,
+          "command_count": 22,
+          "context_prepared": false,
+          "context_seconds": 0,
+          "turn_status": "blocked",
+          "error": null
+        }
+      }
+    }
+  ],
+  "error": null,
+  "status": "blocked",
+  "judgments": [
+    {
+      "id": "public",
+      "passed": true,
+      "judge_seconds": 0.1140605499999765,
+      "judge_timed_out": false
+    },
+    {
+      "id": "journey",
+      "passed": true,
+      "judge_seconds": 0.11408003700012159,
+      "judge_timed_out": false
+    },
+    {
+      "id": "atomicity",
+      "passed": true,
+      "judge_seconds": 0.11419681000006676,
+      "judge_timed_out": false
+    },
+    {
+      "id": "idempotency",
+      "passed": true,
+      "judge_seconds": 0.11415360599994528,
+      "judge_timed_out": false
+    },
+    {
+      "id": "isolation_or_revision",
+      "passed": true,
+      "judge_seconds": 0.1643588389999877,
+      "judge_timed_out": false
+    },
+    {
+      "id": "pagination_or_schedule",
+      "passed": true,
+      "judge_seconds": 0.11427607599989642,
+      "judge_timed_out": false
+    },
+    {
+      "id": "history_or_artifacts",
+      "passed": true,
+      "judge_seconds": 0.11425167099991995,
+      "judge_timed_out": false
+    },
+    {
+      "id": "recovery_or_returns",
+      "passed": true,
+      "judge_seconds": 0.11436358599985397,
+      "judge_timed_out": false
+    },
+    {
+      "id": "validation",
+      "passed": true,
+      "judge_seconds": 0.11420081099981871,
+      "judge_timed_out": false
+    },
+    {
+      "id": "backup",
+      "passed": true,
+      "judge_seconds": 0.11409123800012821,
+      "judge_timed_out": false
+    },
+    {
+      "id": "concurrency",
+      "passed": true,
+      "judge_seconds": 0.16428299699987292,
+      "judge_timed_out": false
+    },
+    {
+      "id": "transport",
+      "passed": true,
+      "judge_seconds": 0.26833104399997865,
+      "judge_timed_out": false
+    },
+    {
+      "id": "userdata",
+      "passed": true,
+      "judge_seconds": 0.11448158899997907,
+      "judge_timed_out": false
+    },
+    {
+      "id": "public",
+      "passed": true,
+      "judge_seconds": 0.11421344899986252,
+      "judge_timed_out": false
+    },
+    {
+      "id": "journey",
+      "passed": true,
+      "judge_seconds": 0.1695007880000503,
+      "judge_timed_out": false
+    },
+    {
+      "id": "atomicity",
+      "passed": true,
+      "judge_seconds": 0.11480112900017048,
+      "judge_timed_out": false
+    },
+    {
+      "id": "idempotency",
+      "passed": true,
+      "judge_seconds": 0.11452976900000067,
+      "judge_timed_out": false
+    },
+    {
+      "id": "isolation_or_revision",
+      "passed": true,
+      "judge_seconds": 0.11440605300003881,
+      "judge_timed_out": false
+    },
+    {
+      "id": "pagination_or_schedule",
+      "passed": true,
+      "judge_seconds": 0.11497486000007484,
+      "judge_timed_out": false
+    },
+    {
+      "id": "history_or_artifacts",
+      "passed": true,
+      "judge_seconds": 0.16496191000010185,
+      "judge_timed_out": false
+    },
+    {
+      "id": "recovery_or_returns",
+      "passed": true,
+      "judge_seconds": 0.11478381799997806,
+      "judge_timed_out": false
+    },
+    {
+      "id": "validation",
+      "passed": true,
+      "judge_seconds": 0.1644189749999896,
+      "judge_timed_out": false
+    },
+    {
+      "id": "backup",
+      "passed": true,
+      "judge_seconds": 0.1143017649999365,
+      "judge_timed_out": false
+    },
+    {
+      "id": "concurrency",
+      "passed": true,
+      "judge_seconds": 0.2143919029999779,
+      "judge_timed_out": false
+    },
+    {
+      "id": "transport",
+      "passed": true,
+      "judge_seconds": 0.26530676900006256,
+      "judge_timed_out": false
+    },
+    {
+      "id": "userdata",
+      "passed": true,
+      "judge_seconds": 0.16473563199997443,
+      "judge_timed_out": false
+    }
+  ],
+  "normal_exit": false,
+  "artifact_success": true,
+  "success": false,
+  "usage": {
+    "input_tokens": 790812,
+    "output_tokens": 15737,
+    "cached_input_tokens": 757120,
+    "total_tokens": 806549,
+    "uncached_tokens": 49429,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "human_inputs": 0,
+  "quota_observation": {
+    "windows": [
+      {
+        "bucket": "codex",
+        "window": "primary",
+        "before": {
+          "usedPercent": 59,
+          "resetsAt": 1793119394,
+          "windowDurationMins": 10080
+        },
+        "after": {
+          "usedPercent": 59,
+          "resetsAt": 1793119394,
+          "windowDurationMins": 10080
+        },
+        "same_window": true,
+        "reported_percentage_point_delta": 0,
+        "usable_monotonic_observation": true
+      }
+    ],
+    "exact_attributable_quota_known": false,
+    "limitations": "Integer account-wide percentages; unknown rounding and reporting delay, possible concurrent activity. A zero displayed change does not mean zero quota consumed. Window resets cannot be compared. No exact token-to-quota conversion."
+  },
+  "fatal": false
+}

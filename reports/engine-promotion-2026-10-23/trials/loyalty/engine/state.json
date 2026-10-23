@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "id": "88076fb07ad9",
+  "contract": {
+    "goal": "Termine ce programme de fidélité : crédits expirables, consommation prioritaire, réservations, remboursements et ajustements. Aucun solde négatif ni crédit perdu.",
+    "repo": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/loyalty/repo",
+    "scope": "inferred",
+    "checks": [
+      {
+        "id": "gp-original-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      },
+      {
+        "id": "gp-delivered-tests",
+        "description": "Original unittest tests and fixtures still pass against delivered code, even if working tests were weakened",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/delivered-gate/original-tests/runner.py",
+          "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/delivered-gate/original-tests/gate.json"
+        ],
+        "timeout_seconds": 60,
+        "infrastructure_codes": [
+          86
+        ]
+      }
+    ],
+    "assumptions": [
+      "Les ajustements suivent les opérations documentées : gains et remboursements."
+    ],
+    "limitations": [],
+    "milestones": [],
+    "budget": {
+      "max_calls": 2,
+      "wall_seconds": 600,
+      "attempt_seconds": 600,
+      "max_tokens": 700000
+    },
+    "creation_mode": "direct-first",
+    "model": "gpt-6.1-sol",
+    "artifacts": [
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/original-tests/gate.json",
+        "sha256": "ff183f969e911bd7059c12ba815bdd66213d4e1c673a79f3ee0e74d03a7fdd26"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/originals/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/originals/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/delivered-gate/original-tests/runner.py",
+        "sha256": "958ba72923a3325003fd68032d351750f63003a277c8a98f52d89b89eab89f20"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/delivered-gate/original-tests/gate.json",
+        "sha256": "1d851e63f6cfd20f20640373a73735f0c84dc3a767aaf174a5e36a79bd40be72"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/delivered-tests/tests/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/delivered-tests/tests/test_legacy.py",
+        "sha256": "c5dde7adf59936f64343c3fd35532e8c9aa0cd24e7a6867a97ca14bd01b295c0"
+      },
+      {
+        "path": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/delivered-tests/tests/test_workflows.py",
+        "sha256": "942acaeb282396293ee1643550e90b4309f1b91c267d0830b97be9802ca28679"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/loyalty/repo/goalpilot_runtime.py",
+        "sha256": "3b22b1ebd053632017e0081b71620cb24816918d264ce2d76de18fbb05eb666b"
+      },
+      {
+        "path": "/tmp/goalpilot-promotion-tasks/rc4-confirmation/loyalty/repo/goalpilot_support.py",
+        "sha256": "f296cd0f332825202927369635275263755f00f7e5ef7498b2c9db32bca597ab"
+      }
+    ],
+    "helper_assisted": true
+  },
+  "contract_hash": "f1cfabfe1ee697f9da804a6348a7c1acb660a7c4d1251f65daba7fd802d5f0d1",
+  "mode": "supervised",
+  "status": "scope_passed",
+  "created_at": 1792742644.5905378,
+  "active_seconds": 126.19634029200006,
+  "calls": [
+    {
+      "strategy": "implement",
+      "result": {
+        "returncode": 0,
+        "message": "{\"summary\":\"Programme implémenté : crédits expirables, réservations prioritaires, remboursements, idempotence, sauvegarde/restauration et transports JSONL/HTTP ; les 3 tests passent, incluant concurrence et persistance.\",\"assumptions\":[\"Les ajustements suivent les opérations documentées : gains et remboursements.\"],\"limitations\":[]}",
+        "duration_seconds": 122.55252722600017,
+        "usage": {
+          "input_tokens": 56389,
+          "output_tokens": 2728,
+          "cached_input_tokens": 51200
+        },
+        "timed_out": false,
+        "fatal": false,
+        "simulated": false,
+        "usage_complete": true,
+        "thread_id": "01a167c7-fd51-7e43-9bb9-7e7280d98232",
+        "turn_id": "01a167c7-fdb2-7f02-adef-4b2b5de895dc",
+        "telemetry": {
+          "backend": "app-server",
+          "usage_updates": 3,
+          "command_count": 2,
+          "model": {
+            "model": "gpt-6.1-sol",
+            "modelProvider": "openai",
+            "serviceTier": null,
+            "reasoningEffort": "low"
+          },
+          "context_prepared": true,
+          "context_seconds": 0.0009227150003425777,
+          "prompt_characters": 13280,
+          "turn_status": "completed",
+          "requested_effort": "low"
+        }
+      }
+    }
+  ],
+  "verifications": [
+    {
+      "checks": [
+        {
+          "id": "gp-original-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_banner (tests.test_legacy.Legacy.test_banner) ... ok\ntest_atomic_restore_and_race (tests.test_workflows.Workflows.test_atomic_restore_and_race) ... ok\ntest_journey (tests.test_workflows.Workflows.test_journey) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 1.661s\n\nOK\n",
+          "duration_seconds": 1.825890893000178,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/evidence/verification-1/check-1.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        },
+        {
+          "id": "gp-delivered-tests",
+          "passed": true,
+          "returncode": 0,
+          "output": "test_banner (tests.test_legacy.Legacy.test_banner) ... ok\ntest_atomic_restore_and_race (tests.test_workflows.Workflows.test_atomic_restore_and_race) ... ok\ntest_journey (tests.test_workflows.Workflows.test_journey) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 1.656s\n\nOK\n",
+          "duration_seconds": 1.8130437769996206,
+          "timed_out": false,
+          "log": "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/loyalty/engine/evidence/verification-1/check-2.log",
+          "output_truncated": false,
+          "infrastructure_error": false,
+          "repository_import_path": true
+        }
+      ],
+      "strategy": null,
+      "at": 1792742648.2321372
+    }
+  ],
+  "pending": null,
+  "no_progress": 0,
+  "best_passed": 2,
+  "inactive_calls": 0,
+  "simulated": false,
+  "adapter": {
+    "class": "MatchedAdapter",
+    "model": "gpt-6.1-sol"
+  },
+  "usage": {
+    "input_tokens": 56389,
+    "output_tokens": 2728,
+    "cached_input_tokens": 51200,
+    "total_tokens": 59117,
+    "uncached_tokens": 7917,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  }
+}

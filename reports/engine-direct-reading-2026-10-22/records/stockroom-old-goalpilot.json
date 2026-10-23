@@ -1,0 +1,243 @@
+{
+  "case": "stockroom",
+  "mode": "goalpilot",
+  "id": "stockroom-goalpilot",
+  "seconds": 290.73480845500035,
+  "calls": [
+    {
+      "strategy": "build",
+      "result": {
+        "returncode": 0,
+        "message": "{\n  \"summary\": \"Implemented all documented inventory, purchase, order, shipment, cancellation, return, transfer and stocktake workflows with durable transactions, global idempotency and validated backups. Added behavioral regressions covering rejection atomicity, concurrency, persistence, data preservation and transports. All executed tests passed.\",\n  \"assumptions\": [\n    \"Whitespace-only IDs and names are treated as empty.\"\n  ],\n  \"limitations\": [\n    \"Real HTTP tests are included but were skipped locally because the sandbox prohibits socket binding.\"\n  ],\n  \"checks\": [\n    {\n      \"id\": \"local-workflows\",\n      \"description\": \"Exercise original assertions, complete workflows, negative cases, restoration, concurrent processes and JSONL persistence using temporary data.\",\n      \"command\": [\n        \"python\",\n        \"-m\",\n        \"unittest\",\n        \"-v\",\n        \"tests.test_public\",\n        \"tests.test_workflows.Workflows\",\n        \"tests.test_workflows.Transport.test_jsonl\"\n      ],\n      \"timeout_seconds\": 45\n    },\n    {\n      \"id\": \"http-workflows\",\n      \"description\": \"Exercise health, complete workflows, HTTP 400 rejections and persistence through a bounded localhost server; skips if sockets are prohibited.\",\n      \"command\": [\n        \"python\",\n        \"-m\",\n        \"unittest\",\n        \"-v\",\n        \"tests.test_workflows.Transport.test_http\"\n      ],\n      \"timeout_seconds\": 30\n    }\n  ]\n}",
+        "duration_seconds": 288.20483547799995,
+        "usage": {
+          "input_tokens": 201170,
+          "output_tokens": 14877,
+          "cached_input_tokens": 175744
+        },
+        "timed_out": false,
+        "fatal": false,
+        "simulated": false,
+        "usage_complete": true,
+        "thread_id": "01a15f9d-6f71-7f30-9ad3-a68cdfda11e1",
+        "turn_id": "01a15f9d-6fbc-7b53-aa3b-cf0b3e3590fc",
+        "telemetry": {
+          "backend": "app-server",
+          "usage_updates": 7,
+          "command_count": 6,
+          "model": {
+            "model": "gpt-6.1-sol",
+            "modelProvider": "openai",
+            "serviceTier": null,
+            "reasoningEffort": null
+          },
+          "context_prepared": true,
+          "context_seconds": 0.001367654999739898,
+          "prompt_characters": 28964,
+          "turn_status": "completed",
+          "requested_effort": "low"
+        },
+        "provider_duration_seconds": 287.9879653400003
+      }
+    }
+  ],
+  "error": null,
+  "status": "scope_passed",
+  "judgments": [
+    {
+      "id": "public",
+      "passed": true,
+      "judge_seconds": 0.1146537079994232,
+      "judge_timed_out": false
+    },
+    {
+      "id": "journey",
+      "passed": true,
+      "judge_seconds": 0.114270592000139,
+      "judge_timed_out": false
+    },
+    {
+      "id": "atomicity",
+      "passed": true,
+      "judge_seconds": 0.16434379600013926,
+      "judge_timed_out": false
+    },
+    {
+      "id": "idempotency",
+      "passed": true,
+      "judge_seconds": 0.11449939599970094,
+      "judge_timed_out": false
+    },
+    {
+      "id": "isolation_or_revision",
+      "passed": true,
+      "judge_seconds": 0.164530121000098,
+      "judge_timed_out": false
+    },
+    {
+      "id": "pagination_or_schedule",
+      "passed": true,
+      "judge_seconds": 0.11445138999988558,
+      "judge_timed_out": false
+    },
+    {
+      "id": "history_or_artifacts",
+      "passed": true,
+      "judge_seconds": 0.11430815900075686,
+      "judge_timed_out": false
+    },
+    {
+      "id": "recovery_or_returns",
+      "passed": true,
+      "judge_seconds": 0.16473818899976322,
+      "judge_timed_out": false
+    },
+    {
+      "id": "validation",
+      "passed": true,
+      "judge_seconds": 0.16573855800015735,
+      "judge_timed_out": false
+    },
+    {
+      "id": "backup",
+      "passed": true,
+      "judge_seconds": 0.16536726400045154,
+      "judge_timed_out": false
+    },
+    {
+      "id": "concurrency",
+      "passed": true,
+      "judge_seconds": 0.26585110599990003,
+      "judge_timed_out": false
+    },
+    {
+      "id": "transport",
+      "passed": true,
+      "judge_seconds": 0.31512482299967814,
+      "judge_timed_out": false
+    },
+    {
+      "id": "userdata",
+      "passed": true,
+      "judge_seconds": 0.1646046039995781,
+      "judge_timed_out": false
+    },
+    {
+      "id": "public",
+      "passed": true,
+      "judge_seconds": 0.16482885499954136,
+      "judge_timed_out": false
+    },
+    {
+      "id": "journey",
+      "passed": true,
+      "judge_seconds": 0.16474948799987033,
+      "judge_timed_out": false
+    },
+    {
+      "id": "atomicity",
+      "passed": true,
+      "judge_seconds": 0.16460344799997984,
+      "judge_timed_out": false
+    },
+    {
+      "id": "idempotency",
+      "passed": true,
+      "judge_seconds": 0.1644942449993323,
+      "judge_timed_out": false
+    },
+    {
+      "id": "isolation_or_revision",
+      "passed": true,
+      "judge_seconds": 0.16501977799998713,
+      "judge_timed_out": false
+    },
+    {
+      "id": "pagination_or_schedule",
+      "passed": true,
+      "judge_seconds": 0.16600293499959662,
+      "judge_timed_out": false
+    },
+    {
+      "id": "history_or_artifacts",
+      "passed": true,
+      "judge_seconds": 0.1143072699996992,
+      "judge_timed_out": false
+    },
+    {
+      "id": "recovery_or_returns",
+      "passed": true,
+      "judge_seconds": 0.11475494899968908,
+      "judge_timed_out": false
+    },
+    {
+      "id": "validation",
+      "passed": true,
+      "judge_seconds": 0.1644355150001502,
+      "judge_timed_out": false
+    },
+    {
+      "id": "backup",
+      "passed": true,
+      "judge_seconds": 0.11425173599945992,
+      "judge_timed_out": false
+    },
+    {
+      "id": "concurrency",
+      "passed": true,
+      "judge_seconds": 0.21645225700012816,
+      "judge_timed_out": false
+    },
+    {
+      "id": "transport",
+      "passed": true,
+      "judge_seconds": 0.26456565100033913,
+      "judge_timed_out": false
+    },
+    {
+      "id": "userdata",
+      "passed": true,
+      "judge_seconds": 0.11432422400048381,
+      "judge_timed_out": false
+    }
+  ],
+  "normal_exit": true,
+  "artifact_success": true,
+  "success": true,
+  "usage": {
+    "input_tokens": 201170,
+    "output_tokens": 14877,
+    "cached_input_tokens": 175744,
+    "total_tokens": 216047,
+    "uncached_tokens": 40303,
+    "calls_with_usage": 1,
+    "calls_without_usage": 0,
+    "calls_with_partial_usage": 0,
+    "usage_complete": true
+  },
+  "human_inputs": 0,
+  "quota_observation": {
+    "windows": [
+      {
+        "bucket": "codex",
+        "window": "primary",
+        "before": {
+          "usedPercent": 65,
+          "resetsAt": 1793119394,
+          "windowDurationMins": 10080
+        },
+        "after": {
+          "usedPercent": 65,
+          "resetsAt": 1793119394,
+          "windowDurationMins": 10080
+        },
+        "same_window": true,
+        "reported_percentage_point_delta": 0,
+        "usable_monotonic_observation": true
+      }
+    ],
+    "exact_attributable_quota_known": false,
+    "limitations": "Integer account-wide percentages; unknown rounding and reporting delay, possible concurrent activity. A zero displayed change does not mean zero quota consumed. Window resets cannot be compared. No exact token-to-quota conversion."
+  },
+  "fatal": false
+}

@@ -120,6 +120,7 @@ def parser() -> argparse.ArgumentParser:
     policy.add_argument('--fast',action='store_true',help='Ancienne boucle : tests proposés par le réalisateur, sans contre-vérification')
     policy.add_argument('--thorough',action='store_true',help='Contre-vérifier systématiquement, même après une première livraison vérifiable')
     go.add_argument('--model')
+    go.add_argument('--helpers',action='store_true',help='Use verified portable helpers and frozen unittest gates (opt-in project files)')
     go.add_argument('--cache-dir',type=Path,default=Path.home()/'.goalpilot/reuse',help='Réutilisation vérifiée des demandes et fichiers initiaux strictement identiques')
     go.add_argument('--no-reuse',action='store_true',help='Forcer une nouvelle réalisation même si une livraison identique a été vérifiée')
     return root
@@ -199,11 +200,13 @@ def main(argv=None) -> int:
             from .lab import run_lab
             run_lab(args.output)
         elif args.command=='go':
+            if args.helpers and (args.thorough or args.checks):
+                raise ContractError('--helpers cannot be combined with --thorough or --checks')
             from .autopilot import run_autopilot
             checks=json.loads(args.checks.read_text()) if args.checks else None
             from .finish import run_finish
-            runner = run_autopilot if args.fast or checks is not None else run_finish
-            options = {'checks': checks} if runner is run_autopilot else {'audit_policy': 'always' if args.thorough else 'on-interruption', 'review_context': 'fresh' if args.thorough else 'local', 'initial_effort': None if args.thorough else 'low', 'compact_delivery': not args.thorough}
+            runner = run_autopilot if args.fast or args.helpers or checks is not None else run_finish
+            options = {'checks': checks, 'helpers': args.helpers} if runner is run_autopilot else {'audit_policy': 'always' if args.thorough else 'on-interruption', 'review_context': 'fresh' if args.thorough else 'local', 'initial_effort': None if args.thorough else 'low', 'compact_delivery': not args.thorough}
             if runner is run_finish and not args.thorough and not args.no_reuse:
                 from .reuse import run_cached_finish
                 runner=run_cached_finish

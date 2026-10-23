@@ -1,0 +1,38 @@
+{
+  "recorded_at": 1792624617.5139122,
+  "observed_outcomes_at_amendment": 30,
+  "matched_pairs_at_amendment": 14,
+  "public_precondition": "bill requires active/past_due AND now>=period_end; its accepted mutation advances period_end beyond now.",
+  "reason": "At identical logical time with different keys, serialized call1 advances end10->20, so call2 at now10 MUST reject. Original race demanded two successes and thus contradicted the public precondition. Applies equally to both arms.",
+  "original_condition": "elif mode=='one_invoice':assert all(x['ok']for x in results) and sum(len(x['result']['invoices'])for x in results)==1,results",
+  "corrected_condition": "elif mode=='one_invoice':assert sum(x['ok']for x in results)==1 and sum(len(x['result']['invoices'])for x in results if x['ok'])==1,results",
+  "reference_trace": [
+    {
+      "ok": true,
+      "result": {
+        "invoices": [
+          {
+            "due": 10
+          }
+        ]
+      }
+    },
+    {
+      "ok": false,
+      "error": "Period has not ended"
+    }
+  ],
+  "negative_mutants_rejected": [
+    "no_invoice",
+    "duplicate_invoice",
+    "accepted_below_precondition",
+    "accepted_without_invoice"
+  ],
+  "model_calls": 0,
+  "original_program_sha256": "2efbae450dcdd76322d448dcf8405f11fc1b280a28cc230513871834b156f07d",
+  "corrected_program_sha256": "a04f9172d4229abc241c3df1a1db61c59e03bff7b6291aaedd09299626e8621c",
+  "original_registered_scorer_and_outcomes_untouched": true,
+  "token_savings_unchanged": true,
+  "time_accounting": "If corrected analysis is used, ADD this extra actual judging runtime to the original caller+judge cost for both arms; never erase the original execution.",
+  "limitation": "Post-registration symmetric oracle correction, not a newly preregistered blinded result. Publish original and corrected scores."
+}

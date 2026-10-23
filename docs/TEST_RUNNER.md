@@ -24,3 +24,14 @@ it measures local suite wall time, not coding time or model quota. Test modules 
 run in separate processes, so their isolation differs from the prior single-process
 runner. The full suite passed in the new mode on all three measured runs; projects
 can use `--jobs 1` if a local test relies on shared in-process state.
+
+## Protected GoalPilot gate
+
+The frozen original-test gate now selects this four-worker runner only when the
+repository is GoalPilot itself and the benchmark report, runner, and source hashes
+match the measured artifacts above. All other repositories keep the existing
+sequential gate. On the current 293-test suite, the protected gate passed in
+21.217 s; a sequential same-scope run passed in 43.953 s, a 51.7% wall-time
+reduction (22.736 s saved). A separate `validate.py` run passed 293/293 in
+21.199 s. These are local test-runner measurements, not coding-session time,
+model tokens, or task-completion evidence.

@@ -1,0 +1,7 @@
+{
+  "positive_offline_audit": "passed",
+  "tampered_raw_token_counter": "rejected",
+  "tampered_copy_returncode": 1,
+  "model_calls": 0,
+  "release_files_unchanged": true
+}

@@ -1,5 +1,9 @@
 # Getting started
 
+**Start with the main engine 0.16.0:** follow the [standalone setup and canonical command](../README.md#start-with-the-main-release). This profile uses an authenticated Codex CLI. Its [20-goal results and offline evidence audit](ENGINE-PROMOTION.md) are separate from the portable skill.
+
+The instructions below describe the alternative portable Skill 1.3.1 / engine 0.12.1 for existing coding-agent sessions.
+
 The simplest route is to ask your coding agent to install GoalPilot from the GitHub URL. Copy the [installation and task prompts](../README.md#how-to-use-it). The agent follows [INSTALL.md](../INSTALL.md), handles dependencies and verifies the installed local command.
 
 ## Requirements

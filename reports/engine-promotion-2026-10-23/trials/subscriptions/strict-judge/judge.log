@@ -1,0 +1,9 @@
+PASS catchup_no_double_billing
+PASS payment_and_exact_proration
+PASS cancellation_and_reporting
+PASS payment_batch_types
+Traceback (most recent call last):
+  File "/workspace/goalpilot-research/promotion-20261023/rc4-confirmation/trials/subscriptions/strict-judge/judge.py", line 77, in <module>
+    elif mode=='one_invoice':assert all(x['ok']for x in results) and sum(len(x['result']['invoices'])for x in results)==1,results
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [{'ok': False, 'error': 'Period not reached'}, {'ok': True, 'result': {'invoices': [{'id': '9741a04b0fd1d43fabb1d6c64a0b60de', 'subscriber': 's', 'due': 10, 'amount': 100, 'paid': 0}], 'subscriber': {'id': 's', 'plan': 'p', 'status': 'past_due', 'start': 10, 'period_end': 20, 'price': 100, 'period': 10, 'cancel_at_end': False, 'balance': 100, 'revision': 1}}}]

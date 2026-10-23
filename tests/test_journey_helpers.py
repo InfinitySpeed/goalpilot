@@ -6,7 +6,7 @@ import time
 import unittest
 import sys
 
-from goalpilot.probe_helpers import JourneyMixin, service_race
+from goalpilot.probe_helpers import JourneyMixin, service_race, rejects
 from goalpilot.runtime_kit import ServiceBase, fields, integer, require
 from goalpilot.support import provision_runtime
 
@@ -100,6 +100,59 @@ class JourneyHelpersTests(JourneyMixin, unittest.TestCase):
             source = (Path(tmp) / 'goalpilot_support.py').read_text()
             self.assertIn('class JourneyMixin:', source)
             self.assertNotIn('from goalpilot.', source)
+
+    def test_one_flow_runs_on_three_isolated_real_interfaces(self):
+        self.c('cas',expected=0,value=3)
+        original=self.path.read_bytes()
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);provision_runtime(root)
+            app=root/'app.py'
+            app.write_text("from goalpilot_runtime import ServiceBase,fields,integer,require\nclass Service(ServiceBase):\n def initial(self):return {'n':0}\n def validate(self,s):fields(s,{'n':integer})\n def handle(self,s,op,d):\n  if op=='get':fields(d,{})\n  else:\n   require(op=='cas');fields(d,{'expected':integer,'value':integer});require(s['n']==d['expected']);s['n']=d['value']\n  return dict(s)\nif __name__=='__main__':Service.main()\n")
+            seen=[]
+            def flow(c):
+                self.assertEqual(c('get'),{'n':3})
+                self.assertEqual(c('cas',expected=3,value=7),{'n':7})
+                rejects(lambda:c('cas',expected=3,value=9))
+                self.assertEqual(c('get'),{'n':7})
+                seen.append(True)
+            self.assertJourney(flow,[sys.executable,str(app),'--file',str(self.path)])
+            self.assertEqual(len(seen),3)
+        self.assertEqual(self.path.read_bytes(),original)
+
+    def test_flow_propagates_business_assertion_failure(self):
+        def flow(c):self.assertEqual(c('get'),{'n':999})
+        with self.assertRaises(AssertionError):self.assertJourney(flow)
+        self.assertFalse(self.path.exists())
+
+    def test_flow_rejects_unrelated_fixture_before_execution(self):
+        with self.assertRaises(ValueError):
+            self.assertJourney(lambda c:self.fail('Must not execute'),[sys.executable,'app.py','--file','other.json'])
+
+    def test_flow_supports_dynamic_ids_without_sharing_generated_state(self):
+        from goalpilot.runtime_kit import ReplayService
+        class Records(ReplayService):
+            def initial(inner):return {'items':{}}
+            def handle(inner,s,op,d):
+                if op=='create':
+                    identifier=inner.opaque();s['items'][identifier]={'id':identifier,'value':d['value']}
+                    return s['items'][identifier]
+                require(op=='get' and d['id']in s['items']);return s['items'][d['id']]
+        class Fixture(JourneyMixin,unittest.TestCase):pass
+        fixture=Fixture();fixture.open_service(Records)
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp);provision_runtime(root);app=root/'app.py'
+                app.write_text("from goalpilot_runtime import ReplayService,require\nclass Service(ReplayService):\n def initial(self):return {'items':{}}\n def handle(self,s,op,d):\n  if op=='create':\n   identifier=self.opaque();s['items'][identifier]={'id':identifier,'value':d['value']};return s['items'][identifier]\n  require(op=='get' and d['id']in s['items']);return s['items'][d['id']]\nif __name__=='__main__':Service.main()\n")
+                ids=[]
+                def flow(c):
+                    created=c('create',value='café 東京')
+                    self.assertEqual(c('get',id=created['id']),created)
+                    rejects(lambda:c('get',id='unknown'))
+                    ids.append(created['id'])
+                fixture.assertJourney(flow,[sys.executable,str(app),'--file',str(fixture.path)])
+                self.assertEqual(len(set(ids)),3)
+                self.assertFalse(fixture.path.exists())
+        finally:fixture.doCleanups()
 
     def test_frozen_journey_assertions_fail_and_repair_same_acceptance(self):
         from goalpilot import session

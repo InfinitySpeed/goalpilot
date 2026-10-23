@@ -1,0 +1,18 @@
+{
+  "correct": true,
+  "seconds": 0.450496997999835,
+  "groups_passed": [
+    "catchup_no_double_billing",
+    "payment_and_exact_proration",
+    "cancellation_and_reporting",
+    "payment_batch_types",
+    "three_real_cross_process_conflict_races",
+    "detached_snapshots_and_restart",
+    "restore_rejects_invalid_without_data_loss",
+    "real_jsonl_errors_and_recovery",
+    "real_http_domain_errors_health",
+    "original_behavior_and_customer_data"
+  ],
+  "returncode": 0,
+  "timed_out": false
+}

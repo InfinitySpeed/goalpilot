@@ -1,5 +1,31 @@
 # Agent installation instructions
 
+The main release is the promoted standalone engine 0.16.0. The portable Skill is a separate compatibility option; do not silently substitute one for the other.
+
+## Main release: standalone controller
+
+When the user requests the main/latest promoted engine, prepare a checkout or extracted source archive of this repository in a persistent user-local directory and ensure Python 3.11+ and the Codex CLI are available. Follow the host’s normal installation policies. Use the existing Codex authentication; if authentication is missing, report that dependency without launching a paid task.
+
+From that checkout, run:
+
+```bash
+python3 tools/run_engine_profile.py --help
+python3 tools/audit_promoted_release.py
+```
+
+Both checks make zero model calls. The canonical task command is:
+
+```bash
+python3 tools/run_engine_profile.py --goal-file /path/to/goal.txt --repo /path/to/project --run-dir /path/to/evidence
+```
+
+Keep evidence outside the target project. Default permissions are `workspace-write`. The benchmark used explicit `--sandbox danger-full-access`; preserve the caller’s permission policy. Running the controller starts a Codex model session, so do not start it as part of installation. It requires compatible bounded initial unittest coverage. See [measured profile and limits](docs/ENGINE-PROMOTION.md).
+
+## Portable skill alternative
+
+The remaining instructions install Skill 1.3.1 / engine 0.12.1 into the current coding agent. This path works inside the calling session and remains separately benchmarked. `install.py` and the bootstraps install this portable skill; they do not install the promoted standalone controller.
+
+
 If your user shared this repository **to install or use GoalPilot**, handle the setup yourself. Do not make the user clone a repository, install Python, choose internal paths or copy commands between tools. Use normal host permissions; do not bypass approval policies.
 
 ## 1. Identify the current agent
