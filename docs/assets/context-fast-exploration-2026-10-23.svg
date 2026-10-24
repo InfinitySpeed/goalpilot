@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="390" viewBox="0 0 900 390">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:Arial,sans-serif;fill:#172033}.title{font-size:21px;font-weight:700}.panel{font-size:17px;font-weight:700}.label{font-size:14px}.value{font-size:13px;font-weight:700}.note{font-size:12px;fill:#475569}.grid{stroke:#dbe3ec;stroke-width:1}</style>
+<text x="32" y="34" class="title">Context fast-path screen — equal-weight task-family means</text>
+<text x="42" y="83" class="panel">Uncached input + output tokens</text>
+<line x1="148.0" y1="107" x2="148.0" y2="256" class="grid"/>
+<text x="148.0" y="274" text-anchor="middle" class="note">0</text>
+<line x1="258.0" y1="107" x2="258.0" y2="256" class="grid"/>
+<text x="258.0" y="274" text-anchor="middle" class="note">4,000</text>
+<line x1="368.0" y1="107" x2="368.0" y2="256" class="grid"/>
+<text x="368.0" y="274" text-anchor="middle" class="note">8,000</text>
+<line x1="478.0" y1="107" x2="478.0" y2="256" class="grid"/>
+<text x="478.0" y="274" text-anchor="middle" class="note">12,000</text>
+<text x="42" y="131" class="label">GoalPilot 1.11</text>
+<rect x="148" y="115" width="314.7" height="23" rx="3" fill="#64748b"/>
+<text x="469.7" y="131" class="value">11,442</text>
+<text x="42" y="179" class="label">Candidate v2</text>
+<rect x="148" y="163" width="294.8" height="23" rx="3" fill="#0f766e"/>
+<text x="449.8" y="179" class="value">10,720</text>
+<text x="42" y="227" class="label">Codex native</text>
+<rect x="148" y="211" width="224.6" height="23" rx="3" fill="#2563eb"/>
+<text x="379.6" y="227" class="value">8,168</text>
+<text x="482" y="83" class="panel">Elapsed caller time</text>
+<line x1="588.0" y1="107" x2="588.0" y2="256" class="grid"/>
+<text x="588.0" y="274" text-anchor="middle" class="note">0</text>
+<line x1="698.0" y1="107" x2="698.0" y2="256" class="grid"/>
+<text x="698.0" y="274" text-anchor="middle" class="note">16</text>
+<line x1="808.0" y1="107" x2="808.0" y2="256" class="grid"/>
+<text x="808.0" y="274" text-anchor="middle" class="note">32</text>
+<line x1="918.0" y1="107" x2="918.0" y2="256" class="grid"/>
+<text x="918.0" y="274" text-anchor="middle" class="note">48</text>
+<text x="482" y="131" class="label">GoalPilot 1.11</text>
+<rect x="588" y="115" width="295.9" height="23" rx="3" fill="#64748b"/>
+<text x="890.9" y="131" class="value">43.0 s</text>
+<text x="482" y="179" class="label">Candidate v2</text>
+<rect x="588" y="163" width="278.5" height="23" rx="3" fill="#0f766e"/>
+<text x="873.5" y="179" class="value">40.5 s</text>
+<text x="482" y="227" class="label">Codex native</text>
+<rect x="588" y="211" width="296.5" height="23" rx="3" fill="#2563eb"/>
+<text x="891.5" y="227" class="value">43.1 s</text>
+<text x="32" y="350" class="note">3 synthetic task families; 32 unrelated Markdown notes appended to each measured repository. Candidate v2 uses 6k characters only for simple tasks; async/concurrent tasks keep 18k.</text>
+<text x="32" y="370" class="note">Cache could not be controlled. Uncached tokens are a proxy; no subscription-quota saving is claimed. Candidate was not promoted.</text>
+</svg>

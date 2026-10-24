@@ -1,0 +1,819 @@
+{
+  "id": "context-fast-path-selection-2026-10-23",
+  "type": "exploratory-candidate-screen",
+  "recorded_date_utc": "2026-10-23",
+  "model": "gpt-6.1-sol",
+  "effort": "low",
+  "backend": "Codex app-server direct; one fresh thread/trial",
+  "current": "GoalPilot 1.11 stable native workflow, 18000-character context",
+  "candidate_v1": "6000-character context for every task; later rejected because task-family latency regressed",
+  "candidate_v2": "6000-character context for simple one-file repairs/utilities; 18000 for interacting, async/concurrent, cross-file, ambiguous, or ambitious tasks; full closure workflow unchanged",
+  "candidate_v3": "Simple-task direct coding fast route with no GoalPilot session; rejected after direct native comparison",
+  "native": "Direct Codex on the same frozen task and initial repository",
+  "tasks": "Existing synthetic Java range, Node async worker-pool, and Python dependency planner cases. Large-context cohort appends 32 unrelated Markdown notes (about 35 KB) to each repository. This deliberately isolates context-volume effects; it is not a sample of real customer repositories.",
+  "cache": "Provider cache not controllable. Every trial retains input, cached input, output, raw total, uncached input+output, and wall time. Cache hit rates varied markedly; uncached tokens are the comparison metric. No subscription-quota conversion is claimed.",
+  "order": "Sequential exploratory runs with some alternating arm order; no random assignment. Cache state, queueing and service load can vary.",
+  "judge": "Independent case judge run after the model returned, with no feedback; all direct coding outputs judged against the same behavior oracle.",
+  "registered_gate": "Promote only if completion is preserved, equal-family mean uncached tokens are lower than current and native, and equal-family mean time is no more than 3% slower than current. Raw tokens are descriptive only.",
+  "scope_limit": "Three synthetic task families, uneven replicate counts, only one current/candidate/native matched run for Python and the refined Node full route. Not enough evidence for general/universal performance claims.",
+  "trials": [
+    {
+      "trial": "java-ranges-candidate-r1",
+      "case": "java-ranges",
+      "arm": "candidate",
+      "seconds": 32.37478542399913,
+      "usage": {
+        "input_tokens": 55027,
+        "output_tokens": 2364,
+        "cached_input_tokens": 41344,
+        "total_tokens": 57391,
+        "uncached_tokens": 16047,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented normalization, subtraction, and overflow-safe `BigInteger` length calculation, with input validation and caller-input preservation.\n\nOriginal tests remain unchanged. Both the original test command and new native regression tests passed.",
+      "exclusion": "Wrong installed profile (candidate service bundle, not stable/native overlay); retained but excluded from gate.",
+      "candidate": "candidate"
+    },
+    {
+      "trial": "java-ranges-candidate-r2",
+      "case": "java-ranges",
+      "arm": "candidate",
+      "seconds": 25.264019036003447,
+      "usage": {
+        "input_tokens": 48576,
+        "output_tokens": 2125,
+        "cached_input_tokens": 42624,
+        "total_tokens": 50701,
+        "uncached_tokens": 8077,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented normalization, subtraction, input validation, and overflow-safe `BigInteger` length calculation while preserving caller inputs and the public API.\n\nAdded native regression tests. Both the unchanged original test command and new regressions passed.",
+      "cohort": "small-repository-no-filler",
+      "candidate": "v2-budget-route; simple tasks requested 6000 characters"
+    },
+    {
+      "trial": "java-ranges-candidate-r3",
+      "case": "java-ranges",
+      "arm": "candidate",
+      "seconds": 44.18783321400406,
+      "usage": {
+        "input_tokens": 50677,
+        "output_tokens": 2372,
+        "cached_input_tokens": 45696,
+        "total_tokens": 53049,
+        "uncached_tokens": 7353,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented normalization, subtraction, and overflow-safe `BigInteger` length, with input validation and fresh output arrays.\n\nPreserved the public API and original tests. Both original and added native regression checks passed.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "v2-budget-route; simple tasks requested 6000 characters"
+    },
+    {
+      "trial": "java-ranges-candidate-r4",
+      "case": "java-ranges",
+      "arm": "candidate",
+      "seconds": 35.51519940299477,
+      "usage": {
+        "input_tokens": 50609,
+        "output_tokens": 2310,
+        "cached_input_tokens": 39168,
+        "total_tokens": 52919,
+        "uncached_tokens": 13751,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented normalization, subtraction, input validation, and overflow-safe `BigInteger` length calculation. Inputs remain unchanged; returned arrays are fresh.\n\nOriginal tests and added native regression tests both passed. Public API and source-file test command are preserved.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "v2-budget-route; simple tasks requested 6000 characters"
+    },
+    {
+      "trial": "java-ranges-candidate-r5",
+      "case": "java-ranges",
+      "arm": "candidate",
+      "seconds": 54.19496182999865,
+      "usage": {
+        "input_tokens": 50779,
+        "output_tokens": 2476,
+        "cached_input_tokens": 45824,
+        "total_tokens": 53255,
+        "uncached_tokens": 7431,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented normalization, subtraction, and overflow-safe `BigInteger` length calculation, including input validation and fresh output arrays.\n\nPreserved the public API and original tests. Original tests and new native regression tests both pass.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "v2-budget-route; simple tasks requested 6000 characters"
+    },
+    {
+      "trial": "java-ranges-current-r1",
+      "case": "java-ranges",
+      "arm": "current",
+      "seconds": 44.83270647699828,
+      "usage": {
+        "input_tokens": 48917,
+        "output_tokens": 2367,
+        "cached_input_tokens": 42624,
+        "total_tokens": 51284,
+        "uncached_tokens": 8660,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented normalization, subtraction, validation, and overflow-safe `BigInteger` length calculation while preserving caller inputs and the public API.\n\nOriginal tests remain unchanged. Both original and added native regression checks passed.",
+      "candidate": "current"
+    },
+    {
+      "trial": "java-ranges-current-r2",
+      "case": "java-ranges",
+      "arm": "current",
+      "seconds": 46.818720922994544,
+      "usage": {
+        "input_tokens": 48883,
+        "output_tokens": 2330,
+        "cached_input_tokens": 44800,
+        "total_tokens": 51213,
+        "uncached_tokens": 6413,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented normalization, subtraction, and overflow-safe `BigInteger` length calculation, including input validation and preservation of caller data.\n\nAdded native regression tests. Original tests remain unchanged. Both verification checks passed.",
+      "cohort": "small-repository-no-filler",
+      "candidate": "current"
+    },
+    {
+      "trial": "java-ranges-current-r3",
+      "case": "java-ranges",
+      "arm": "current",
+      "seconds": 47.254400727004395,
+      "usage": {
+        "input_tokens": 55482,
+        "output_tokens": 2503,
+        "cached_input_tokens": 48256,
+        "total_tokens": 57985,
+        "uncached_tokens": 9729,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented normalization, subtraction, and overflow-safe `BigInteger` length, including input validation and preservation of caller inputs.\n\nOriginal tests remain unchanged. Both the original test runner and new native regression tests passed.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "current"
+    },
+    {
+      "trial": "java-ranges-current-r4",
+      "case": "java-ranges",
+      "arm": "current",
+      "seconds": 45.38510819099611,
+      "usage": {
+        "input_tokens": 55473,
+        "output_tokens": 2494,
+        "cached_input_tokens": 45824,
+        "total_tokens": 57967,
+        "uncached_tokens": 12143,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented normalization, subtraction, input validation, fresh output arrays, and overflow-safe `BigInteger` length calculation.\n\nOriginal tests remain unchanged. Both the original test runner and added native regression tests passed.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "current"
+    },
+    {
+      "trial": "java-ranges-current-r5",
+      "case": "java-ranges",
+      "arm": "current",
+      "seconds": 47.58214459699957,
+      "usage": {
+        "input_tokens": 55389,
+        "output_tokens": 2409,
+        "cached_input_tokens": 45824,
+        "total_tokens": 57798,
+        "uncached_tokens": 11974,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented normalization, subtraction, input validation, fresh output arrays, and overflow-safe `BigInteger` lengths.\n\nPreserved the public API and original tests. Added native regression tests; both test runners passed.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "current"
+    },
+    {
+      "trial": "java-ranges-native-r1",
+      "case": "java-ranges",
+      "arm": "native",
+      "seconds": 78.41771141799836,
+      "usage": {
+        "input_tokens": 117650,
+        "output_tokens": 4074,
+        "cached_input_tokens": 112384,
+        "total_tokens": 121724,
+        "uncached_tokens": 9340,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": null,
+      "goal_preserved": null,
+      "returncode": 0,
+      "message": "Implemented normalization, subtraction, and overflow-safe `BigInteger` length calculation. Invalid inputs throw `IllegalArgumentException`; empty ranges are ignored and caller inputs remain unchanged.\n\nOriginal tests are unchanged. Both test commands pass, including 1,000 randomized regression cases:\n\n- `python3 tests/test_ranges.py`\n- `python3 tests/test_ranges_regression.py`",
+      "candidate": "native"
+    },
+    {
+      "trial": "java-ranges-native-r3",
+      "case": "java-ranges",
+      "arm": "native",
+      "seconds": 52.94498912599374,
+      "usage": {
+        "input_tokens": 115415,
+        "output_tokens": 3679,
+        "cached_input_tokens": 106240,
+        "total_tokens": 119094,
+        "uncached_tokens": 12854,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": null,
+      "goal_preserved": null,
+      "returncode": 0,
+      "message": "Implemented normalization, subtraction, and overflow-safe `BigInteger` length calculation. Invalid inputs throw `IllegalArgumentException`; empty ranges are ignored and caller inputs remain unchanged.\n\nAdded native regressions covering extreme endpoints, input preservation, and 500 randomized cases. Original tests remain unchanged.\n\nPassed:\n- `python3 tests/test_ranges.py`\n- `java TestRangesRegression.java`",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "native"
+    },
+    {
+      "trial": "node-pool-candidate-r11",
+      "case": "node-pool",
+      "arm": "candidate",
+      "seconds": 40.54414466199523,
+      "usage": {
+        "input_tokens": 55288,
+        "output_tokens": 2318,
+        "cached_input_tokens": 45824,
+        "total_tokens": 57606,
+        "uncached_tokens": 11782,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented the worker pool with concurrency limits, ordered results, argument validation, and abort/failure handling that waits for started tasks to settle.\n\nAdded deterministic behavioral tests and preserved the original test. `npm test` passed; native verification reports completion.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "v2-fast-route-classification; complex async task used full 18000-character context"
+    },
+    {
+      "trial": "node-pool-candidate-r6",
+      "case": "node-pool",
+      "arm": "candidate",
+      "seconds": 40.51377849300479,
+      "usage": {
+        "input_tokens": 50405,
+        "output_tokens": 2105,
+        "cached_input_tokens": 45568,
+        "total_tokens": 52510,
+        "uncached_tokens": 6942,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented the worker pool with bounded concurrency, ordered results, argument validation, abort handling, and first-error preservation while draining started tasks.\n\nAdded deterministic behavioral tests without sleeps. `npm test` passed, including the original test.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "v1-fast-context-on-all-task-archetypes-rejected-time gate"
+    },
+    {
+      "trial": "node-pool-candidate-r7",
+      "case": "node-pool",
+      "arm": "candidate",
+      "seconds": 45.37926119799522,
+      "usage": {
+        "input_tokens": 50492,
+        "output_tokens": 2192,
+        "cached_input_tokens": 45696,
+        "total_tokens": 52684,
+        "uncached_tokens": 6988,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented the worker pool with bounded concurrency, ordered results, argument validation, and failure/abort handling that drains started tasks before rejecting.\n\nAdded deterministic behavioral tests and preserved the original tests. `npm test` passed; GoalPilot reported completion.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "v1-fast-context-on-all-task-archetypes-rejected-time gate"
+    },
+    {
+      "trial": "node-pool-candidate-r8",
+      "case": "node-pool",
+      "arm": "candidate",
+      "seconds": 40.99566382199555,
+      "usage": {
+        "input_tokens": 50593,
+        "output_tokens": 2291,
+        "cached_input_tokens": 43264,
+        "total_tokens": 52884,
+        "uncached_tokens": 9620,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented the worker pool with concurrency limits, ordered results, argument validation, and failure/abort handling that waits for started tasks to settle.\n\nAdded deterministic behavioral tests and preserved the original test. `npm test` passed; GoalPilot verification completed successfully.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "v1-fast-context-on-all-task-archetypes-rejected-time gate"
+    },
+    {
+      "trial": "node-pool-candidate-r9",
+      "case": "node-pool",
+      "arm": "candidate",
+      "seconds": 34.98659757099813,
+      "usage": {
+        "input_tokens": 50531,
+        "output_tokens": 2230,
+        "cached_input_tokens": 45696,
+        "total_tokens": 52761,
+        "uncached_tokens": 7065,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented the worker pool with concurrency limits, ordered results, argument validation, and failure/abort draining that preserves the first error.\n\nAdded deterministic behavioral tests and preserved the original test. `npm test` passed; GoalPilot verification completed successfully.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "v1-fast-context-on-all-task-archetypes-rejected-time gate"
+    },
+    {
+      "trial": "node-pool-current-r6",
+      "case": "node-pool",
+      "arm": "current",
+      "seconds": 39.4771502270014,
+      "usage": {
+        "input_tokens": 55393,
+        "output_tokens": 2370,
+        "cached_input_tokens": 45824,
+        "total_tokens": 57763,
+        "uncached_tokens": 11939,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented the worker pool with concurrency limits, ordered results, argument validation, abort handling, and first-error preservation while draining started tasks.\n\nAdded deterministic behavioral tests and preserved the original test. `npm test` passed; GoalPilot reported completion.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "current"
+    },
+    {
+      "trial": "node-pool-current-r7",
+      "case": "node-pool",
+      "arm": "current",
+      "seconds": 28.403158944005554,
+      "usage": {
+        "input_tokens": 55222,
+        "output_tokens": 2205,
+        "cached_input_tokens": 48000,
+        "total_tokens": 57427,
+        "uncached_tokens": 9427,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented the worker pool with bounded concurrency, ordered results, argument validation, and first-error handling that waits for started tasks to settle.\n\nAdded deterministic behavioral tests and preserved the original test. `npm test` passed; GoalPilot verification completed successfully.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "current"
+    },
+    {
+      "trial": "node-pool-current-r8",
+      "case": "node-pool",
+      "arm": "current",
+      "seconds": 28.64213687300071,
+      "usage": {
+        "input_tokens": 55375,
+        "output_tokens": 2353,
+        "cached_input_tokens": 48128,
+        "total_tokens": 57728,
+        "uncached_tokens": 9600,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented the worker pool with bounded concurrency, ordered results, argument validation, abort handling, and first-error preservation while draining started tasks.\n\nAdded deterministic behavioral tests and preserved the original test. `npm test` passed; GoalPilot verification completed successfully.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "current"
+    },
+    {
+      "trial": "node-pool-current-r9",
+      "case": "node-pool",
+      "arm": "current",
+      "seconds": 44.17656625100062,
+      "usage": {
+        "input_tokens": 55345,
+        "output_tokens": 2394,
+        "cached_input_tokens": 45696,
+        "total_tokens": 57739,
+        "uncached_tokens": 12043,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented the worker pool with bounded concurrency, ordered results, argument validation, and first-error handling that waits for started tasks to settle.\n\nAdded deterministic tests for failures, aborts, synchronous throws, and scheduling limits. Preserved the original test.\n\n`npm test` passed; GoalPilot reported completion.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "current"
+    },
+    {
+      "trial": "node-pool-native-r6",
+      "case": "node-pool",
+      "arm": "native",
+      "seconds": 45.96031282900367,
+      "usage": {
+        "input_tokens": 79960,
+        "output_tokens": 2819,
+        "cached_input_tokens": 75904,
+        "total_tokens": 82779,
+        "uncached_tokens": 6875,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": null,
+      "goal_preserved": null,
+      "returncode": 0,
+      "message": "Implemented the worker pool with concurrency limits, ordered results, argument validation, and abort handling. It preserves the first error and waits for all started tasks to settle before rejecting.\n\nAdded deterministic behavioral tests without sleeps; preserved the original test.\n\nValidation: `npm test` — all 12 tests pass.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "native"
+    },
+    {
+      "trial": "python-repair-candidate-r10",
+      "case": "python-repair",
+      "arm": "candidate",
+      "seconds": 36.33245341399743,
+      "usage": {
+        "input_tokens": 50229,
+        "output_tokens": 1852,
+        "cached_input_tokens": 41216,
+        "total_tokens": 52081,
+        "uncached_tokens": 10865,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented deterministic dependency ordering, validation, duplicate handling, input preservation, and exact cycle-member reporting.\n\nAdded focused regressions while preserving existing tests. `python3 -m unittest discover -s tests` passed. GoalPilot verification completed successfully.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "v2-budget-route; simple tasks requested 6000 characters"
+    },
+    {
+      "trial": "python-repair-current-r10",
+      "case": "python-repair",
+      "arm": "current",
+      "seconds": 38.22328552399995,
+      "usage": {
+        "input_tokens": 54883,
+        "output_tokens": 1942,
+        "cached_input_tokens": 45824,
+        "total_tokens": 56825,
+        "uncached_tokens": 11001,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": true,
+      "goal_preserved": true,
+      "returncode": 0,
+      "message": "Implemented deterministic dependency ordering, input validation, duplicate handling, and exact cycle reporting without mutating input.\n\nAdded focused regressions and preserved existing tests. The documented unittest suite passed; GoalPilot reported completion.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "current"
+    },
+    {
+      "trial": "python-repair-fast-r14",
+      "case": "python-repair",
+      "arm": "fast",
+      "seconds": 33.096926326004905,
+      "usage": {
+        "input_tokens": 63721,
+        "output_tokens": 1557,
+        "cached_input_tokens": 55808,
+        "total_tokens": 65278,
+        "uncached_tokens": 9470,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": null,
+      "goal_preserved": null,
+      "returncode": 0,
+      "message": "Implemented the repair while preserving the public API and original tests.\n\nVerified deterministic lexicographic ordering, value-only dependencies, duplicate edges, input immutability, exact cycle reporting, malformed-input rejection, empty graphs, and deep graphs.\n\n`python3 -m unittest discover -s tests` — all 6 tests passed.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "v3-bypass-session-native-fast-route; rejected against native"
+    },
+    {
+      "trial": "python-repair-native-r12",
+      "case": "python-repair",
+      "arm": "native",
+      "seconds": 30.497128904993588,
+      "usage": {
+        "input_tokens": 59993,
+        "output_tokens": 1869,
+        "cached_input_tokens": 57088,
+        "total_tokens": 61862,
+        "uncached_tokens": 4774,
+        "calls_with_usage": 1,
+        "calls_without_usage": 0,
+        "calls_with_partial_usage": 0,
+        "usage_complete": true
+      },
+      "correct": true,
+      "certified": null,
+      "goal_preserved": null,
+      "returncode": 0,
+      "message": "Implemented the planner repair with lexicographically smallest ready-node ordering, value-only dependencies, duplicate-edge handling, input validation, and no input mutation.\n\nCycle errors list only nodes belonging to cycles, including self-loops.\n\nPreserved existing tests and added focused regressions. All 10 tests pass with `python3 -m unittest discover -s tests`.",
+      "cohort": "large-repository-32-unrelated-markdown-files",
+      "candidate": "native"
+    }
+  ],
+  "comparison": {
+    "current_equal_family_mean": {
+      "raw_tokens": 57493.556,
+      "uncached_tokens": 11442,
+      "seconds": 43.047
+    },
+    "candidate_v2_equal_family_mean": {
+      "raw_tokens": 54253.778,
+      "uncached_tokens": 10719.556,
+      "seconds": 40.503
+    },
+    "candidate_v2_change_vs_current_pct": {
+      "raw_tokens": -5.64,
+      "uncached_tokens": -6.31,
+      "seconds": -5.91
+    },
+    "native_equal_family_mean": {
+      "raw_tokens": 87911.667,
+      "uncached_tokens": 8167.667,
+      "seconds": 43.134
+    },
+    "candidate_v2_change_vs_native_pct": {
+      "raw_tokens": -38.29,
+      "uncached_tokens": 31.24,
+      "seconds": -6.1
+    },
+    "family_current": {
+      "java": {
+        "seconds": 46.741,
+        "raw_tokens": 57916.667,
+        "input_tokens": 55448,
+        "cached_input_tokens": 46634.667,
+        "output_tokens": 2468.667,
+        "uncached_tokens": 11282
+      },
+      "python": {
+        "seconds": 38.223,
+        "raw_tokens": 56825,
+        "input_tokens": 54883,
+        "cached_input_tokens": 45824,
+        "output_tokens": 1942,
+        "uncached_tokens": 11001
+      },
+      "node_async_full_route": {
+        "seconds": 44.177,
+        "raw_tokens": 57739,
+        "input_tokens": 55345,
+        "cached_input_tokens": 45696,
+        "output_tokens": 2394,
+        "uncached_tokens": 12043
+      }
+    },
+    "family_candidate_v2": {
+      "java": {
+        "seconds": 44.633,
+        "raw_tokens": 53074.333,
+        "input_tokens": 50688.333,
+        "cached_input_tokens": 43562.667,
+        "output_tokens": 2386,
+        "uncached_tokens": 9511.667
+      },
+      "python": {
+        "seconds": 36.332,
+        "raw_tokens": 52081,
+        "input_tokens": 50229,
+        "cached_input_tokens": 41216,
+        "output_tokens": 1852,
+        "uncached_tokens": 10865
+      },
+      "node_async_full_route": {
+        "seconds": 40.544,
+        "raw_tokens": 57606,
+        "input_tokens": 55288,
+        "cached_input_tokens": 45824,
+        "output_tokens": 2318,
+        "uncached_tokens": 11782
+      }
+    },
+    "family_native": {
+      "java": {
+        "seconds": 52.945,
+        "raw_tokens": 119094,
+        "input_tokens": 115415,
+        "cached_input_tokens": 106240,
+        "output_tokens": 3679,
+        "uncached_tokens": 12854
+      },
+      "python": {
+        "seconds": 30.497,
+        "raw_tokens": 61862,
+        "input_tokens": 59993,
+        "cached_input_tokens": 57088,
+        "output_tokens": 1869,
+        "uncached_tokens": 4774
+      },
+      "node_async": {
+        "seconds": 45.96,
+        "raw_tokens": 82779,
+        "input_tokens": 79960,
+        "cached_input_tokens": 75904,
+        "output_tokens": 2819,
+        "uncached_tokens": 6875
+      }
+    },
+    "candidate_v2_completion": {
+      "independent_judge": "5/5",
+      "GoalPilot_certified_closures": "5/5",
+      "original_goal_preserved": "5/5"
+    },
+    "native_completion": {
+      "independent_judge": "3/3",
+      "GoalPilot_certified_closures": "not applicable"
+    },
+    "candidate_v1_rejected_node_fast_context": {
+      "current": {
+        "seconds": 35.175,
+        "raw_tokens": 57664.25,
+        "input_tokens": 55333.75,
+        "cached_input_tokens": 46912,
+        "output_tokens": 2330.5,
+        "uncached_tokens": 10752.25
+      },
+      "candidate": {
+        "seconds": 40.469,
+        "raw_tokens": 52709.75,
+        "input_tokens": 50505.25,
+        "cached_input_tokens": 45056,
+        "output_tokens": 2204.5,
+        "uncached_tokens": 7653.75
+      }
+    },
+    "candidate_v3_direct_fast_path": {
+      "candidate": {
+        "seconds": 33.097,
+        "raw_tokens": 65278,
+        "input_tokens": 63721,
+        "cached_input_tokens": 55808,
+        "output_tokens": 1557,
+        "uncached_tokens": 9470
+      },
+      "native": {
+        "seconds": 30.497,
+        "raw_tokens": 61862,
+        "input_tokens": 59993,
+        "cached_input_tokens": 57088,
+        "output_tokens": 1869,
+        "uncached_tokens": 4774
+      },
+      "candidate_goalpilot_certificate": null
+    }
+  },
+  "decision": {
+    "promoted": false,
+    "reasons": [
+      "Candidate v2 mean uncached tokens were 6.32% lower than current but 31.24% higher than native across the three equal-weight synthetic task families.",
+      "The direct native fast-path experiment also remained materially above native uncached usage and had no GoalPilot closure receipt.",
+      "The screen is too small and cache/order variation too large to establish generally reduced quota."
+    ],
+    "next": "Keep 1.11 as stable. Do not claim that GoalPilot saves quota on simple tasks; use native Codex for bounded tasks and GoalPilot for broad goals where explicit closure criteria are valuable."
+  },
+  "source_fingerprints": {
+    "stable": {
+      "integrations/native/native.py": "1377f8f3757b079c1fffea105a6b6f1651c91b0edd88017f50b97de0e5b36753",
+      "integrations/native/routed-SKILL.md": "1670d59124c5d1183a01f8f6135cff77ae2c8333218055cbb4300207b7f14d98",
+      "integrations/native/SKILL.md": "812da0615083f1adf83ef45fa1dfabc21bae56af2c6a4bbf37920b6c4e789ef3"
+    },
+    "candidate": {
+      "SKILL.md": "7004547c78adfed624771574bc6e36d2ef92f5212e56e276212ca55c2e5554e1",
+      "native.py": "abdcbffb2c1d0ebd996c32e8bc2a248c8ee0a949b9d81fc8ee4fb7e877443dab",
+      "routed-SKILL.md": "b0e6dbdfce3ff46f8ad382d970cd468b0f0ba82bd3aadd22a218ebb2b8de7121",
+      "test_native_workflow.py": "b9dcefc58c136e98121f14ccfc73f828d5acf4e4ba89eda58352da792bd4f2bc"
+    }
+  },
+  "evidence_archive": "reports/context-fast-exploration-evidence-2026-10-23.zip",
+  "evidence_sha256": "fe12c096b4c85491d7044adb56c381326130543d4123d02740aaa163697eb145",
+  "evidence_bytes": 5206208
+}

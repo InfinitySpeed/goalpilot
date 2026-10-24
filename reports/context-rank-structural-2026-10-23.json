@@ -1,0 +1,57 @@
+{
+  "recorded_at_utc": "2026-10-23",
+  "candidate": {
+    "focused_tests": {
+      "tests_run": 19,
+      "passed": 19,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 4.743
+    },
+    "synthetic_context_proxy": {
+      "budget_chars": 18000,
+      "baseline_chars_used": 17982,
+      "candidate_chars_used": 17982,
+      "relevant_files": 2,
+      "baseline_relevant_files_retained": 0,
+      "candidate_relevant_files_retained": 2,
+      "inventory_entries_checked": 250,
+      "inventory_entries_retained": 250,
+      "model_tokens_or_quota_measured": false
+    },
+    "full_suite_latest": {
+      "tests_run": 366,
+      "passed": 353,
+      "failures": 4,
+      "errors": 9,
+      "seconds": 24.454310767003335,
+      "successful": false,
+      "limitations": [
+        "The copied scratch repository omits report archives larger than the native inventory 4 MB per-file limit; several evidence tests therefore cannot initialize.",
+        "Installer and promotion tests reject the candidate native.py hash until it is promoted; no promotion was supported by model-level evidence."
+      ]
+    },
+    "goalpilot_attempt": {
+      "attempts": 2,
+      "checks_passed": 4,
+      "checks_total": 6,
+      "criteria_verified": 2,
+      "criteria_missing": 2,
+      "status": "incomplete"
+    }
+  },
+  "baseline": {
+    "full_suite": {
+      "tests_run": 365,
+      "passed": 365,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 26.69431238299876
+    }
+  },
+  "model_comparison": null,
+  "quota_savings_claimed": false,
+  "promotion": "rejected; candidate remains isolated; active installed version unchanged",
+  "source_snapshot": "candidate-v1-source/",
+  "goalpilot_evidence": "included in context-rank-structural-evidence-2026-10-23.zip"
+}

@@ -1,0 +1,591 @@
+{
+  "schema_version": 1,
+  "version": "1.12.0",
+  "status": "promotable",
+  "measured_at_utc": "2026-10-24",
+  "candidate": "Adaptive fast-direct route with full GoalPilot fallback, frozen candidate-adaptive-v2.md.",
+  "candidate_source_sha256": "b67e99fe640eefc6421e8c89303999fa621a80dbbdc304b9545fa5265ea4cf98",
+  "protocol": {
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "low",
+    "sessions": "Fresh model sessions; same verbatim task, fixture, and 32 unrelated markdown files per matched task family/repetition.",
+    "provider_cache": "Cannot be disabled; raw, cached-input and uncached usage recorded for every trial.",
+    "task_families": [
+      "slug normalization, fully specified with existing complete suite",
+      "byte conversion, fully specified with existing complete suite"
+    ],
+    "repetitions_per_arm_per_family": 2,
+    "candidate_rule": "Fast direct only for a single self-contained fully specified change with documented existing suite covering all outcomes; otherwise full GoalPilot."
+  },
+  "promotion_gate": {
+    "all_fast_candidate_judges_pass": true,
+    "all_fast_candidate_project_suites_pass": true,
+    "candidate_uncached_lower_than_both_controls": true,
+    "candidate_time_no_more_than_3pct_slower_than_both_controls": true,
+    "raw_tokens_used_as_quota_evidence": false,
+    "fast_mode_goalpilot_certificate": "Not applicable; fast mode makes no certificate claim and reports the exact project suite result."
+  },
+  "per_family": {
+    "slug": {
+      "candidate": {
+        "trials": [
+          {
+            "id": "slug-fast-r4-candidate",
+            "raw_tokens": 62890,
+            "cached_input_tokens": 58112,
+            "uncached_tokens": 4778,
+            "seconds": 14.044520532988827,
+            "independent_judge_passed": true,
+            "project_tests_passed": true,
+            "certified_closure": null,
+            "original_goal_supplied_verbatim": true,
+            "mode": "fast-direct"
+          },
+          {
+            "id": "slug-fast-r5-candidate",
+            "raw_tokens": 63026,
+            "cached_input_tokens": 55680,
+            "uncached_tokens": 7346,
+            "seconds": 16.376788688008673,
+            "independent_judge_passed": true,
+            "project_tests_passed": true,
+            "certified_closure": null,
+            "original_goal_supplied_verbatim": true,
+            "mode": "fast-direct"
+          }
+        ],
+        "means": {
+          "raw_tokens": 62958,
+          "cached_input_tokens": 56896,
+          "uncached_tokens": 6062,
+          "seconds": 15.21065461049875
+        },
+        "correct": 2,
+        "project_tests_passed": 2,
+        "goalpilot_certificates": 0
+      },
+      "current": {
+        "trials": [
+          {
+            "id": "slug-reuse-r2-current",
+            "raw_tokens": 76021,
+            "cached_input_tokens": 59264,
+            "uncached_tokens": 16757,
+            "seconds": 23.758357618004084,
+            "independent_judge_passed": true,
+            "project_tests_passed": null,
+            "certified_closure": true,
+            "original_goal_supplied_verbatim": null,
+            "mode": null
+          },
+          {
+            "id": "slug-reuse-r3-current",
+            "raw_tokens": 77598,
+            "cached_input_tokens": 66560,
+            "uncached_tokens": 11038,
+            "seconds": 24.613360132992966,
+            "independent_judge_passed": true,
+            "project_tests_passed": null,
+            "certified_closure": true,
+            "original_goal_supplied_verbatim": null,
+            "mode": null
+          }
+        ],
+        "means": {
+          "raw_tokens": 76809.5,
+          "cached_input_tokens": 62912,
+          "uncached_tokens": 13897.5,
+          "seconds": 24.185858875498525
+        },
+        "correct": 2,
+        "project_tests_passed": null,
+        "goalpilot_certificates": 2
+      },
+      "native": {
+        "trials": [
+          {
+            "id": "slug-reuse-r2-native",
+            "raw_tokens": 101960,
+            "cached_input_tokens": 94976,
+            "uncached_tokens": 6984,
+            "seconds": 20.81856391899055,
+            "independent_judge_passed": true,
+            "project_tests_passed": null,
+            "certified_closure": null,
+            "original_goal_supplied_verbatim": null,
+            "mode": null
+          },
+          {
+            "id": "slug-reuse-r3-native",
+            "raw_tokens": 119274,
+            "cached_input_tokens": 112384,
+            "uncached_tokens": 6890,
+            "seconds": 21.38749986900075,
+            "independent_judge_passed": true,
+            "project_tests_passed": null,
+            "certified_closure": null,
+            "original_goal_supplied_verbatim": null,
+            "mode": null
+          }
+        ],
+        "means": {
+          "raw_tokens": 110617,
+          "cached_input_tokens": 103680,
+          "uncached_tokens": 6937,
+          "seconds": 21.10303189399565
+        },
+        "correct": 2,
+        "project_tests_passed": null,
+        "goalpilot_certificates": 0
+      }
+    },
+    "bytes": {
+      "candidate": {
+        "trials": [
+          {
+            "id": "bytes-fast-r2-candidate",
+            "raw_tokens": 62914,
+            "cached_input_tokens": 54656,
+            "uncached_tokens": 8258,
+            "seconds": 18.389716830002726,
+            "independent_judge_passed": true,
+            "project_tests_passed": true,
+            "certified_closure": null,
+            "original_goal_supplied_verbatim": true,
+            "mode": "fast-direct"
+          },
+          {
+            "id": "bytes-fast-r3-candidate",
+            "raw_tokens": 62744,
+            "cached_input_tokens": 57728,
+            "uncached_tokens": 5016,
+            "seconds": 16.361228727007983,
+            "independent_judge_passed": true,
+            "project_tests_passed": true,
+            "certified_closure": null,
+            "original_goal_supplied_verbatim": true,
+            "mode": "fast-direct"
+          }
+        ],
+        "means": {
+          "raw_tokens": 62829,
+          "cached_input_tokens": 56192,
+          "uncached_tokens": 6637,
+          "seconds": 17.375472778505355
+        },
+        "correct": 2,
+        "project_tests_passed": 2,
+        "goalpilot_certificates": 0
+      },
+      "current": {
+        "trials": [
+          {
+            "id": "bytes-fast-r1-current",
+            "raw_tokens": 76196,
+            "cached_input_tokens": 66816,
+            "uncached_tokens": 9380,
+            "seconds": 21.05215255499934,
+            "independent_judge_passed": true,
+            "project_tests_passed": null,
+            "certified_closure": true,
+            "original_goal_supplied_verbatim": true,
+            "mode": "goalpilot"
+          },
+          {
+            "id": "bytes-fast-r3-current",
+            "raw_tokens": 75735,
+            "cached_input_tokens": 65280,
+            "uncached_tokens": 10455,
+            "seconds": 30.48144627500733,
+            "independent_judge_passed": true,
+            "project_tests_passed": null,
+            "certified_closure": true,
+            "original_goal_supplied_verbatim": true,
+            "mode": "goalpilot"
+          }
+        ],
+        "means": {
+          "raw_tokens": 75965.5,
+          "cached_input_tokens": 66048,
+          "uncached_tokens": 9917.5,
+          "seconds": 25.766799415003334
+        },
+        "correct": 2,
+        "project_tests_passed": null,
+        "goalpilot_certificates": 2
+      },
+      "native": {
+        "trials": [
+          {
+            "id": "bytes-fast-r2-native",
+            "raw_tokens": 84845,
+            "cached_input_tokens": 73216,
+            "uncached_tokens": 11629,
+            "seconds": 21.309213460001047,
+            "independent_judge_passed": true,
+            "project_tests_passed": null,
+            "certified_closure": null,
+            "original_goal_supplied_verbatim": true,
+            "mode": "native"
+          },
+          {
+            "id": "bytes-fast-r3-native",
+            "raw_tokens": 109981,
+            "cached_input_tokens": 96256,
+            "uncached_tokens": 13725,
+            "seconds": 19.972973875002936,
+            "independent_judge_passed": true,
+            "project_tests_passed": null,
+            "certified_closure": null,
+            "original_goal_supplied_verbatim": true,
+            "mode": "native"
+          }
+        ],
+        "means": {
+          "raw_tokens": 97413,
+          "cached_input_tokens": 84736,
+          "uncached_tokens": 12677,
+          "seconds": 20.64109366750199
+        },
+        "correct": 2,
+        "project_tests_passed": null,
+        "goalpilot_certificates": 0
+      }
+    }
+  },
+  "summary": {
+    "candidate": {
+      "equal_weight_family_means": {
+        "raw_tokens": 62893.5,
+        "cached_input_tokens": 56544,
+        "uncached_tokens": 6349.5,
+        "seconds": 16.293063694502052
+      },
+      "independent_judge_passed": 4,
+      "independent_judge_total": 4,
+      "change_vs_current": {
+        "raw_tokens": -17.67,
+        "cached_input_tokens": -12.31,
+        "uncached_tokens": -46.68,
+        "seconds": -34.77
+      },
+      "change_vs_native": {
+        "raw_tokens": -39.53,
+        "cached_input_tokens": -39.98,
+        "uncached_tokens": -35.26,
+        "seconds": -21.94
+      }
+    },
+    "current": {
+      "equal_weight_family_means": {
+        "raw_tokens": 76387.5,
+        "cached_input_tokens": 64480,
+        "uncached_tokens": 11907.5,
+        "seconds": 24.97632914525093
+      },
+      "independent_judge_passed": 4,
+      "independent_judge_total": 4
+    },
+    "native": {
+      "equal_weight_family_means": {
+        "raw_tokens": 104015,
+        "cached_input_tokens": 94208,
+        "uncached_tokens": 9807,
+        "seconds": 20.87206278074882
+      },
+      "independent_judge_passed": 4,
+      "independent_judge_total": 4
+    }
+  },
+  "complex_fallback_guard": {
+    "trials": [
+      {
+        "id": "java-ranges-hard-candidate",
+        "raw_tokens": 78286,
+        "cached_input_tokens": 65408,
+        "uncached_tokens": 12878,
+        "seconds": 54.87275011900056,
+        "independent_judge_passed": true,
+        "project_tests_passed": null,
+        "certified_closure": true,
+        "original_goal_supplied_verbatim": true,
+        "mode": "goalpilot"
+      },
+      {
+        "id": "java-ranges-hard-r2-candidate",
+        "raw_tokens": 78104,
+        "cached_input_tokens": 65280,
+        "uncached_tokens": 12824,
+        "seconds": 53.189082180004334,
+        "independent_judge_passed": true,
+        "project_tests_passed": null,
+        "certified_closure": true,
+        "original_goal_supplied_verbatim": true,
+        "mode": "goalpilot"
+      }
+    ],
+    "correct": 2,
+    "certified": 2,
+    "mean_seconds": 54.030916149502445,
+    "mean_uncached_tokens": 12851,
+    "note": "Vague multi-API task with incomplete initial tests; candidate selected full GoalPilot and preserved certification. Not included in fast-path comparisons."
+  },
+  "all_recorded_trials_in_experiment": [
+    {
+      "id": "bytes-fast-r1-candidate",
+      "raw_tokens": 79910,
+      "cached_input_tokens": 67584,
+      "uncached_tokens": 12326,
+      "seconds": 21.48392010999669,
+      "independent_judge_passed": true,
+      "project_tests_passed": true,
+      "certified_closure": null,
+      "original_goal_supplied_verbatim": true,
+      "mode": "fast-direct",
+      "included_in_promotion_cohort": false,
+      "exclusion_reason": "Earlier fast-path candidate version, superseded before frozen v2 comparison."
+    },
+    {
+      "id": "bytes-fast-r1-current",
+      "raw_tokens": 76196,
+      "cached_input_tokens": 66816,
+      "uncached_tokens": 9380,
+      "seconds": 21.05215255499934,
+      "independent_judge_passed": true,
+      "project_tests_passed": null,
+      "certified_closure": true,
+      "original_goal_supplied_verbatim": true,
+      "mode": "goalpilot",
+      "included_in_promotion_cohort": true,
+      "exclusion_reason": null
+    },
+    {
+      "id": "bytes-fast-r2-candidate",
+      "raw_tokens": 62914,
+      "cached_input_tokens": 54656,
+      "uncached_tokens": 8258,
+      "seconds": 18.389716830002726,
+      "independent_judge_passed": true,
+      "project_tests_passed": true,
+      "certified_closure": null,
+      "original_goal_supplied_verbatim": true,
+      "mode": "fast-direct",
+      "included_in_promotion_cohort": true,
+      "exclusion_reason": null
+    },
+    {
+      "id": "bytes-fast-r2-native",
+      "raw_tokens": 84845,
+      "cached_input_tokens": 73216,
+      "uncached_tokens": 11629,
+      "seconds": 21.309213460001047,
+      "independent_judge_passed": true,
+      "project_tests_passed": null,
+      "certified_closure": null,
+      "original_goal_supplied_verbatim": true,
+      "mode": "native",
+      "included_in_promotion_cohort": true,
+      "exclusion_reason": null
+    },
+    {
+      "id": "bytes-fast-r3-candidate",
+      "raw_tokens": 62744,
+      "cached_input_tokens": 57728,
+      "uncached_tokens": 5016,
+      "seconds": 16.361228727007983,
+      "independent_judge_passed": true,
+      "project_tests_passed": true,
+      "certified_closure": null,
+      "original_goal_supplied_verbatim": true,
+      "mode": "fast-direct",
+      "included_in_promotion_cohort": true,
+      "exclusion_reason": null
+    },
+    {
+      "id": "bytes-fast-r3-current",
+      "raw_tokens": 75735,
+      "cached_input_tokens": 65280,
+      "uncached_tokens": 10455,
+      "seconds": 30.48144627500733,
+      "independent_judge_passed": true,
+      "project_tests_passed": null,
+      "certified_closure": true,
+      "original_goal_supplied_verbatim": true,
+      "mode": "goalpilot",
+      "included_in_promotion_cohort": true,
+      "exclusion_reason": null
+    },
+    {
+      "id": "bytes-fast-r3-native",
+      "raw_tokens": 109981,
+      "cached_input_tokens": 96256,
+      "uncached_tokens": 13725,
+      "seconds": 19.972973875002936,
+      "independent_judge_passed": true,
+      "project_tests_passed": null,
+      "certified_closure": null,
+      "original_goal_supplied_verbatim": true,
+      "mode": "native",
+      "included_in_promotion_cohort": true,
+      "exclusion_reason": null
+    },
+    {
+      "id": "java-ranges-hard-candidate",
+      "raw_tokens": 78286,
+      "cached_input_tokens": 65408,
+      "uncached_tokens": 12878,
+      "seconds": 54.87275011900056,
+      "independent_judge_passed": true,
+      "project_tests_passed": null,
+      "certified_closure": true,
+      "original_goal_supplied_verbatim": true,
+      "mode": "goalpilot",
+      "included_in_promotion_cohort": false,
+      "exclusion_reason": null
+    },
+    {
+      "id": "java-ranges-hard-r2-candidate",
+      "raw_tokens": 78104,
+      "cached_input_tokens": 65280,
+      "uncached_tokens": 12824,
+      "seconds": 53.189082180004334,
+      "independent_judge_passed": true,
+      "project_tests_passed": null,
+      "certified_closure": true,
+      "original_goal_supplied_verbatim": true,
+      "mode": "goalpilot",
+      "included_in_promotion_cohort": false,
+      "exclusion_reason": null
+    },
+    {
+      "id": "slug-fast-r4-candidate",
+      "raw_tokens": 62890,
+      "cached_input_tokens": 58112,
+      "uncached_tokens": 4778,
+      "seconds": 14.044520532988827,
+      "independent_judge_passed": true,
+      "project_tests_passed": true,
+      "certified_closure": null,
+      "original_goal_supplied_verbatim": true,
+      "mode": "fast-direct",
+      "included_in_promotion_cohort": true,
+      "exclusion_reason": null
+    },
+    {
+      "id": "slug-fast-r5-candidate",
+      "raw_tokens": 63026,
+      "cached_input_tokens": 55680,
+      "uncached_tokens": 7346,
+      "seconds": 16.376788688008673,
+      "independent_judge_passed": true,
+      "project_tests_passed": true,
+      "certified_closure": null,
+      "original_goal_supplied_verbatim": true,
+      "mode": "fast-direct",
+      "included_in_promotion_cohort": true,
+      "exclusion_reason": null
+    },
+    {
+      "id": "slug-reuse-r2-candidate",
+      "raw_tokens": 74649,
+      "cached_input_tokens": 66048,
+      "uncached_tokens": 8601,
+      "seconds": 23.29994023600011,
+      "independent_judge_passed": true,
+      "project_tests_passed": null,
+      "certified_closure": true,
+      "original_goal_supplied_verbatim": null,
+      "mode": null,
+      "included_in_promotion_cohort": false,
+      "exclusion_reason": null
+    },
+    {
+      "id": "slug-reuse-r2-current",
+      "raw_tokens": 76021,
+      "cached_input_tokens": 59264,
+      "uncached_tokens": 16757,
+      "seconds": 23.758357618004084,
+      "independent_judge_passed": true,
+      "project_tests_passed": null,
+      "certified_closure": true,
+      "original_goal_supplied_verbatim": null,
+      "mode": null,
+      "included_in_promotion_cohort": true,
+      "exclusion_reason": null
+    },
+    {
+      "id": "slug-reuse-r2-native",
+      "raw_tokens": 101960,
+      "cached_input_tokens": 94976,
+      "uncached_tokens": 6984,
+      "seconds": 20.81856391899055,
+      "independent_judge_passed": true,
+      "project_tests_passed": null,
+      "certified_closure": null,
+      "original_goal_supplied_verbatim": null,
+      "mode": null,
+      "included_in_promotion_cohort": true,
+      "exclusion_reason": null
+    },
+    {
+      "id": "slug-reuse-r3-candidate",
+      "raw_tokens": 75058,
+      "cached_input_tokens": 65536,
+      "uncached_tokens": 9522,
+      "seconds": 18.998686570004793,
+      "independent_judge_passed": true,
+      "project_tests_passed": null,
+      "certified_closure": true,
+      "original_goal_supplied_verbatim": null,
+      "mode": null,
+      "included_in_promotion_cohort": false,
+      "exclusion_reason": null
+    },
+    {
+      "id": "slug-reuse-r3-current",
+      "raw_tokens": 77598,
+      "cached_input_tokens": 66560,
+      "uncached_tokens": 11038,
+      "seconds": 24.613360132992966,
+      "independent_judge_passed": true,
+      "project_tests_passed": null,
+      "certified_closure": true,
+      "original_goal_supplied_verbatim": null,
+      "mode": null,
+      "included_in_promotion_cohort": true,
+      "exclusion_reason": null
+    },
+    {
+      "id": "slug-reuse-r3-native",
+      "raw_tokens": 119274,
+      "cached_input_tokens": 112384,
+      "uncached_tokens": 6890,
+      "seconds": 21.38749986900075,
+      "independent_judge_passed": true,
+      "project_tests_passed": null,
+      "certified_closure": null,
+      "original_goal_supplied_verbatim": null,
+      "mode": null,
+      "included_in_promotion_cohort": true,
+      "exclusion_reason": null
+    }
+  ],
+  "limitations": [
+    "Two synthetic task families and two repetitions each; not a population estimate.",
+    "FAST DIRECT has no GoalPilot certificate; acceptance rests on the independent behavioral judge and the project documented suite.",
+    "Cache state varied and could not be controlled. Uncached tokens are the relevant usage measure here; raw token deltas are descriptive only.",
+    "Full fallback remains the intended path for ambiguous, multi-file, stateful, external, or inadequately tested goals. The Java fallback guard passed twice; fallback figures are reported separately."
+  ],
+  "rejected_research": [
+    {
+      "candidate": "Context ranking / context cap / appended relevant context",
+      "outcome": "Rejected: no repeatable broad gain; some cases increased uncached usage or slowed substantially.",
+      "evidence": "docs/CONTEXT-FAST-EXPLORATION.md, docs/CONTEXT-RANK-STRUCTURAL.md, reports/context-fast-exploration-evidence-2026-10-23.zip, reports/context-rank-structural-evidence-2026-10-23.zip"
+    },
+    {
+      "candidate": "Earlier adaptive v1 fast path",
+      "outcome": "Rejected: byte task used 12,326 uncached tokens vs 9,380 current; superseded by frozen v2 before registered comparison.",
+      "evidence": "bytes-fast-r1-candidate trial included in the evidence archive."
+    }
+  ]
+}

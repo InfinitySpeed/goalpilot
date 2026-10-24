@@ -49,8 +49,10 @@ jobs:
         run: python tools/audit_skill190.py reports/skill-190-2026-10-23.json --evidence reports/skill-190-evidence.zip --require-promotion
       - name: Audit the historical 1.10 raw-token target promotion
         run: python tools/audit_skill110.py reports/skill-110-2026-10-23.json --evidence reports/skill-110-evidence.zip --require-promotion
-      - name: Audit the active 1.11 uncached-token promotion
+      - name: Audit the historical 1.11 uncached-token promotion
         run: python tools/audit_skill111.py
+      - name: Audit the active 1.12 adaptive fast-path promotion
+        run: python tools/audit_skill112.py
       - name: Audit the frozen standalone promotion
         run: python tools/audit_promoted_release.py
   portable-install:

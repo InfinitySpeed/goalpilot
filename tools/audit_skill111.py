@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,17 +24,24 @@ def audit(report_path: Path = REPORT, root: Path = ROOT) -> dict:
     active = policy['active_native_workflow']
     if data.get('version') != '1.11.0' or not data.get('promotable'):
         raise ValueError('not a promotable 1.11 report')
-    if active.get('version') != '1.11.0':
-        raise ValueError('active default is not 1.11.0')
-    if active.get('benchmark') != report_path.relative_to(root).as_posix():
-        raise ValueError('active benchmark path mismatch')
-    if active.get('benchmark_sha256') != sha256(report_path):
-        raise ValueError('active benchmark hash mismatch')
-    if active.get('evidence_sha256') != sha256(root / 'reports/skill-111-evidence.zip'):
-        raise ValueError('evidence archive hash mismatch')
+    archive_path = root / 'reports/skill-111-evidence.zip'
+    if sha256(archive_path) != '080576079de83ad9e14007a72162b8fe0c51bf7cec9ecd2fc8c5d5198b30e73b':
+        raise ValueError('historical 1.11 evidence archive hash mismatch')
+    if active.get('version') == '1.11.0':
+        if active.get('benchmark') != report_path.relative_to(root).as_posix() or active.get('benchmark_sha256') != sha256(report_path):
+            raise ValueError('active 1.11 benchmark pointer mismatch')
+        if active.get('evidence_sha256') != sha256(archive_path):
+            raise ValueError('active 1.11 evidence hash mismatch')
+    # Once superseded, validate historical source bytes from its immutable evidence archive.
+    with zipfile.ZipFile(archive_path) as zf:
+        archived = {n: hashlib.sha256(zf.read('promoted-source/' + n)).hexdigest()
+                    for n in data['source_files'] if 'promoted-source/' + n in zf.namelist()}
     for name, expected in data['source_files'].items():
-        if sha256(root / name) != expected or active['source_files'].get(name) != expected:
-            raise ValueError(f'promoted source mismatch: {name}')
+        live = sha256(root / name)
+        if live != expected and archived.get(name) != expected:
+            raise ValueError(f'historical promoted source mismatch: {name}')
+        if active.get('version') == '1.11.0' and active['source_files'].get(name) != expected:
+            raise ValueError(f'active promoted source mismatch: {name}')
     means = data['per_case']
     for case in ('java-vague', 'typescript-vague', 'flowdesk'):
         for arm in ('candidate', 'current', 'previous'):

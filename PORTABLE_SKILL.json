@@ -112,21 +112,22 @@
   "native_workflow_scope": "Immutable schema1 evidence alias for1.8.0. active_native_workflow is the installed default and current proof; never transfer historical metrics.",
   "active_native_workflow": {
     "status": "promoted",
-    "version": "1.11.0",
+    "version": "1.12.0",
     "adapter_version": "0.3.0",
     "source_files": {
       "install.py": "43e5f33aad046bd0f39b5f97d11dced950bfb7240768ee1c91e4431088c355c3",
       "integrations/native/native.py": "1377f8f3757b079c1fffea105a6b6f1651c91b0edd88017f50b97de0e5b36753",
-      "integrations/native/routed-SKILL.md": "1670d59124c5d1183a01f8f6135cff77ae2c8333218055cbb4300207b7f14d98",
+      "integrations/native/routed-SKILL.md": "b67e99fe640eefc6421e8c89303999fa621a80dbbdc304b9545fa5265ea4cf98",
       "integrations/native/SKILL.md": "812da0615083f1adf83ef45fa1dfabc21bae56af2c6a4bbf37920b6c4e789ef3"
     },
-    "benchmark": "reports/skill-111-2026-10-23.json",
-    "benchmark_sha256": "3e680ab3c573bb22151ce8615108fe1a01f953721bcfd659a8b7d874bf4d66a7",
-    "evidence_archive": "reports/skill-111-evidence.zip",
+    "benchmark": "reports/skill-112-adaptive-fast-path-2026-10-24.json",
+    "benchmark_sha256": "65c9f72847e5fdc1b418c5a6999e9e7e803aecddebb5a7e828a8541b369d1428",
+    "evidence_archive": "reports/skill-112-evidence.zip",
     "source_bundle": "skills/goalpilot-016",
-    "promotion_rule": "Six of six independent goals correctly closed and original-goal preserving per GoalPilot arm; repeated uncached input+output reduction in all three task families versus both 1.9 and 1.10; equal-weight elapsed time no more than 3% slower than 1.9. Raw tokens are descriptive only.",
-    "scope": "Three synthetic task families (Java ranges, TypeScript transactions, vague Flowdesk multi-team support), two fresh runs per GoalPilot arm; matched native Codex repeats on Java and TypeScript, plus prior-day exact-task Flowdesk native context. Cache state is recorded but cannot be controlled. No population or subscription-quota claim.",
-    "evidence_sha256": "080576079de83ad9e14007a72162b8fe0c51bf7cec9ecd2fc8c5d5198b30e73b",
-    "evidence_url": "https://github.com/InfinitySpeed/goalpilot/blob/main/reports/skill-111-evidence.zip"
+    "promotion_rule": "Fast path promoted only for fully specified single self-contained changes whose existing documented project suite covers all requested outcomes: 4/4 independent judge pass, 4/4 project suites pass, lower uncached tokens than both current GoalPilot and native controls, and no >3% time regression. All ambiguous, multi-step, external, cross-file, stateful, or under-tested goals use full GoalPilot. Raw tokens descriptive only.",
+    "scope": "Two synthetic fast-path task families (slug normalization and byte conversion), two fresh repeats per arm/family; matched GoalPilot 1.11 and Codex-native controls. Full GoalPilot fallback separately guarded by two complex Java runs, both independently correct and certified. Cache state uncontrolled; no population or raw-token quota claim.",
+    "evidence_sha256": "cfe6522a8ee5a19b3a617eeda5393643209d205ca04a575b1a722fa4ce721db7",
+    "evidence_url": "https://github.com/InfinitySpeed/goalpilot/blob/main/reports/skill-112-evidence.zip",
+    "default_instructions": "integrations/native/routed-SKILL.md"
   }
 }

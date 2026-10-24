@@ -2,33 +2,32 @@
 
 **A skill that helps coding agents turn ambitious goals into verified results, with less repeated work.**
 
-GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.11.0 with native verification and the frozen service engine 0.16.0**; it does not start a second coding model.
+GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.12.0 with an adaptive fast path, native verification and the frozen service engine 0.16.0**; it does not start a second coding model.
 
 [![Offline checks](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
-[![Skill 1.11.0](https://img.shields.io/badge/Skill-1.11.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
+[![Skill 1.12.0](https://img.shields.io/badge/Skill-1.12.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
 [![Service engine 0.16.0](https://img.shields.io/badge/Engine-0.16.0-334155)](PORTABLE_SKILL.json)
 
-[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PROMOTION-1.11.md) · [Task-diversity screen](docs/SCREENING-1.11.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
+[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PROMOTION-1.12.md) · [Task-diversity screen](docs/SCREENING-1.11.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
 
 ## Measured results
 
-The primary comparison is **GoalPilot 1.11 vs Codex native on the exact same tasks**: a vague Java range-utility repair, a vague TypeScript transactional-store repair, and the ambitious Flowdesk support-platform goal. Each ran twice per arm in fresh Codex app-server sessions, using the same model and effort.
+GoalPilot 1.12 adds a narrow **FAST DIRECT** route for fully specified, self-contained changes whose requested outcomes are already covered by the project's documented full test suite. Vague, multi-step, cross-file, stateful, external, or under-tested goals continue through full GoalPilot.
 
-![Same-task GoalPilot and Codex-native comparison across Java, TypeScript, and Flowdesk.](docs/assets/skill-111-benchmark.svg)
+![Matched fast-path comparison of mean uncached tokens and elapsed time for GoalPilot 1.12, GoalPilot 1.11, and native Codex.](docs/assets/skill-112-fast-path.svg)
 
-| Equal-weight mean across the 3 task families (6 runs per arm) | Codex native | GoalPilot 1.11 | Change with GoalPilot |
+The comparison uses two synthetic task families (slug normalization and byte conversion), with two fresh runs per arm and family. Every arm passed the independent checks in 4/4 runs; the fast-path project suite passed in 4/4 candidate runs.
+
+| Equal-weight mean by task family | Codex native | GoalPilot 1.11 | GoalPilot 1.12 fast path |
 | :--- | ---: | ---: | ---: |
-| Independent task checks passed | 6/6 | **6/6** | no decline |
-| Flowdesk behavior groups passed | 52/52 | **52/52** | equal |
-| Uncached input + output tokens per caller | 13,027 | **10,875** | **−16.5%** |
-| Elapsed seconds per caller | 99.25 | **64.07** | **−35.4%** |
+| Independent task checks passed | 4/4 | 4/4 | **4/4**; project suite **4/4** |
+| Uncached tokens per task | 9,807 | 11,908 | **6,350** |
+| Elapsed seconds per task | 20.87 | 24.98 | **16.29** |
 
-Per-task results and trial evidence are in the [full report](docs/PROMOTION-1.11.md) and [evidence archive](reports/skill-111-evidence.zip). Cache could not be disabled, so uncached tokens and elapsed time are reported separately; raw tokens are not treated as subscription-quota savings. These are six synthetic paired trials, not a guarantee for every repository or prompt.
+On this limited fast-path set, 1.12 used **35.3% fewer uncached tokens and was 21.9% faster than native Codex**, and used **46.7% fewer uncached tokens and was 34.8% faster than GoalPilot 1.11**. These two synthetic task families are not a population estimate. The provider cache could not be disabled; raw token counts are reported descriptively and are not used to claim subscription-quota savings. A separate complex Java fallback check passed and earned GoalPilot certification in 2/2 runs. See the [promotion report](docs/PROMOTION-1.12.md), [run-level results](reports/skill-112-adaptive-fast-path-2026-10-24.json) and [evidence archive](reports/skill-112-evidence.zip).
 
-A quick task-diversity screen also found **28.0% less elapsed time but 9.2% more uncached tokens** for GoalPilot on three matched task cases. All checks passed in both arms, but the token gate failed, so we stopped before a full expansion. [See the screen, graph and retained trials](docs/SCREENING-1.11.md).
-
-A separate one-pair refactoring check passed after correcting an evaluator error: GoalPilot used **16.9% fewer uncached tokens** and was **33.4% faster**. That single pair is supplemental evidence, not a reason to override the screen result or claim a general gain.
+The broader GoalPilot 1.11 Java, TypeScript and Flowdesk results remain historical evidence in its [prior report](docs/PROMOTION-1.11.md); they are not metrics for the new fast path. A separate task-diversity screen and one-pair refactoring check remain documented there as well.
 
 ### Broader native verification
 
@@ -43,7 +42,7 @@ and [twenty-service r2 benchmark](docs/SKILL-EFFICIENCY.md) remain separate hist
 
 ## How to use it
 
-These instructions install **Skill 1.11.0 with the frozen engine 0.16.0** in your current coding-agent session.
+These instructions install **Skill 1.12.0 with the frozen engine 0.16.0** in your current coding-agent session.
 
 ### 1. Send this to your coding agent
 
