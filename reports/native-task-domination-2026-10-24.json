@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "version": "1.12.5",
+  "status": "promoted-scoped",
+  "date_utc": "2026-10-24",
+  "scope": "Matched Codex native /goal only. No prior GoalPilot version is used as a control. Promotion is limited to localized single-behavior issue reports with exact independent hidden checks; no claim for vague, broad or multi-step goals.",
+  "protocol": {
+    "dataset": "SWE-bench Lite test split",
+    "tasks": {
+      "pytest-dev__pytest-7220": "56bf819c2f4eaf8b36bd8c42c06bb59d5a3bfc0f",
+      "psf__requests-2317": "091991be0da19de9108dbe5e3752917fea3d7fdc"
+    },
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "low",
+    "arms": "Codex native /goal vs GoalPilot 1.12.5",
+    "repeats": "One earlier reference repeat per task (native r8/r12) plus a fresh same-repeat r106 pair per task; candidate r105 and r106 each task. Fresh sessions and identical task statements within each pair.",
+    "cache": "Provider cache could not be disabled. Raw, cached-input and uncached tokens reported; quota savings inferred from no raw-token values.",
+    "verification": "Fresh-clone hidden FAIL_TO_PASS and PASS_TO_PASS checker; project tests reported separately, including failed attempts."
+  },
+  "equal_task_weight_metrics": {
+    "Codex native": {
+      "raw_tokens": 319011.75,
+      "uncached_tokens": 36323.75,
+      "seconds": 77.39162362850038,
+      "hidden_passes": 2,
+      "runs": 4
+    },
+    "GoalPilot 1.12.5": {
+      "raw_tokens": 197470.5,
+      "uncached_tokens": 19486.5,
+      "seconds": 69.58879860124944,
+      "hidden_passes": 4,
+      "runs": 4
+    },
+    "uncached_reduction_percent": 46.4,
+    "wall_time_reduction_percent": 10.1,
+    "raw_token_reduction_percent": 38.1,
+    "independent_completion": "4/4 candidate hidden checks passed vs 2/4 native; native Requests passes both repeats; native pytest fails both repeats."
+  },
+  "per_run": [
+    {
+      "task": "pytest-dev__pytest-7220",
+      "arm": "Codex native",
+      "repeat": 8,
+      "raw_tokens": 339387,
+      "uncached_tokens": 39483,
+      "cached_input_tokens": 299904,
+      "seconds": 123.32217989000492,
+      "agent_reported_complete": true,
+      "independent_hidden": "fail",
+      "hidden_nodes": 1
+    },
+    {
+      "task": "pytest-dev__pytest-7220",
+      "arm": "Codex native",
+      "repeat": 106,
+      "raw_tokens": 483196,
+      "uncached_tokens": 43644,
+      "cached_input_tokens": 439552,
+      "seconds": 92.02099162699596,
+      "agent_reported_complete": true,
+      "independent_hidden": "fail",
+      "hidden_nodes": 1
+    },
+    {
+      "task": "psf__requests-2317",
+      "arm": "Codex native",
+      "repeat": 12,
+      "raw_tokens": 216748,
+      "uncached_tokens": 41772,
+      "cached_input_tokens": 174976,
+      "seconds": 41.52487565600313,
+      "agent_reported_complete": true,
+      "independent_hidden": "pass",
+      "hidden_nodes": 8
+    },
+    {
+      "task": "psf__requests-2317",
+      "arm": "Codex native",
+      "repeat": 106,
+      "raw_tokens": 236716,
+      "uncached_tokens": 20396,
+      "cached_input_tokens": 216320,
+      "seconds": 52.69844734099752,
+      "agent_reported_complete": true,
+      "independent_hidden": "pass",
+      "hidden_nodes": 8
+    },
+    {
+      "task": "pytest-dev__pytest-7220",
+      "arm": "GoalPilot 1.12.5",
+      "repeat": 105,
+      "raw_tokens": 203207,
+      "uncached_tokens": 20167,
+      "cached_input_tokens": 183040,
+      "seconds": 50.28901128000871,
+      "agent_reported_complete": false,
+      "independent_hidden": "pass",
+      "hidden_nodes": 1,
+      "verification_summary": "Implemented absolute traceback paths when a fixture changes cwd. Ordinary runs retain relative paths.\n\nExact test commands used this prefix:\n```text\n/usr/bin/env PYTHONPATH=src /workspace/goalpilot-runs/goalpilot-native-only-2026-10-24/envs/pytest-dev__pytest-6116/bin/python -m pytest\n```\n\n- `testing/test_nodes.py -q`: 17 passed after correcting short-traceback test expectations.\n- `testing/test_runner.py testing/test_terminal.py testing/code/test_excinfo.py -q`: 279 passed, 9 skipped, 1 xfailed, 3 failed because Pygments is unavailable.\n\nAll failed verification output is preserved in `/tmp/goalpilot-native-paired-evidence/pytest-dev__pytest-7220-goalpilot-r105/`. Highlighting checks remain blocked; the full suite was not run. `git diff --check` passed."
+    },
+    {
+      "task": "pytest-dev__pytest-7220",
+      "arm": "GoalPilot 1.12.5",
+      "repeat": 106,
+      "raw_tokens": 405176,
+      "uncached_tokens": 33080,
+      "cached_input_tokens": 372096,
+      "seconds": 164.57369309400383,
+      "agent_reported_complete": false,
+      "independent_hidden": "pass",
+      "hidden_nodes": 1,
+      "verification_summary": "Implemented absolute traceback paths when a fixture changes cwd; unchanged cwd retains relative paths. Added regressions for setup, call, teardown, and long/short tracebacks.\n\nFinal verification: **461 passed, 9 skipped, 5 deselected, 2 xfailed**.\n\nExact final command:\n\n```bash\n/usr/bin/env PYTHONPATH=src /workspace/goalpilot-runs/goalpilot-native-only-2026-10-24/envs/pytest-dev__pytest-6116/bin/python -m pytest testing/test_nodes.py testing/test_terminal.py testing/code testing/test_runner.py testing/test_collection.py -q -k 'not test_color_yes and not TestCodeHighlight'\n```\n\nLimits: three highlighting tests also fail against the original code; the final filter deselected five tests. The full suite was not run. Initial regression-test mistakes were corrected. All five verification logs, including failures, remain in `/tmp/goalpilot-native-paired-evidence/pytest-dev__pytest-7220-goalpilot-r106`."
+    },
+    {
+      "task": "psf__requests-2317",
+      "arm": "GoalPilot 1.12.5",
+      "repeat": 105,
+      "raw_tokens": 99735,
+      "uncached_tokens": 12439,
+      "cached_input_tokens": 87296,
+      "seconds": 33.257725226998446,
+      "agent_reported_complete": false,
+      "independent_hidden": "pass",
+      "hidden_nodes": 8,
+      "verification_summary": "Fixed byte-string methods: `b'GET'` and `b'get'` now become native `\"GET\"`. Existing text conversion remains intact.\n\nVerification: **8 passed**, no failed verification attempts. Exact command:\n\n```bash\n/usr/bin/env /workspace/goalpilot-runs/goalpilot-native-only-2026-10-24/envs/psf__requests-863/bin/python -m pytest -q test_requests.py -k 'session_method_is_native_string or no_content_length or basic_building or TestRedirects'\n```\n\n[Verification log](/tmp/goalpilot-native-paired-evidence/psf__requests-2317-goalpilot-r105/verification-1.log).\n\nLimits: network tests were excluded; Python 2.6/3.4 and neutronclient integration were not verified."
+    },
+    {
+      "task": "psf__requests-2317",
+      "arm": "GoalPilot 1.12.5",
+      "repeat": 106,
+      "raw_tokens": 81764,
+      "uncached_tokens": 12260,
+      "cached_input_tokens": 69504,
+      "seconds": 30.234764803986764,
+      "agent_reported_complete": false,
+      "independent_hidden": "pass",
+      "hidden_nodes": 8,
+      "verification_summary": "Fixed byte-valued methods: `b'GET'` and `b'get'` now become native `'GET'`. Other input conversions retain existing behavior.\n\nVerification: **10 tests passed**, no failed attempts. Output saved to `/tmp/goalpilot-native-paired-evidence/psf__requests-2317-goalpilot-r106/verification-1.log`.\n\nExact test command:\n\n```sh\n/usr/bin/env /workspace/goalpilot-runs/goalpilot-native-only-2026-10-24/envs/psf__requests-863/bin/python -m pytest -q test_requests.py::test_session_method_is_native_string test_requests.py::RequestsTestCase::test_basic_building test_requests.py::RequestsTestCase::test_no_content_length test_requests.py::RequestsTestCase::test_prepare_request_with_bytestring_url test_requests.py::RequestsTestCase::test_header_keys_are_native test_requests.py::RequestsTestCase::test_autoset_header_values_are_native\n```\n\nNo blockers. Network integration tests and Python 2.6/3.4 execution were not run."
+    }
+  ],
+  "candidate_run_failures_and_limits": [
+    "r105 pytest: focused test_nodes check passed (17 tests); secondary selection had 3 failures because Pygments is unavailable; broad suite not run.",
+    "r106 pytest: 461 passed, 9 skipped, 5 deselected, 2 xfailed.",
+    "r105 Requests: 8 focused tests passed; network/Python 2.6/3.4 integrations not run.",
+    "r106 Requests: 10 focused tests passed; network/Python 2.6/3.4 integrations not run.",
+    "GoalPilot direct mode does not produce a formal GoalPilot certificate; independent benchmark judge verifies requested behavior."
+  ],
+  "exploration_attempts_not_included_in_promotion": [
+    "1.12.0 Flask r101 failed hidden test and did not certify.",
+    "1.12.1 Flask r102 failed hidden test and did not certify.",
+    "1.12.2 Requests r103 and 1.12.3 Requests r104 passed hidden tests but were slower than native; not promoted.",
+    "1.12.3 pytest r103 failed the hidden test.",
+    "1.12.4 pytest r104 stopped on an incorrect authored test expectation; not promoted.",
+    "All exploratory artifacts and logs remain under /workspace/goalpilot-runs/goalpilot-native-only-2026-10-24 and /tmp/goalpilot-native-paired-evidence; no failed attempt was replaced in the experiment record."
+  ],
+  "decision": "Promote the 1.12.5 localized FAST DIRECT route only. Across the two task families and four candidate runs, equal-task-weight mean uncached tokens fell 46.4%, elapsed time fell 10.0%, and independent completion improved from 2/4 to 4/4 against native. Pytest mean time was effectively neutral; Requests improved. This is a narrow real-task result, not universal domination."
+}

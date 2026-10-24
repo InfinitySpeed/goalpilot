@@ -1,0 +1,82 @@
+[
+  {
+    "case": "pytest-dev__pytest-7220",
+    "arm": "native",
+    "repeat": 8,
+    "result": "fail",
+    "returncode": 1,
+    "seconds": 0.36,
+    "nodes": 1,
+    "stdout_tail": "tionError'\n\ntesting/test_nodes_holdout.py:87: Failed\n----------------------------- Captured stdout call -----------------------------\n============================= test session starts ==============================\nplatform linux -- Python 3.8.20, pytest-5.2.0, py-1.11.0, pluggy-0.13.1\nrootdir: /tmp/pytest-of-agent/pytest-267/test_failure_with_changed_cwd0\ncollected 1 item\n\ntest_failure_with_changed_cwd.py F                                       [100%]\n\n=================================== FAILURES ===================================\n_____________________________ test_show_wrong_path _____________________________\n\nprivate_dir = 'ddd'\n\n    def test_show_wrong_path(private_dir):\n>       assert False\nE       assert False\n\ntest_failure_with_changed_cwd.py:14: AssertionError\n=========================== short test summary info ============================\nFAILED test_failure_with_changed_cwd.py::test_show_wrong_path - assert False\n============================== 1 failed in 0.03s ===============================\n=========================== short test summary info ============================\nFAILED testing/test_nodes_holdout.py::test_failure_with_changed_cwd - Failed:...\n1 failed in 0.18s\n\n"
+  },
+  {
+    "case": "pytest-dev__pytest-7220",
+    "arm": "native",
+    "repeat": 106,
+    "result": "fail",
+    "returncode": 1,
+    "seconds": 0.36,
+    "nodes": 1,
+    "stdout_tail": "tionError'\n\ntesting/test_nodes_holdout.py:87: Failed\n----------------------------- Captured stdout call -----------------------------\n============================= test session starts ==============================\nplatform linux -- Python 3.8.20, pytest-5.2.0, py-1.11.0, pluggy-0.13.1\nrootdir: /tmp/pytest-of-agent/pytest-268/test_failure_with_changed_cwd0\ncollected 1 item\n\ntest_failure_with_changed_cwd.py F                                       [100%]\n\n=================================== FAILURES ===================================\n_____________________________ test_show_wrong_path _____________________________\n\nprivate_dir = 'ddd'\n\n    def test_show_wrong_path(private_dir):\n>       assert False\nE       assert False\n\ntest_failure_with_changed_cwd.py:14: AssertionError\n=========================== short test summary info ============================\nFAILED test_failure_with_changed_cwd.py::test_show_wrong_path - assert False\n============================== 1 failed in 0.03s ===============================\n=========================== short test summary info ============================\nFAILED testing/test_nodes_holdout.py::test_failure_with_changed_cwd - Failed:...\n1 failed in 0.18s\n\n"
+  },
+  {
+    "case": "pytest-dev__pytest-7220",
+    "arm": "goalpilot",
+    "repeat": 105,
+    "result": "pass",
+    "returncode": 0,
+    "seconds": 0.37,
+    "nodes": 1,
+    "stdout_tail": ".                                                                        [100%]\n1 passed in 0.17s\n\n"
+  },
+  {
+    "case": "pytest-dev__pytest-7220",
+    "arm": "goalpilot",
+    "repeat": 106,
+    "result": "pass",
+    "returncode": 0,
+    "seconds": 0.36,
+    "nodes": 1,
+    "stdout_tail": ".                                                                        [100%]\n1 passed in 0.16s\n\n"
+  },
+  {
+    "case": "psf__requests-2317",
+    "arm": "native",
+    "repeat": 12,
+    "result": "pass",
+    "returncode": 0,
+    "seconds": 2.94,
+    "nodes": 8,
+    "stdout_tail": "........                                                                 [100%]\n8 passed in 2.76s\n\n"
+  },
+  {
+    "case": "psf__requests-2317",
+    "arm": "native",
+    "repeat": 106,
+    "result": "pass",
+    "returncode": 0,
+    "seconds": 2.89,
+    "nodes": 8,
+    "stdout_tail": "........                                                                 [100%]\n8 passed in 2.73s\n\n"
+  },
+  {
+    "case": "psf__requests-2317",
+    "arm": "goalpilot",
+    "repeat": 105,
+    "result": "pass",
+    "returncode": 0,
+    "seconds": 2.72,
+    "nodes": 8,
+    "stdout_tail": "........                                                                 [100%]\n8 passed in 2.55s\n\n"
+  },
+  {
+    "case": "psf__requests-2317",
+    "arm": "goalpilot",
+    "repeat": 106,
+    "result": "pass",
+    "returncode": 0,
+    "seconds": 2.51,
+    "nodes": 8,
+    "stdout_tail": "........                                                                 [100%]\n8 passed in 2.36s\n\n"
+  }
+]

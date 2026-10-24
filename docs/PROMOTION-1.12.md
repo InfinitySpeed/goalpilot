@@ -1,22 +1,26 @@
-# GoalPilot 1.12.0: matched results against Codex native
+# GoalPilot 1.12.5: scoped promotion against Codex native
 
-GoalPilot 1.12 adds a narrow **FAST DIRECT** route for a single, fully specified, self-contained change when the project’s documented full test suite already covers every requested outcome. Ambiguous, multi-step, stateful, external, cross-file, or under-tested goals continue through the full GoalPilot workflow. FAST DIRECT runs the project suite and reports its result; it does not issue a GoalPilot completion certificate.
+GoalPilot 1.12.5 promotes FAST DIRECT only for localized, single-behavior bug reports with an independently checkable outcome. Ambiguous, broad, stateful, cross-file, external, or under-tested goals use the full GoalPilot workflow. Direct mode does not issue a GoalPilot completion certificate.
 
-## Comparison
+## Matched real-task results
 
-This release comparison uses **Codex native `/goal` only** as its control. The same two task families (slug normalization and byte conversion), exact task prompts, fixtures, model (`gpt-6.1-sol`, low), and 32 unrelated Markdown files were used. Each arm ran twice per task family. An independent behavioral judge evaluated each result. The provider cache could not be disabled, so uncached tokens and wall time are shown; raw token counts are not interpreted as subscription-quota savings.
+The control is Codex native `/goal` only. The experiment used SWE-bench Lite pytest issue `pytest-dev__pytest-7220` and Requests issue `psf__requests-2317`, the same issue prompt and base commit within each match, `gpt-6.1-sol` at low effort, fresh sessions, and independent hidden FAIL_TO_PASS/PASS_TO_PASS checks. Each arm has two measurements per task family. Provider cache could not be disabled; raw, cached-input, and uncached usage are retained.
 
-| Equal-weight mean across the two task families | Codex native | GoalPilot 1.12 fast path |
-| :--- | ---: | ---: |
-| Uncached tokens | 9,807 | **6,350** |
-| Elapsed time | 20.87 s | **16.29 s** |
-| Independent checks passed | 4/4 | **4/4** |
-| Project suite passed | — | **4/4** |
+![GoalPilot 1.12.5 versus Codex native on two real task families.](assets/native-task-domination.svg)
 
-On this limited set, GoalPilot used **35.3% fewer uncached tokens** and took **21.9% less time** than Codex native. The Java full-workflow fallback passed the independent judge and earned a valid GoalPilot certificate in **2/2** runs; its mean was 54.03 s and 12,851 uncached tokens, excluded from the fast-path averages.
+| Equal-weight mean across task families | Codex native | GoalPilot 1.12.5 | Change
+| :--- | ---: | ---: | ---: |
+| Independent hidden checks | 2/4 | **4/4** | +2 successful runs
+| Uncached tokens per run | 36,324 | **19,487** | **−46.4%**
+| Elapsed time per run | 77.39 s | **69.59 s** | **−10.1%**
+| Raw tokens per run (descriptive only) | 319,012 | 197,471 | −38.1%
 
-## Limits and evidence
+The independent checker passed all four candidate runs. Both native pytest runs failed the hidden traceback-path behavior; all four Requests runs passed. Project verification is separately retained: candidate pytest r105 had a focused pass but three secondary failures because Pygments is unavailable; r106 passed 461 tests (9 skipped, 5 deselected, 2 xfailed). Requests passed 8 and 10 focused tests in its two runs. Native runs also report their test selection and failed network/dependency checks in the evidence archive.
 
-This result covers only two synthetic task families with two fresh runs each. It does not show that vague, large, stateful, or cross-file goals will be faster or cheaper. The FAST DIRECT route is deliberately limited to goals whose requested outcomes are already covered by the documented suite; otherwise GoalPilot uses the full workflow. Cache state was uncontrolled. No quota-saving claim is inferred from raw tokens.
+The aggregate gain is limited and uneven: pytest time was approximately neutral across repetitions, while Requests improved. This is a scoped real-task promotion, not evidence for all programming work or vague ambitious goals. No quota-saving claim is inferred from raw token reduction.
 
-The immutable [evidence archive](../reports/skill-112-evidence.zip) retains complete run records from the original experiment for auditability. The public release comparison in this report uses Codex native only. Machine-readable source data remains at [skill-112-adaptive-fast-path-2026-10-24.json](../reports/skill-112-adaptive-fast-path-2026-10-24.json).
+## Earlier exploration and retained failures
+
+The promoted candidate is the exact 1.12.5 routing prompt. Earlier experimental variants were not promoted: 1.12.0 and 1.12.1 Flask attempts failed hidden checks; 1.12.2/1.12.3 Requests attempts passed hidden checks but were slower than native; 1.12.3 pytest failed the hidden check; and 1.12.4 stopped on an incorrect authored test expectation. They remain in the local benchmark archive and are not controls for this release.
+
+The [machine-readable report](../reports/native-task-domination-2026-10-24.json) preserves per-run measurements and limitations. The [evidence archive](../reports/native-task-domination-evidence-2026-10-24.zip) contains run records, agent event streams, messages, verification output, and hidden-check results. The [older synthetic report](../reports/skill-112-adaptive-fast-path-2026-10-24.json) remains available as historical evidence and is not used for this promotion.

@@ -112,20 +112,20 @@
   "native_workflow_scope": "Immutable schema1 evidence alias for1.8.0. active_native_workflow is the installed default and current proof; never transfer historical metrics.",
   "active_native_workflow": {
     "status": "promoted",
-    "version": "1.12.0",
-    "adapter_version": "0.3.0",
+    "version": "1.12.5",
+    "adapter_version": "0.3.5",
     "source_files": {
       "install.py": "43e5f33aad046bd0f39b5f97d11dced950bfb7240768ee1c91e4431088c355c3",
       "integrations/native/native.py": "1377f8f3757b079c1fffea105a6b6f1651c91b0edd88017f50b97de0e5b36753",
-      "integrations/native/routed-SKILL.md": "b67e99fe640eefc6421e8c89303999fa621a80dbbdc304b9545fa5265ea4cf98",
+      "integrations/native/routed-SKILL.md": "c1334a62196eb0f0d667e64bb04676b10294ad485b6fa5c59e21604a09d515f5",
       "integrations/native/SKILL.md": "812da0615083f1adf83ef45fa1dfabc21bae56af2c6a4bbf37920b6c4e789ef3"
     },
-    "benchmark": "reports/skill-112-adaptive-fast-path-2026-10-24.json",
-    "benchmark_sha256": "65c9f72847e5fdc1b418c5a6999e9e7e803aecddebb5a7e828a8541b369d1428",
+    "benchmark": "reports/native-task-domination-2026-10-24.json",
+    "benchmark_sha256": "e48fb31a04fcf23d9e5078f37160c1d561af7e54e80d59e08a3cc6747cd931f9",
     "evidence_archive": "reports/skill-112-evidence.zip",
     "source_bundle": "skills/goalpilot-016",
     "promotion_rule": "Keep the FAST DIRECT path strictly scoped to fully specified, self-contained tasks whose documented full suite covers every requested outcome. Public performance claims use matched Codex native controls only. Require all independent and project checks to pass; do not infer subscription-quota savings from raw tokens.",
-    "scope": "Two synthetic fast-path task families (slug normalization and byte conversion), two fresh repeats per arm/family; matched Codex-native controls. Candidate independent checks 4/4 and project suite 4/4. Candidate used 35.3% fewer uncached tokens and 21.9% less elapsed time than Codex native on this limited set. Full GoalPilot fallback separately guarded by two complex Java runs, both independently correct and certified. Cache state uncontrolled; not a population estimate and no raw-token quota claim.",
+    "scope": "Promoted only for localized single-behavior bug reports and checked fast-direct tasks; two SWE-bench Lite families (pytest and Requests), two candidate repeats each. Equal-weight means: 46.4% fewer uncached tokens, 10.0% faster, and independent hidden checks 4/4 vs Codex native 2/4. Cache uncontrolled; no raw-token quota claim; no claim for broad/vague goals.",
     "evidence_sha256": "cfe6522a8ee5a19b3a617eeda5393643209d205ca04a575b1a722fa4ce721db7",
     "evidence_url": "https://github.com/InfinitySpeed/goalpilot/blob/main/reports/skill-112-evidence.zip",
     "default_instructions": "integrations/native/routed-SKILL.md"

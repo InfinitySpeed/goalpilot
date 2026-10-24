@@ -9,10 +9,10 @@ class Promotion190(unittest.TestCase):
  def test_active_default_is_112_and_old_controls_remain_separate(self):
   result=audit.analyze(REPORT,ROOT/'reports/skill-190-evidence.zip');self.assertTrue(result['promotable'])
   policy=json.loads((ROOT/'PORTABLE_SKILL.json').read_text());active=policy['active_native_workflow']
-  self.assertEqual(active['version'],'1.12.0');self.assertEqual(policy['native_workflow']['version'],'1.8.0')
+  self.assertEqual(active['version'],'1.12.5');self.assertEqual(policy['native_workflow']['version'],'1.8.0')
   self.assertNotEqual(active['benchmark_sha256'],hashlib.sha256(REPORT.read_bytes()).hexdigest());self.assertEqual(json.loads(REPORT.read_text())['skill_version'],'1.9.0')
   result=subprocess.run([sys.executable,str(ROOT/'install.py'),'--host','generic','--dry-run'],capture_output=True,text=True)
-  self.assertEqual(result.returncode,0,result.stderr);self.assertEqual(json.loads(result.stdout)['skill_version'],'1.12.0')
+  self.assertEqual(result.returncode,0,result.stderr);self.assertEqual(json.loads(result.stdout)['skill_version'],'1.12.5')
  def test_gains_and_installed_payloads_cannot_be_relabelled(self):
   for mutate in (lambda d:d['summary']['totals']['current'].__setitem__('raw_tokens',1),lambda d:d['install_parity']['codex']['deployed'].clear()):
    d=json.loads(REPORT.read_text());mutate(d)

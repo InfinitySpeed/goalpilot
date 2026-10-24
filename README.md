@@ -2,30 +2,30 @@
 
 **A skill that helps coding agents turn ambitious goals into verified results, with less repeated work.**
 
-GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.12.0 with an adaptive fast path, native verification and the frozen service engine 0.16.0**; it does not start a second coding model.
+GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.12.5 with a scoped fast path, native verification and the frozen service engine 0.16.0**; it does not start a second coding model.
 
 [![Offline checks](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
-[![Skill 1.12.0](https://img.shields.io/badge/Skill-1.12.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
+[![Skill 1.12.5](https://img.shields.io/badge/Skill-1.12.5-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
 [![Service engine 0.16.0](https://img.shields.io/badge/Engine-0.16.0-334155)](PORTABLE_SKILL.json)
 
 [Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PROMOTION-1.12.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
 
 ## Measured results
 
-GoalPilot 1.12 adds a narrow **FAST DIRECT** route for fully specified, self-contained changes whose requested outcomes are already covered by the project’s documented full test suite. Vague, multi-step, cross-file, stateful, external, or under-tested goals continue through full GoalPilot.
+GoalPilot 1.12.5 adds a narrowly scoped FAST DIRECT route for localized bug reports with one observable behavior and a direct independent check. Ambiguous, multi-step, stateful, external, cross-file, or under-tested goals continue through the full GoalPilot workflow.
 
-![Matched comparison of GoalPilot 1.12 fast path and Codex native on two synthetic task families.](docs/assets/skill-112-fast-path.svg)
+![Matched real-task comparison of GoalPilot 1.12.5 and Codex native.](docs/assets/native-task-domination.svg)
 
-The comparison uses two synthetic task families (slug normalization and byte conversion), with two fresh runs per arm and family. GoalPilot’s independent checks passed **4/4** and the project suite passed **4/4**. Codex native passed the independent checks in **4/4**.
+The matched real-task benchmark used two SWE-bench Lite issues (pytest traceback paths and Requests byte methods), two candidate repeats per issue, and two native controls per issue. Across equal-weight task means, GoalPilot 1.12.5 used **46.4% fewer uncached tokens**, was **10.1% faster**, and passed **4/4 independent hidden checks** versus **2/4** for Codex native.
 
-| Equal-weight mean across two task families | Codex native | GoalPilot 1.12 fast path |
+| Equal-weight mean across two task families | Codex native | GoalPilot 1.12.5 |
 | :--- | ---: | ---: |
-| Independent task checks passed | 4/4 | **4/4**; project suite **4/4** |
-| Uncached tokens per task | 9,807 | **6,350** |
-| Elapsed seconds per task | 20.87 | **16.29** |
+| Independent hidden checks passed | 2/4 | **4/4** |
+| Uncached tokens per run | 36,324 | **19,487** |
+| Elapsed seconds per run | 77.39 | **69.59** |
 
-On this limited fast-path set, GoalPilot used **35.3% fewer uncached tokens** and was **21.9% faster than Codex native**. The provider cache could not be disabled, so raw tokens are descriptive and do not prove subscription-quota savings. These two synthetic task families are not a population estimate. A separate complex Java fallback check passed and earned a GoalPilot certificate in **2/2** runs; those results are not included in the fast-path averages. The [promotion report](docs/PROMOTION-1.12.md) and [complete evidence archive](reports/skill-112-evidence.zip) contain protocol, limitations, and retained run records. The archive keeps the complete original experiment data; the published release comparison here uses Codex native only.
+The gain is not uniform: pytest was roughly time-neutral across repeats, while Requests improved. The provider cache could not be disabled, so the token claim uses uncached tokens; raw tokens do not establish subscription-quota savings. This small benchmark supports only the localized fast-path scope, not universal or broad-goal domination. Direct mode does not issue a GoalPilot certificate; independent hidden tests judge completion. See the [protocol and per-run results](docs/PROMOTION-1.12.md), [machine-readable report](reports/native-task-domination-2026-10-24.json), and [retained evidence archive](reports/native-task-domination-evidence-2026-10-24.zip). Earlier failed and slower exploratory attempts are listed in the report.
 
 ### Broader native verification
 
@@ -39,7 +39,7 @@ On this limited fast-path set, GoalPilot used **35.3% fewer uncached tokens** an
 
 ## How to use it
 
-These instructions install **Skill 1.12.0 with the frozen engine 0.16.0** in your current coding-agent session.
+These instructions install **Skill 1.12.5 with the frozen engine 0.16.0** in your current coding-agent session.
 
 ### 1. Send this to your coding agent
 
