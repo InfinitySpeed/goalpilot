@@ -9,25 +9,23 @@ GoalPilot preserves your original request, turns it into explicit criteria, reus
 [![Skill 1.12.0](https://img.shields.io/badge/Skill-1.12.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
 [![Service engine 0.16.0](https://img.shields.io/badge/Engine-0.16.0-334155)](PORTABLE_SKILL.json)
 
-[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PROMOTION-1.12.md) · [Task-diversity screen](docs/SCREENING-1.11.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
+[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PROMOTION-1.12.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
 
 ## Measured results
 
-GoalPilot 1.12 adds a narrow **FAST DIRECT** route for fully specified, self-contained changes whose requested outcomes are already covered by the project's documented full test suite. Vague, multi-step, cross-file, stateful, external, or under-tested goals continue through full GoalPilot.
+GoalPilot 1.12 adds a narrow **FAST DIRECT** route for fully specified, self-contained changes whose requested outcomes are already covered by the project’s documented full test suite. Vague, multi-step, cross-file, stateful, external, or under-tested goals continue through full GoalPilot.
 
-![Matched fast-path comparison of mean uncached tokens and elapsed time for GoalPilot 1.12, GoalPilot 1.11, and native Codex.](docs/assets/skill-112-fast-path.svg)
+![Matched comparison of GoalPilot 1.12 fast path and Codex native on two synthetic task families.](docs/assets/skill-112-fast-path.svg)
 
-The comparison uses two synthetic task families (slug normalization and byte conversion), with two fresh runs per arm and family. Every arm passed the independent checks in 4/4 runs; the fast-path project suite passed in 4/4 candidate runs.
+The comparison uses two synthetic task families (slug normalization and byte conversion), with two fresh runs per arm and family. GoalPilot’s independent checks passed **4/4** and the project suite passed **4/4**. Codex native passed the independent checks in **4/4**.
 
-| Equal-weight mean by task family | Codex native | GoalPilot 1.11 | GoalPilot 1.12 fast path |
-| :--- | ---: | ---: | ---: |
-| Independent task checks passed | 4/4 | 4/4 | **4/4**; project suite **4/4** |
-| Uncached tokens per task | 9,807 | 11,908 | **6,350** |
-| Elapsed seconds per task | 20.87 | 24.98 | **16.29** |
+| Equal-weight mean across two task families | Codex native | GoalPilot 1.12 fast path |
+| :--- | ---: | ---: |
+| Independent task checks passed | 4/4 | **4/4**; project suite **4/4** |
+| Uncached tokens per task | 9,807 | **6,350** |
+| Elapsed seconds per task | 20.87 | **16.29** |
 
-On this limited fast-path set, 1.12 used **35.3% fewer uncached tokens and was 21.9% faster than native Codex**, and used **46.7% fewer uncached tokens and was 34.8% faster than GoalPilot 1.11**. These two synthetic task families are not a population estimate. The provider cache could not be disabled; raw token counts are reported descriptively and are not used to claim subscription-quota savings. A separate complex Java fallback check passed and earned GoalPilot certification in 2/2 runs. See the [promotion report](docs/PROMOTION-1.12.md), [run-level results](reports/skill-112-adaptive-fast-path-2026-10-24.json) and [evidence archive](reports/skill-112-evidence.zip).
-
-The broader GoalPilot 1.11 Java, TypeScript and Flowdesk results remain historical evidence in its [prior report](docs/PROMOTION-1.11.md); they are not metrics for the new fast path. A separate task-diversity screen and one-pair refactoring check remain documented there as well.
+On this limited fast-path set, GoalPilot used **35.3% fewer uncached tokens** and was **21.9% faster than Codex native**. The provider cache could not be disabled, so raw tokens are descriptive and do not prove subscription-quota savings. These two synthetic task families are not a population estimate. A separate complex Java fallback check passed and earned a GoalPilot certificate in **2/2** runs; those results are not included in the fast-path averages. The [promotion report](docs/PROMOTION-1.12.md) and [complete evidence archive](reports/skill-112-evidence.zip) contain protocol, limitations, and retained run records. The archive keeps the complete original experiment data; the published release comparison here uses Codex native only.
 
 ### Broader native verification
 
@@ -37,8 +35,7 @@ The broader GoalPilot 1.11 Java, TypeScript and Flowdesk results remain historic
 - Stop explicitly on unverifiable criteria; unchanged blocked checks do not consume another verification attempt.
 - **40/40 local runtime/profile combinations** pass; all 55 installed payload files match the measured candidate on five profiles.
 
-The [four-goal 1.9 study](docs/PROMOTION-1.9.md), [earlier eight-goal 1.8 study](docs/GENERALIZATION.md), [four-goal 1.8 extension](docs/UNIVERSALITY.md)
-and [twenty-service r2 benchmark](docs/SKILL-EFFICIENCY.md) remain separate historical evidence.
+
 
 ## How to use it
 
@@ -126,7 +123,7 @@ Optional helpers suit their documented interfaces. `ReplayService` is intended f
 
 ## Development
 
-The engine uses the Python standard library. The current version has **362 offline tests; no skips on the verified Linux run**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
+The engine uses the Python standard library. The repository has **367 offline tests; all passed with no skips on the verified Linux run**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
 
 ```bash
 python3 validate.py

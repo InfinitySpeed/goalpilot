@@ -1,19 +1,22 @@
-# GoalPilot 1.12.0 promotion: adaptive fast path
+# GoalPilot 1.12.0: matched results against Codex native
 
-**Promoted behavior:** use a short direct workflow only for a single, fully specified, self-contained change whose outcomes are already covered by the project's documented full test suite. All ambiguous, multi-step, stateful, external, cross-file, or inadequately tested goals retain the full GoalPilot workflow and its certified closure.
+GoalPilot 1.12 adds a narrow **FAST DIRECT** route for a single, fully specified, self-contained change when the project’s documented full test suite already covers every requested outcome. Ambiguous, multi-step, stateful, external, cross-file, or under-tested goals continue through the full GoalPilot workflow. FAST DIRECT runs the project suite and reports its result; it does not issue a GoalPilot completion certificate.
 
-The comparison uses two task families (slug normalization and byte conversion), two fresh runs per arm and family, with the same model (`gpt-6.1-sol`, low), exact task, fixture, and 32 unrelated Markdown files. The independent behavioral judge passed every delivered result. GoalPilot 1.11 is the current control; Codex native uses the same direct task prompts. The provider cache could not be disabled, so raw, cached-input, and uncached usage are shown separately.
+## Comparison
 
-| Arm | Mean uncached tokens | Mean elapsed time | Independent completions |
-|---|---:|---:|---:|
-| GoalPilot 1.11 | 11,908 | 24.98s | 4/4 |
-| GoalPilot 1.12 fast path | 6,350 | 16.29s | 4/4; project suite 4/4 |
-| Codex native | 9,807 | 20.87s | 4/4 |
+This release comparison uses **Codex native `/goal` only** as its control. The same two task families (slug normalization and byte conversion), exact task prompts, fixtures, model (`gpt-6.1-sol`, low), and 32 unrelated Markdown files were used. Each arm ran twice per task family. An independent behavioral judge evaluated each result. The provider cache could not be disabled, so uncached tokens and wall time are shown; raw token counts are not interpreted as subscription-quota savings.
 
-On these measured fast-path tasks, GoalPilot 1.12 used **46.7% fewer uncached tokens** and was **34.8% faster** than GoalPilot 1.11. Against Codex native, it used **35.3% fewer uncached tokens** and was **21.9% faster**. These are measured uncached usage and wall time; raw token totals are not used to claim quota savings.
+| Equal-weight mean across the two task families | Codex native | GoalPilot 1.12 fast path |
+| :--- | ---: | ---: |
+| Uncached tokens | 9,807 | **6,350** |
+| Elapsed time | 20.87 s | **16.29 s** |
+| Independent checks passed | 4/4 | **4/4** |
+| Project suite passed | — | **4/4** |
 
-For the separate complex Java fallback guard, the candidate selected full GoalPilot, passed the independent judge and earned a valid GoalPilot closure certificate in **2/2** runs. Mean time was 54.03s and uncached usage 12,851; these fallback figures are not included in fast-path gains.
+On this limited set, GoalPilot used **35.3% fewer uncached tokens** and took **21.9% less time** than Codex native. The Java full-workflow fallback passed the independent judge and earned a valid GoalPilot certificate in **2/2** runs; its mean was 54.03 s and 12,851 uncached tokens, excluded from the fast-path averages.
 
-This is a scoped promotion, not evidence that every prompt benefits. The benchmark has only two synthetic fast-path families and two repetitions per arm. FAST DIRECT intentionally does not issue a GoalPilot certificate: it reports the existing suite run and its result. If the classification is uncertain or the suite does not cover every requested outcome, use full GoalPilot.
+## Limits and evidence
 
-Evidence archive: [`../reports/skill-112-evidence.zip`](../reports/skill-112-evidence.zip), SHA-256 `cfe6522a8ee5a19b3a617eeda5393643209d205ca04a575b1a722fa4ce721db7`. Machine-readable results, all run-level rows including the rejected earlier adaptive candidate, cache meters, gates, and limitations: [`../reports/skill-112-adaptive-fast-path-2026-10-24.json`](../reports/skill-112-adaptive-fast-path-2026-10-24.json).
+This result covers only two synthetic task families with two fresh runs each. It does not show that vague, large, stateful, or cross-file goals will be faster or cheaper. The FAST DIRECT route is deliberately limited to goals whose requested outcomes are already covered by the documented suite; otherwise GoalPilot uses the full workflow. Cache state was uncontrolled. No quota-saving claim is inferred from raw tokens.
+
+The immutable [evidence archive](../reports/skill-112-evidence.zip) retains complete run records from the original experiment for auditability. The public release comparison in this report uses Codex native only. Machine-readable source data remains at [skill-112-adaptive-fast-path-2026-10-24.json](../reports/skill-112-adaptive-fast-path-2026-10-24.json).

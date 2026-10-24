@@ -124,8 +124,8 @@
     "benchmark_sha256": "65c9f72847e5fdc1b418c5a6999e9e7e803aecddebb5a7e828a8541b369d1428",
     "evidence_archive": "reports/skill-112-evidence.zip",
     "source_bundle": "skills/goalpilot-016",
-    "promotion_rule": "Fast path promoted only for fully specified single self-contained changes whose existing documented project suite covers all requested outcomes: 4/4 independent judge pass, 4/4 project suites pass, lower uncached tokens than both current GoalPilot and native controls, and no >3% time regression. All ambiguous, multi-step, external, cross-file, stateful, or under-tested goals use full GoalPilot. Raw tokens descriptive only.",
-    "scope": "Two synthetic fast-path task families (slug normalization and byte conversion), two fresh repeats per arm/family; matched GoalPilot 1.11 and Codex-native controls. Full GoalPilot fallback separately guarded by two complex Java runs, both independently correct and certified. Cache state uncontrolled; no population or raw-token quota claim.",
+    "promotion_rule": "Keep the FAST DIRECT path strictly scoped to fully specified, self-contained tasks whose documented full suite covers every requested outcome. Public performance claims use matched Codex native controls only. Require all independent and project checks to pass; do not infer subscription-quota savings from raw tokens.",
+    "scope": "Two synthetic fast-path task families (slug normalization and byte conversion), two fresh repeats per arm/family; matched Codex-native controls. Candidate independent checks 4/4 and project suite 4/4. Candidate used 35.3% fewer uncached tokens and 21.9% less elapsed time than Codex native on this limited set. Full GoalPilot fallback separately guarded by two complex Java runs, both independently correct and certified. Cache state uncontrolled; not a population estimate and no raw-token quota claim.",
     "evidence_sha256": "cfe6522a8ee5a19b3a617eeda5393643209d205ca04a575b1a722fa4ce721db7",
     "evidence_url": "https://github.com/InfinitySpeed/goalpilot/blob/main/reports/skill-112-evidence.zip",
     "default_instructions": "integrations/native/routed-SKILL.md"
