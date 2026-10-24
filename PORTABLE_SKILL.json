@@ -112,22 +112,22 @@
   "native_workflow_scope": "Immutable schema1 evidence alias for1.8.0. active_native_workflow is the installed default and current proof; never transfer historical metrics.",
   "active_native_workflow": {
     "status": "promoted",
-    "version": "1.14.0",
-    "adapter_version": "0.5.0",
+    "version": "1.12.0",
+    "adapter_version": "0.3.0",
     "source_files": {
       "install.py": "43e5f33aad046bd0f39b5f97d11dced950bfb7240768ee1c91e4431088c355c3",
-      "integrations/native/native.py": "b2295c8a12bc2b28cc3cda2bd2c764442f1928fb78535b00ba12c06ad6e16aeb",
-      "integrations/native/SKILL.md": "6308deaa8976dda8b42bd0a480c6b83c85dde874d4bf8cc614d12aedab25a0f7",
-      "integrations/native/routed-SKILL.md": "555e34d3fceeedd393fec90ac6406b05ccdf1913a1aabff827f92f91359275d5"
+      "integrations/native/native.py": "1377f8f3757b079c1fffea105a6b6f1651c91b0edd88017f50b97de0e5b36753",
+      "integrations/native/routed-SKILL.md": "b67e99fe640eefc6421e8c89303999fa621a80dbbdc304b9545fa5265ea4cf98",
+      "integrations/native/SKILL.md": "812da0615083f1adf83ef45fa1dfabc21bae56af2c6a4bbf37920b6c4e789ef3"
     },
-    "benchmark": "reports/native-only-benchmark-2026-10-24.json",
-    "benchmark_sha256": "55fd062168a5aaeffb6b945e7f0f5a22095411bb3870e74d8445fd70c895fe78",
-    "evidence_archive": "reports/native-only-evidence-2026-10-24.zip",
+    "benchmark": "reports/skill-112-adaptive-fast-path-2026-10-24.json",
+    "benchmark_sha256": "65c9f72847e5fdc1b418c5a6999e9e7e803aecddebb5a7e828a8541b369d1428",
+    "evidence_archive": "reports/skill-112-evidence.zip",
     "source_bundle": "skills/goalpilot-016",
-    "promotion_rule": "Scoped reliability and auditability promotion only: matched Codex native /goal on identical tasks; 8 pairs across three upstream task families; retain all outcomes. Require 37/37 local native workflow tests and 21/21 versus 14/21 held-out test passes in this sample. Do not call this a quota, speed, or overall completion-rate improvement.",
-    "scope": "Controlled acceptance amendments with SHA-256-checked history, preserving original goal, passing evidence, blockers, prior failures, and existing checks. Native comparison: hidden tests 21/21 vs 14/21; certificates 7/8 vs 8/8; uncached tokens +6.3%; elapsed +132.7%. Reliability-only evidence; no overall efficiency claim.",
-    "evidence_sha256": "ea2a9c775728d6298e7e363898588439e1fd48320b8e76fb3a21970e9a4e3de6",
-    "evidence_url": "reports/native-only-evidence-2026-10-24.zip",
+    "promotion_rule": "Fast path promoted only for fully specified single self-contained changes whose existing documented project suite covers all requested outcomes: 4/4 independent judge pass, 4/4 project suites pass, lower uncached tokens than both current GoalPilot and native controls, and no >3% time regression. All ambiguous, multi-step, external, cross-file, stateful, or under-tested goals use full GoalPilot. Raw tokens descriptive only.",
+    "scope": "Two synthetic fast-path task families (slug normalization and byte conversion), two fresh repeats per arm/family; matched GoalPilot 1.11 and Codex-native controls. Full GoalPilot fallback separately guarded by two complex Java runs, both independently correct and certified. Cache state uncontrolled; no population or raw-token quota claim.",
+    "evidence_sha256": "cfe6522a8ee5a19b3a617eeda5393643209d205ca04a575b1a722fa4ce721db7",
+    "evidence_url": "https://github.com/InfinitySpeed/goalpilot/blob/main/reports/skill-112-evidence.zip",
     "default_instructions": "integrations/native/routed-SKILL.md"
   }
 }

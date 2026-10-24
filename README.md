@@ -1,34 +1,48 @@
 # GoalPilot
 
-**A skill that helps coding agents finish ambitious goals with explicit, auditable verification.**
+**A skill that helps coding agents turn ambitious goals into verified results, with less repeated work.**
 
-GoalPilot preserves the original request, maps it to executable checks, and keeps a clear record when acceptance criteria need refinement after implementation uncovers a missing check. It runs in the current coding-agent session and does not start a second coding model. The default is **Skill 1.14.0 with the frozen service engine 0.16.0**.
+GoalPilot preserves your original request, turns it into explicit criteria, reuses tested infrastructure and verifies the result before reporting completion. It works inside your current coding-agent session. The default is **Skill 1.12.0 with an adaptive fast path, native verification and the frozen service engine 0.16.0**; it does not start a second coding model.
 
 [![Offline checks](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/InfinitySpeed/goalpilot/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](pyproject.toml)
-[![Skill 1.14.0](https://img.shields.io/badge/Skill-1.14.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
+[![Skill 1.12.0](https://img.shields.io/badge/Skill-1.12.0-0F766E)](https://github.com/InfinitySpeed/goalpilot/releases/latest)
 [![Service engine 0.16.0](https://img.shields.io/badge/Engine-0.16.0-334155)](PORTABLE_SKILL.json)
 
-[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Native comparison and evidence](docs/PROMOTION-1.14.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
+[Install and use](#how-to-use-it) · [How it works](#how-it-works) · [Performance and evidence](docs/PROMOTION-1.12.md) · [Task-diversity screen](docs/SCREENING-1.11.md) · [Supported hosts](docs/HOSTS.md) · [Contributing](CONTRIBUTING.md)
 
 ## Measured results
 
-![GoalPilot 1.14 compared with matched Codex native runs for uncached tokens, time, and held-out test pass rate.](docs/assets/native-only-release-1.14.svg)
+GoalPilot 1.12 adds a narrow **FAST DIRECT** route for fully specified, self-contained changes whose requested outcomes are already covered by the project's documented full test suite. Vague, multi-step, cross-file, stateful, external, or under-tested goals continue through full GoalPilot.
 
-The benchmark runs the same three upstream coding tasks with Codex native `/goal` and GoalPilot, using the same model, prompts, base commits, and environment. Across eight paired runs, held-out tests passed **21/21 with GoalPilot and 14/21 with Codex native**. GoalPilot certified **7/8** goals while Codex native certified **8/8**.
+![Matched fast-path comparison of mean uncached tokens and elapsed time for GoalPilot 1.12, GoalPilot 1.11, and native Codex.](docs/assets/skill-112-fast-path.svg)
 
-| Equal-weight mean across three task families | Codex native | GoalPilot 1.14 | Change |
+The comparison uses two synthetic task families (slug normalization and byte conversion), with two fresh runs per arm and family. Every arm passed the independent checks in 4/4 runs; the fast-path project suite passed in 4/4 candidate runs.
+
+| Equal-weight mean by task family | Codex native | GoalPilot 1.11 | GoalPilot 1.12 fast path |
 | :--- | ---: | ---: | ---: |
-| Held-out tests passed | 14/21 | **21/21** | +7 tests |
-| Certified goals | **8/8** | 7/8 | −1 certificate |
-| Uncached tokens per task | **33,716** | 35,828 | +6.3% |
-| Elapsed seconds per task | **70.9 s** | 165.0 s | +132.7% |
+| Independent task checks passed | 4/4 | 4/4 | **4/4**; project suite **4/4** |
+| Uncached tokens per task | 9,807 | 11,908 | **6,350** |
+| Elapsed seconds per task | 20.87 | 24.98 | **16.29** |
 
-This is a **scoped reliability and auditability promotion**, not an efficiency win: it used more uncached tokens, took longer, and certified fewer goals in this sample. The feature lets an agent amend acceptance checks after a failed verification without losing the original goal, passing evidence, or prior failures; amendment history is SHA-256-checked. The small held-out sample is not a general completion-rate estimate. Provider caching could not be disabled, so raw token totals are descriptive and do not establish subscription-quota savings. See the [full report](docs/PROMOTION-1.14.md), [machine-readable run data](reports/native-only-benchmark-2026-10-24.json), and [complete evidence archive](reports/native-only-evidence-2026-10-24.zip).
+On this limited fast-path set, 1.12 used **35.3% fewer uncached tokens and was 21.9% faster than native Codex**, and used **46.7% fewer uncached tokens and was 34.8% faster than GoalPilot 1.11**. These two synthetic task families are not a population estimate. The provider cache could not be disabled; raw token counts are reported descriptively and are not used to claim subscription-quota savings. A separate complex Java fallback check passed and earned GoalPilot certification in 2/2 runs. See the [promotion report](docs/PROMOTION-1.12.md), [run-level results](reports/skill-112-adaptive-fast-path-2026-10-24.json) and [evidence archive](reports/skill-112-evidence.zip).
+
+The broader GoalPilot 1.11 Java, TypeScript and Flowdesk results remain historical evidence in its [prior report](docs/PROMOTION-1.11.md); they are not metrics for the new fast path. A separate task-diversity screen and one-pair refactoring check remain documented there as well.
+
+### Broader native verification
+
+- Run checks in separate subprojects with a relative `cwd`.
+- Freeze custom test files/directories through `test_paths`, plus common Java/.NET test names.
+- Bound context headers and file listings: **1,159,705 → 24,226 bytes** in a 2,500-file synthetic case, retaining every original file in evidence.
+- Stop explicitly on unverifiable criteria; unchanged blocked checks do not consume another verification attempt.
+- **40/40 local runtime/profile combinations** pass; all 55 installed payload files match the measured candidate on five profiles.
+
+The [four-goal 1.9 study](docs/PROMOTION-1.9.md), [earlier eight-goal 1.8 study](docs/GENERALIZATION.md), [four-goal 1.8 extension](docs/UNIVERSALITY.md)
+and [twenty-service r2 benchmark](docs/SKILL-EFFICIENCY.md) remain separate historical evidence.
 
 ## How to use it
 
-These instructions install **Skill 1.14.0 with the frozen engine 0.16.0** in your current coding-agent session.
+These instructions install **Skill 1.12.0 with the frozen engine 0.16.0** in your current coding-agent session.
 
 ### 1. Send this to your coding agent
 
@@ -112,7 +126,7 @@ Optional helpers suit their documented interfaces. `ReplayService` is intended f
 
 ## Development
 
-The engine uses the Python standard library. The repository has **388 offline tests** (362 engine tests); all 388 passed on the verified Linux run, with no skips. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
+The engine uses the Python standard library. The current version has **362 offline tests; no skips on the verified Linux run**. See [criteria evaluation and regression measurements](docs/CRITERIA_EVALUATION.md).
 
 ```bash
 python3 validate.py
