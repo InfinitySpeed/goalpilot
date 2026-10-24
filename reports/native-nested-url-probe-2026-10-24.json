@@ -1,0 +1,41 @@
+{
+  "scope": "Independent post-run regression probe derived from the migrated upstream test_basic URL-default case; model did not see this test. This is supplemental, not part of the preregistered hidden-test score.",
+  "results": [
+    {
+      "task": "pallets__flask-4045",
+      "repeat": 10,
+      "arm": "native",
+      "result": "fail",
+      "returncode": 1,
+      "stdout_tail": "ested_blueprint_url_defaults ______________________\n\n    def test_nested_blueprint_url_defaults():\n     app=flask.Flask(__name__); parent=flask.Blueprint(\"foo\",__name__); child=flask.Blueprint(\"bar\",__name__); leaf=flask.Blueprint(\"baz\",__name__)\n     @leaf.url_defaults\n     def defaults(endpoint,values): values[\"page\"]=\"login\"\n     @leaf.route(\"/<page>\")\n     def view(page): pass\n     child.register_blueprint(leaf); parent.register_blueprint(child); app.register_blueprint(parent)\n>    values={}; app.inject_url_defaults(\"foo.bar.baz.view\",values); assert values=={\"page\":\"login\"}\nE    AssertionError: assert {} == {'page': 'login'}\nE      Right contains 1 more item:\nE      {'page': 'login'}\nE      Full diff:\nE      - {'page': 'login'}\nE      + {}\n\ntests/test_nested_defaults_independent.py:9: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_nested_defaults_independent.py::test_nested_blueprint_url_defaults\n1 failed in 0.02s\n",
+      "test_sha256": "b5008db4045ee7132a09661111516f11f0327578c4adf37f14b92475eaf67fe6"
+    },
+    {
+      "task": "pallets__flask-4045",
+      "repeat": 10,
+      "arm": "goalpilot",
+      "result": "pass",
+      "returncode": 0,
+      "stdout_tail": ".                                                                        [100%]\n1 passed in 0.01s\n",
+      "test_sha256": "b5008db4045ee7132a09661111516f11f0327578c4adf37f14b92475eaf67fe6"
+    },
+    {
+      "task": "pallets__flask-4045",
+      "repeat": 11,
+      "arm": "native",
+      "result": "fail",
+      "returncode": 1,
+      "stdout_tail": "ested_blueprint_url_defaults ______________________\n\n    def test_nested_blueprint_url_defaults():\n     app=flask.Flask(__name__); parent=flask.Blueprint(\"foo\",__name__); child=flask.Blueprint(\"bar\",__name__); leaf=flask.Blueprint(\"baz\",__name__)\n     @leaf.url_defaults\n     def defaults(endpoint,values): values[\"page\"]=\"login\"\n     @leaf.route(\"/<page>\")\n     def view(page): pass\n     child.register_blueprint(leaf); parent.register_blueprint(child); app.register_blueprint(parent)\n>    values={}; app.inject_url_defaults(\"foo.bar.baz.view\",values); assert values=={\"page\":\"login\"}\nE    AssertionError: assert {} == {'page': 'login'}\nE      Right contains 1 more item:\nE      {'page': 'login'}\nE      Full diff:\nE      - {'page': 'login'}\nE      + {}\n\ntests/test_nested_defaults_independent.py:9: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_nested_defaults_independent.py::test_nested_blueprint_url_defaults\n1 failed in 0.02s\n",
+      "test_sha256": "b5008db4045ee7132a09661111516f11f0327578c4adf37f14b92475eaf67fe6"
+    },
+    {
+      "task": "pallets__flask-4045",
+      "repeat": 11,
+      "arm": "goalpilot",
+      "result": "pass",
+      "returncode": 0,
+      "stdout_tail": ".                                                                        [100%]\n1 passed in 0.01s\n",
+      "test_sha256": "b5008db4045ee7132a09661111516f11f0327578c4adf37f14b92475eaf67fe6"
+    }
+  ]
+}

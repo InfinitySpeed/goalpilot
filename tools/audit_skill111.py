@@ -32,10 +32,17 @@ def audit(report_path: Path = REPORT, root: Path = ROOT) -> dict:
             raise ValueError('active 1.11 benchmark pointer mismatch')
         if active.get('evidence_sha256') != sha256(archive_path):
             raise ValueError('active 1.11 evidence hash mismatch')
-    # Once superseded, validate historical source bytes from its immutable evidence archive.
-    with zipfile.ZipFile(archive_path) as zf:
-        archived = {n: hashlib.sha256(zf.read('promoted-source/' + n)).hexdigest()
-                    for n in data['source_files'] if 'promoted-source/' + n in zf.namelist()}
+    # Once superseded, validate source bytes from immutable 1.11 or earlier release evidence.
+    archived = {}
+    for evidence in (archive_path, root / 'reports/skill-110-evidence.zip'):
+        with zipfile.ZipFile(evidence) as zf:
+            names=set(zf.namelist())
+            for name, expected in data['source_files'].items():
+                candidates=('promoted-source/' + name, 'inputs/current/' + name)
+                for entry in candidates:
+                    if entry in names and hashlib.sha256(zf.read(entry)).hexdigest()==expected:
+                        archived[name]=expected
+                        break
     for name, expected in data['source_files'].items():
         live = sha256(root / name)
         if live != expected and archived.get(name) != expected:
