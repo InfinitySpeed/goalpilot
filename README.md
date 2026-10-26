@@ -25,7 +25,7 @@ The matched real-task benchmark used two SWE-bench Lite issues (pytest traceback
 | Uncached tokens per run | 36,324 | **19,487** |
 | Elapsed seconds per run | 77.39 | **69.59** |
 
-The gain is not uniform: pytest was roughly time-neutral across repeats, while Requests improved. The provider cache could not be disabled, so the token claim uses uncached tokens; raw tokens do not establish subscription-quota savings. This small benchmark supports only the localized fast-path scope, not universal or broad-goal domination. Direct mode does not issue a GoalPilot certificate; independent hidden tests judge completion. See the [protocol and per-run results](docs/PROMOTION-1.12.md), [machine-readable report](reports/native-task-domination-2026-10-24.json), and [retained evidence archive](reports/native-task-domination-evidence-2026-10-24.zip). Earlier failed and slower exploratory attempts are listed in the report.
+The gain is not uniform: pytest was roughly time-neutral across repeats, while Requests improved. The provider cache could not be disabled, so the token claim uses uncached tokens; raw tokens do not establish subscription-quota savings. This small benchmark supports only the localized fast-path scope, not universal or broad-goal domination. Direct mode does not issue a GoalPilot certificate; independent hidden tests judge completion. See the [benchmark task file](benchmarks/native-task-domination-tasks-2026-10-24.json), [protocol and per-run results](docs/PROMOTION-1.12.md), [machine-readable report](reports/native-task-domination-2026-10-24.json), and [retained evidence archive](reports/native-task-domination-evidence-2026-10-24.zip). Earlier failed and slower exploratory attempts are listed in the report.
 
 ### Broader native verification
 
